@@ -69,7 +69,7 @@
                             <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前(21)</a></h3>
                             <h4 class="text-center">ひらがな </h4>
                             <a href="{{ route('admin.companion.edit') }}"> 
-                                <img src="{{ url('/storage/photos/1139/thmb_1139.jpg') }}" /> 
+                                <img src="{{ url('/storage/photos/1139/thmb_1139.jpg') }}" class="thmb_class" /> 
                             </a> 
                             <p class="text-center mt-1">T162.B85(E).W56.H83 </p>
                         </div>
@@ -1044,7 +1044,7 @@
                             <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前(21)</a></h3>
                             <h4 class="text-center">ひらがな </h4>
                             <a href="{{ route('admin.companion.edit') }}"> 
-                                <img src="{{ url('/storage/photos/1139/thmb_1139.jpg') }}" /> 
+                                <img src="{{ url('/storage/photos/1140/thmb_1140.png') }}" class="thmb_class" /> 
                             </a> 
                             <p class="text-center mt-1">T162.B85(E).W56.H83 </p>
                         </div>
@@ -2019,7 +2019,7 @@
                             <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前(21)</a></h3>
                             <h4 class="text-center">ひらがな </h4>
                             <a href="{{ route('admin.companion.edit') }}"> 
-                                <img src="{{ url('/storage/photos/1139/thmb_1139.jpg') }}" /> 
+                                <img src="{{ url('/storage/photos/1141/thmb_1141.png') }}" class="thmb_class" /> 
                             </a> 
                             <p class="text-center mt-1">T162.B85(E).W56.H83 </p>
                         </div>
@@ -2994,7 +2994,7 @@
                             <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前(21)</a></h3>
                             <h4 class="text-center">ひらがな </h4>
                             <a href="{{ route('admin.companion.edit') }}"> 
-                                <img src="{{ url('/storage/photos/1139/thmb_1139.jpg') }}" /> 
+                                <img src="{{ url('/storage/photos/1142/thmb_1142.png') }}" class="thmb_class" /> 
                             </a> 
                             <p class="text-center mt-1">T162.B85(E).W56.H83 </p>
                         </div>
@@ -3969,7 +3969,7 @@
                             <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前(21)</a></h3>
                             <h4 class="text-center">ひらがな </h4>
                             <a href="{{ route('admin.companion.edit') }}"> 
-                                <img src="{{ url('/storage/photos/1139/thmb_1139.jpg') }}" /> 
+                                <img src="{{ url('/storage/photos/1143/thmb_1143.png') }}" class="thmb_class" /> 
                             </a> 
                             <p class="text-center mt-1">T162.B85(E).W56.H83 </p>
                         </div>
@@ -4944,7 +4944,7 @@
                             <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前(21)</a></h3>
                             <h4 class="text-center">ひらがな </h4>
                             <a href="{{ route('admin.companion.edit') }}"> 
-                                <img src="{{ url('/storage/photos/1139/thmb_1139.jpg') }}" /> 
+                                <img src="{{ url('/storage/photos/1144/thmb_1144.png') }}" class="thmb_class" /> 
                             </a> 
                             <p class="text-center mt-1">T162.B85(E).W56.H83 </p>
                         </div>
@@ -5919,7 +5919,7 @@
                             <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前(21)</a></h3>
                             <h4 class="text-center">ひらがな </h4>
                             <a href="{{ route('admin.companion.edit') }}"> 
-                                <img src="{{ url('/storage/photos/1139/thmb_1139.jpg') }}" /> 
+                                <img src="{{ url('/storage/photos/1145/thmb_1145.png') }}" class="thmb_class" /> 
                             </a> 
                             <p class="text-center mt-1">T162.B85(E).W56.H83 </p>
                         </div>
@@ -6894,7 +6894,7 @@
                             <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前(21)</a></h3>
                             <h4 class="text-center">ひらがな </h4>
                             <a href="{{ route('admin.companion.edit') }}"> 
-                                <img src="{{ url('/storage/photos/1139/thmb_1139.jpg') }}" /> 
+                                <img src="{{ url('/storage/photos/1146/thmb_1146.png') }}" class="thmb_class" /> 
                             </a> 
                             <p class="text-center mt-1">T162.B85(E).W56.H83 </p>
                         </div>
@@ -7869,7 +7869,7 @@
                             <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前(21)</a></h3>
                             <h4 class="text-center">ひらがな </h4>
                             <a href="{{ route('admin.companion.edit') }}"> 
-                                <img src="{{ url('/storage/photos/1139/thmb_1139.jpg') }}" /> 
+                                <img src="{{ url('/storage/photos/1147/thmb_1147.png') }}" class="thmb_class" /> 
                             </a> 
                             <p class="text-center mt-1">T162.B85(E).W56.H83 </p>
                         </div>
@@ -8844,7 +8844,7 @@
                             <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前(21)</a></h3>
                             <h4 class="text-center">ひらがな </h4>
                             <a href="{{ route('admin.companion.edit') }}"> 
-                                <img src="{{ url('/storage/photos/1139/thmb_1139.jpg') }}" /> 
+                                <img src="{{ url('/storage/photos/1148/thmb_1148.png') }}" class="thmb_class" /> 
                             </a> 
                             <p class="text-center mt-1">T162.B85(E).W56.H83 </p>
                         </div>
@@ -9819,7 +9819,7 @@
                             <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前(21)</a></h3>
                             <h4 class="text-center">ひらがな </h4>
                             <a href="{{ route('admin.companion.edit') }}"> 
-                                <img src="{{ url('/storage/photos/1139/thmb_1139.jpg') }}" /> 
+                                <img src="{{ url('/storage/photos/1139/thmb_1139.jpg') }}" class="thmb_class" /> 
                             </a> 
                             <p class="text-center mt-1">T162.B85(E).W56.H83 </p>
                         </div>
@@ -10794,7 +10794,7 @@
                             <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前(21)</a></h3>
                             <h4 class="text-center">ひらがな </h4>
                             <a href="{{ route('admin.companion.edit') }}"> 
-                                <img src="{{ url('/storage/photos/1139/thmb_1139.jpg') }}" /> 
+                                <img src="{{ url('/storage/photos/1140/thmb_1140.png') }}" class="thmb_class" /> 
                             </a> 
                             <p class="text-center mt-1">T162.B85(E).W56.H83 </p>
                         </div>
@@ -11769,7 +11769,7 @@
                             <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前(21)</a></h3>
                             <h4 class="text-center">ひらがな </h4>
                             <a href="{{ route('admin.companion.edit') }}"> 
-                                <img src="{{ url('/storage/photos/1139/thmb_1139.jpg') }}" /> 
+                                <img src="{{ url('/storage/photos/1141/thmb_1141.png') }}" class="thmb_class" /> 
                             </a> 
                             <p class="text-center mt-1">T162.B85(E).W56.H83 </p>
                         </div>
@@ -12744,7 +12744,7 @@
                             <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前(21)</a></h3>
                             <h4 class="text-center">ひらがな </h4>
                             <a href="{{ route('admin.companion.edit') }}"> 
-                                <img src="{{ url('/storage/photos/1139/thmb_1139.jpg') }}" /> 
+                                <img src="{{ url('/storage/photos/1142/thmb_1142.png') }}" class="thmb_class" /> 
                             </a> 
                             <p class="text-center mt-1">T162.B85(E).W56.H83 </p>
                         </div>
@@ -13719,7 +13719,7 @@
                             <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前(21)</a></h3>
                             <h4 class="text-center">ひらがな </h4>
                             <a href="{{ route('admin.companion.edit') }}"> 
-                                <img src="{{ url('/storage/photos/1139/thmb_1139.jpg') }}" /> 
+                                <img src="{{ url('/storage/photos/1143/thmb_1143.png') }}" class="thmb_class" /> 
                             </a> 
                             <p class="text-center mt-1">T162.B85(E).W56.H83 </p>
                         </div>
@@ -14694,7 +14694,7 @@
                             <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前(21)</a></h3>
                             <h4 class="text-center">ひらがな </h4>
                             <a href="{{ route('admin.companion.edit') }}"> 
-                                <img src="{{ url('/storage/photos/1139/thmb_1139.jpg') }}" /> 
+                                <img src="{{ url('/storage/photos/1144/thmb_1144.png') }}" class="thmb_class" /> 
                             </a> 
                             <p class="text-center mt-1">T162.B85(E).W56.H83 </p>
                         </div>
@@ -15669,7 +15669,7 @@
                             <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前(21)</a></h3>
                             <h4 class="text-center">ひらがな </h4>
                             <a href="{{ route('admin.companion.edit') }}"> 
-                                <img src="{{ url('/storage/photos/1139/thmb_1139.jpg') }}" /> 
+                                <img src="{{ url('/storage/photos/1145/thmb_1145.png') }}" class="thmb_class" /> 
                             </a> 
                             <p class="text-center mt-1">T162.B85(E).W56.H83 </p>
                         </div>
@@ -16644,7 +16644,7 @@
                             <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前(21)</a></h3>
                             <h4 class="text-center">ひらがな </h4>
                             <a href="{{ route('admin.companion.edit') }}"> 
-                                <img src="{{ url('/storage/photos/1139/thmb_1139.jpg') }}" /> 
+                                <img src="{{ url('/storage/photos/1145/thmb_1145.png') }}" class="thmb_class" /> 
                             </a> 
                             <p class="text-center mt-1">T162.B85(E).W56.H83 </p>
                         </div>
@@ -17619,7 +17619,7 @@
                             <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前(21)</a></h3>
                             <h4 class="text-center">ひらがな </h4>
                             <a href="{{ route('admin.companion.edit') }}"> 
-                                <img src="{{ url('/storage/photos/1139/thmb_1139.jpg') }}" /> 
+                                <img src="{{ url('/storage/photos/1146/thmb_1146.png') }}" class="thmb_class" /> 
                             </a> 
                             <p class="text-center mt-1">T162.B85(E).W56.H83 </p>
                         </div>

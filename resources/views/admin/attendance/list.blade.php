@@ -207,7 +207,7 @@
             <div class="panel panel-primary" >
                 <div class="panel-body text-center">
                     <a href="{{ route('admin.companion.edit') }}"> 
-                        <img src="{{ url('/storage/photos/1139/thmb_1139.jpg') }}" /> 
+                        <img src="{{ url('/storage/photos/1139/thmb_1139.jpg') }}" class="thmb_class" /> 
                     </a> 
                     <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前1</a></h3>
                     <h4 class="text-center">12:00 ~ 未設定 </h4>
@@ -234,7 +234,7 @@
             <div class="panel panel-primary" >
                 <div class="panel-body text-center">
                     <a href="{{ route('admin.companion.edit') }}"> 
-                        <img src="{{ url('/storage/photos/1139/thmb_1139.jpg') }}" /> 
+                        <img src="{{ url('/storage/photos/1140/thmb_1140.png') }}" class="thmb_class" /> 
                     </a> 
                     <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前2</a></h3>
                     <h4 class="text-center">20:00 ~ 02:00 </h4>
@@ -261,7 +261,7 @@
             <div class="panel panel-primary" >
                 <div class="panel-body text-center">
                     <a href="{{ route('admin.companion.edit') }}"> 
-                        <img src="{{ url('/storage/photos/1139/thmb_1139.jpg') }}" /> 
+                        <img src="{{ url('/storage/photos/1141/thmb_1141.png') }}" class="thmb_class" /> 
                     </a> 
                     <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前3</a></h3>
                     <h4 class="text-center">20:00 ~ 02:00 </h4>
@@ -288,7 +288,7 @@
             <div class="panel panel-primary" >
                 <div class="panel-body text-center">
                     <a href="{{ route('admin.companion.edit') }}"> 
-                        <img src="{{ url('/storage/photos/1139/thmb_1139.jpg') }}" /> 
+                        <img src="{{ url('/storage/photos/1142/thmb_1142.png') }}" class="thmb_class" /> 
                     </a> 
                     <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前4</a></h3>
                     <h4 class="text-center">20:00 ~ 02:00 </h4>
@@ -315,7 +315,7 @@
             <div class="panel panel-primary" >
                 <div class="panel-body text-center">
                     <a href="{{ route('admin.companion.edit') }}"> 
-                        <img src="{{ url('/storage/photos/1139/thmb_1139.jpg') }}" /> 
+                        <img src="{{ url('/storage/photos/1143/thmb_1143.png') }}" class="thmb_class" /> 
                     </a> 
                     <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前5</a></h3>
                     <h4 class="text-center">20:00 ~ 02:00 </h4>
@@ -342,7 +342,7 @@
             <div class="panel panel-primary" >
                 <div class="panel-body text-center">
                     <a href="{{ route('admin.companion.edit') }}"> 
-                        <img src="{{ url('/storage/photos/1139/thmb_1139.jpg') }}" /> 
+                        <img src="{{ url('/storage/photos/1144/thmb_1144.png') }}" class="thmb_class" /> 
                     </a> 
                     <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前6</a></h3>
                     <h4 class="text-center">20:00 ~ 02:00 </h4>
@@ -369,7 +369,7 @@
             <div class="panel panel-primary" >
                 <div class="panel-body text-center">
                     <a href="{{ route('admin.companion.edit') }}"> 
-                        <img src="{{ url('/storage/photos/1139/thmb_1139.jpg') }}" /> 
+                        <img src="{{ url('/storage/photos/1145/thmb_1145.png') }}" class="thmb_class" /> 
                     </a> 
                     <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前7</a></h3>
                     <h4 class="text-center">20:00 ~ 02:00 </h4>
@@ -396,7 +396,7 @@
             <div class="panel panel-primary" >
                 <div class="panel-body text-center">
                     <a href="{{ route('admin.companion.edit') }}"> 
-                        <img src="{{ url('/storage/photos/1139/thmb_1139.jpg') }}" /> 
+                        <img src="{{ url('/storage/photos/1146/thmb_1146.png') }}" class="thmb_class" /> 
                     </a> 
                     <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前8</a></h3>
                     <h4 class="text-center">20:00 ~ 02:00 </h4>
@@ -423,7 +423,7 @@
             <div class="panel panel-primary" >
                 <div class="panel-body text-center">
                     <a href="{{ route('admin.companion.edit') }}"> 
-                        <img src="{{ url('/storage/photos/1139/thmb_1139.jpg') }}" /> 
+                        <img src="{{ url('/storage/photos/1147/thmb_1147.png') }}" class="thmb_class" /> 
                     </a> 
                     <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前9</a></h3>
                     <h4 class="text-center">20:00 ~ 02:00 </h4>

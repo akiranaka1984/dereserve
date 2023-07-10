@@ -35,7 +35,7 @@
             <div class="panel panel-primary" >
                 <div class="panel-body text-center">
                     <a href="{{ route('admin.companion.edit') }}"> 
-                        <img src="{{ url('/storage/photos/1139/topi_1139.jpg') }}" /> 
+                        <img src="{{ url('/storage/photos/1140/topi_1140.png') }}" class="topi_class" /> 
                     </a> 
                     <h2 class="text-center">RED DIAMOND</h2>
 
@@ -61,7 +61,7 @@
             <div class="panel panel-primary" >
                 <div class="panel-body text-center">
                     <a href="{{ route('admin.companion.edit') }}"> 
-                        <img src="{{ url('/storage/photos/1139/topi_1139.jpg') }}" /> 
+                        <img src="{{ url('/storage/photos/1141/topi_1141.png') }}" class="topi_class" /> 
                     </a> 
                     <h2 class="text-center">DIAMOND</h2>
 
@@ -87,7 +87,7 @@
             <div class="panel panel-primary" >
                 <div class="panel-body text-center">
                     <a href="{{ route('admin.companion.edit') }}"> 
-                        <img src="{{ url('/storage/photos/1139/topi_1139.jpg') }}" /> 
+                        <img src="{{ url('/storage/photos/1142/topi_1142.png') }}" class="topi_class" /> 
                     </a> 
                     <h2 class="text-center">DIAMOND</h2>
 
@@ -113,7 +113,7 @@
             <div class="panel panel-primary" >
                 <div class="panel-body text-center">
                     <a href="{{ route('admin.companion.edit') }}"> 
-                        <img src="{{ url('/storage/photos/1139/topi_1139.jpg') }}" /> 
+                        <img src="{{ url('/storage/photos/1143/topi_1143.png') }}" class="topi_class" /> 
                     </a> 
                     <h2 class="text-center">DIAMOND</h2>
 
@@ -139,7 +139,7 @@
             <div class="panel panel-primary" >
                 <div class="panel-body text-center">
                     <a href="{{ route('admin.companion.edit') }}"> 
-                        <img src="{{ url('/storage/photos/1139/topi_1139.jpg') }}" /> 
+                        <img src="{{ url('/storage/photos/1144/topi_1144.png') }}" class="topi_class" /> 
                     </a> 
                     <h2 class="text-center">DIAMOND</h2>
 
@@ -165,7 +165,7 @@
             <div class="panel panel-primary" >
                 <div class="panel-body text-center">
                     <a href="{{ route('admin.companion.edit') }}"> 
-                        <img src="{{ url('/storage/photos/1139/topi_1139.jpg') }}" /> 
+                        <img src="{{ url('/storage/photos/1145/topi_1145.png') }}" class="topi_class" /> 
                     </a> 
                     <h2 class="text-center">DIAMOND</h2>
 
@@ -191,7 +191,7 @@
             <div class="panel panel-primary" >
                 <div class="panel-body text-center">
                     <a href="{{ route('admin.companion.edit') }}"> 
-                        <img src="{{ url('/storage/photos/1139/topi_1139.jpg') }}" /> 
+                        <img src="{{ url('/storage/photos/1146/topi_1146.png') }}" class="topi_class" /> 
                     </a> 
                     <h2 class="text-center">DIAMOND</h2>
 
@@ -217,7 +217,7 @@
             <div class="panel panel-primary" >
                 <div class="panel-body text-center">
                     <a href="{{ route('admin.companion.edit') }}"> 
-                        <img src="{{ url('/storage/photos/1139/topi_1139.jpg') }}" /> 
+                        <img src="{{ url('/storage/photos/1147/topi_1147.png') }}" class="topi_class" /> 
                     </a> 
                     <h2 class="text-center">DIAMOND</h2>
 
@@ -243,7 +243,7 @@
             <div class="panel panel-primary" >
                 <div class="panel-body text-center">
                     <a href="{{ route('admin.companion.edit') }}"> 
-                        <img src="{{ url('/storage/photos/1139/topi_1139.jpg') }}" /> 
+                        <img src="{{ url('/storage/photos/1148/topi_1148.png') }}" class="topi_class" /> 
                     </a> 
                     <h2 class="text-center">DIAMOND</h2>
 
