@@ -34,12 +34,12 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'username' => 'required',
+            'email' => 'required',
             'password' => 'required',
         ]);
-        $credentials = $request->only('username', 'password');
+        $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            if (Auth::attempt(['username' => $request->username, 'password' => $request->password, 'status' => 1])) {
+            if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'status' => 1])) {
                 return redirect(route('admin.dashbord'));
             }
             return redirect()->back()->with('error', __('Your account has been temporarily suspended!'));
