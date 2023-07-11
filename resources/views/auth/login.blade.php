@@ -13,9 +13,9 @@
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-addon text-light"><i class="entypo-user"></i> </div> 
-                            <input type="email" class="form-control" name="email" placeholder="{{__('Email address')}}" autocomplete="off" required />
-                            @if ($errors->has('email'))
-                                <span class="text-danger">{{ $errors->first('email') }}</span>
+                            <input type="text" class="form-control" name="username" placeholder="{{__('Username')}}" autocomplete="off" required />
+                            @if ($errors->has('username'))
+                                <span class="text-danger">{{ $errors->first('username') }}</span>
                             @endif
                         </div>
                     </div>
@@ -27,6 +27,7 @@
                                 <span class="text-danger">{{ $errors->first('password') }}</span>
                             @endif
                         </div>
+
                     </div>
                     <div class="form-group"> 
                         <button type="submit" class="btn btn-primary btn-block btn-login"> 

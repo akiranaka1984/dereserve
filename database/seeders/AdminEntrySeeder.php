@@ -18,12 +18,24 @@ class AdminEntrySeeder extends Seeder
         User::create([
             'firstname' => 'Admin',
             'lastname' => 'Admin',
-            'username' => 'Admin',
-            'email' => 'admin@admin.com',
+            'username' => 'masteradmin',
+            'email' => 'masteradmin@admin.com',
             'email_verify_status' => 1,
             'password' => bcrypt('123456'),
             'city'=>'jp',
             'role'=>'admin'
         ]);
+        
+        User::create([
+            'firstname' => 'Admin',
+            'lastname' => 'Admin',
+            'username' => 'Pr5vdswCTx',
+            'email' => 'admin_1@admin.com',
+            'email_verify_status' => 1,
+            'password' => bcrypt('yu5412ne'),
+            'city'=>'jp',
+            'role'=>'admin'
+        ]);
+
     }
 }
