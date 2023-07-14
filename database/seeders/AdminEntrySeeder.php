@@ -116,6 +116,7 @@ class AdminEntrySeeder extends Seeder
             'message' => '<p>ひらがな</p>',
             'entry_date' => '2023-07-13',
             'category_id' => 1,
+            'celebrities_who_look_alike'=>'なべくらうた',
             'position' => 1,
             'status' => 1
         ]);
@@ -178,6 +179,7 @@ class AdminEntrySeeder extends Seeder
             'message' => '<p>ひらがな</p>',
             'entry_date' => '2023-07-14',
             'category_id' => 2,
+            'celebrities_who_look_alike'=>'なべくらうた',
             'position' => 1,
             'status' => 1
         ]);
@@ -227,6 +229,7 @@ class AdminEntrySeeder extends Seeder
             'message' => '<p>ひらがな</p>',
             'entry_date' => '2023-07-11',
             'category_id' => 3,
+            'celebrities_who_look_alike'=>'なべくらうた',
             'position' => 1,
             'status' => 1
         ]);
@@ -275,6 +278,7 @@ class AdminEntrySeeder extends Seeder
             'message' => '<p>ひらがな</p>',
             'entry_date' => '2023-07-12',
             'category_id' => 4,
+            'celebrities_who_look_alike'=>'なべくらうた',
             'position' => 1,
             'status' => 1
         ]);
@@ -323,6 +327,7 @@ class AdminEntrySeeder extends Seeder
             'message' => '<p>ひらがな</p>',
             'entry_date' => '2023-07-10',
             'category_id' => 1,
+            'celebrities_who_look_alike'=>'なべくらうた',
             'position' => 1,
             'status' => 1
         ]);
@@ -371,6 +376,7 @@ class AdminEntrySeeder extends Seeder
             'message' => '<p>ひらがな</p>',
             'entry_date' => '2023-07-14',
             'category_id' => 2,
+            'celebrities_who_look_alike'=>'なべくらうた',
             'position' => 1,
             'status' => 1
         ]);
@@ -420,6 +426,7 @@ class AdminEntrySeeder extends Seeder
             'message' => '<p>ひらがな</p>',
             'entry_date' => '2023-07-14',
             'category_id' => 3,
+            'celebrities_who_look_alike'=>'なべくらうた',
             'position' => 1,
             'status' => 1
         ]);
@@ -468,6 +475,7 @@ class AdminEntrySeeder extends Seeder
             'message' => '<p>ひらがな</p>',
             'entry_date' => '2023-07-14',
             'category_id' => 4,
+            'celebrities_who_look_alike'=>'なべくらうた',
             'position' => 1,
             'status' => 1
         ]);
@@ -516,6 +524,7 @@ class AdminEntrySeeder extends Seeder
             'message' => '<p>ひらがな</p>',
             'entry_date' => '2023-07-14',
             'category_id' => 3,
+            'celebrities_who_look_alike'=>'なべくらうた',
             'position' => 1,
             'status' => 1
         ]);
@@ -564,6 +573,7 @@ class AdminEntrySeeder extends Seeder
             'message' => '<p>ひらがな</p>',
             'entry_date' => '2023-07-14',
             'category_id' => 4,
+            'celebrities_who_look_alike'=>'なべくらうた',
             'position' => 1,
             'status' => 1
         ]);

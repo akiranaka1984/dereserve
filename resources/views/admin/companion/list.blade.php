@@ -18,7 +18,7 @@
                 <div class="form-group"> 
                     <label for="txtSearchId" class="col-sm-3 control-label text-right mt-5px">検索 : </label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="txtSearchId" placeholder=""> 
+                        <input type="text" class="form-control" id="txtSearchId" placeholder="" value="{{ $search_q }}" > 
                     </div>
                 </div>
             </div>

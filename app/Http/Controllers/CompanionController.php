@@ -39,10 +39,11 @@ class CompanionController extends Controller
             }
             
             $companions = $sql->orderBy('position', 'ASC')->orderBy('id', 'ASC')->get();
-            return view('admin.companion.list', compact('companions'));
+            return view('admin.companion.list', compact('companions', 'search_q'));
         }else{
+            $search_q = '';
             $companions = $sql->orderBy('position', 'ASC')->orderBy('id', 'ASC')->get();
-            return view('admin.companion.list', compact('companions'));
+            return view('admin.companion.list', compact('companions', 'search_q'));
         }
     }
 
