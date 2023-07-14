@@ -17,254 +17,119 @@
             <div class="col-md-4">
                 <div class="form-group"> 
                     <label for="txtSearchId" class="col-sm-3 control-label text-right mt-5px">検索 : </label>
-                    <div class="col-sm-8"> <input type="text" class="form-control" id="txtSearchId" placeholder=""> </div>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="txtSearchId" placeholder=""> 
+                    </div>
                 </div>
             </div>
             <div class="col-md-6"></div>
             <div class="col-md-2">
-                <button type="button" class="btn btn-orange">並び順を確定する</button>
+                <button type="button" class="btn btn-orange save_all_position">並び順を確定する</button>
             </div>
         </div>
     </div>
 
     <div class="tile-stats tile-primary frm-head"> コンパニオン一覧</div>
 
-    <div class="row">
+    <div class="row dragula" id="left-events">
+        @foreach($companions as $companion)
+            <div class="col-md-3 trow" data-id="{{ $companion->id }}">
+                <div class="panel panel-primary" >
+                    <div class="panel-body text-center">
+                        <a href="{{ route('admin.companion.edit', ['id'=>$companion['id'], 'stab' => 1]) }}"> 
+                            @php
+                                $imgPath = '/storage/photos/'.($companion['id']).'/'.($companion['home_image']['photo']);               
+                            @endphp
+                            <img src="{{ url($imgPath) }}" class="topi_class" /> 
+                        </a> 
+                        <h2 class="text-center">{{ $companion['category']['name'] }}</h2>
 
-        <div class="col-md-3">
-            <div class="panel panel-primary" >
-                <div class="panel-body text-center">
-                    <a href="{{ route('admin.companion.edit') }}"> 
-                        <img src="{{ url('/storage/photos/1140/topi_1140.png') }}" class="topi_class" /> 
-                    </a> 
-                    <h2 class="text-center">RED DIAMOND</h2>
+                        <h3 class="text-center">
+                            <a href="{{ route('admin.companion.edit', ['id'=>$companion['id'], 'stab' => 1]) }}" class="text-info">{{ $companion['name'] }}</a>
+                        </h3>
+                        <h4 class="text-center">{{ $companion['celebrities_who_look_alike'] }}</h4>
+                       
+                        <form role="form" method="post" action="{{ route('admin.companion.status.save') }}" >
+                            @csrf 
 
-                    <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前</a></h3>
-                    <h4 class="text-center">ひらがな </h4>
+                            <input type="hidden" name="companion_id" value="{{ $companion->id }}" required />
+                            <div class="text-center">
+                                <select name="status" class="form-control w-50 d-inline-block">
+                                    <option value="1" {{ ($companion['status'] == 1) ? 'selected' :'' }} >表示</option>
+                                    <option value="2" {{ ($companion['status'] == 2) ? 'selected' :'' }} >非公開</option>
+                                    <option value="3" {{ ($companion['status'] == 3) ? 'selected' :'' }} >削除</option>
+                                </select>
+                            </div>
+                            <div class="text-center mt-1">
+                                <button type="submit" class="btn btn-primary ">修正</button>
+                            </div>
+                        </form>
 
-                    <div class="text-center">
-                        <select class="form-control w-50 d-inline-block">
-                            <option value="表示">表示</option>
-                            <option value="非公開">非公開</option>
-                            <option value="削除">削除</option>
-                        </select>
                     </div>
-                    <div class="text-center mt-1">
-                        <button type="button" class="btn btn-primary ">修正</button>
-                    </div>
-                    
                 </div>
             </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="panel panel-primary" >
-                <div class="panel-body text-center">
-                    <a href="{{ route('admin.companion.edit') }}"> 
-                        <img src="{{ url('/storage/photos/1141/topi_1141.png') }}" class="topi_class" /> 
-                    </a> 
-                    <h2 class="text-center">DIAMOND</h2>
-
-                    <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前</a></h3>
-                    <h4 class="text-center">ひらがな </h4>
-
-                    <div class="text-center">
-                        <select class="form-control w-50 d-inline-block">
-                            <option value="表示">表示</option>
-                            <option value="非公開">非公開</option>
-                            <option value="削除">削除</option>
-                        </select>
-                    </div>
-                    <div class="text-center mt-1">
-                        <button type="button" class="btn btn-primary ">修正</button>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="panel panel-primary" >
-                <div class="panel-body text-center">
-                    <a href="{{ route('admin.companion.edit') }}"> 
-                        <img src="{{ url('/storage/photos/1142/topi_1142.png') }}" class="topi_class" /> 
-                    </a> 
-                    <h2 class="text-center">DIAMOND</h2>
-
-                    <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前</a></h3>
-                    <h4 class="text-center">ひらがな </h4>
-
-                    <div class="text-center">
-                        <select class="form-control w-50 d-inline-block">
-                            <option value="表示">表示</option>
-                            <option value="非公開">非公開</option>
-                            <option value="削除">削除</option>
-                        </select>
-                    </div>
-                    <div class="text-center mt-1">
-                        <button type="button" class="btn btn-primary ">修正</button>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="panel panel-primary" >
-                <div class="panel-body text-center">
-                    <a href="{{ route('admin.companion.edit') }}"> 
-                        <img src="{{ url('/storage/photos/1143/topi_1143.png') }}" class="topi_class" /> 
-                    </a> 
-                    <h2 class="text-center">DIAMOND</h2>
-
-                    <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前</a></h3>
-                    <h4 class="text-center">ひらがな </h4>
-
-                    <div class="text-center">
-                        <select class="form-control w-50 d-inline-block">
-                            <option value="表示">表示</option>
-                            <option value="非公開">非公開</option>
-                            <option value="削除">削除</option>
-                        </select>
-                    </div>
-                    <div class="text-center mt-1">
-                        <button type="button" class="btn btn-primary ">修正</button>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="panel panel-primary" >
-                <div class="panel-body text-center">
-                    <a href="{{ route('admin.companion.edit') }}"> 
-                        <img src="{{ url('/storage/photos/1144/topi_1144.png') }}" class="topi_class" /> 
-                    </a> 
-                    <h2 class="text-center">DIAMOND</h2>
-
-                    <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前</a></h3>
-                    <h4 class="text-center">ひらがな </h4>
-
-                    <div class="text-center">
-                        <select class="form-control w-50 d-inline-block">
-                            <option value="表示">表示</option>
-                            <option value="非公開">非公開</option>
-                            <option value="削除">削除</option>
-                        </select>
-                    </div>
-                    <div class="text-center mt-1">
-                        <button type="button" class="btn btn-primary ">修正</button>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="panel panel-primary" >
-                <div class="panel-body text-center">
-                    <a href="{{ route('admin.companion.edit') }}"> 
-                        <img src="{{ url('/storage/photos/1145/topi_1145.png') }}" class="topi_class" /> 
-                    </a> 
-                    <h2 class="text-center">DIAMOND</h2>
-
-                    <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前</a></h3>
-                    <h4 class="text-center">ひらがな </h4>
-
-                    <div class="text-center">
-                        <select class="form-control w-50 d-inline-block">
-                            <option value="表示">表示</option>
-                            <option value="非公開">非公開</option>
-                            <option value="削除">削除</option>
-                        </select>
-                    </div>
-                    <div class="text-center mt-1">
-                        <button type="button" class="btn btn-primary ">修正</button>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="panel panel-primary" >
-                <div class="panel-body text-center">
-                    <a href="{{ route('admin.companion.edit') }}"> 
-                        <img src="{{ url('/storage/photos/1146/topi_1146.png') }}" class="topi_class" /> 
-                    </a> 
-                    <h2 class="text-center">DIAMOND</h2>
-
-                    <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前</a></h3>
-                    <h4 class="text-center">ひらがな </h4>
-
-                    <div class="text-center">
-                        <select class="form-control w-50 d-inline-block">
-                            <option value="表示">表示</option>
-                            <option value="非公開">非公開</option>
-                            <option value="削除">削除</option>
-                        </select>
-                    </div>
-                    <div class="text-center mt-1">
-                        <button type="button" class="btn btn-primary ">修正</button>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="panel panel-primary" >
-                <div class="panel-body text-center">
-                    <a href="{{ route('admin.companion.edit') }}"> 
-                        <img src="{{ url('/storage/photos/1147/topi_1147.png') }}" class="topi_class" /> 
-                    </a> 
-                    <h2 class="text-center">DIAMOND</h2>
-
-                    <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前</a></h3>
-                    <h4 class="text-center">ひらがな </h4>
-
-                    <div class="text-center">
-                        <select class="form-control w-50 d-inline-block">
-                            <option value="表示">表示</option>
-                            <option value="非公開">非公開</option>
-                            <option value="削除">削除</option>
-                        </select>
-                    </div>
-                    <div class="text-center mt-1">
-                        <button type="button" class="btn btn-primary ">修正</button>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="panel panel-primary" >
-                <div class="panel-body text-center">
-                    <a href="{{ route('admin.companion.edit') }}"> 
-                        <img src="{{ url('/storage/photos/1148/topi_1148.png') }}" class="topi_class" /> 
-                    </a> 
-                    <h2 class="text-center">DIAMOND</h2>
-
-                    <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">名前</a></h3>
-                    <h4 class="text-center">ひらがな </h4>
-
-                    <div class="text-center">
-                        <select class="form-control w-50 d-inline-block">
-                            <option value="表示">表示</option>
-                            <option value="非公開">非公開</option>
-                            <option value="削除">削除</option>
-                        </select>
-                    </div>
-                    <div class="text-center mt-1">
-                        <button type="button" class="btn btn-primary ">修正</button>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 
+    <script>
+        let nPsitionObj = {}
+        $(document).ready(function(){
 
+            dragula([document.getElementById("left-events")])
+            .on('drag', function (el) {
+                el.className += ' el-drag-ex-2';
+                el.className = el.className.replace('ex-moved', '');
+            })
+            .on('drop', function (el, target, source, sibling) {
+                el.className = el.className.replace('el-drag-ex-2', '');
+                el.className += ' ex-moved';
+                setTimeout(() => {
+                    resetPosition()
+                }, 200);
+            })
+            .on('over', function (el, container) {
+                container.className += ' ex-over';
+            })
+            .on('out', function (el, container) {
+                container.className = container.className.replace('ex-over', '');
+            })
+            .on('cancel', function (el) {
+                el.className = el.className.replace('el-drag-ex-2', '');
+            });
+
+
+            $(document).on('click','.save_all_position', function(){
+                $.ajax({
+                    type: 'POST',
+                    url: `{{ route('admin.companion.position.save') }}`,
+                    headers: {"Content-Type": "application/json"},
+                    data: JSON.stringify({
+                        "_token": "{{ csrf_token() }}",
+                        data:nPsitionObj
+                    }),
+                    success: function (response) {
+                        simpleMessage('success',`{{__('Save Changes')}}`);
+                    }
+                })
+            })
+
+            $(document).on('keypress','#txtSearchId', function(e){
+                if(e.which == 13){
+                    let search = $(this).val();
+                    window.location.href = `{{ route('admin.companion.list') }}?q=`+search;
+                }
+            })
+
+            resetPosition()
+        })
+
+        function resetPosition(){
+            nPsitionObj = {};
+            $('.trow').each(function(index, rtag){
+                let id = $(this).attr('data-id');
+                nPsitionObj[id] = index + 1;
+            })
+        }
+
+    </script>
 @endsection
