@@ -37,7 +37,7 @@ class Companion extends Model
     }
 
     public function home_image(){
-    	return $this->hasOne('App\Models\CompanionPhoto','companion_id','id')->where('photo_setting_id','=',1);
+    	return $this->hasOne('App\Models\CompanionPhoto','companion_id','id')->where(['status' => 1, 'photo_setting_id'=>1]);
     }
 
     public function all_images(){

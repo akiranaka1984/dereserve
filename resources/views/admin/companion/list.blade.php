@@ -38,7 +38,11 @@
                     <div class="panel-body text-center">
                         <a href="{{ route('admin.companion.edit', ['id'=>$companion['id'], 'stab' => 1]) }}"> 
                             @php
-                                $imgPath = '/storage/photos/'.($companion['id']).'/'.($companion['home_image']['photo']);               
+                                if(!empty($companion['home_image'])){
+                                    $imgPath = '/storage/photos/'.($companion['id']).'/'.($companion['home_image']['photo']);       
+                                }else{
+                                    $imgPath = '/storage/photos/default/images.jpg';       
+                                }
                             @endphp
                             <img src="{{ url($imgPath) }}" class="topi_class" /> 
                         </a> 
