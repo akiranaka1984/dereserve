@@ -38,7 +38,13 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function 
     Route::post('/companion/status/save', [CompanionController::class,'status'])->name('admin.companion.status.save');
 
     Route::get('/attendance/list', [AttendanceController::class,'index'])->name('admin.attendance.list');
+    Route::post('/attendance/list/api', [AttendanceController::class,'api'])->name('admin.attendance.list.api');
+    Route::post('/attendance/list/details', [AttendanceController::class,'details'])->name('admin.attendance.list.details');
+    Route::post('/attendance/save', [AttendanceController::class,'save'])->name('admin.attendance.save');
+    Route::post('/attendance/delete', [AttendanceController::class,'delete'])->name('admin.attendance.delete');
+    Route::post('/attendance/position/save', [AttendanceController::class,'position'])->name('admin.attendance.position.save');
     Route::get('/attendance/bulk', [AttendanceController::class,'bulk'])->name('admin.attendance.bulk');
+    Route::post('/attendance/bulk/save', [AttendanceController::class,'bulk_save'])->name('admin.attendance.bulk.save');
 
     Route::get('/news/list', [NewsController::class,'index'])->name('admin.news.list');
 
