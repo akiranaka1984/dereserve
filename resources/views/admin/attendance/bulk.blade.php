@@ -10,23 +10,25 @@
     <h2><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path fill="currentColor" d="M5.673 0a.7.7 0 0 1 .7.7v1.309h7.517v-1.3a.7.7 0 0 1 1.4 0v1.3H18a2 2 0 0 1 2 1.999v13.993A2 2 0 0 1 18 20H2a2 2 0 0 1-2-1.999V4.008a2 2 0 0 1 2-1.999h2.973V.699a.7.7 0 0 1 .7-.699ZM1.4 7.742v10.259a.6.6 0 0 0 .6.6h16a.6.6 0 0 0 .6-.6V7.756L1.4 7.742Zm5.267 6.877v1.666H5v-1.666h1.667Zm4.166 0v1.666H9.167v-1.666h1.666Zm4.167 0v1.666h-1.667v-1.666H15Zm-8.333-3.977v1.666H5v-1.666h1.667Zm4.166 0v1.666H9.167v-1.666h1.666Zm4.167 0v1.666h-1.667v-1.666H15ZM4.973 3.408H2a.6.6 0 0 0-.6.6v2.335l17.2.014V4.008a.6.6 0 0 0-.6-.6h-2.71v.929a.7.7 0 0 1-1.4 0v-.929H6.373v.92a.7.7 0 0 1-1.4 0v-.92Z"></path></svg>
     一括出勤登録</h2>
     
-    <div class="row mt-1">
-        <div class="col-md-3">
-            <input type="text" class="form-control" placeholder="名前の一部または全体を入力してください">
+    <form role="form" method="get" action="{{ route('admin.attendance.bulk') }}" class="form-horizontal form-groups-bordered" >
+        <div class="row mt-1">
+            <div class="col-md-3">
+                <input type="text" name="search_q" class="form-control txt_search_q" value="{{ $search_q }}" placeholder="名前の一部または全体を入力してください">
+            </div>
+            <div class="col-md-1">
+                <button type="submit" class="btn btn-success sidemenu-href search_btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 0 0-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 0 0 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0c.41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5S14 7.01 14 9.5S11.99 14 9.5 14z"/></svg>
+                    <span class="title ml-1">検索</span>
+                </button>
+            </div>
+            <div class="col-md-1">
+                <button type="button" class="btn btn-red sidemenu-href reset_btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path fill="currentColor" d="M10 20a10 10 0 1 1 0-20a10 10 0 0 1 0 20zm5-11H5v2h10V9z"></path></svg>
+                    <span class="title ml-1">検索解除</span>
+                </button>
+            </div>
         </div>
-        <div class="col-md-1">
-            <button type="button" class="btn btn-success sidemenu-href">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 0 0-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 0 0 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0c.41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5S14 7.01 14 9.5S11.99 14 9.5 14z"/></svg>
-                <span class="title ml-1">検索</span>
-            </button>
-        </div>
-        <div class="col-md-1">
-            <button type="button" class="btn btn-red sidemenu-href">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path fill="currentColor" d="M10 20a10 10 0 1 1 0-20a10 10 0 0 1 0 20zm5-11H5v2h10V9z"></path></svg>
-                <span class="title ml-1">検索解除</span>
-            </button>
-        </div>
-    </div>
+    </form>
 
     <div class="tile-stats tile-primary frm-head mt-1"> 出勤登録</div>
 
@@ -362,6 +364,7 @@
             </tr>    
         </tfoot>                                 
     </table>
+
     <div class="row mt-3 mb-3">
         <div class="col-md-12">
             
@@ -402,6 +405,10 @@
             $(document).on('change','.end_date', function(){
                 let mthis = $(this)
                 updateBulkRecord(mthis)
+            })
+
+            $(document).on('click','.reset_btn', function(){
+                window.location.href = `{{ route('admin.attendance.bulk') }}`;
             })
         })
 

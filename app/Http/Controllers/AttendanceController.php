@@ -106,9 +106,20 @@ class AttendanceController extends Controller
         $jadates['next6'] = date('m/d', strtotime($xdates['next6'])).'('.$jadays[date('N', strtotime($xdates['next6']))-1].')';
         $jadates['next7'] = date('m/d', strtotime($xdates['next7'])).'('.$jadays[date('N', strtotime($xdates['next7']))-1].')';
 
-        $companions = Companion::with(['home_image','attendances'])->where(['status'=>1])->orderBy('position', 'ASC')->orderBy('id', 'ASC')->paginate(5)->appends(request()->query());
+        $sql = Companion::with(['home_image','attendances'])->where(['status'=>1]);
 
-        return view('admin.attendance.bulk', compact('xdates','jadates','companions'));
+        $search_q = "";
+        if(!empty($request->search_q)){
+            $search_q = $request->search_q;
+            $sql->where(function ($query) use ($search_q){
+                $query->where('name', 'like', '%'.$search_q.'%')
+                    ->orWhere('kana', 'like', '%'.$search_q.'%')
+                    ->orWhere('celebrities_who_look_alike', 'like', '%'.$search_q.'%');
+            });
+        }
+        $companions =  $sql->orderBy('position', 'ASC')->orderBy('id', 'ASC')->paginate(15)->appends(request()->query());
+
+        return view('admin.attendance.bulk', compact('xdates','jadates','search_q','companions'));
     }
 
 
