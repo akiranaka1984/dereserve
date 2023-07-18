@@ -38,10 +38,6 @@ class CategoryController extends Controller
     public function position(Request $request)
     {
 
-        echo '<pre>';
-        print_r($request->all());
-        exit;
-
         Category::where('id','>',0)->update(['position'=>0]);
         foreach($request->data as $key => $data){
             Category::where(['id'=>$key])->update(['position'=>$data]);

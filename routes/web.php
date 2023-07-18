@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\HomeController;
+
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CompanionController;
@@ -13,16 +16,19 @@ use App\Http\Controllers\CategoryController;
 
 
 
-Route::get('/', [AuthController::class, 'index'])->name('login');
-Route::get('login', [AuthController::class, 'index'])->name('login');
-Route::post('login', [AuthController::class, 'login'])->name('login'); 
+Route::get('/', [HomeController::class, 'index']);
 
-Route::get('forgotpassword', [AuthController::class, 'forgotpassword'])->name('forgot_password');
-Route::post('forgotpassword', [AuthController::class, 'forgotpasswordSave'])->name('forgot_password_save');
-Route::get('resetpassword/{token}', [AuthController::class, 'resetpassword'])->name('reset_password');
-Route::post('resetpassword', [AuthController::class, 'resetpasswordSave'])->name('reset_password_save');
 
-Route::get('signout', [AuthController::class, 'signout'])->name('signout');
+Route::get('/admin/', [AuthController::class, 'index'])->name('login');
+Route::get('/admin/login', [AuthController::class, 'index'])->name('login');
+Route::post('/admin/login', [AuthController::class, 'login'])->name('login'); 
+
+Route::get('/admin/forgotpassword', [AuthController::class, 'forgotpassword'])->name('forgot_password');
+Route::post('/admin/forgotpassword', [AuthController::class, 'forgotpasswordSave'])->name('forgot_password_save');
+Route::get('/admin/resetpassword/{token}', [AuthController::class, 'resetpassword'])->name('reset_password');
+Route::post('/admin/resetpassword', [AuthController::class, 'resetpasswordSave'])->name('reset_password_save');
+
+Route::get('/admin/signout', [AuthController::class, 'signout'])->name('signout');
 
 Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function () {
     Route::get('/dashboard', [AdminController::class,'dashboard'])->name('admin.dashbord');
@@ -47,9 +53,21 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function 
     Route::post('/attendance/bulk/save', [AttendanceController::class,'bulk_save'])->name('admin.attendance.bulk.save');
 
     Route::get('/news/list', [NewsController::class,'index'])->name('admin.news.list');
+    Route::post('/news/save', [NewsController::class,'save'])->name('admin.news.save');
+    Route::post('/news/position/save', [NewsController::class,'position'])->name('admin.news.position.save');
+    Route::get('/news/delete', [NewsController::class,'delete'])->name('admin.news.delete');
+
 
     Route::get('/reception/list', [ReservationController::class,'index'])->name('admin.reception.list');
+    Route::post('/reception/list/id', [ReservationController::class,'getById'])->name('admin.reception.list.id');
+    Route::post('/reception/save', [ReservationController::class,'save'])->name('admin.reception.save');
+    Route::get('/reception/delete', [ReservationController::class,'delete'])->name('admin.reception.delete');
+    Route::post('/reception/compatible', [ReservationController::class,'compatible'])->name('admin.reception.compatible');
+
     Route::get('/interview/list', [ReservationController::class,'interview'])->name('admin.interview.list');
+    Route::post('/interview/list/id', [ReservationController::class,'getInterviewById'])->name('admin.interview.list.id');
+    Route::get('/interview/delete', [ReservationController::class,'int_delete'])->name('admin.interview.delete');
+    Route::post('/interview/compatible', [ReservationController::class,'int_compatible'])->name('admin.interview.compatible');
 
     Route::get('/photo/size', [PhotoSizeEditController::class,'index'])->name('admin.photo_size.edit');
     Route::post('/photo/save', [PhotoSizeEditController::class,'save'])->name('admin.photo_size.save');

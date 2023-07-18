@@ -20,12 +20,12 @@
                     <div class="col-md-3 btn-icon-align-inline">
                         <div class="form-group"> 
                             <div class="col-sm-12"> 
-                                <div class="checkbox"> <label> <input type="checkbox">非表示ニュースを含めて表示する</label> </div> 
+                                <div class="checkbox"> <label> <input type="checkbox" class="show_hidden_checkbox" {{ ($is_hidden == 1) ? 'checked': '' }} >非表示ニュースを含めて表示する</label> </div> 
                             </div> 
                         </div>
                     </div>
                     <div class="col-md-1">
-                        <button type="button" class="btn btn-success sidemenu-href">
+                        <button type="button" class="btn btn-success sidemenu-href search_btn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 0 0-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 0 0 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0c.41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5S14 7.01 14 9.5S11.99 14 9.5 14z"/></svg>
                             <span class="title ml-1">検索</span>
                         </button>
@@ -47,226 +47,27 @@
             </tr> 
         </thead> 
         <tbody> 
-
-            <tr> 
-                <td>
-                    <button type="button" class="btn btn-danger btn-sm sidemenu-href">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M7 21q-.825 0-1.413-.588T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.588 1.413T17 21H7ZM17 6H7v13h10V6ZM9 17h2V8H9v9Zm4 0h2V8h-2v9ZM7 6v13V6Z"/></svg>
-                    </button>
-                </td> 
-                <td>Robert</td>
-                <td>not available in japan</td>
-                <td class="dl-flex"> 
-                    <button type="button" class="btn btn-success btn-icon-align openModelDetails">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 256 256"><path fill="currentColor" d="M247.31 124.76c-.35-.79-8.82-19.58-27.65-38.41C194.57 61.26 162.88 48 128 48S61.43 61.26 36.34 86.35C17.51 105.18 9 124 8.69 124.76a8 8 0 0 0 0 6.5c.35.79 8.82 19.57 27.65 38.4C61.43 194.74 93.12 208 128 208s66.57-13.26 91.66-38.34c18.83-18.83 27.3-37.61 27.65-38.4a8 8 0 0 0 0-6.5ZM128 192c-30.78 0-57.67-11.19-79.93-33.25A133.47 133.47 0 0 1 25 128a133.33 133.33 0 0 1 23.07-30.75C70.33 75.19 97.22 64 128 64s57.67 11.19 79.93 33.25A133.46 133.46 0 0 1 231.05 128c-7.21 13.46-38.62 64-103.05 64Zm0-112a48 48 0 1 0 48 48a48.05 48.05 0 0 0-48-48Zm0 80a32 32 0 1 1 32-32a32 32 0 0 1-32 32Z"/></svg>
-                        <span class="title ml-1">詳細</span>
-                    </button>
-                    <select class="form-control ml-1">
-                        <option>未対応</option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                    </select>
-                </td>
-            </tr> 
-
-            <tr> 
-                <td>
-                    <button type="button" class="btn btn-danger btn-sm sidemenu-href">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M7 21q-.825 0-1.413-.588T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.588 1.413T17 21H7ZM17 6H7v13h10V6ZM9 17h2V8H9v9Zm4 0h2V8h-2v9ZM7 6v13V6Z"/></svg>
-                    </button>
-                </td> 
-                <td>Dan</td>
-                <td>08069967694</td>
-                <td class="dl-flex"> 
-                    <button type="button" class="btn btn-success btn-icon-align openModelDetails">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 256 256"><path fill="currentColor" d="M247.31 124.76c-.35-.79-8.82-19.58-27.65-38.41C194.57 61.26 162.88 48 128 48S61.43 61.26 36.34 86.35C17.51 105.18 9 124 8.69 124.76a8 8 0 0 0 0 6.5c.35.79 8.82 19.57 27.65 38.4C61.43 194.74 93.12 208 128 208s66.57-13.26 91.66-38.34c18.83-18.83 27.3-37.61 27.65-38.4a8 8 0 0 0 0-6.5ZM128 192c-30.78 0-57.67-11.19-79.93-33.25A133.47 133.47 0 0 1 25 128a133.33 133.33 0 0 1 23.07-30.75C70.33 75.19 97.22 64 128 64s57.67 11.19 79.93 33.25A133.46 133.46 0 0 1 231.05 128c-7.21 13.46-38.62 64-103.05 64Zm0-112a48 48 0 1 0 48 48a48.05 48.05 0 0 0-48-48Zm0 80a32 32 0 1 1 32-32a32 32 0 0 1-32 32Z"/></svg>
-                        <span class="title ml-1">詳細</span>
-                    </button>
-                    <select class="form-control ml-1">
-                        <option>未対応</option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                    </select>
-                </td>
-            </tr> 
-
-            <tr> 
-                <td>
-                    <button type="button" class="btn btn-danger btn-sm sidemenu-href">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M7 21q-.825 0-1.413-.588T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.588 1.413T17 21H7ZM17 6H7v13h10V6ZM9 17h2V8H9v9Zm4 0h2V8h-2v9ZM7 6v13V6Z"/></svg>
-                    </button>
-                </td> 
-                <td>Dan</td>
-                <td>08069967694</td>
-                <td class="dl-flex"> 
-                    <button type="button" class="btn btn-success btn-icon-align openModelDetails">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 256 256"><path fill="currentColor" d="M247.31 124.76c-.35-.79-8.82-19.58-27.65-38.41C194.57 61.26 162.88 48 128 48S61.43 61.26 36.34 86.35C17.51 105.18 9 124 8.69 124.76a8 8 0 0 0 0 6.5c.35.79 8.82 19.57 27.65 38.4C61.43 194.74 93.12 208 128 208s66.57-13.26 91.66-38.34c18.83-18.83 27.3-37.61 27.65-38.4a8 8 0 0 0 0-6.5ZM128 192c-30.78 0-57.67-11.19-79.93-33.25A133.47 133.47 0 0 1 25 128a133.33 133.33 0 0 1 23.07-30.75C70.33 75.19 97.22 64 128 64s57.67 11.19 79.93 33.25A133.46 133.46 0 0 1 231.05 128c-7.21 13.46-38.62 64-103.05 64Zm0-112a48 48 0 1 0 48 48a48.05 48.05 0 0 0-48-48Zm0 80a32 32 0 1 1 32-32a32 32 0 0 1-32 32Z"/></svg>
-                        <span class="title ml-1">詳細</span>
-                    </button>
-                    <select class="form-control ml-1">
-                        <option>未対応</option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                    </select>
-                </td>
-            </tr> 
-
-            <tr> 
-                <td>
-                    <button type="button" class="btn btn-danger btn-sm sidemenu-href">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M7 21q-.825 0-1.413-.588T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.588 1.413T17 21H7ZM17 6H7v13h10V6ZM9 17h2V8H9v9Zm4 0h2V8h-2v9ZM7 6v13V6Z"/></svg>
-                    </button>
-                </td> 
-                <td>Dan</td>
-                <td>08069967694</td>
-                <td class="dl-flex"> 
-                    <button type="button" class="btn btn-success btn-icon-align openModelDetails">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 256 256"><path fill="currentColor" d="M247.31 124.76c-.35-.79-8.82-19.58-27.65-38.41C194.57 61.26 162.88 48 128 48S61.43 61.26 36.34 86.35C17.51 105.18 9 124 8.69 124.76a8 8 0 0 0 0 6.5c.35.79 8.82 19.57 27.65 38.4C61.43 194.74 93.12 208 128 208s66.57-13.26 91.66-38.34c18.83-18.83 27.3-37.61 27.65-38.4a8 8 0 0 0 0-6.5ZM128 192c-30.78 0-57.67-11.19-79.93-33.25A133.47 133.47 0 0 1 25 128a133.33 133.33 0 0 1 23.07-30.75C70.33 75.19 97.22 64 128 64s57.67 11.19 79.93 33.25A133.46 133.46 0 0 1 231.05 128c-7.21 13.46-38.62 64-103.05 64Zm0-112a48 48 0 1 0 48 48a48.05 48.05 0 0 0-48-48Zm0 80a32 32 0 1 1 32-32a32 32 0 0 1-32 32Z"/></svg>
-                        <span class="title ml-1">詳細</span>
-                    </button>
-                    <select class="form-control ml-1">
-                        <option>未対応</option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                    </select>
-                </td>
-            </tr> 
-
-            <tr> 
-                <td>
-                    <button type="button" class="btn btn-danger btn-sm sidemenu-href">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M7 21q-.825 0-1.413-.588T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.588 1.413T17 21H7ZM17 6H7v13h10V6ZM9 17h2V8H9v9Zm4 0h2V8h-2v9ZM7 6v13V6Z"/></svg>
-                    </button>
-                </td> 
-                <td>Dan</td>
-                <td>08069967694</td>
-                <td class="dl-flex"> 
-                    <button type="button" class="btn btn-success btn-icon-align openModelDetails">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 256 256"><path fill="currentColor" d="M247.31 124.76c-.35-.79-8.82-19.58-27.65-38.41C194.57 61.26 162.88 48 128 48S61.43 61.26 36.34 86.35C17.51 105.18 9 124 8.69 124.76a8 8 0 0 0 0 6.5c.35.79 8.82 19.57 27.65 38.4C61.43 194.74 93.12 208 128 208s66.57-13.26 91.66-38.34c18.83-18.83 27.3-37.61 27.65-38.4a8 8 0 0 0 0-6.5ZM128 192c-30.78 0-57.67-11.19-79.93-33.25A133.47 133.47 0 0 1 25 128a133.33 133.33 0 0 1 23.07-30.75C70.33 75.19 97.22 64 128 64s57.67 11.19 79.93 33.25A133.46 133.46 0 0 1 231.05 128c-7.21 13.46-38.62 64-103.05 64Zm0-112a48 48 0 1 0 48 48a48.05 48.05 0 0 0-48-48Zm0 80a32 32 0 1 1 32-32a32 32 0 0 1-32 32Z"/></svg>
-                        <span class="title ml-1">詳細</span>
-                    </button>
-                    <select class="form-control ml-1">
-                        <option>未対応</option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                    </select>
-                </td>
-            </tr> 
-
-            <tr> 
-                <td>
-                    <button type="button" class="btn btn-danger btn-sm sidemenu-href">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M7 21q-.825 0-1.413-.588T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.588 1.413T17 21H7ZM17 6H7v13h10V6ZM9 17h2V8H9v9Zm4 0h2V8h-2v9ZM7 6v13V6Z"/></svg>
-                    </button>
-                </td> 
-                <td>Dan</td>
-                <td>08069967694</td>
-                <td class="dl-flex"> 
-                    <button type="button" class="btn btn-success btn-icon-align openModelDetails">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 256 256"><path fill="currentColor" d="M247.31 124.76c-.35-.79-8.82-19.58-27.65-38.41C194.57 61.26 162.88 48 128 48S61.43 61.26 36.34 86.35C17.51 105.18 9 124 8.69 124.76a8 8 0 0 0 0 6.5c.35.79 8.82 19.57 27.65 38.4C61.43 194.74 93.12 208 128 208s66.57-13.26 91.66-38.34c18.83-18.83 27.3-37.61 27.65-38.4a8 8 0 0 0 0-6.5ZM128 192c-30.78 0-57.67-11.19-79.93-33.25A133.47 133.47 0 0 1 25 128a133.33 133.33 0 0 1 23.07-30.75C70.33 75.19 97.22 64 128 64s57.67 11.19 79.93 33.25A133.46 133.46 0 0 1 231.05 128c-7.21 13.46-38.62 64-103.05 64Zm0-112a48 48 0 1 0 48 48a48.05 48.05 0 0 0-48-48Zm0 80a32 32 0 1 1 32-32a32 32 0 0 1-32 32Z"/></svg>
-                        <span class="title ml-1">詳細</span>
-                    </button>
-                    <select class="form-control ml-1">
-                        <option>未対応</option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                    </select>
-                </td>
-            </tr> 
-
-            <tr> 
-                <td>
-                    <button type="button" class="btn btn-danger btn-sm sidemenu-href">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M7 21q-.825 0-1.413-.588T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.588 1.413T17 21H7ZM17 6H7v13h10V6ZM9 17h2V8H9v9Zm4 0h2V8h-2v9ZM7 6v13V6Z"/></svg>
-                    </button>
-                </td> 
-                <td>Dan</td>
-                <td>08069967694</td>
-                <td class="dl-flex"> 
-                    <button type="button" class="btn btn-success btn-icon-align openModelDetails">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 256 256"><path fill="currentColor" d="M247.31 124.76c-.35-.79-8.82-19.58-27.65-38.41C194.57 61.26 162.88 48 128 48S61.43 61.26 36.34 86.35C17.51 105.18 9 124 8.69 124.76a8 8 0 0 0 0 6.5c.35.79 8.82 19.57 27.65 38.4C61.43 194.74 93.12 208 128 208s66.57-13.26 91.66-38.34c18.83-18.83 27.3-37.61 27.65-38.4a8 8 0 0 0 0-6.5ZM128 192c-30.78 0-57.67-11.19-79.93-33.25A133.47 133.47 0 0 1 25 128a133.33 133.33 0 0 1 23.07-30.75C70.33 75.19 97.22 64 128 64s57.67 11.19 79.93 33.25A133.46 133.46 0 0 1 231.05 128c-7.21 13.46-38.62 64-103.05 64Zm0-112a48 48 0 1 0 48 48a48.05 48.05 0 0 0-48-48Zm0 80a32 32 0 1 1 32-32a32 32 0 0 1-32 32Z"/></svg>
-                        <span class="title ml-1">詳細</span>
-                    </button>
-                    <select class="form-control ml-1">
-                        <option>未対応</option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                    </select>
-                </td>
-            </tr> 
-
-            <tr> 
-                <td>
-                    <button type="button" class="btn btn-danger btn-sm sidemenu-href">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M7 21q-.825 0-1.413-.588T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.588 1.413T17 21H7ZM17 6H7v13h10V6ZM9 17h2V8H9v9Zm4 0h2V8h-2v9ZM7 6v13V6Z"/></svg>
-                    </button>
-                </td> 
-                <td>Dan</td>
-                <td>08069967694</td>
-                <td class="dl-flex"> 
-                    <button type="button" class="btn btn-success btn-icon-align openModelDetails">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 256 256"><path fill="currentColor" d="M247.31 124.76c-.35-.79-8.82-19.58-27.65-38.41C194.57 61.26 162.88 48 128 48S61.43 61.26 36.34 86.35C17.51 105.18 9 124 8.69 124.76a8 8 0 0 0 0 6.5c.35.79 8.82 19.57 27.65 38.4C61.43 194.74 93.12 208 128 208s66.57-13.26 91.66-38.34c18.83-18.83 27.3-37.61 27.65-38.4a8 8 0 0 0 0-6.5ZM128 192c-30.78 0-57.67-11.19-79.93-33.25A133.47 133.47 0 0 1 25 128a133.33 133.33 0 0 1 23.07-30.75C70.33 75.19 97.22 64 128 64s57.67 11.19 79.93 33.25A133.46 133.46 0 0 1 231.05 128c-7.21 13.46-38.62 64-103.05 64Zm0-112a48 48 0 1 0 48 48a48.05 48.05 0 0 0-48-48Zm0 80a32 32 0 1 1 32-32a32 32 0 0 1-32 32Z"/></svg>
-                        <span class="title ml-1">詳細</span>
-                    </button>
-                    <select class="form-control ml-1">
-                        <option>未対応</option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                    </select>
-                </td>
-            </tr> 
-
-            <tr> 
-                <td>
-                    <button type="button" class="btn btn-danger btn-sm sidemenu-href">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M7 21q-.825 0-1.413-.588T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.588 1.413T17 21H7ZM17 6H7v13h10V6ZM9 17h2V8H9v9Zm4 0h2V8h-2v9ZM7 6v13V6Z"/></svg>
-                    </button>
-                </td> 
-                <td>Dan</td>
-                <td>08069967694</td>
-                <td class="dl-flex"> 
-                    <button type="button" class="btn btn-success btn-icon-align openModelDetails">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 256 256"><path fill="currentColor" d="M247.31 124.76c-.35-.79-8.82-19.58-27.65-38.41C194.57 61.26 162.88 48 128 48S61.43 61.26 36.34 86.35C17.51 105.18 9 124 8.69 124.76a8 8 0 0 0 0 6.5c.35.79 8.82 19.57 27.65 38.4C61.43 194.74 93.12 208 128 208s66.57-13.26 91.66-38.34c18.83-18.83 27.3-37.61 27.65-38.4a8 8 0 0 0 0-6.5ZM128 192c-30.78 0-57.67-11.19-79.93-33.25A133.47 133.47 0 0 1 25 128a133.33 133.33 0 0 1 23.07-30.75C70.33 75.19 97.22 64 128 64s57.67 11.19 79.93 33.25A133.46 133.46 0 0 1 231.05 128c-7.21 13.46-38.62 64-103.05 64Zm0-112a48 48 0 1 0 48 48a48.05 48.05 0 0 0-48-48Zm0 80a32 32 0 1 1 32-32a32 32 0 0 1-32 32Z"/></svg>
-                        <span class="title ml-1">詳細</span>
-                    </button>
-                    <select class="form-control ml-1">
-                        <option>未対応</option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                    </select>
-                </td>
-            </tr> 
-
-            <tr> 
-                <td>
-                    <button type="button" class="btn btn-danger btn-sm sidemenu-href">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M7 21q-.825 0-1.413-.588T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.588 1.413T17 21H7ZM17 6H7v13h10V6ZM9 17h2V8H9v9Zm4 0h2V8h-2v9ZM7 6v13V6Z"/></svg>
-                    </button>
-                </td> 
-                <td>Dan</td>
-                <td>08069967694</td>
-                <td class="dl-flex"> 
-                    <button type="button" class="btn btn-success btn-icon-align openModelDetails">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 256 256"><path fill="currentColor" d="M247.31 124.76c-.35-.79-8.82-19.58-27.65-38.41C194.57 61.26 162.88 48 128 48S61.43 61.26 36.34 86.35C17.51 105.18 9 124 8.69 124.76a8 8 0 0 0 0 6.5c.35.79 8.82 19.57 27.65 38.4C61.43 194.74 93.12 208 128 208s66.57-13.26 91.66-38.34c18.83-18.83 27.3-37.61 27.65-38.4a8 8 0 0 0 0-6.5ZM128 192c-30.78 0-57.67-11.19-79.93-33.25A133.47 133.47 0 0 1 25 128a133.33 133.33 0 0 1 23.07-30.75C70.33 75.19 97.22 64 128 64s57.67 11.19 79.93 33.25A133.46 133.46 0 0 1 231.05 128c-7.21 13.46-38.62 64-103.05 64Zm0-112a48 48 0 1 0 48 48a48.05 48.05 0 0 0-48-48Zm0 80a32 32 0 1 1 32-32a32 32 0 0 1-32 32Z"/></svg>
-                        <span class="title ml-1">詳細</span>
-                    </button>
-                    <select class="form-control ml-1">
-                        <option>未対応</option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                    </select>
-                </td>
-            </tr> 
+            @foreach($webReservations as $reservations)
+                <tr> 
+                    <td>
+                        <button type="button" class="btn btn-danger btn-sm sidemenu-href delete_btn" data-id="{{ $reservations->id }}" >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M7 21q-.825 0-1.413-.588T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.588 1.413T17 21H7ZM17 6H7v13h10V6ZM9 17h2V8H9v9Zm4 0h2V8h-2v9ZM7 6v13V6Z"/></svg>
+                        </button>
+                    </td> 
+                    <td>{{ $reservations->name }}</td>
+                    <td>{{ $reservations->tel }}</td>
+                    <td class="dl-flex"> 
+                        <button type="button" class="btn btn-success btn-icon-align openModelDetails" data-id="{{ $reservations->id }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 256 256"><path fill="currentColor" d="M247.31 124.76c-.35-.79-8.82-19.58-27.65-38.41C194.57 61.26 162.88 48 128 48S61.43 61.26 36.34 86.35C17.51 105.18 9 124 8.69 124.76a8 8 0 0 0 0 6.5c.35.79 8.82 19.57 27.65 38.4C61.43 194.74 93.12 208 128 208s66.57-13.26 91.66-38.34c18.83-18.83 27.3-37.61 27.65-38.4a8 8 0 0 0 0-6.5ZM128 192c-30.78 0-57.67-11.19-79.93-33.25A133.47 133.47 0 0 1 25 128a133.33 133.33 0 0 1 23.07-30.75C70.33 75.19 97.22 64 128 64s57.67 11.19 79.93 33.25A133.46 133.46 0 0 1 231.05 128c-7.21 13.46-38.62 64-103.05 64Zm0-112a48 48 0 1 0 48 48a48.05 48.05 0 0 0-48-48Zm0 80a32 32 0 1 1 32-32a32 32 0 0 1-32 32Z"/></svg>
+                            <span class="title ml-1">詳細</span>
+                        </button>
+                        <select class="form-control ml-1 change_compatible" data-id="{{ $reservations->id }}" >
+                            <option value="0" {{ ($reservations->compatible == 0) ? "selected" : "" }} >未対応</option>
+                            <option value="1" {{ ($reservations->compatible == 1) ? "selected" : "" }}>適合</option>
+                        </select>
+                    </td>
+                </tr> 
+            @endforeach
         </tbody> 
     </table> 
 </div>
@@ -291,55 +92,22 @@
 
                                     <tr> 
                                         <td class="w-30">名前</td>
-                                        <td>飯田/td>
+                                        <td class="modal_name"></td>
                                     </tr> 
 
                                     <tr> 
                                         <td class="w-30">メールアドレス</td>
-                                        <td>yksg.216@gmail.com</td>
+                                        <td class="modal_email"></td>
                                     </tr> 
 
                                     <tr> 
                                         <td class="w-30">TEL</td>
-                                        <td>08081226644</td>
+                                        <td class="modal_tel"></td>
                                     </tr>
 
                                     <tr> 
                                         <td class="w-30">具体的な内容</td>
-                                        <td><i class="entypo-right-bold"></i>LINE ID<br>
-                                        <p>---------------------------------</p>
-                                        <i class="entypo-right-bold"></i>ご希望の女性(第1 候補)<br>
-                                        前島
-                                        <p>---------------------------------</p>
-                                        <i class="entypo-right-bold"></i> ご希望の女性(第2候補)<br>
-                                        前島
-                                        <p>---------------------------------</p>
-                                        <i class="entypo-right-bold"></i>ご希望の女性(第3候補)<br>
-                                        前島
-                                        <p>---------------------------------</p>
-                                        <i class="entypo-right-bold"></i> 希望ご予約日(第1 候補)<br>
-                                        1月3 日18時00分
-                                        <p>---------------------------------</p>
-                                        <i class="entypo-right-bold"></i> 希望ご予約日(第2候補)<br>
-                                        1月4 日15時00分
-                                        <p>---------------------------------</p>
-                                        <i class="entypo-right-bold"></i>希望ご予約日(第3候補)<br>
-                                        1月4 日16時00分
-                                        <p>---------------------------------</p>
-                                        <i class="entypo-right-bold"></i>ご希望コース<br>
-                                        RED DIAMOND 60分
-                                        <p>---------------------------------</p>
-                                        <i class="entypo-right-bold"></i>ご利用場所<br>
-                                        ホテル
-                                        <p>---------------------------------</p>
-                                        <i class="entypo-right-bold"></i>お支払い方法><br>
-                                        現金
-                                        <p>---------------------------------</p>
-                                        <i class="entypo-right-bold"></i> ご希望連絡方法<br>
-                                        メール
-                                        <p>---------------------------------</p>
-                                        その他<br>
-                                        </td>
+                                        <td class="modal_content"></td>
                                     </tr>
                     
                                 </tbody> 
@@ -359,8 +127,57 @@
 <script>
     $(document).ready(function(){
         $(document).on('click','.openModelDetails', function(){
-            $('#modal-1').modal('show');
+            let id = $(this).attr('data-id')
+            $.ajax({
+                type: 'POST',
+                url: `{{ route('admin.reception.list.id') }}`,
+                headers: {"Content-Type": "application/json"},
+                data: JSON.stringify({
+                    "_token": "{{ csrf_token() }}",
+                    id: id
+                }),
+                success: function (response) {
+                    $('.modal_name').html(response.name)
+                    $('.modal_email').html(response.mail)
+                    $('.modal_tel').html(response.tel)
+                    $('.modal_content').html(response.content)
+                    $('#modal-1').modal('show');
+                }
+            })
         })
+
+        $(document).on('click','.delete_btn',function(){
+            let id = $(this).attr('data-id')
+            window.location.href = `{{ route('admin.reception.delete') }}?id=`+id;
+        })
+
+        $(document).on('change','.change_compatible',function(){
+            let id = $(this).attr('data-id')
+            let value = $(this).val()
+            $.ajax({
+                type: 'POST',
+                url: `{{ route('admin.reception.compatible') }}`,
+                headers: {"Content-Type": "application/json"},
+                data: JSON.stringify({
+                    "_token": "{{ csrf_token() }}",
+                    id: id, 
+                    value: value
+                }),
+                success: function (response) {
+                    simpleMessage('success',`{{__('Save Changes')}}`);
+                }
+            })
+        })
+        
+        $(document).on('click','.search_btn', function(){
+            let show_hidden_checkbox = $('.show_hidden_checkbox').prop('checked')
+            if(show_hidden_checkbox === true){
+                window.location.href = `{{ route('admin.reception.list') }}?is_hidden=`+1;
+            }else{
+                window.location.href = `{{ route('admin.reception.list') }}`;
+            }
+        })
+
     })
  </script>       
 
