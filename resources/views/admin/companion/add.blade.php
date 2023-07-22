@@ -18,7 +18,7 @@
         <div class="col-md-9">
             <div class="panel panel-primary" data-collapsed="0">
                 <div class="panel-body">
-                    <form role="form" method="post" action="{{ route('admin.companion.save') }}" class="form-horizontal form-groups-bordered" id="frmCompanion" >
+                    <form role="form" method="post" action="{{ route('admin.companion.save') }}" enctype="multipart/form-data" class="form-horizontal form-groups-bordered" id="frmCompanion" >
                         @csrf   
                         <div class="form-group"> 
                             <label class="col-sm-3 control-label">ヘルスコース</label>

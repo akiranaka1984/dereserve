@@ -13,10 +13,10 @@
         <link rel="stylesheet" href="{{ url('/assets/css/entypo.css') }}">
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic">
         <link rel="stylesheet" href="{{ url('/assets/css/bootstrap.css') }}" >
-        <link rel="stylesheet" href="{{ url('/assets/css/neon-core.css') }}?v=1.3" >
-        <link rel="stylesheet" href="{{ url('/assets/css/neon-theme.css') }}?v=1.3" >
-        <link rel="stylesheet" href="{{ url('/assets/css/neon-forms.css') }}?v=1.3" >
-        <link rel="stylesheet" href="{{ url('/assets/css/custom.css') }}?v=1.3" >
+        <link rel="stylesheet" href="{{ url('/assets/css/neon-core.css') }}?v=1.4" >
+        <link rel="stylesheet" href="{{ url('/assets/css/neon-theme.css') }}?v=1.4" >
+        <link rel="stylesheet" href="{{ url('/assets/css/neon-forms.css') }}?v=1.4" >
+        <link rel="stylesheet" href="{{ url('/assets/css/custom.css') }}?v=1.4" >
         <link rel="stylesheet" href="{{ url('/assets/css/fullcalendar.min.css') }}" >
         <link rel="stylesheet" href="{{ url('/assets/css/sweetalert2.min.css') }}" >
         <link rel="stylesheet" href="{{ url('/assets/css/select2-bootstrap.css') }}" >
@@ -37,7 +37,10 @@
         <script src="{{ url('/assets/js/neon-login.js') }}"></script>
         <script src="{{ url('/assets/js/neon-custom.js') }}"></script>
         <script src="{{ url('/assets/js/neon-demo.js') }}"></script>
+        <script src="{{ url('/assets/js/jquery.multi-select.js') }}"></script>
+        <script src="{{ url('/assets/js/bootstrap-tagsinput.min.js') }}"></script>
         <script src="{{ url('/assets/js/sweetalert2.min.js') }}"></script>
+        <script src="{{ url('/assets/js/fileinput.js') }}"></script>
         <script src="{{ url('/assets/js/custom-alert.js') }}"></script>
         <script src="{{ url('/assets/js/bootstrap-datepicker.js') }}"></script>
         <script src="{{ url('/assets/js/moment.min.js') }}"></script>
@@ -166,13 +169,13 @@
                             </a>
                             <ul>
                                 <li> 
-                                    <a href="#" class="sidemenu-href">
+                                    <a href="{{ route('admin.blog_post.list') }}" class="sidemenu-href">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5l-8-5h16zm0 12H4V8l8 5l8-5v10z"/></svg>                                        
                                         <span class="title ml-1">メルマガ管理</span>
                                     </a>
                                 </li>
                                 <li> 
-                                    <a href="#" class="sidemenu-href">
+                                    <a href="{{ route('admin.blog_post.create') }}" class="sidemenu-href">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5l-8-5h16zm0 12H4V8l8 5l8-5v10z"/></svg>                                        
                                         <span class="title ml-1">メール定型文編集</span>
                                     </a>

@@ -20,5 +20,13 @@
     "Are you sure you want to remove?": "ブロックが解除されますが宜しいでしょうか？",
     "OK!": "\u306f\u3044",
     "Cancel": "\u30ad\u30e3\u30f3\u30bb\u30eb",
-    "This field is required": "\u5fc5\u9808\u9805\u76ee\u3067\u3059"
+    "This field is required": "\u5fc5\u9808\u9805\u76ee\u3067\u3059",
+    "Create": "\u4f5c\u6210",
+    "SAVE": "\u9001\u4fe1",
+    "Title":"タイトル",
+    "Category":"カテゴリー",
+    "Publish date":"出版日",
+    "Status":"スターテス",
+    "Image":"画像",
+    "Edit":"編集"
 }

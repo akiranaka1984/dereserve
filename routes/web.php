@@ -13,7 +13,7 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\PhotoSizeEditController;
 use App\Http\Controllers\PhotoCategoryController;
 use App\Http\Controllers\CategoryController;
-
+use App\Http\Controllers\BlogPostController;
 
 
 Route::get('/', [HomeController::class, 'index']);
@@ -83,5 +83,13 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function 
     Route::post('/category/save', [CategoryController::class,'save'])->name('admin.category.save');
     Route::get('/category/delete', [CategoryController::class,'delete'])->name('admin.category.delete');
     Route::post('/category/position/save', [CategoryController::class,'position'])->name('admin.category.position.save');
+
+
+    Route::get('/blog_post/list', [BlogPostController::class,'index'])->name('admin.blog_post.list');
+    Route::get('/blog_post/create', [BlogPostController::class,'create'])->name('admin.blog_post.create');
+    Route::post('/blog_post/save', [BlogPostController::class,'save'])->name('admin.blog_post.save');
+    Route::get('/blog_post/edit', [BlogPostController::class,'edit'])->name('admin.blog_post.edit');
+    Route::post('/blog_post/update', [BlogPostController::class,'update'])->name('admin.blog_post.update');
+    Route::get('/blog_post/delete', [BlogPostController::class,'delete'])->name('admin.blog_post.delete');
 
 }); 
