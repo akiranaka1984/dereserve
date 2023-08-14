@@ -17,5 +17,12 @@ class Category extends Model
         'status'
     ];
 
+    public function companions(){
+    	return $this->hasMany('App\Models\Companion','category_id','id');
+    }
+
+    public function prices(){
+    	return $this->hasMany('App\Models\Price','category_id','id');
+    }
 
 }

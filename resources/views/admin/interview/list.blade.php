@@ -48,13 +48,17 @@
         </thead> 
         <tbody> 
             @foreach($interviews as $interview)
-                <tr> 
+                @if($interview->compatible == 0)
+                    <tr style=""> 
+                @else
+                    <tr style="background: lightyellow;"> 
+                @endif
                     <td>
                         <button type="button" class="btn btn-danger btn-sm sidemenu-href delete_btn" data-id="{{ $interview->id }}" >
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M7 21q-.825 0-1.413-.588T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.588 1.413T17 21H7ZM17 6H7v13h10V6ZM9 17h2V8H9v9Zm4 0h2V8h-2v9ZM7 6v13V6Z"/></svg>
                         </button>
                     </td> 
-                    <td class="text-blue">{{ $interview->email }}</td>
+                    <td class="text-blue">{{ $interview->mail }}</td>
                     <td>{{ $interview->tel }}</td>
                     <td class="dl-flex"> 
                         <button type="button" class="btn btn-success btn-icon-align openModelDetails" data-id="{{ $interview->id }}" >
@@ -63,7 +67,8 @@
                         </button>
                         <select class="form-control ml-1 change_compatible" data-id="{{ $interview->id }}" >
                             <option value="0" {{ ($interview->compatible == 0) ? "selected" : "" }} >未対応</option>
-                            <option value="1" {{ ($interview->compatible == 1) ? "selected" : "" }}>適合</option>
+                            <option value="1" {{ ($interview->compatible == 1) ? "selected" : "" }}>対応中</option>
+                            <option value="2" {{ ($interview->compatible == 2) ? "selected" : "" }}>対応済</option>
                         </select>
                     </td>
                 </tr> 
@@ -87,7 +92,10 @@
                         <div class="col-md-12"> 
                             <table class="table"> 
                                 <tbody> 
-
+                                    <tr class="tr_photo"> 
+                                        <td class="w-30">写真</td>
+                                        <td class="modal_photo"></td>
+                                    </tr> 
                                     <tr> 
                                         <td class="w-30">内容</td>
                                         <td class="modal_content"></td>
@@ -118,6 +126,7 @@
 
 
 <script>
+    let is_hidden = {{ $is_hidden }}
     $(document).ready(function(){
         $(document).on('click','.openModelDetails', function(){
             let id = $(this).attr('data-id')
@@ -130,11 +139,22 @@
                     id: id
                 }),
                 success: function (response) {
-                    $('.modal_last_update').html(moment(response.updated_at).format('YYYY年M月D日 HH:mm'))
-                    if(response.compatible == 1){
-                        $('.modal_last_update').html('適合')
+                    if(response.photo){
+                        $('.modal_photo').html(`<img src="{{ url('/storage/images') }}/`+ response.photo +`" style="width:100%">`)
+                        $('.tr_photo').show()
                     }else{
-                        $('.modal_last_update').html('未対応')
+                        $('.tr_photo').hide()
+                    }
+                    
+
+                    $('.modal_last_update').html(moment(response.updated_at).format('YYYY年M月D日 HH:mm'))
+                    
+                    if(response.compatible == 0){
+                        $('.modal_attribute').html('未対応')
+                    }else if(response.compatible == 1){
+                        $('.modal_attribute').html('対応中')
+                    }else{
+                        $('.modal_attribute').html('対応済')
                     }
 
                     let content=`お名前: `+ response.name +`<br>
@@ -187,6 +207,7 @@
         $(document).on('change','.change_compatible',function(){
             let id = $(this).attr('data-id')
             let value = $(this).val()
+            let mthis = $(this);
             $.ajax({
                 type: 'POST',
                 url: `{{ route('admin.interview.compatible') }}`,
@@ -198,6 +219,16 @@
                 }),
                 success: function (response) {
                     simpleMessage('success',`{{__('Save Changes')}}`);
+                    if((value != 0)){
+                        mthis.closest('tr').attr('style','background: lightyellow;')
+                    }else{
+                        mthis.closest('tr').attr('style','')
+                    }
+
+                    if((is_hidden == 0) && (value == 2)){
+                        mthis.closest('tr').remove()
+                    }
+
                 }
             })
         })

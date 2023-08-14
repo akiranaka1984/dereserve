@@ -26,14 +26,19 @@ class Companion extends Model
         'font_color',
         'message',
         'entry_date',
+        'option_non_japanese_chk',
+        'option_3p_chk',
+        'option_av_chk',
+        'option_newface_chk',
         'category_id',
+        'previous_position',
         'celebrities_who_look_alike',
         'position',
         'status'
     ];
 
     public function category(){
-    	return $this->hasOne('App\Models\Category','id','category_id');
+    	return $this->hasOne('App\Models\Category','id','category_id')->with(['prices']);
     }
 
     public function home_image(){

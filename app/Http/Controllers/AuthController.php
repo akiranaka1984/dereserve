@@ -39,7 +39,7 @@ class AuthController extends Controller
         ]);
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'status' => 1])) {
+            if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'role'=>'admin', 'status' => 1])) {
                 return redirect(route('admin.dashbord'));
             }
             return redirect()->back()->with('error', __('Your account has been temporarily suspended!'));
@@ -65,7 +65,7 @@ class AuthController extends Controller
             }
             
             dispatch(new ForgotPasswordJob(['user'=>$user]));
-            return redirect()->route('login')->with('success', __('Please check your mail to reset the password. Please make sure you check your spam filter.!'));
+            return redirect()->route('admin.login')->with('success', __('Please check your mail to reset the password. Please make sure you check your spam filter.!'));
         }
         return redirect()->back()->with('error', __('The email is not associated with a any user account.'));
     }
@@ -99,7 +99,7 @@ class AuthController extends Controller
         $user->email_verify_status = 1;
         $user->password = bcrypt($request->password);
         $user->save();
-        return redirect()->route('login')->with('success', __('Your account password successfully reset!'));
+        return redirect()->route('admin.login')->with('success', __('Your account password successfully reset!'));
     }
 
     public function signout()
@@ -107,7 +107,7 @@ class AuthController extends Controller
         Session::flush();
         Auth::logout();
 
-        return redirect()->route('login');
+        return redirect()->route('admin.login');
     }
     
 }

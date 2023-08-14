@@ -1,0 +1,125 @@
+@charset "UTF-8";
+
+#main h2 {
+	margin-bottom: 20px;
+}
+
+.priceimg {
+	text-align: center;
+	margin: 50px 0 70px;
+}
+.diamondclass {
+	margin-top: 45px;
+}
+#contents dl {
+    margin: 40px 0 0;
+}
+#contents dt {
+    border-bottom: 1px dotted #ae1641;
+    margin: 0 0 10px;
+    padding: 0 0 5px 0;
+}
+#contents dt span {
+    font-size: 18px;
+}
+#contents dt::before {
+    content: "";
+    border: 1px solid #d72856;
+    vertical-align: 2px;
+    margin-right: 10px;
+}
+#contents dd {
+    font-size: 16px;
+    margin: 0 0 60px;
+}
+#contents .ask {
+	font-size: 16px;
+	margin: 20px 0 0;
+}
+#contents .option dt span {
+	font-size: 16px;
+}
+#contents .option dd {
+	font-size: 16px;
+}
+#contents .option dd span {
+	font-size: 18px;
+	display: block;
+}
+#contents .option dd em {
+	color: #f00;
+	font-size: 16px;
+}
+.credit_link {
+	margin: 10px 0 10px;
+}
+.starpayment {
+	margin: 0 0 50px;
+	overflow: hidden;
+}
+#contents .option .starpayment .starpayment_img {
+	width: 150px;
+	float: left;
+	padding-right: 10px;
+}
+#contents .option .starpayment .starpayment_txt {
+	font-size: 16px;
+	padding: 15px 0 0;
+}
+
+/* system_btn */
+#system_btn {
+	margin: 40px 0;
+}
+#system_btn li {
+	float: left;
+	width: 300px;
+	height: 34px;
+	line-height: 34px;
+	margin-right: 50px;
+}
+#system_btn li:last-child {
+	margin: 0;
+}
+#system_btn li a {
+	background: #eaeaea;
+	display: block;
+	height: 34px;
+	line-height: 34px;
+	font-size: 14px;
+	text-align :center;
+	border-radius: 3px;
+}
+#system_btn li a.active {
+	background: #ae1641;
+	color: #fff;
+}
+
+#contents #system_box01 dd,
+#contents #system_box02 dd,
+#contents #system_box03 dd {
+	margin: 40px 0 60px;
+	font-size: 16px;
+	line-height: 1.8;
+}
+#contents #system_box01 dd .title {
+	font-size: 18px;
+	display: inline-block;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+#contents #system_box01 dd .box,
+#contents #system_box03 dd .box {
+	background: #fdf3f3;
+	font-size: 16px;
+	padding: 10px;
+	margin: 10px 0;
+}
+#contents #system_box03 dd .box {
+	padding: 20px;
+	line-height: 1.8;
+}
+#contents #system_box01 dd .small,
+#contents #system_box02 dd .small {
+	font-size: 14px;
+}

@@ -148,6 +148,33 @@
                                             </div>  
                                         </div>
 
+                                        <div class="row mt-3">
+                                            <div class="col-lg-3">
+                                                <div class="grid text-center">
+                                                    <input name="option_non_japanese_chk" class="form-check-input" type="checkbox" value="option_non_japanese_chk" {{ ($companion->option_non_japanese_chk == 1) ? 'checked': '' }} >
+                                                    <img src="{{ url('/assets/images/option_non_japanese.svg') }}" width="51" height="51" alt="外国人対応可">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="grid text-center">
+                                                    <input name="option_3p_chk" class="form-check-input" type="checkbox" value="option_3p_chk" {{ ($companion->option_3p_chk == 1) ? 'checked': '' }} >
+                                                    <img src="{{ url('/assets/images/option_3p.svg') }}" width="51" height="51" alt="外国人対応可">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="grid text-center">
+                                                    <input name="option_av_chk" class="form-check-input" type="checkbox" value="option_av_chk" {{ ($companion->option_av_chk == 1) ? 'checked': '' }} >
+                                                    <img src="{{ url('/assets/images/option_av.svg') }}" width="51" height="51" alt="外国人対応可">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="grid text-center">
+                                                    <input name="option_newface_chk" class="form-check-input" type="checkbox" value="option_newface_chk" {{ ($companion->option_newface_chk == 1) ? 'checked': '' }} >
+                                                    <img src="{{ url('/assets/images/option_newface.svg') }}" width="51" height="51" alt="外国人対応可">
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <div class="col-md-5 mt-3">
                                             <button type="submit" class="btn btn-orange btn-icon-align">
                                                 <svg class="bi bi-plus-circle-fill"fill=currentColor height=16 viewBox="0 0 16 16"width=16 xmlns=http://www.w3.org/2000/svg><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/></svg>
@@ -178,7 +205,7 @@
                                         <input type="hidden" name="id" class="form-control" value="{{ $companion->id }}" required />
                                         
                                         <div class="form-group"> <label for="frmPosition" class="col-sm-3 control-label">前(現)職   </label>
-                                            <div class="col-sm-8 frm-inpt"> <input type="text" name="frm_position" class="form-control" id="frmPosition"  value="{{ $companion->position }}" placeholder="" > </div>
+                                            <div class="col-sm-8 frm-inpt"> <input type="text" name="frm_position" class="form-control" id="frmPosition"  value="{{ $companion->previous_position }}" placeholder="" > </div>
                                         </div>
                                         <div class="form-group"> <label for="frmLookALive" class="col-sm-3 control-label">似ている芸能人</label>
                                             <div class="col-sm-8 frm-inpt"> <input type="text" name="frm_celebrities_who_look_alike" class="form-control" id="frmLookALive" value="{{ $companion->celebrities_who_look_alike }}" placeholder="似ている芸能人"> </div>

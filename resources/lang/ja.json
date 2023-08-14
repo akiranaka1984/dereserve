@@ -17,6 +17,7 @@
     "Save Changes": "\u5909\u66f4\u3092\u4fdd\u5b58",
     "Successfully saved":"正常に保存されました",
     "Successfully updated":"正常に更新されました",
+    "Successfully deleted":"正常に削除されました",
     "Are you sure you want to remove?": "ブロックが解除されますが宜しいでしょうか？",
     "OK!": "\u306f\u3044",
     "Cancel": "\u30ad\u30e3\u30f3\u30bb\u30eb",
@@ -28,5 +29,11 @@
     "Publish date":"出版日",
     "Status":"スターテス",
     "Image":"画像",
-    "Edit":"編集"
+    "Edit":"編集",
+    "Page":"ページ",
+    "Text Data1":"テキストデータ1",
+    "Text Data2":"テキストデータ2",
+    "Text Data3":"テキストデータ3",
+    "Invalid email address":"無効なメールアドレス",
+    "Email not matched":"メールアドレスが一致しません"
 }

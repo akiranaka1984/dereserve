@@ -15,7 +15,16 @@ class WebReservation extends Model
         'name',
         'mail',
         'tel',
-        'content',
+        'lineid',
+        'lady1','lady2','lady3',
+        'month1','day1','hour1','minut1',
+        'month2','day2','hour2','minut2',
+        'month3','day3','hour3','minut3',
+        'cource',
+        'place',
+        'pay',
+        'contact',
+        'cmnt',
         'compatible',
         'status'
     ];

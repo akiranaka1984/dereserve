@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+
+
+/* schedule */
+#schedule {padding:40px 16px 16px !important;}
+
+#schedule_nav {margin-bottom:24px;}
+
+#schedule_nav ul {display:none;}
+
+
+@media screen and (min-width:1024px) {
+	#schedule {padding:80px 0 40px !important;}
+
+	#schedule_nav {margin-bottom:40px;}
+
+	#schedule_nav form {display:none !important;}
+
+	#schedule_nav ul {display:flex;}
+
+	#schedule_nav ul li {
+		width:146px;
+		border-right:1px solid #999;
+		box-sizing:border-box;
+	}
+
+	#schedule_nav ul li:first-of-type {width:148px;}
+	#schedule_nav ul li:last-of-type {border:0;}
+
+	#schedule_nav ul li a {
+		height:40px;
+		color:#1A1A1A;
+		font-weight:700;
+		line-height:40px;
+		text-align:center;
+		background:linear-gradient(to top, #CCC, #EBEBEB);
+		transition:none;
+	}
+
+	#schedule_nav ul li:first-of-type a,
+	#schedule_nav ul li:first-of-type a span {
+		border-top-left-radius:100px;
+		border-bottom-left-radius:100px;
+	}
+
+	#schedule_nav ul li:last-of-type a,
+	#schedule_nav ul li:last-of-type a span {
+		border-top-right-radius:100px;
+		border-bottom-right-radius:100px;
+	}
+
+	#schedule_nav ul li a:hover {opacity:1;}
+	#schedule_nav ul li a span {transition:all 0.3s ease-in-out;}
+
+	#schedule_nav ul li a:hover span {opacity:0.3;}
+}
+
+
+
+/* footer_bnr */
+#footer_bnr {background:#333;}
+
+

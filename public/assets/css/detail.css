@@ -1,0 +1,248 @@
+@charset "UTF-8";
+
+
+
+/* bg */
+#girls_blog_sp,
+#schedule,
+#gravure,
+#faq {background:#fcf1f0;}
+
+
+@media screen and (min-width:1024px) {
+	#comment,
+	.profile_contents_top {background:#fcf1f0;}
+
+	#schedule,
+	#gravure,
+	#faq {background:transparent !important;}
+}
+
+
+
+/* profile */
+#profile .ttl span:last-of-type {
+	margin-top:8px;
+	font-size:78%;
+	line-height:1.6;
+	display:block;
+}
+
+
+@media screen and (min-width:1024px) {
+	#profile .ttl span:last-of-type {font-size:67%;}
+}
+
+
+
+/* profile_image */
+.large_image {
+	width:80%;
+	max-width:365px;
+	margin:0 auto;
+}
+
+.thumb_image {margin-top:8px;}
+
+.thumb_image ul {
+	display:flex;
+	justify-content:center;
+	flex-wrap:wrap;
+}
+
+.thumb_image ul li {
+	width:11%;
+	padding:0 1px;
+	box-sizing:border-box;
+}
+
+
+@media screen and (min-width:1024px) {
+	.profile_image {
+		display:flex;
+		justify-content:space-between;
+	}
+
+	.large_image {
+		width:365px;
+		margin:0;
+	}
+
+	.thumb_image {
+		width:622px;
+		margin-top:0;
+	}
+
+	.thumb_image ul {justify-content:flex-start;}
+
+	.thumb_image ul li {
+		width:118px;
+		margin:8px 8px 0 0;
+		padding:0;
+		cursor:pointer;
+	}
+
+	.thumb_image ul li:nth-of-type(-n+5) {margin-top:0;}
+	.thumb_image ul li:nth-of-type(5n) {margin-right:0;}
+}
+
+
+
+/* girls_blog_sp */
+.girls_blog_sp iframe {
+	width:100%;
+	height:400px;
+}
+
+
+@media screen and (min-width:1024px) {
+	#girls_blog_sp {display:none !important;}
+}
+
+
+
+/* schedule, option */
+.schedule ul,
+#option ul {
+	border-top:1px solid #fcd4ea;
+	background:#ffffff;
+}
+
+.schedule ul li,
+#option ul li {
+	border:1px solid #fcd4ea;
+	border-top:0;
+	display:flex;
+}
+
+.schedule ul li p,
+#option ul li p {
+	width:50%;
+	padding:10px 0;
+	text-align:center;
+	box-sizing:border-box;
+}
+
+.schedule ul li p:first-of-type,
+#option ul li p:first-of-type {
+	border-right:1px solid #fcd4ea;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	background:#ffffff;
+}
+
+
+@media screen and (min-width:1024px) {
+	.schedule ul {
+		border:1px solid #fcd4ea;
+		display:flex;
+	}
+
+	.schedule ul li {
+		width:14.2%;
+		border:0;
+		border-left:1px solid #fcd4ea;
+		display:block;
+	}
+
+	.schedule ul li:first-of-type {
+		width:15%;
+		border-left:0;
+	}
+
+	.schedule ul li p {
+		width:100%;
+		font-size:86%;
+	}
+
+	.schedule ul li p:first-of-type {
+		border:0;
+		background:#ffffff;
+	}
+
+	.schedule ul li p:last-of-type {
+		border:0;
+		border-top:1px solid #fcd4ea;
+		background:#ffffff;
+	}
+}
+
+
+
+/* profile_contents */
+@media screen and (min-width:1024px) {
+	.profile_contents_top .contents,
+	.profile_contents_bottom .contents {display:flex;}
+
+	.profile_contents_bottom .contents .contents_left,
+	.profile_contents_bottom .contents .contents_right {
+		width:50%;
+		box-sizing:border-box;
+	}
+
+	.profile_contents_bottom .contents .contents_left {padding-right:20px;}
+	.profile_contents_bottom .contents .contents_right {padding-left:20px;}
+}
+
+
+
+/* movie, gravure */
+@media screen and (min-width:1024px) {
+	#movie,
+	#gravure {
+		width:50%;
+		box-sizing:border-box;
+	}
+
+	#movie {padding-right:20px;}
+
+	#gravure {padding-left:20px;}
+}
+
+
+
+/* faq */
+#faq ul li {
+	border:1px solid #fcd4ea;
+	border-top:0;
+	background:#ffffff;
+}
+
+#faq ul li:first-of-type {border-top:1px solid #fcd4ea;}
+
+#faq ul li p {padding:16px;}
+
+#faq ul li p:first-of-type {
+	border-bottom:1px solid #fcd4ea;
+	background:#ffffff;
+}
+
+
+@media screen and (min-width:1024px) {
+	#faq ul li p {padding:16px 24px;}
+}
+
+
+
+/* girls_blog_pc */
+#girls_blog_pc {display:none;}
+
+
+@media screen and (min-width:1024px) {
+	#girls_blog_pc {
+		padding-bottom:80px;
+		display:block;
+	}
+
+	.girls_blog_pc iframe {width:100%;}
+}
+
+
+
+/* footer_bnr */
+@media screen and (min-width:1024px) {
+	#footer_bnr {background:#333;}
+}
+
+

@@ -19,12 +19,11 @@ class CreateBlogPostsTable extends Migration
             $table->collation = 'utf8mb4_unicode_ci';
 
             $table->id();
-            $table->string('title');
-            $table->text('details');
-            $table->string('image');
-            $table->string('category');
-            $table->string('publish_date');
-            $table->integer('status')->default(0);
+            $table->string('template_name');
+            $table->string('sender_name');
+            $table->string('sender_address');
+            $table->string('subject');
+            $table->text('content');
             $table->timestamps();
         });
     }

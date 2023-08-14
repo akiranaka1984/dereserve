@@ -24,7 +24,7 @@ class ForgotPassword extends Mailable
         return $this->subject($title)
             ->view('emails.forgotPassword')
             ->with([
-                'name' => $this->user->firstname.' '.$this->user->lastname, 
+                'name' => $this->user->name, 
                 'token' => $this->user->email_verify_token
             ]);
 

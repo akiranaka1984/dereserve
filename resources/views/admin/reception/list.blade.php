@@ -48,7 +48,11 @@
         </thead> 
         <tbody> 
             @foreach($webReservations as $reservations)
-                <tr> 
+                @if($reservations->compatible == 0)
+                    <tr style=""> 
+                @else
+                    <tr style="background: lightyellow;"> 
+                @endif
                     <td>
                         <button type="button" class="btn btn-danger btn-sm sidemenu-href delete_btn" data-id="{{ $reservations->id }}" >
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M7 21q-.825 0-1.413-.588T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.588 1.413T17 21H7ZM17 6H7v13h10V6ZM9 17h2V8H9v9Zm4 0h2V8h-2v9ZM7 6v13V6Z"/></svg>
@@ -63,7 +67,8 @@
                         </button>
                         <select class="form-control ml-1 change_compatible" data-id="{{ $reservations->id }}" >
                             <option value="0" {{ ($reservations->compatible == 0) ? "selected" : "" }} >未対応</option>
-                            <option value="1" {{ ($reservations->compatible == 1) ? "selected" : "" }}>適合</option>
+                            <option value="1" {{ ($reservations->compatible == 1) ? "selected" : "" }}>対応中</option>
+                            <option value="2" {{ ($reservations->compatible == 2) ? "selected" : "" }}>対応済</option>
                         </select>
                     </td>
                 </tr> 
@@ -109,7 +114,22 @@
                                         <td class="w-30">具体的な内容</td>
                                         <td class="modal_content"></td>
                                     </tr>
+
+                                    <tr> 
+                                        <td class="w-30">予約日</td>
+                                        <td class="modal_reservation_date"></td>
+                                    </tr>
                     
+                                    <tr> 
+                                        <td class="w-30">予約日</td>
+                                        <td class="modal_last_update_date"></td>
+                                    </tr>
+
+                                    <tr> 
+                                        <td class="w-30">対応属性</td>
+                                        <td class="modal_corresponding_attribute"></td>
+                                    </tr>
+
                                 </tbody> 
                             </table> 
                         </div>
@@ -125,6 +145,7 @@
 
 
 <script>
+    let is_hidden = {{ $is_hidden }}
     $(document).ready(function(){
         $(document).on('click','.openModelDetails', function(){
             let id = $(this).attr('data-id')
@@ -140,7 +161,50 @@
                     $('.modal_name').html(response.name)
                     $('.modal_email').html(response.mail)
                     $('.modal_tel').html(response.tel)
-                    $('.modal_content').html(response.content)
+                    let content = `<i class="entypo-right-bold"></i>LINE ID<br>`+ response.lineid +`
+                        <p>---------------------------------</p>
+                        <i class="entypo-right-bold"></i>ご希望の女性(第1 候補)<br>`+ response.lady1 +`
+                        <p>---------------------------------</p>
+                        <i class="entypo-right-bold"></i> ご希望の女性(第2候補)<br>`+ response.lady2 +`
+                        <p>---------------------------------</p>
+                        <i class="entypo-right-bold"></i>ご希望の女性(第3候補)<br>`+ response.lady3 +`
+                        <p>---------------------------------</p>
+                        <i class="entypo-right-bold"></i> 希望ご予約日(第1 候補)<br>
+                        `+ response.month1 +`月`+ response.day1 +` 日`+ response.hour1 +`時`+ response.minut1 +`分
+                        <p>---------------------------------</p>
+                        <i class="entypo-right-bold"></i> 希望ご予約日(第2候補)<br>
+                        `+ response.month2 +`月`+ response.day2 +` 日`+ response.hour2 +`時`+ response.minut2 +`分
+                        <p>---------------------------------</p>
+                        <i class="entypo-right-bold"></i>希望ご予約日(第3候補)<br>
+                        `+ response.month3 +`月`+ response.day3 +` 日`+ response.hour3 +`時`+ response.minut3 +`分
+                        <p>---------------------------------</p>
+                        <i class="entypo-right-bold"></i>ご希望コース<br>
+                        `+ response.cource +`
+                        <p>---------------------------------</p>
+                        <i class="entypo-right-bold"></i>ご利用場所<br>
+                        `+ response.place +`
+                        <p>---------------------------------</p>
+                        <i class="entypo-right-bold"></i>お支払い方法&gt;<br>
+                        `+ response.pay +`
+                        <p>---------------------------------</p>
+                        <i class="entypo-right-bold"></i> ご希望連絡方法<br>
+                        `+ response.contact +`
+                        <p>---------------------------------</p>
+                        その他<br>`+ response.cmnt + ``
+
+                    $('.modal_content').html(content)
+
+                    $('.modal_reservation_date').html(moment(String(response.created_at)).format('YYYY年MM月DD日 HH:mm'))
+                    $('.modal_last_update_date').html(moment(String(response.updated_at)).format('YYYY年MM月DD日 HH:mm'))
+                    if(response.status == 0){
+                        $('.modal_corresponding_attribute').html('未対応')
+                    }else if(response.status == 1){
+                        $('.modal_corresponding_attribute').html('対応中')
+                    }else if(response.status == 2){
+                        $('.modal_corresponding_attribute').html('対応済')
+                    }
+                   
+
                     $('#modal-1').modal('show');
                 }
             })
@@ -154,6 +218,7 @@
         $(document).on('change','.change_compatible',function(){
             let id = $(this).attr('data-id')
             let value = $(this).val()
+            let mthis = $(this);
             $.ajax({
                 type: 'POST',
                 url: `{{ route('admin.reception.compatible') }}`,
@@ -165,6 +230,15 @@
                 }),
                 success: function (response) {
                     simpleMessage('success',`{{__('Save Changes')}}`);
+                    if((value != 0)){
+                        mthis.closest('tr').attr('style','background: lightyellow;')
+                    }else{
+                        mthis.closest('tr').attr('style','')
+                    }
+
+                    if((is_hidden == 0) && (value == 2)){
+                        mthis.closest('tr').remove()
+                    }
                 }
             })
         })

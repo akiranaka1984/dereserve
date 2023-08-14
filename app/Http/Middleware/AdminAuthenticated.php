@@ -22,7 +22,7 @@ class AdminAuthenticated
             if ( Auth::user()->isAdmin() ) {
                  return $next($request);
             }else{
-                return redirect(route('login'));
+                return redirect(route('admin.login'));
             }
         }
 

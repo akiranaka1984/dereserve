@@ -14,12 +14,17 @@ class User extends Authenticatable
 
     protected $fillable = [
         'username',
-        'firstname',
-        'lastname',
+        'name',
         'email',
         'email_verify_token',
         'email_verify_status',
+        'tel',
+        'lineid',
         'password',
+        'cource',
+        'pay',
+        'contact',
+        'cmnt',
         'city',
         'profile_pics',
         'role',
@@ -34,6 +39,10 @@ class User extends Authenticatable
 
     public function isAdmin() {
         return $this->role === 'admin';
+    }
+ 
+    public function isUser() {
+        return $this->role === 'user';
     }
  
     

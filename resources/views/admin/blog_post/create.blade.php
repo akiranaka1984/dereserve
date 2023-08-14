@@ -14,99 +14,49 @@
 
     <form role="form" method="post" action="{{ route('admin.blog_post.save') }}" enctype="multipart/form-data" class="form-horizontal form-groups-bordered" id="frmBlogPost" >
         @csrf  
-        <div class="row">
-            <div class="col-sm-12 frm-inpt"> 
-                <input type="text" name="post_title" class="form-control input-lg" placeholder="Post title" /> 
-            </div>
-        </div> <br />
-        <div class="row">
-            <div class="col-sm-12 frm-inpt"> 
-                <textarea name="post_content" class="form-control ckeditor" rows="18" id="frmPostContent"></textarea> 
-            </div>
-        </div> <br />
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="panel panel-primary" data-collapsed="0">
-                    <div class="panel-heading">
-                        <div class="panel-title"> Publish Settings </div>
-                        <div class="panel-options"> 
-                            <a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a> 
-                        </div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="col-sm-12 frm-inpt"> 
-                            <p>Publish Date</p>
-                            <div class="input-group"> 
-                                <input type="text" name="post_date" class="form-control datepicker" value="{{ date('Y-m-d') }}" data-format="yyyy-mm-dd">
-                                <div class="input-group-addon"> 
-                                    <a href="#"><i class="entypo-calendar"></i></a>
-                                </div>
-                            </div>
-                        </div> <br />
-                        <div class="col-sm-12 frm-inpt"> 
-                            <p>Post Status</p> 
-                            <select name="post_status" class="form-control">
-                                <option value="1">Publish</option>
-                                <option value="2">Private</option>
-                                <option value="3">Scheduled</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="panel panel-primary" data-collapsed="0">
-                    <div class="panel-heading">
-                        <div class="panel-title">Featured Image</div>
-                        <div class="panel-options"> 
-                            <a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a> 
-                        </div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="fileinput fileinput-new" data-provides="fileinput">
-                            <div class="fileinput-new thumbnail" style="max-width: 310px; height: 160px;" data-trigger="fileinput"> 
-                                <img src="http://placehold.it/320x160" alt="">
-                            </div>
-                            <div class="fileinput-preview fileinput-exists thumbnail"
-                                style="max-width: 320px; max-height: 160px"></div>
-                            <div class="col-sm-12 frm-inpt"> 
-                                <span class="btn btn-white btn-file"> 
-                                    <span class="fileinput-new">Select image</span> 
-                                    <span class="fileinput-exists">Change</span> 
-                                    <input type="file" name="post_image" accept="image/*"> 
-                                </span> 
-                                <a href="#" class="btn btn-orange fileinput-exists" data-dismiss="fileinput">Remove</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+        <div class="form-group"> 
+            <label for="frmTemplateName" class="col-sm-2 control-label">テンプレート名</label> 
+            <div class="col-sm-8"> 
+                <select name="template_name" class="form-control" id="frmTemplateName"> 
+                    <option value=""></option>
+                    <option value="1" {{ ($mid == 1) ? "selected" : "" }} >メール会員申込 自動返信（お客様宛て）</option>
+                    <option value="2" {{ ($mid == 2) ? "selected" : "" }} >メール会員申込 自動返信（店舗宛て）</option>
+                    <option value="5" {{ ($mid == 5) ? "selected" : "" }} >WEB予約 自動返信（お客様宛て）</option>
+                    <option value="6" {{ ($mid == 6) ? "selected" : "" }} >WEB予約 自動返信（店舗宛て）</option>
+                    <option value="7" {{ ($mid == 7) ? "selected" : "" }} >リクルート申込 自動返信（申込者宛て）</option>
+                    <option value="8" {{ ($mid == 8) ? "selected" : "" }} >リクルート申込 自動返信（店舗宛て）</option>
+                </select> 
             </div> 
-            <div class="col-sm-4">
-                <div class="panel panel-primary" data-collapsed="0">
-                    <div class="panel-heading">
-                        <div class="panel-title">Categories</div>
-                        <div class="panel-options"> 
-                            <a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a> 
-                        </div>
-                    </div>
-                    <div class="panel-body "> 
-                        <select name="categories" class="form-control" required>
-                            <option value="Art">Art</option>
-                            <option value="Entertainment" selected>Entertainment</option>
-                            <option value="Sports">Sports</option>
-                            <option value="Gaming">Gaming</option>
-                            <option value="Abstraction">Abstraction</option>
-                            <option value="Nature">Nature</option>
-                            <option value="Summer">Summer</option>
-                            <option value="Adventures">Adventures</option>
-                            <option value="Movies">Movies</option>
-                            <option value="Music">Music</option>
-                            <option value="Technology">Technology</option>
-                        </select> 
-                    </div>
-                </div>
-            </div>
-        </div> <br />
+        </div>
+
+        <div class="form-group"> 
+            <label for="frmSenderName" class="col-sm-2 control-label">送信者名</label> 
+            <div class="col-sm-8 frm-inpt"> 
+                <input type="text" name="sender_name" class="form-control" id="frmSenderName" value="{{ !empty($blogPost)  ? $blogPost->sender_name : '' }}" placeholder=""> 
+            </div> 
+        </div>
+
+        <div class="form-group"> 
+            <label for="frmSenderAddress" class="col-sm-2 control-label">送信者アドレス</label> 
+            <div class="col-sm-8 frm-inpt"> 
+                <input type="text" name="sender_address" class="form-control" id="frmSenderAddress" value="{{ !empty($blogPost)  ? $blogPost->sender_address : '' }}" placeholder=""> 
+            </div> 
+        </div>
+
+        <div class="form-group"> 
+            <label for="frmSubject" class="col-sm-2 control-label">件名</label> 
+            <div class="col-sm-8 frm-inpt"> 
+                <input type="text" name="subject" class="form-control" id="frmSubject" value="{{ !empty($blogPost)  ? $blogPost->subject : '' }}" placeholder=""> 
+            </div> 
+        </div>
+
+        <div class="form-group"> 
+            <label for="frmContent" class="col-sm-2 control-label">本文</label> 
+            <div class="col-sm-8 frm-inpt"> 
+                <textarea name="content" class="form-control ckeditor" rows="18" id="frmContent">{{ !empty($blogPost)  ? $blogPost->content : '' }}</textarea> 
+            </div> 
+        </div>
         <div class="row">
             <div class="col-sm-2 post-save-changes"> 
                 <button type="submit" class="btn btn-green btn-lg btn-block btn-icon"> {{ __('SAVE') }} <i class="entypo-check"></i></button> 
@@ -114,26 +64,27 @@
         </div> 
     </form>
 
-<script>
+
+    <script>
     $(document).ready(function(){
         $('#frmBlogPost').validate({
             ignore: [],
             debug: false,
             rules: {
-                post_title: { required: true },    
-                post_date: { required: true },
-                post_image: { required: true },
-                post_content:{ 
+                sender_name: { required: true },
+                sender_address: { required: true },    
+                subject: { required: true },    
+                content:{ 
                     required: function(){
-                        CKEDITOR.instances.frmPostContent.updateElement();
+                        CKEDITOR.instances.frmContent.updateElement();
                     }
                 }
             },
             messages: {
-                post_title: { required: "{{ __('This field is required') }}" },
-                post_date: { required: "{{ __('This field is required') }}" },
-                post_image: { required: "{{ __('This field is required') }}" },
-                post_content: { required: "{{ __('This field is required') }}" }
+                sender_name: { required: "{{ __('This field is required') }}" },
+                sender_address: { required: "{{ __('This field is required') }}" },
+                subject: { required: "{{ __('This field is required') }}" },
+                content: { required: "{{ __('This field is required') }}" }
             },
             errorElement: 'span',
             errorPlacement: function (error, element) {
@@ -147,8 +98,14 @@
                 $(element).removeClass('is-invalid');
             }
         });
+
+        $(document).on('change','#frmTemplateName', function(){
+            let template_name = $(this).val()
+            window.location.href = "/admin/blog_post/create?id="+template_name;
+        })
     })
- </script>       
+
+ </script>         
 
 
 @endsection

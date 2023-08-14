@@ -8,7 +8,7 @@
         <meta name="description" content="Neon Admin Panel" />
         <meta name="author" content="Laborator.co" />
         <link rel="icon" href="{{ url('/assets/images/favicon.ico') }}">
-        <title>Neon | Login</title>
+        <title>管理パネル</title>
         <link rel="stylesheet" href="{{ url('/assets/css/jquery-ui-1.10.3.custom.min.css') }}">
         <link rel="stylesheet" href="{{ url('/assets/css/entypo.css') }}">
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic">
@@ -33,6 +33,7 @@
         <script src="{{ url('/assets/js/neon-demo.js') }}"></script>
         <script src="{{ url('/assets/js/sweetalert2.min.js') }}"></script>
         <script src="{{ url('/assets/js/custom-alert.js') }}"></script>
+        <script src="{{ url('/assets/js/toastr.js') }}"></script>
     </head>
 
     <body class="page-body login-page login-form-fall" > 

@@ -12,12 +12,11 @@ class BlogPost extends Model
     protected $table = 'blog_posts';
 
     protected $fillable = [
-        'title',
-        'details',
-        'image',
-        'category',
-        'publish_date',
-        'status'
+        'template_name',
+        'sender_name',
+        'sender_address',
+        'subject',
+        'content'
     ];
 
 }

@@ -91,6 +91,10 @@ class CompanionController extends Controller
             'font_color' => $request->frm_font_color,
             'message' => $request->short_message,
             'entry_date' => $request->frm_entry_date,
+            'option_non_japanese_chk' => (!empty($request->option_non_japanese_chk) ? 1 : 0),
+            'option_3p_chk' => (!empty($request->option_3p_chk) ? 1 : 0),
+            'option_av_chk' => (!empty($request->option_av_chk) ? 1 : 0),
+            'option_newface_chk' => (!empty($request->option_newface_chk) ? 1 : 0),
             'position' => ($count + 1)
         ]);
 
@@ -147,7 +151,11 @@ class CompanionController extends Controller
             'sale_point' => $request->frm_sale_point,
             'font_color' => $request->frm_font_color,
             'message' => $request->short_message,
-            'entry_date' => $request->frm_entry_date
+            'entry_date' => $request->frm_entry_date,
+            'option_non_japanese_chk' => (!empty($request->option_non_japanese_chk) ? 1 : 0),
+            'option_3p_chk' => (!empty($request->option_3p_chk) ? 1 : 0),
+            'option_av_chk' => (!empty($request->option_av_chk) ? 1 : 0),
+            'option_newface_chk' => (!empty($request->option_newface_chk) ? 1 : 0)
         ]);   
 
         return redirect()->route('admin.companion.edit', [ 'id' => $request->id, 'stab' => 1 ]);
@@ -165,7 +173,7 @@ class CompanionController extends Controller
         $companion = Companion::where([
             'id' => $request->id, 
         ])->update([
-            'position' => $request->frm_position, 
+            'previous_position' => $request->frm_position, 
             'celebrities_who_look_alike' => $request->frm_celebrities_who_look_alike
         ]);   
 

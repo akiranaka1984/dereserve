@@ -65,7 +65,7 @@
                         <div class="panel panel-primary" >
                             <div class="panel-body text-center">
                                 <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">{{ $companion->name }}({{ $companion->age }})</a></h3>
-                                <h4 class="text-center">{!! $companion->message !!} </h4>
+                                <h4 class="text-center">{!! $companion->kana !!} </h4>
                                 <a href="{{ route('admin.companion.edit') }}?stab=1&id={{ $companion->id }}"> 
                                     @php
                                         if(!empty($companion['home_image'])){

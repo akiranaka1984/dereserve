@@ -8,7 +8,7 @@
         <meta name="description" content="Neon Admin Panel" />
         <meta name="author" content="Laborator.co" />
         <link rel="icon" href="{{ url('/assets/images/favicon.ico') }}">
-        <title>Neon | Admin Panel</title>
+        <title>管理パネル</title>
         <link rel="stylesheet" href="{{ url('/assets/css/jquery-ui-1.10.3.custom.min.css') }}">
         <link rel="stylesheet" href="{{ url('/assets/css/entypo.css') }}">
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic">
@@ -198,6 +198,20 @@
                             </ul>
                         </li>
                     
+                        <li> 
+                            <a href="{{ route('admin.users.list') }}" class="sidemenu-href">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="6" r="4"/><path stroke-linecap="round" d="M19.997 18c.003-.164.003-.331.003-.5c0-2.485-3.582-4.5-8-4.5s-8 2.015-8 4.5S4 22 12 22c2.231 0 3.84-.157 5-.437"/></g></svg>
+                                <span class="title  ml-1">ユーザー</span>
+                            </a>
+                        </li>
+
+                        <li> 
+                            <a href="{{ route('admin.page.list') }}" class="sidemenu-href">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M14.5 18q-1.05 0-1.775-.725T12 15.5q0-1.05.725-1.775T14.5 13q1.05 0 1.775.725T17 15.5q0 1.05-.725 1.775T14.5 18ZM5 22q-.825 0-1.413-.588T3 20V6q0-.825.588-1.413T5 4h1V2h2v2h8V2h2v2h1q.825 0 1.413.588T21 6v14q0 .825-.588 1.413T19 22H5Zm0-2h14V10H5v10ZM5 8h14V6H5v2Zm0 0V6v2Z"/></svg>
+                                <span class="title  ml-1">ページ</span>
+                            </a>
+                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -247,7 +261,7 @@
                     <div class="col-md-3 col-sm-4 clearfix hidden-xs">
                         <ul class="list-inline links-list pull-right">
                             <li> 
-                                <a href="{{ route('signout') }}" class="btn btn-danger sidemenu-href">
+                                <a href="{{ route('admin.signout') }}" class="btn btn-danger sidemenu-href">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path fill="currentColor" d="M10 20a10 10 0 1 1 0-20a10 10 0 0 1 0 20zm5-11H5v2h10V9z"/></svg>
                                     <span class="title ml-1">ログアウト</span> </a> 
                             </li>

@@ -14,7 +14,19 @@
 
     <form role="form" method="post" action="{{ route('admin.blog_post.update') }}" enctype="multipart/form-data" class="form-horizontal form-groups-bordered" id="frmBlogPost" >
         @csrf  
-        <input type="hidden" name="post_id" class="form-control input-lg" value="{{ $blog_post->id }}" /> 
+        <input type="hidden" name="post_id" class="form-control input-lg" value="{{ $blog_post->id }}" />
+        <div class="row">
+            <select name="mtmp_name" id="mtmp_name" onchange="change_id(this)">
+                <option value=""></option>
+                <option value="1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Email membership application Automatic reply (to the customer)</font></font></option>
+                <option value="2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Email membership application Automatic reply (to the store)</font></font></option>
+                <option value="5"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">WEB reservation automatic reply (to the customer)</font></font></option>
+                <option value="6"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">WEB reservation automatic reply (to the store)</font></font></option>
+                <option value="7" selected=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Recruitment application automatic reply (addressed to the applicant)</font></font></option>
+                <option value="8"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Recruit application automatic reply (addressed to the store)</font></font></option>
+            </select> 
+        </div> <br />
+        
         <div class="row">
             <div class="col-sm-12 frm-inpt"> 
                 <input type="text" name="post_title" class="form-control input-lg" placeholder="Post title" value="{{ $blog_post->title }}" /> 
@@ -23,89 +35,6 @@
         <div class="row">
             <div class="col-sm-12 frm-inpt"> 
                 <textarea name="post_content" class="form-control ckeditor" rows="18" id="frmPostContent">{{ $blog_post->details }}</textarea> 
-            </div>
-        </div> <br />
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="panel panel-primary" data-collapsed="0">
-                    <div class="panel-heading">
-                        <div class="panel-title"> Publish Settings </div>
-                        <div class="panel-options"> 
-                            <a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a> 
-                        </div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="col-sm-12 frm-inpt"> 
-                            <p>Publish Date</p>
-                            <div class="input-group"> 
-                                <input type="text" name="post_date" class="form-control datepicker" value="{{ $blog_post->publish_date }}" data-format="yyyy-mm-dd">
-                                <div class="input-group-addon"> 
-                                    <a href="#"><i class="entypo-calendar"></i></a>
-                                </div>
-                            </div>
-                        </div> <br />
-                        <div class="col-sm-12 frm-inpt"> 
-                            <p>Post Status</p> 
-                            <select name="post_status" class="form-control">
-                                <option value="1" {{ $blog_post->status == 1 ? 'selected': '' }} >Publish</option>
-                                <option value="2" {{ $blog_post->status == 2 ? 'selected': '' }} >Private</option>
-                                <option value="3" {{ $blog_post->status == 3 ? 'selected': '' }} >Scheduled</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="panel panel-primary" data-collapsed="0">
-                    <div class="panel-heading">
-                        <div class="panel-title">Featured Image</div>
-                        <div class="panel-options"> 
-                            <a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a> 
-                        </div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="fileinput fileinput-new" data-provides="fileinput">
-                            <div class="fileinput-new thumbnail" style="max-width: 310px; height: 160px;" data-trigger="fileinput"> 
-                                <img src="{{ url('/storage/photos/banners/'.$blog_post->image) }}" alt="">
-                            </div>
-                            <div class="fileinput-preview fileinput-exists thumbnail"
-                                style="max-width: 320px; max-height: 160px"></div>
-                            <div class="col-sm-12 frm-inpt"> 
-                                <span class="btn btn-white btn-file"> 
-                                    <span class="fileinput-new">Select image</span> 
-                                    <span class="fileinput-exists">Change</span> 
-                                    <input type="file" name="post_image" accept="image/*"> 
-                                </span> 
-                                <a href="#" class="btn btn-orange fileinput-exists" data-dismiss="fileinput">Remove</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> 
-            <div class="col-sm-4">
-                <div class="panel panel-primary" data-collapsed="0">
-                    <div class="panel-heading">
-                        <div class="panel-title">Categories</div>
-                        <div class="panel-options"> 
-                            <a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a> 
-                        </div>
-                    </div>
-                    <div class="panel-body "> 
-                        <select name="categories" class="form-control" required>
-                            <option value="Art" {{ ($blog_post->category == 'Art') ? 'selected': '' }} >Art</option>
-                            <option value="Entertainment" {{ ($blog_post->category == 'Entertainment') ? 'selected': '' }} >Entertainment</option>
-                            <option value="Sports" {{ ($blog_post->category == 'Sports') ? 'selected': '' }} >Sports</option>
-                            <option value="Gaming" {{ ($blog_post->category == 'Gaming') ? 'selected': '' }} >Gaming</option>
-                            <option value="Abstraction" {{ ($blog_post->category == 'Abstraction') ? 'selected': '' }} >Abstraction</option>
-                            <option value="Nature" {{ ($blog_post->category == 'Nature') ? 'selected': '' }} >Nature</option>
-                            <option value="Summer" {{ ($blog_post->category == 'Summer') ? 'selected': '' }} >Summer</option>
-                            <option value="Adventures" {{ ($blog_post->category == 'Adventures') ? 'selected': '' }} >Adventures</option>
-                            <option value="Movies" {{ ($blog_post->category == 'Movies') ? 'selected': '' }} >Movies</option>
-                            <option value="Music" {{ ($blog_post->category == 'Music') ? 'selected': '' }} >Music</option>
-                            <option value="Technology" {{ ($blog_post->category == 'Technology') ? 'selected': '' }} >Technology</option>
-                        </select> 
-                    </div>
-                </div>
             </div>
         </div> <br />
         <div class="row">
@@ -122,7 +51,6 @@
             debug: false,
             rules: {
                 post_title: { required: true },    
-                post_date: { required: true },
                 post_content:{ 
                     required: function(){
                         CKEDITOR.instances.frmPostContent.updateElement();
@@ -131,7 +59,6 @@
             },
             messages: {
                 post_title: { required: "{{ __('This field is required') }}" },
-                post_date: { required: "{{ __('This field is required') }}" },
                 post_content: { required: "{{ __('This field is required') }}" }
             },
             errorElement: 'span',

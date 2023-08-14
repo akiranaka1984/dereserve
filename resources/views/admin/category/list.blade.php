@@ -64,6 +64,9 @@
                             <button type="button" class="btn btn-danger btn-sm ml-1 delete_btn" data-id="{{ $category->id }}" >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M7 21q-.825 0-1.413-.588T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.588 1.413T17 21H7ZM17 6H7v13h10V6ZM9 17h2V8H9v9Zm4 0h2V8h-2v9ZM7 6v13V6Z"/></svg>
                             </button>
+                            <a href="{{ route('admin.price.list', ['id'=>$category->id]) }}" class="btn btn-info btn-sm ml-1" >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M13.92 11H18v2h-5v2h5v2h-5v4h-2v-4H6v-2h5v-2H6v-2h4.08L5 3h2.37L12 10.29L16.63 3H19l-5.08 8Z"/></svg>
+                            </a>
                         </td>
                     </tr> 
                 @endforeach

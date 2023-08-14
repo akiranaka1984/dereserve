@@ -8,7 +8,7 @@
             <div class="tile-stats tile-primary"> 
                 <h1 class="text-light">{{__('Sign In')}}</h1>
                 <p class="text-light mb-3">{{__('Log in to your account to continue.')}}</p>
-                <form method="post" action="{{ route('login') }}" role="form" id="form_login">
+                <form method="post" action="{{ route('admin.login') }}" role="form" id="form_login">
                     @csrf
                     <div class="form-group">
                         <div class="input-group">

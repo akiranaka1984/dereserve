@@ -23,8 +23,7 @@ class AdminEntrySeeder extends Seeder
     public function run()
     {
         User::create([
-            'firstname' => 'Admin',
-            'lastname' => 'Admin',
+            'name' => 'Admin',
             'username' => 'Admin',
             'email' => 'admin@admin.com',
             'email_verify_status' => 1,

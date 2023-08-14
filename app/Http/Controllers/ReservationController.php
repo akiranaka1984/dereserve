@@ -13,14 +13,13 @@ class ReservationController extends Controller
     {   
         if(!empty($request->is_hidden) && $request->is_hidden == 1){
             $is_hidden = 1;
-            $webReservations = WebReservation::orderBy('id', 'DESC')->get();
+            $webReservations = WebReservation::whereIn('compatible',[0,1,2])->orderBy('id', 'DESC')->get();
             return view('admin.reception.list', compact('webReservations', 'is_hidden'));
         }else{
             $is_hidden = 0;
-            $webReservations = WebReservation::where(['status'=>1])->orderBy('id', 'DESC')->get();
+            $webReservations = WebReservation::whereIn('compatible',[0,1])->orderBy('id', 'DESC')->get();
             return view('admin.reception.list', compact('webReservations', 'is_hidden'));
         }
-
     }
 
     public function save(Request $request)
@@ -50,7 +49,7 @@ class ReservationController extends Controller
 
     public function delete(Request $request)
     {
-        WebReservation::where(['id'=>$request->id])->update(['status'=>0]);
+        WebReservation::where(['id'=>$request->id])->delete();
         return redirect()->back()->with('success', __('Save Changes'));
     }
     
@@ -60,17 +59,15 @@ class ReservationController extends Controller
         return response()->json(['status'=>1, "message"=>"__('Save Changes')" ]);
     }
 
-
-
     public function interview(Request $request)
     {
         if(!empty($request->is_hidden) && $request->is_hidden == 1){
             $is_hidden = 1;
-            $interviews = Interview::orderBy('id', 'DESC')->get();
+            $interviews = Interview::whereIn('compatible',[0,1,2])->orderBy('id', 'DESC')->get();
             return view('admin.interview.list', compact('interviews', 'is_hidden'));
         }else{
             $is_hidden = 0;
-            $interviews = Interview::where(['status'=>1])->orderBy('id', 'DESC')->get();
+            $interviews = Interview::whereIn('compatible',[0,1])->orderBy('id', 'DESC')->get();
             return view('admin.interview.list', compact('interviews', 'is_hidden'));
         }
     }
@@ -84,7 +81,7 @@ class ReservationController extends Controller
     
     public function int_delete(Request $request)
     {
-        Interview::where(['id'=>$request->id])->update(['status'=>0]);
+        Interview::where(['id'=>$request->id])->delete();
         return redirect()->back()->with('success', __('Save Changes'));
     }
 

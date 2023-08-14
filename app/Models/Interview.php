@@ -26,6 +26,7 @@ class Interview extends Model
         'experience',
         'appealing_points',
         'other_message',
+        'photo',
         'compatible',
         'status'
     ];
