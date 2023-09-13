@@ -8,7 +8,13 @@
 
         @media screen and (min-width:1024px) {
             #index {
-                background-image: url("{{ url('/assets/images/16177815289378_momotani.jpg') }}");
+                background-image: url("{{ url('/assets/images/C4D091D7_momotani.png') }}");
+            }
+            #index h1{
+                margin-top:250px;
+            }
+            #index h1 img{
+                display: none;
             }
         }
     </style>
