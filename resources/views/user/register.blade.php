@@ -8,7 +8,7 @@
             <div class="tile-stats tile-primary"> 
 
                 <script async src="https://telegram.org/js/telegram-widget.js?2"
-                        data-telegram-login="HexcodeBot"
+                        data-telegram-login="De_reserve_test_bot"
                         data-size="large"
                         data-radius="10"
                         data-auth-url="{{ route('user.register.save') }}"
