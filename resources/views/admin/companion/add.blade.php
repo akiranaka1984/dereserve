@@ -77,6 +77,28 @@
                             <div class="col-sm-8 frm-inpt">
                                 <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="新人" checked>新人</label> </div>
                                 <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="経験者">経験者</label></div>
+                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="未経験">未経験</label></div>
+                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="清楚系">清楚系</label></div>
+                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="スタイル抜群">スタイル抜群</label></div>
+                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="モデル系">モデル系</label></div>
+                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="キレカワ系">キレカワ系</label></div>
+                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="アイドル系">アイドル系</label></div>
+                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="素人系">素人系</label></div>
+                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="グラビア系">グラビア系</label></div>
+                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="お姉様系">お姉様系</label></div>
+                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="ギャル系">ギャル系</label></div>
+                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="現役モデル">現役モデル</label></div>
+                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="AV女優">AV女優</label></div>
+                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="CA">CA</label></div>
+                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="女子大生">女子大生</label></div>
+                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="ロリ系">ロリ系</label></div>
+                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="おっとり系">おっとり系</label></div>
+                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="綺麗系">綺麗系</label></div>
+                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="可愛い系">可愛い系</label></div>
+                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="癒し系">癒し系</label></div>
+                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="オススメ">オススメ</label></div>
+                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="巨乳">巨乳</label></div>
+                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="スレンダー">スレンダー</label></div>
                             </div>
                         </div>
                         <div class="form-group"> <label for="frmHobby" class="col-sm-3 control-label">趣味</label>

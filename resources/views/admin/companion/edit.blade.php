@@ -110,6 +110,28 @@
                                             <div class="col-sm-8 frm-inpt">
                                                 <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="新人" {{ $companion->rookie == '新人' ? 'checked' : '' }} >新人</label> </div>
                                                 <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="経験者" {{ $companion->rookie == '経験者' ? 'checked' : '' }} >経験者</label></div>
+                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="未経験" {{ $companion->rookie == '未経験' ? 'checked' : '' }} >未経験</label></div>
+                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="清楚系" {{ $companion->rookie == '清楚系' ? 'checked' : '' }} >清楚系</label></div>
+                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="スタイル抜群" {{ $companion->rookie == 'スタイル抜群' ? 'checked' : '' }} >スタイル抜群</label></div>
+                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="モデル系" {{ $companion->rookie == 'モデル系' ? 'checked' : '' }} >モデル系</label></div>
+                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="キレカワ系" {{ $companion->rookie == 'キレカワ系' ? 'checked' : '' }} >キレカワ系</label></div>
+                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="アイドル系" {{ $companion->rookie == 'アイドル系' ? 'checked' : '' }} >アイドル系</label></div>
+                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="素人系" {{ $companion->rookie == '素人系' ? 'checked' : '' }} >素人系</label></div>
+                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="グラビア系" {{ $companion->rookie == 'グラビア系' ? 'checked' : '' }} >グラビア系</label></div>
+                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="お姉様系" {{ $companion->rookie == 'お姉様系' ? 'checked' : '' }} >お姉様系</label></div>
+                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="ギャル系" {{ $companion->rookie == 'ギャル系' ? 'checked' : '' }} >ギャル系</label></div>
+                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="現役モデル" {{ $companion->rookie == '現役モデル' ? 'checked' : '' }} >現役モデル</label></div>
+                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="AV女優" {{ $companion->rookie == 'AV女優' ? 'checked' : '' }} >AV女優</label></div>
+                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="CA" {{ $companion->rookie == 'CA' ? 'checked' : '' }} >CA</label></div>
+                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="女子大生" {{ $companion->rookie == '女子大生' ? 'checked' : '' }} >女子大生</label></div>
+                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="ロリ系" {{ $companion->rookie == 'ロリ系' ? 'checked' : '' }} >ロリ系</label></div>
+                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="おっとり系" {{ $companion->rookie == 'おっとり系' ? 'checked' : '' }} >おっとり系</label></div>
+                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="綺麗系" {{ $companion->rookie == '綺麗系' ? 'checked' : '' }} >綺麗系</label></div>
+                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="可愛い系" {{ $companion->rookie == '可愛い系' ? 'checked' : '' }} >可愛い系</label></div>
+                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="癒し系" {{ $companion->rookie == '癒し系' ? 'checked' : '' }} >癒し系</label></div>
+                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="オススメ" {{ $companion->rookie == 'オススメ' ? 'checked' : '' }} >オススメ</label></div>
+                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="巨乳" {{ $companion->rookie == '巨乳' ? 'checked' : '' }} >巨乳</label></div>
+                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="スレンダー" {{ $companion->rookie == 'スレンダー' ? 'checked' : '' }} >スレンダー</label></div>
                                             </div>
                                         </div>
                                         <div class="form-group"> <label for="frmHobby" class="col-sm-3 control-label">趣味</label>

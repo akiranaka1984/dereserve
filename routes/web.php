@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
@@ -42,6 +43,9 @@ Route::get('/entry', [HomeController::class, 'entry'])->name('page.entry');
 Route::post('/entry/save', [HomeController::class, 'entry_save'])->name('page.entry.save');
 
 Route::post('/attendance_notices', [HomeController::class, 'attendance_notices'])->name('page.attendance_notices.save');
+
+Route::get('/register', [RegisterController::class, 'index'])->name('user.register');
+Route::get('/register/save', [RegisterController::class, 'save'])->name('user.register.save');
 
 
 Route::get('/login', [LoginController::class, 'index'])->name('user.login');

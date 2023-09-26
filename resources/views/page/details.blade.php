@@ -107,7 +107,7 @@
                 <h2 class="ttl"><span>オンライン予約</span></h2>
                 <div class="prime_txt">
                     <p class="btn mincho">
-                        <a href="#" target="_blank">オンライン予約はコチラから</a>
+                        <a href="{{ route('user.register') }}" target="_blank">オンライン予約はコチラから</a>
                     </p>
                 </div>
             </article>
