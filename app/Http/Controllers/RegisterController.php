@@ -20,4 +20,11 @@ class RegisterController extends Controller
         return view('user.register');
     }
 
+    public function save(Request $request)
+    {
+        echo '<pre>';
+        print_r($request->all());
+        exit;
+    }
+
 }
