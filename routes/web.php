@@ -46,7 +46,7 @@ Route::post('/attendance_notices', [HomeController::class, 'attendance_notices']
 
 Route::get('/terms', [HomeController::class, 'terms'])->name('user.terms');
 Route::get('/register', [RegisterController::class, 'index'])->name('user.register');
-Route::get('/register/save', [RegisterController::class, 'save'])->name('user.register.save');
+Route::post('/register/save', [RegisterController::class, 'save'])->name('user.register.save');
 
 
 Route::get('/login', [LoginController::class, 'index'])->name('user.login');

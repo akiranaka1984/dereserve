@@ -33,8 +33,8 @@
                     @csrf
 
                     <input type="hidden" class="form-control" id="frm_id" name="id" required />
-                    <input type="hidden" class="form-control" id="frm_username" name="username" required />
-                    <input type="hidden" class="form-control" id="frm_photo_url" name="photo_url" required />
+                    <input type="hidden" class="form-control" id="frm_username" name="username"  />
+                    <input type="hidden" class="form-control" id="frm_photo_url" name="photo_url"  />
                     <input type="hidden" class="form-control" id="frm_auth_date" name="auth_date" required />
                     <input type="hidden" class="form-control" id="frm_hash" name="hash" required />
 
