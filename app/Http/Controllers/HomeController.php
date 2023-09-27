@@ -515,5 +515,9 @@ class HomeController extends Controller
 
     }
 
+    public function terms(Request $request)
+    {
+        return view('user.terms');
+    }
 
 }

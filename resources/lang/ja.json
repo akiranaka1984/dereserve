@@ -35,5 +35,8 @@
     "Text Data2":"テキストデータ2",
     "Text Data3":"テキストデータ3",
     "Invalid email address":"無効なメールアドレス",
-    "Email not matched":"メールアドレスが一致しません"
+    "Email not matched":"メールアドレスが一致しません",
+    "Firstname":"\u540d",
+    "Lastname":"\u59d3",
+    "Registration":"登録"
 }

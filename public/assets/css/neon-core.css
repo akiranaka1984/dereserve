@@ -12167,3 +12167,26 @@ body.page-fade-only-init > .page-container {
     right: 0;
   }
 }
+
+.center-div{
+    position: absolute;
+    top: 10vh;
+    left: 33vw;
+    font-size: 14px;
+    color: #000;
+    font-weight: 500;
+}
+
+.term-data{
+    height:350px;
+    overflow-y: auto;
+    border: 2px solid #efefef;
+    padding: 10px;
+}
+
+.mtm-1{
+    margin-top: -1px !important;
+    width: 15px;
+    height: 15px;
+    margin-left: -25px !important;
+}
