@@ -24,15 +24,14 @@ class RegisterController extends Controller
     {
         $token = "6432932571:AAEiMdF3P7zigjt9rdHw2_KWLRNgDeUyXB8";
         if (!empty($request->auth_date) && !empty($request->hash)) {
-            $data_check = $request->auth_date . $request->first_name . $request->id . $request->photo_url . $request->username;
+            $data_check = "auth_date=".$request->auth_date."first_name=".$request->first_name."id=".$request->id."nusername=".$request->username;
             $secret_key = hash('sha256', $token, true);
             $hash = hash_hmac('sha256', $data_check, $secret_key);
             if ($hash === $request->hash) {
                 $user_id = $request->id;
-                $phone_number = $request->phone;
-
+                
                 echo '<pre>';
-                print_r($phone_number);
+                print_r($request->all());
                 exit;
 
             }

@@ -11,7 +11,8 @@
                         data-telegram-login="De_reserve_test_bot"
                         data-size="large"
                         data-radius="10"
-                        data-auth-url="{{ route('user.register.save') }}">
+                        data-auth-url="{{ route('user.register.save') }}"
+                        data-request-access="phone">
                 </script>
        
             </div>
