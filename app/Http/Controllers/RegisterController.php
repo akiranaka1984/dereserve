@@ -10,7 +10,7 @@ use App\Models\Companion;
 use App\Models\Attendance;
 use App\Models\Category;
 use App\Models\Price;
-
+use App\Models\User;
 use Session;
 
 class RegisterController extends Controller
