@@ -517,7 +517,7 @@ class HomeController extends Controller
 
     public function terms(Request $request)
     {
-        return view('user.terms');
+        return view('user.terms',['comp_id'=>$request->comp_id]);
     }
 
 }

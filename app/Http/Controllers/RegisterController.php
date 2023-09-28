@@ -17,7 +17,7 @@ class RegisterController extends Controller
 {
     public function index(Request $request)
     {
-        return view('user.register');
+        return view('user.register', ['comp_id'=>$request->comp_id]);
     }
 
     public function save(Request $request)
@@ -25,9 +25,10 @@ class RegisterController extends Controller
         $token = "6432932571:AAEiMdF3P7zigjt9rdHw2_KWLRNgDeUyXB8";
 
         $password = rand('1111','9999').rand('1111','9999');
-        User::create([
-            'name' => $request->lastname.' '.$request->firstname,
+        User::updateOrCreate([
             'username' => $request->id,
+        ],[
+            'name' => $request->lastname.' '.$request->firstname,
             'email' => $request->email,
             'email_verify_status' => 1,
             'password' => bcrypt($password),
@@ -36,8 +37,16 @@ class RegisterController extends Controller
             'role'=>'user'
         ]);
 
-        return redirect()->route('user.register')->with('success', __('Save Changes'));
+        if (Auth::attempt(['username'=>$request->id])) {
+            return redirect()->route('user.web.reservation',['comp_id'=>$request->comp_id])->with('success', __('Save Changes'));
+        }
 
+        return redirect()->back()->with('error', __('Registration details are not valid!'));
+    }
+
+    public function web_reservation(Request $request)
+    {
+        return view('user.web_reservation', ['comp_id'=>$request->comp_id]);
     }
 
 }

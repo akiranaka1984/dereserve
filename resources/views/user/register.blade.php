@@ -31,6 +31,7 @@
                 <form method="post" action="{{ route('user.register.save') }}" role="form" id="form_register" style="display:none;">
                     @csrf
 
+                    <input type="hidden" class="form-control" name="comp_id" value="{{ $comp_id }}" required />
                     <input type="hidden" class="form-control" id="frm_id" name="id" required />
                     <input type="hidden" class="form-control" id="frm_username" name="username"  />
                     <input type="hidden" class="form-control" id="frm_photo_url" name="photo_url"  />
@@ -69,16 +70,6 @@
                     </div>
 
                 </form>
-
-
-                {{-- <script async src="https://telegram.org/js/telegram-widget.js?2"
-                        data-telegram-login="De_reserve_test_bot"
-                        data-size="large"
-                        data-radius="10"
-                        data-auth-url="{{ route('user.register.save') }}"
-                        data-request-access="phone">
-                </script> --}}
-
 
 
             </div>
