@@ -41,7 +41,7 @@ class RegisterController extends Controller
             return redirect()->route('user.web.reservation',['comp_id'=>$request->comp_id])->with('success', __('Save Changes'));
         }
 
-        return redirect()->back()->with('error', __('Registration details are not valid!'));
+        return redirect()->route('user.register',['comp_id'=>$request->comp_id])->with('error', __('Registration details are not valid!'));
     }
 
     public function web_reservation(Request $request)
