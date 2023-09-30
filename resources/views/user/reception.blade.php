@@ -122,7 +122,7 @@
             let id = $(this).attr('data-id')
             $.ajax({
                 type: 'POST',
-                url: `{{ route('admin.reception.list.id') }}`,
+                url: `{{ route('user.reception.list.id') }}`,
                 headers: {"Content-Type": "application/json"},
                 data: JSON.stringify({
                     "_token": "{{ csrf_token() }}",

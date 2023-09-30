@@ -61,6 +61,7 @@ Route::group(['middleware' => ['auth', 'user'], 'prefix' => 'user'], function ()
     Route::get('/dashboard', [UserHistoryController::class,'dashboard'])->name('user.dashbord');
 
     Route::get('/reception/list', [UserReservationController::class,'index'])->name('user.reception.list');
+    Route::post('/reception/list/id', [UserReservationController::class,'getById'])->name('user.reception.list.id');
 
 });
 
