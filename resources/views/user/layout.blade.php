@@ -43,6 +43,7 @@
         <script src="{{ url('/assets/js/fileinput.js') }}"></script>
         <script src="{{ url('/assets/js/custom-alert.js') }}"></script>
         <script src="{{ url('/assets/js/bootstrap-datepicker.js') }}"></script>
+        <script src="{{ url('/assets/js/bootstrap-timepicker.min.js') }}"></script>
         <script src="{{ url('/assets/js/moment.min.js') }}"></script>
         <script src="{{ url('/assets/js/toastr.js') }}"></script>
 

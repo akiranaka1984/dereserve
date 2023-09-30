@@ -41,14 +41,14 @@
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-addon text-light"><i class="entypo-user"></i> </div> 
-                            <input type="email" class="form-control" id="frm_first_name" name="firstname" placeholder="{{__('Firstname')}}" readonly required />
+                            <input type="text" class="form-control" id="frm_first_name" name="firstname" placeholder="{{__('Firstname')}}" readonly required />
                         </div>
                     </div>
 
                       <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-addon text-light"><i class="entypo-user"></i> </div> 
-                            <input type="email" class="form-control" id="frm_last_name" name="lastname" placeholder="{{__('Lastname')}}" readonly required />
+                            <input type="text" class="form-control" id="frm_last_name" name="lastname" placeholder="{{__('Lastname')}}" readonly required />
                         </div>
                     </div>
 

@@ -34,6 +34,9 @@
         <script src="{{ url('/assets/js/sweetalert2.min.js') }}"></script>
         <script src="{{ url('/assets/js/custom-alert.js') }}"></script>
         <script src="{{ url('/assets/js/toastr.js') }}"></script>
+        <script src="{{ url('/assets/js/bootstrap-datepicker.js') }}"></script>
+        <script src="{{ url('/assets/js/bootstrap-timepicker.min.js') }}"></script>
+        <script src="{{ url('/assets/js/moment.min.js') }}"></script>
     </head>
 
     <body class="page-body login-page login-form-fall" > 
