@@ -25,7 +25,7 @@ class RegisterController extends Controller
     {
         $token = "6432932571:AAEiMdF3P7zigjt9rdHw2_KWLRNgDeUyXB8";
 
-        $password = '12345678';
+        $password = '9988776655';
         User::updateOrCreate([
             'username' => $request->id,
         ],[
@@ -69,15 +69,15 @@ class RegisterController extends Controller
                 'hour1' => date('H', strtotime($request->frm_time1)),
                 'minut1' => date('i', strtotime($request->frm_time1)),
             'lady2'=> $request->frm_lady2,
-                'month1' => date('m', strtotime($request->frm_date2)),
-                'day1' => date('d', strtotime($request->frm_date2)),
-                'hour1' => date('H', strtotime($request->frm_time2)),
-                'minut1' => date('i', strtotime($request->frm_time2)),
+                'month2' => date('m', strtotime($request->frm_date2)),
+                'day2' => date('d', strtotime($request->frm_date2)),
+                'hour2' => date('H', strtotime($request->frm_time2)),
+                'minut2' => date('i', strtotime($request->frm_time2)),
             'lady3'=> $request->frm_lady3,
-                'month1' => date('m', strtotime($request->frm_date3)),
-                'day1' => date('d', strtotime($request->frm_date3)),
-                'hour1' => date('H', strtotime($request->frm_time3)),
-                'minut1' => date('i', strtotime($request->frm_time3)),
+                'month3' => date('m', strtotime($request->frm_date3)),
+                'day3' => date('d', strtotime($request->frm_date3)),
+                'hour3' => date('H', strtotime($request->frm_time3)),
+                'minut3' => date('i', strtotime($request->frm_time3)),
             'cource' => $request->frm_course,
             'place' => $request->frm_place,
             'pay' => $request->frm_payment_method,
