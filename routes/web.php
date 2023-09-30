@@ -22,7 +22,7 @@ use App\Http\Controllers\UsersController;
 
 use App\Http\Controllers\UserHistoryController;
 
-Route::get('/', [HomeController::class, 'index'])->name('page.index');
+Route::get('/', [HomeController::class, 'index'])->name('   ');
 Route::get('/main', [HomeController::class, 'main'])->name('page.main');
 Route::get('/details', [HomeController::class, 'details'])->name('page.details');
 Route::get('/attendance_sheet', [HomeController::class, 'attendance_sheet'])->name('page.attendance_sheet');

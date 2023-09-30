@@ -11,6 +11,7 @@ use App\Models\Attendance;
 use App\Models\Category;
 use App\Models\Price;
 use App\Models\User;
+use App\Models\WebReservation;
 use Session;
 
 class RegisterController extends Controller
@@ -57,9 +58,34 @@ class RegisterController extends Controller
 
     public function web_reservation_save(Request $request)
     {
-        echo '<pre>';
-        print_r($request->all());
-        exit;
+        WebReservation::create([
+            'name' => $request->frm_name,
+            'mail' => $request->frm_email,
+            'tel' => $request->frm_tel,
+            'lineid' => $request->frm_line_id,
+            'lady1' => $request->frm_lady1,
+                'month1' => date('m', strtotime($request->frm_date1)),
+                'day1' => date('d', strtotime($request->frm_date1)),
+                'hour1' => date('H', strtotime($request->frm_time1)),
+                'minut1' => date('i', strtotime($request->frm_time1)),
+            'lady2'=> $request->frm_lady2,
+                'month1' => date('m', strtotime($request->frm_date2)),
+                'day1' => date('d', strtotime($request->frm_date2)),
+                'hour1' => date('H', strtotime($request->frm_time2)),
+                'minut1' => date('i', strtotime($request->frm_time2)),
+            'lady3'=> $request->frm_lady3,
+                'month1' => date('m', strtotime($request->frm_date3)),
+                'day1' => date('d', strtotime($request->frm_date3)),
+                'hour1' => date('H', strtotime($request->frm_time3)),
+                'minut1' => date('i', strtotime($request->frm_time3)),
+            'cource' => $request->frm_course,
+            'place' => $request->frm_place,
+            'pay' => $request->frm_payment_method,
+            'contact' => 'LINE',
+            'cmnt' => $request->frm_cmnt
+        ]);
+
+        return redirect()->route('user.login')->with('success', __('Save Changes'));
     }
 
 }
