@@ -11,7 +11,8 @@ class UserReservationController extends Controller
     
     public function index(Request $request)
     {   
-        $webReservations = WebReservation::whereIn('compatible',[0,1,2])->orderBy('id', 'DESC')->get();
+        $is_hidden = 0;
+        $webReservations = WebReservation::where(['user_id'=>Auth::id()])->orderBy('id', 'DESC')->get();
         return view('user.reception', compact('webReservations', 'is_hidden'));
     }
 
