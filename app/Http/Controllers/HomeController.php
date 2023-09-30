@@ -216,8 +216,7 @@ class HomeController extends Controller
         $footer = Pages::where(['name'=>'footer'])->first();
         $movie = Pages::where(['name'=>'movie'])->first();
         $companions = Companion::with(['home_image', 'category'])->where(['status'=>1])->orderBy('id', 'DESC')->take(6)->get();
-        $is_Login = Auth::check() ? true : false;
-        return view('page.movie', compact('header','footer','movie','companions', 'is_login'));
+        return view('page.movie', compact('header','footer','movie','companions'));
     }
 
     public function ranking(Request $request)
