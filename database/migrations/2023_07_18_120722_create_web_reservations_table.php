@@ -19,6 +19,8 @@ class CreateWebReservationsTable extends Migration
             $table->collation = 'utf8mb4_unicode_ci';
 
             $table->id();
+            $table->integer('user_id');
+            $table->integer('comp_id');
             $table->string('name');
             $table->string('mail');
             $table->string('tel');

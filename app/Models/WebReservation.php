@@ -12,6 +12,8 @@ class WebReservation extends Model
     protected $table = 'web_reservations';
 
     protected $fillable = [
+        'user_id',
+        'comp_id',
         'name',
         'mail',
         'tel',

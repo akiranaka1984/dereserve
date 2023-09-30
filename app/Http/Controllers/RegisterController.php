@@ -59,6 +59,8 @@ class RegisterController extends Controller
     public function web_reservation_save(Request $request)
     {
         WebReservation::create([
+            'user_id' => $request->frm_user_id,
+            'comp_id' => $request->frm_comp_id,
             'name' => $request->frm_name,
             'mail' => $request->frm_email,
             'tel' => $request->frm_tel,
