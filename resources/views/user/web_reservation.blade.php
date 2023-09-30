@@ -12,19 +12,19 @@
                     @csrf
 
                     <input type="hidden" class="form-control" name="comp_id" value="{{ $comp_id }}" required />
-                     <input type="hidden" class="form-control" name="user_id" value="{{ $user->id }}" required />
+                     <input type="hidden" class="form-control" name="user_id" value="{{ $users->id }}" required />
 
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-addon text-light"><i class="entypo-user"></i> </div> 
-                            <input type="text" class="form-control" id="frm_first_name" name="firstname" placeholder="{{__('Firstname')}}" value="{{ $user->name }}" readonly required />
+                            <input type="text" class="form-control" id="frm_first_name" name="firstname" placeholder="{{__('Firstname')}}" value="{{ $users->name }}" readonly required />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-addon text-light"><i class="entypo-user"></i> </div> 
-                            <input type="email" class="form-control" name="email" placeholder="{{__('Email address')}}" value="{{ $user->email }}" readonly required />
+                            <input type="email" class="form-control" name="email" placeholder="{{__('Email address')}}" value="{{ $users->email }}" readonly required />
                         </div>
                     </div>
 
