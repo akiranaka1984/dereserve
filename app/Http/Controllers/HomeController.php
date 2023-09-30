@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\Pages;
 use App\Models\Companion;
@@ -517,6 +518,9 @@ class HomeController extends Controller
 
     public function terms(Request $request)
     {
+        if (Auth::check()) {
+            return redirect(route('user.web.reservation',['comp_id'=>$request->comp_id]));
+        }
         return view('user.terms',['comp_id'=>$request->comp_id]);
     }
 
