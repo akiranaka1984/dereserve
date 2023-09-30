@@ -25,12 +25,6 @@
                 <form method="post" action="{{ route('user.login') }}" role="form" id="form_login">
                     @csrf
                    <input type="hidden" class="form-control" id="frm_id" name="id" required />
-                    <div class="form-group"> 
-                        <button type="submit" class="btn btn-primary btn-block btn-login"> 
-                            <i class="entypo-login"></i>
-                            {{__('Log In')}}
-                        </button> 
-                    </div>
                 </form>
 
             </div>
