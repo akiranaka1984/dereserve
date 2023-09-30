@@ -6,7 +6,7 @@
     {!!  $header->text_data2 !!}
     {!!  $header->text_data3 !!}
 
-    @auth
+    @if(auth()->check())
         <article id="ranking">
             <div class="inner">
                 <section class="contents">
@@ -58,7 +58,7 @@
             </div>
         </article>
     @endif
-    
+
     <nav id="breadcrumbs">
         <ul class="contents" itemscope itemtype="http://schema.org/BreadcrumbList">
             <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item"
