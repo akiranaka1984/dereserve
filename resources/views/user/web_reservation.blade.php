@@ -8,22 +8,23 @@
             <div class="tile-stats tile-primary"> 
                 <h1 class="text-light">{{__('Registration')}}</h1>
 
-                <form method="post" action="{{ route('user.register.save') }}" role="form" id="form_register">
+                <form method="post" action="{{ route('user.web.reservation.save') }}" role="form" id="form_register">
                     @csrf
 
                     <input type="hidden" class="form-control" name="comp_id" value="{{ $comp_id }}" required />
+                     <input type="hidden" class="form-control" name="user_id" value="{{ $user->id }}" required />
 
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-addon text-light"><i class="entypo-user"></i> </div> 
-                            <input type="text" class="form-control" id="frm_first_name" name="firstname" placeholder="{{__('Firstname')}}" readonly required />
+                            <input type="text" class="form-control" id="frm_first_name" name="firstname" placeholder="{{__('Firstname')}}" value="{{ $user->name }}" readonly required />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-addon text-light"><i class="entypo-user"></i> </div> 
-                            <input type="email" class="form-control" name="email" placeholder="{{__('Email address')}}" readonly required />
+                            <input type="email" class="form-control" name="email" placeholder="{{__('Email address')}}" value="{{ $user->email }}" readonly required />
                         </div>
                     </div>
 

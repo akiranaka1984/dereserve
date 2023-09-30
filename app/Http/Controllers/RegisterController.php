@@ -55,4 +55,11 @@ class RegisterController extends Controller
         return view('user.web_reservation', compact('comp_id', 'today', 'time', 'prices','users'));
     }
 
+    public function web_reservation_save(Request $request)
+    {
+        echo '<pre>';
+        print_r($request->all());
+        exit;
+    }
+
 }
