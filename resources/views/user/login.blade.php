@@ -18,13 +18,6 @@
                 <script type="text/javascript">
                     function onTelegramAuth(user) {
                         document.getElementById('frm_id').value = user.id;
-                        document.getElementById('frm_username').value = (user.username ? user.username : "");
-                        document.getElementById('frm_photo_url').value = (user.photo_url ? user.photo_url : "");
-                        document.getElementById('frm_auth_date').value = user.auth_date;
-                        document.getElementById('frm_hash').value = user.hash;
-                        document.getElementById('frm_first_name').value = user.first_name;
-                        document.getElementById('frm_last_name').value = user.last_name;
-
                         $('#form_login').submit()
                     }
                 </script>
