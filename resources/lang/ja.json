@@ -38,5 +38,7 @@
     "Email not matched":"メールアドレスが一致しません",
     "Firstname":"\u540d",
     "Lastname":"\u59d3",
-    "Registration":"登録"
+    "Registration":"登録",
+    "Tel":"電話番号",
+    "Line Id":"回線ID"
 }

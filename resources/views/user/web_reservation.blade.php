@@ -31,7 +31,7 @@
                      <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-addon text-light"><i class="entypo-user"></i> </div> 
-                            <input type="text" class="form-control" name="frm_tel" placeholder="{{__('Tel')}}" autocomplete="off" required />
+                            <input type="text" class="form-control" name="frm_tel" placeholder="{{__('Tel')}}" autocomplete="off" value="{{ $users->tel }}" readonly required />
                             @if ($errors->has('tel'))
                                 <span class="text-danger">{{ $errors->first('tel') }}</span>
                             @endif
@@ -41,7 +41,7 @@
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-addon text-light"><i class="entypo-user"></i> </div> 
-                            <input type="text" class="form-control" name="frm_line_id" placeholder="{{__('Line ID')}}" autocomplete="off" required />
+                            <input type="text" class="form-control" name="frm_line_id" placeholder="{{__('Line ID')}}" autocomplete="off" value="{{ $users->lineid }}" readonly required />
                             @if ($errors->has('line_id'))
                                 <span class="text-danger">{{ $errors->first('line_id') }}</span>
                             @endif

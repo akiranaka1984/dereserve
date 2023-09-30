@@ -61,6 +61,26 @@
                             @endif
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon text-light"><i class="entypo-user"></i> </div> 
+                            <input type="text" class="form-control" name="tel" placeholder="{{__('Tel')}}" autocomplete="off" required />
+                            @if ($errors->has('tel'))
+                                <span class="text-danger">{{ $errors->first('tel') }}</span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon text-light"><i class="entypo-user"></i> </div> 
+                            <input type="text" class="form-control" name="lineid" placeholder="{{__('Line ID')}}" autocomplete="off" required />
+                            @if ($errors->has('lineid'))
+                                <span class="text-danger">{{ $errors->first('lineid') }}</span>
+                            @endif
+                        </div>
+                    </div>
                     
                     <div class="form-group"> 
                         <button type="submit" class="btn btn-primary btn-block btn-login"> 

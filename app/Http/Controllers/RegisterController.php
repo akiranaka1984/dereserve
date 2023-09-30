@@ -34,6 +34,8 @@ class RegisterController extends Controller
             'email_verify_status' => 1,
             'password' => bcrypt($password),
             'profile_pics' => (!empty($request->photo_url) ? $request->photo_url : ""),
+            "tel" => $request->tel,
+            "lineid" => $request->lineid,
             'city'=>'jp',
             'role'=>'user'
         ]);

@@ -58,9 +58,10 @@ Route::get('/user/signout', [LoginController::class, 'signout'])->name('user.sig
 
 Route::group(['middleware' => ['auth', 'user'], 'prefix' => 'user'], function () {
     Route::get('/dashboard', [UserHistoryController::class,'dashboard'])->name('user.dashbord');
+
+    
+
 });
-
-
 
 Route::get('/admin/', [AuthController::class, 'index'])->name('admin.login');
 Route::get('/admin/login', [AuthController::class, 'index'])->name('admin.login');
