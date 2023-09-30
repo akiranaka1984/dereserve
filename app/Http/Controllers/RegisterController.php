@@ -25,7 +25,7 @@ class RegisterController extends Controller
     {
         $token = "6432932571:AAEiMdF3P7zigjt9rdHw2_KWLRNgDeUyXB8";
 
-        $password = rand('1111','9999').rand('1111','9999');
+        $password = '12345678';
         User::updateOrCreate([
             'username' => $request->id,
         ],[
