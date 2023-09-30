@@ -62,6 +62,7 @@ Route::group(['middleware' => ['auth', 'user'], 'prefix' => 'user'], function ()
 
     Route::get('/reception/list', [UserReservationController::class,'index'])->name('user.reception.list');
     Route::post('/reception/list/id', [UserReservationController::class,'getById'])->name('user.reception.list.id');
+    Route::get('/reception/delete', [UserReservationController::class,'delete'])->name('user.reception.delete');
 
 });
 

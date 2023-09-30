@@ -180,6 +180,11 @@
                 }
             })
         })
+        
+        $(document).on('click','.delete_btn',function(){
+            let id = $(this).attr('data-id')
+            window.location.href = `{{ route('user.reception.delete') }}?id=`+id;
+        })
 
     })
  </script>       
