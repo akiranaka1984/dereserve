@@ -52,12 +52,7 @@ class RegisterController extends Controller
         $prices = Price::join('categories','categories.id','=','prices.category_id')->selectRaw('*, prices.id')->get();
         
         $users = User::where(['id' =>Auth::id()])->first();
-
-        echo '<pre>';
-        print_r($users);
-        exit;
-
-        return view('user.web_reservation', compact('comp_id', 'today', 'time', 'prices'));
+        return view('user.web_reservation', compact('comp_id', 'today', 'time', 'prices','users'));
     }
 
 }
