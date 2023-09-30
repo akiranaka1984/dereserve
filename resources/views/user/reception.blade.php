@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('user.layout')
 
 @section('content')
     <hr />
