@@ -19,6 +19,7 @@ use App\Http\Controllers\BlogPostController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\UserReservationController;
 
 use App\Http\Controllers\UserHistoryController;
 
@@ -59,7 +60,7 @@ Route::get('/user/signout', [LoginController::class, 'signout'])->name('user.sig
 Route::group(['middleware' => ['auth', 'user'], 'prefix' => 'user'], function () {
     Route::get('/dashboard', [UserHistoryController::class,'dashboard'])->name('user.dashbord');
 
-    
+    Route::get('/reception/list', [UserReservationController::class,'index'])->name('user.reception.list');
 
 });
 
