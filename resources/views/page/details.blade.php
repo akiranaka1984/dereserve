@@ -114,21 +114,6 @@
         </div>
     </div>
 
-    <div class="profile_contents_top mb-3">
-        <div class="contents request_text">
-            <p class="line_bnr">
-                <a href="https://line.me/ti/p/1-RAi6Iy76" target="_blank">
-                    <img src="https://club-firenze.net/theme/default/images/prof_request.jpg" alt="Click here for requests to women outside the office" widh="100%">
-                </a>
-                <br>
-                <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">* Requests can be made even outside of work. </font>
-                    <font style="vertical-align: inherit;">Please tell us the name of the woman you want, the time and place of use.</font>
-                </font>
-            </p>
-        </div>
-    </div>
-
     <nav id="breadcrumbs">
         <ul class="contents" itemscope itemtype="http://schema.org/BreadcrumbList">
             <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item"
