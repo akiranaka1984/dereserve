@@ -7,13 +7,14 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
 use App\Models\BlogPost;
-
+use App\Models\TelegramCred;
 
 class BlogPostController extends Controller
 {
     public function index(Request $request)
     {   
-        return view('admin.blog_post.list');
+        $telegramCred = TelegramCred::where(['id'=>1])->first();
+        return view('admin.blog_post.list', compact('telegramCred'));
     }
 
     public function create(Request $request)
@@ -48,5 +49,18 @@ class BlogPostController extends Controller
         return redirect()->route('admin.blog_post.create',['id'=>$request->template_name])->with('success', __('Save Changes'));
 
     }
+
+    public function telegram(Request $request)
+    {
+        TelegramCred::updateOrCreate([
+            'id'=>1
+        ],[
+            'botname'=>$request->frm_name,
+            'token'=>$request->frm_token
+        ]);
+
+        return redirect()->back()->with('success', __('Save Changes'));
+    }
+    
 
 }

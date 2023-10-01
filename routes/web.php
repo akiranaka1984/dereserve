@@ -146,6 +146,8 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function 
     Route::get('/blog_post/create', [BlogPostController::class,'create'])->name('admin.blog_post.create');
     Route::post('/blog_post/save', [BlogPostController::class,'save'])->name('admin.blog_post.save');
 
+    Route::post('/telegram/save', [BlogPostController::class,'telegram'])->name('admin.telegram.save');
+
     Route::get('/page/list', [PageController::class,'index'])->name('admin.page.list');
     Route::post('/page/save', [PageController::class,'save'])->name('admin.page.save');
 

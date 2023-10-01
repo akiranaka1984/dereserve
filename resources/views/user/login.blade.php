@@ -10,7 +10,7 @@
                 <p class="text-light mb-3">{{__('Log in to your account to continue.')}}</p>
 
                  <script async src="https://telegram.org/js/telegram-widget.js?22" 
-                    data-telegram-login="De_reserve_test_bot" 
+                    data-telegram-login="{{ $telegramCred->botname }}" 
                     data-size="large" 
                     data-onauth="onTelegramAuth(user)" 
                     data-request-access="write">

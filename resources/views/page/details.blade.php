@@ -95,14 +95,14 @@
     
     <div class="profile_contents_top">
         <div class="contents">
-            <article id="movie" class="inner">
+            {{-- <article id="movie" class="inner">
                 <h2 class="ttl"><span>動画</span></h2>
                 <div class="prime_txt">
                     <p class="btn mincho">
                         <a href="{{ route('page.movie') }}" target="_blank">新規会員登録の方はこちらから</a>
                     </p>
                 </div>
-            </article>
+            </article> --}}
             <article id="gravure" class="inner">
                 <h2 class="ttl"><span>オンライン予約</span></h2>
                 <div class="prime_txt">

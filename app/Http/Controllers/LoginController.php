@@ -11,6 +11,7 @@ use App\Models\Attendance;
 use App\Models\Category;
 use App\Models\Price;
 use App\Models\User;
+use App\Models\TelegramCred;
 
 use Session;
 
@@ -21,7 +22,8 @@ class LoginController extends Controller
         if (Auth::check()) {
             return redirect(route('user.dashbord'));
         }
-        return view('user.login');
+        $telegramCred = TelegramCred::where(['id'=>1])->first();
+        return view('user.login', ['telegramCred'=>$telegramCred]);
     }
 
     public function login(Request $request)

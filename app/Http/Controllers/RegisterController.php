@@ -12,13 +12,15 @@ use App\Models\Category;
 use App\Models\Price;
 use App\Models\User;
 use App\Models\WebReservation;
+use App\Models\TelegramCred;
 use Session;
 
 class RegisterController extends Controller
 {
     public function index(Request $request)
     {
-        return view('user.register', ['comp_id'=>$request->comp_id]);
+        $telegramCred = TelegramCred::where(['id'=>1])->first();
+        return view('user.register', ['comp_id'=>$request->comp_id, 'telegramCred'=>$telegramCred]);
     }
 
     public function save(Request $request)
