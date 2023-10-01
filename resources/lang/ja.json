@@ -41,5 +41,6 @@
     "Registration":"登録",
     "Tel":"電話番号",
     "Line Id":"回線ID",
-    "Web regervation are not valid":"Web予約は無効です"
+    "Web regervation are not valid":"Web予約は無効です",
+    "Place":"場所"
 }
