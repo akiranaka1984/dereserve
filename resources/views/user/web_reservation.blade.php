@@ -121,25 +121,10 @@
                         </div>
                     </div>
 
-                    <div class="form-group text-left"> 
-                        <label for="frmCourse" class="control-label">ご希望のコース</label>
+                    <div class="form-group text-left">
+                        <label for="frmPaymentMethod" class="control-label">お支払方法</label>
                         <div class="frm-inpt"> 
-                            <select name="frm_course" class="form-control" id="frmCourse" requierd>
-                                <option value="">選択してください</option>
-                                @foreach($prices as $price)
-                                    <option value="{{ $price->name }} {{ $price->time_interval }}">{{ $price->name }} {{ $price->time_interval }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-addon text-light"><i class="entypo-user"></i> </div> 
-                            <input type="text" class="form-control" name="frm_place" placeholder="{{__('Place')}}" autocomplete="off" required />
-                            @if ($errors->has('place'))
-                                <span class="text-danger">{{ $errors->first('place') }}</span>
-                            @endif
+                            <input type="text" class="form-control" name="frm_place" autocomplete="off" required />
                         </div>
                     </div>
 
