@@ -133,17 +133,6 @@
                     </div>
 
                     <div class="form-group text-left"> 
-                        <label for="frmPaymentMethod" class="control-label">お支払方法</label>
-                        <div class="frm-inpt"> 
-                            <select name="frm_payment_method" class="form-control" id="frmPaymentMethod" requierd>
-                                <option value="">選択してください</option>
-                                <option value="現金">現金</option>
-                                <option value="クレジットカード">クレジットカード</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group text-left"> 
                         <label for="frmOthers" class="control-label">その他</label>
                         <div class="frm-inpt"> 
                             <textarea name="frm_cmnt" class="form-control" id="frmOthers" rows="5" placeholder=""></textarea>

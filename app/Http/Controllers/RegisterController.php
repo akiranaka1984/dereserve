@@ -25,8 +25,6 @@ class RegisterController extends Controller
 
     public function save(Request $request)
     {
-        $token = "6432932571:AAEiMdF3P7zigjt9rdHw2_KWLRNgDeUyXB8";
-
         $password = '9988776655';
         User::updateOrCreate([
             'username' => $request->id,
