@@ -42,5 +42,8 @@
     "Tel":"電話番号",
     "Line Id":"回線ID",
     "Web regervation are not valid":"Web予約は無効です",
-    "Place":"場所"
+    "Place":"場所",
+    "please enter valid email address":"有効なメールアドレスを入力してください",
+    "please enter valid mobile":"有効な携帯電話を入力してください",
+    "please enter valid Line ID":"有効な回線IDを入力してください"
 }

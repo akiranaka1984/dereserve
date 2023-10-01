@@ -57,42 +57,74 @@
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-addon text-light"><i class="entypo-user"></i> </div> 
-                            <input type="email" class="form-control" name="email" placeholder="{{__('Email address')}}" autocomplete="off" required />
-                            @if ($errors->has('email'))
-                                <span class="text-danger">{{ $errors->first('email') }}</span>
-                            @endif
+                            <input type="email" class="form-control frm_input_email" name="email" placeholder="{{__('Email address')}}" autocomplete="off" required />
+                          
                         </div>
+                        <div id="emailError" class="form-text text-danger text-left" style="display:none;">{{ __('please enter valid email address') }}</div>
                     </div>
 
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-addon text-light"><i class="entypo-user"></i> </div> 
-                            <input type="text" class="form-control" name="tel" placeholder="{{__('Tel')}}" autocomplete="off" required />
-                            @if ($errors->has('tel'))
-                                <span class="text-danger">{{ $errors->first('tel') }}</span>
-                            @endif
+                            <input type="text" class="form-control frm_input_tel" name="tel" placeholder="{{__('Tel')}}" autocomplete="off" required />
                         </div>
+                        <div id="mobileError" class="form-text text-danger text-left" style="display:none;">{{ __('please enter valid mobile') }}</div>
                     </div>
 
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-addon text-light"><i class="entypo-user"></i> </div> 
-                            <input type="text" class="form-control" name="lineid" placeholder="{{__('Line ID')}}" autocomplete="off" required />
-                            @if ($errors->has('lineid'))
-                                <span class="text-danger">{{ $errors->first('lineid') }}</span>
-                            @endif
+                            <input type="text" class="form-control frm_input_lineid" name="lineid" placeholder="{{__('Line ID')}}" autocomplete="off" required />
                         </div>
+                        <div id="lineidError" class="form-text text-danger text-left" style="display:none;">{{ __('please enter valid Line ID') }}</div>
                     </div>
                     
                     <div class="form-group"> 
-                        <button type="submit" class="btn btn-primary btn-block btn-login"> 
+                        <button type="button" class="btn btn-primary btn-block btn-register"> 
                             <i class="entypo-login"></i>
-                            {{__('Log In')}}
+                            {{__('SAVE')}}
                         </button> 
                     </div>
 
                 </form>
 
+                <script type="text/javascript">
+                    $(document).ready(function(){
+                        $(document).on('click','.btn-register', function(){
+                            let frm_email = $('.frm_input_email').val()
+                            let frm_tel = $('.frm_input_tel').val()
+                            let frm_lineid = $('.frm_input_lineid').val()
+                            
+                            $('#emailError').hide()
+                            $('#mobileError').hide()
+                             $('#lineidError').hide()
+                            if(frm_email){
+                                let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                                if (emailPattern.test(frm_email)) {
+                                    if(frm_tel){
+                                        let phonePattern = /^\d{10}$/;                                            
+                                        if (phonePattern.test(frm_tel)) {
+                                            if(frm_lineid){
+                                                 $('#lineidError').hide()
+                                                 $('#form_register').submit()
+                                            }else{
+                                                $('#lineidError').show()
+                                            }
+                                        }else{
+                                            $('#mobileError').show()
+                                        }
+                                    }else{
+                                        $('#mobileError').show()
+                                    }
+                                }else{
+                                    $('#emailError').show() 
+                                }
+                            }else{
+                                $('#emailError').show()
+                            }
+                        })
+                    })
+                </script>
 
             </div>
         </div>
