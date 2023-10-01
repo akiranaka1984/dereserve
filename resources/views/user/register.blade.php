@@ -27,6 +27,8 @@
                         $('#form_register').show()
                     }
                 </script>
+                
+                <br/>
 
                 <form method="post" action="{{ route('user.register.save') }}" role="form" id="form_register" style="display:none;">
                     @csrf

@@ -91,7 +91,12 @@ class RegisterController extends Controller
             'cmnt' => $request->frm_cmnt
         ]);
 
-        return redirect()->route('user.login')->with('success', __('Save Changes'));
+        if (Auth::check()) {
+            return redirect(route('user.dashbord'));
+        }
+
+        return redirect()->back()->with('error', __('Web regervation are not valid!'));
+
     }
 
 }
