@@ -52,12 +52,14 @@ class RegisterController extends Controller
     {
         $today = date('Y-m-d');
         $time = date('H:i:s');
+        $month=date('m');
+        $day = date('d');
         $header = Pages::where(['name'=>'header'])->first();
         $footer = Pages::where(['name'=>'footer'])->first();
         $prices = Price::join('categories','categories.id','=','prices.category_id')->selectRaw('*, prices.id')->get();
         
         $users = User::where(['id' =>Auth::id()])->first();
-        return view('user.web_reservation', compact('header', 'footer', 'today', 'time', 'prices','users'));
+        return view('user.web_reservation', compact('header', 'footer', 'month', 'day', 'today', 'time', 'prices','users'));
     }
 
     public function web_reservation_save(Request $request)
