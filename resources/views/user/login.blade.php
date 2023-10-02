@@ -33,12 +33,13 @@
                         </div>
                     </div>
                     <div class="form-group"> 
-                        <button type="submit" class="btn btn-primary btn-block btn-login"> 
+                        <button type="submit" class="btn btn-primary btn-lg btn-block btn-login"> 
                             <i class="entypo-login"></i>
                             {{__('Log In')}}
                         </button> 
                     </div>
                 </form>
+                <hr/>
                 <div class="login-bottom-links"> 
                     <a href="{{ route('user.register') }}" class="link">{{__('Registration')}}</a>
                 </div>

@@ -94,13 +94,14 @@
                     </div>
                     
                     <div class="form-group"> 
-                        <button type="submit" class="btn btn-primary btn-block btn-register"> 
+                        <button type="submit" class="btn btn-primary btn-lg btn-block btn-register"> 
                             <i class="entypo-login"></i>
                             {{__('SAVE')}}
                         </button> 
                     </div>
 
                 </form>
+                <hr/>
                 <div class="login-bottom-links"> 
                     <a href="{{ route('user.login') }}" class="link">{{__('Sign In')}}</a>
                 </div>
