@@ -25,23 +25,23 @@
                     <dl class="clearfix">
                         <dt>お名前(登録希望名)<span>*必須</span></dt>
                         <dd class="frm-inpt">
-                            <input type="text" name="reserve_name" placeholder="例)　田中" class="" value="{{ $users->name }}" data-prompt-position="topLeft" >
+                            <input type="text" name="reserve_name" placeholder="例)　田中" class="" value="{{ $users->name }}" data-prompt-position="topLeft" readonly >
                         </dd>
                         <dt>メールアドレス<span>*必須</span></dt>
                         <dd class="frm-inpt">
-                            <input type="text" name="reserve_mail" placeholder="例)　xxx-xxx@xxxxx.ne.jp" value="{{ $users->email }}" class="" id="reserveMail" data-prompt-position="topLeft">
+                            <input type="text" name="reserve_mail" placeholder="例)　xxx-xxx@xxxxx.ne.jp" value="{{ $users->email }}" class="" id="reserveMail" data-prompt-position="topLeft" readonly>
                         </dd>
                         <dt>メールアドレス確認用<span>*必須</span></dt>
                         <dd class="frm-inpt">
-                            <input type="text" name="reserve_mail2" placeholder="確認のため再度ご入力ください" value="{{ $users->email }}" class="" data-prompt-position="topLeft">
+                            <input type="text" name="reserve_mail2" placeholder="確認のため再度ご入力ください" value="{{ $users->email }}" class="" data-prompt-position="topLeft" readonly>
                         </dd>
                         <dt>お電話番号<span>*必須</span></dt>
                         <dd class="frm-inpt">
-                            <input type="text" name="reserve_tel" placeholder="例)　080-1234-5678" value="{{ $users->tel }}" class="" data-prompt-position="topLeft">
+                            <input type="text" name="reserve_tel" placeholder="例)　080-1234-5678" value="{{ $users->tel }}" class="" data-prompt-position="topLeft" readonly>
                         </dd>
                         <dt>LINE ID</dt>
                         <dd>
-                            <input type="text" name="reserve_lineid" value="{{ $users->lineid }}" >
+                            <input type="text" name="reserve_lineid" value="{{ $users->lineid }}" readonly>
                             <span class="linetxt">当クラブのLINE(アカウント名○○○○)より連絡をご希望の場合は、ID検索許可に設定の上、こちらにご入力ください。</span>
                         </dd>
                         <dt>ご予約希望女性<span>*必須</span></dt>
