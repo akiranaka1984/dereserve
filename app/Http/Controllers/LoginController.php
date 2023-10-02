@@ -37,7 +37,7 @@ class LoginController extends Controller
 
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            if (Auth::attempt(['email'=>$request->email, 'password'=>$request->password, 'status' => 1])) {
+            if (Auth::attempt(['email'=>$request->email, 'password'=>$request->password, 'role'=>'user', 'status' => 1])) {
                 if($request->wbr == 1){
                     return redirect(route('user.web.reservation'));
                 }else{
