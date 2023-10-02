@@ -381,7 +381,7 @@ class HomeController extends Controller
     }
     
     public function reservation(Request $request)
-    {
+    {   
         $header = Pages::where(['name'=>'header'])->first();
         $footer = Pages::where(['name'=>'footer'])->first();
         $month=date('m');

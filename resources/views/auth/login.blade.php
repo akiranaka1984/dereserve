@@ -27,7 +27,6 @@
                                 <span class="text-danger">{{ $errors->first('password') }}</span>
                             @endif
                         </div>
-
                     </div>
                     <div class="form-group"> 
                         <button type="submit" class="btn btn-primary btn-block btn-login"> 

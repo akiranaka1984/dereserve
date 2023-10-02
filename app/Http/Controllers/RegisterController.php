@@ -27,14 +27,13 @@ class RegisterController extends Controller
 
     public function save(Request $request)
     {
-        $password = '9988776655';
         User::updateOrCreate([
             'username' => $request->id,
         ],[
             'name' => $request->lastname.' '.$request->firstname,
             'email' => $request->email,
             'email_verify_status' => 1,
-            'password' => bcrypt($password),
+            'password' => bcrypt($request->password),
             'profile_pics' => (!empty($request->photo_url) ? $request->photo_url : ""),
             "tel" => $request->tel,
             "lineid" => $request->lineid,
