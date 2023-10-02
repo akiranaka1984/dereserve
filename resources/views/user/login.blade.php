@@ -11,6 +11,9 @@
 
                 <form method="post" action="{{ route('user.login') }}" role="form" id="form_login">
                     @csrf
+
+                    <input type="hidden" class="form-control" name="wbr" value="{{ $wbr }}" required />
+
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-addon text-light"><i class="entypo-user"></i> </div> 
