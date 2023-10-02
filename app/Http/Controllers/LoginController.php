@@ -22,8 +22,10 @@ class LoginController extends Controller
         if (Auth::check()) {
             return redirect(route('user.dashbord'));
         }
+
+        $wbr = !empty($request->wbr) ? 1 : 0;
         $telegramCred = TelegramCred::where(['id'=>1])->first();
-        return view('user.login', ['telegramCred'=>$telegramCred]);
+        return view('user.login', ['telegramCred'=>$telegramCred, 'wbr'=>$wbr]);
     }
 
     public function login(Request $request)
@@ -36,7 +38,11 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             if (Auth::attempt(['email'=>$request->email, 'password'=>$request->password, 'status' => 1])) {
-                return redirect(route('user.dashbord'));
+                if($request->wbr == 1){
+                    return redirect(route('user.web.reservation'));
+                }else{
+                    return redirect(route('user.dashbord'));
+                }
             }
         }
         return redirect()->back()->with('error', __('Login details are not valid!'));
