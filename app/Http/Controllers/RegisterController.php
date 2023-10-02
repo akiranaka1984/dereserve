@@ -13,6 +13,8 @@ use App\Models\Price;
 use App\Models\User;
 use App\Models\WebReservation;
 use App\Models\TelegramCred;
+use App\Models\BlogPost;
+
 use Session;
 
 class RegisterController extends Controller
@@ -20,7 +22,7 @@ class RegisterController extends Controller
     public function index(Request $request)
     {
         $telegramCred = TelegramCred::where(['id'=>1])->first();
-        return view('user.register', ['comp_id'=>$request->comp_id, 'telegramCred'=>$telegramCred]);
+        return view('user.register', ['telegramCred'=>$telegramCred]);
     }
 
     public function save(Request $request)
@@ -41,7 +43,7 @@ class RegisterController extends Controller
         ]);
 
         if (Auth::attempt(['username'=>$request->id, 'password'=>$password, 'status' => 1])) {
-            return redirect()->route('user.web.reservation',[ 'comp_id'=>$request->comp_id])->with('success', __('Save Changes'));
+            return redirect()->route('user.web.reservation')->with('success', __('Save Changes'));
         }
 
         return redirect()->route('user.register',['comp_id'=>$request->comp_id])->with('error', __('Registration details are not valid!'));
@@ -51,16 +53,16 @@ class RegisterController extends Controller
     {
         $today = date('Y-m-d');
         $time = date('H:i:s');
-        $comp_id = $request->comp_id;
         $prices = Price::join('categories','categories.id','=','prices.category_id')->selectRaw('*, prices.id')->get();
         
         $users = User::where(['id' =>Auth::id()])->first();
-        return view('user.web_reservation', compact('comp_id', 'today', 'time', 'prices','users'));
+        return view('user.web_reservation', compact('today', 'time', 'prices','users'));
     }
 
     public function web_reservation_save(Request $request)
     {
-        WebReservation::create([
+       
+        $webReservation = WebReservation::create([
             'user_id' => $request->frm_user_id,
             'comp_id' => $request->frm_comp_id,
             'name' => $request->frm_name,
@@ -90,6 +92,44 @@ class RegisterController extends Controller
         ]);
 
         if (Auth::check()) {
+            $user = User::where(['id'=>Auth::id()])->first();
+            $telegramCred = TelegramCred::where(['id'=>1])->first();
+            $blogPost = BlogPost::where(['id'=>5])->first();
+            $content = $blogPost->content;
+            $sender_name = $blogPost->sender_name;
+            $sender_address = $blogPost->sender_address;
+
+            $content = str_replace('%reserve_name%', $webReservation->name, $content);
+            $content = str_replace('%reserve_tel%', $webReservation->tel, $content);
+            $content = str_replace('%reserve_tel1%', $webReservation->tel, $content);
+            $content = str_replace('%reserve_mail%', $webReservation->mail, $content);
+            $content = str_replace('%reserve_cmnt%', $webReservation->cmnt, $content);
+            $content = str_replace('%rec_cmnt%', $webReservation->cmnt, $content);
+            $content = str_replace('%reserve_date%', date('Y-m-d', strtotime($webReservation->created_at)), $content);
+
+            $content = str_replace('%common_mail%', $sender_address, $content);
+            $content = str_replace('%shop_name%', $sender_name, $content);
+            $content = str_replace('%shop_tel%', "03-6868-5149", $content);
+            $content = str_replace('%shop_open%', "12:00", $content);
+            $content = str_replace('%shop_finish%', "05:00", $content);
+            $content = str_replace('%shop_url%', "https://club-firenze.net", $content);
+            $content = strip_tags($content);
+            
+            $curl = curl_init();
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => 'https://api.telegram.org/bot'.$telegramCred->token.'/sendmessage?chat_id='.$user->username.'&text='.urlencode($content),
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'GET',
+            ));
+            
+            $response = curl_exec($curl);
+            curl_close($curl);
+
             return redirect(route('user.dashbord'));
         }
 

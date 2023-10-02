@@ -39,8 +39,8 @@
                                 <label class="cb-wrapper"> <input type="checkbox" class="mtm-1">虎の穴プライム会員規約に同意する</label> 
                             </div>
                         </div>
-                        <a href="{{ route('user.register',['comp_id'=>$comp_id]) }}" class="btn btn-blue btn-lg btn-block register_btn" disabled>会員登録へ</a>
-                        <a href="{{ route('user.login',['comp_id'=>$comp_id]) }}" class="btn btn-blue btn-lg btn-block">同意しない</a>
+                        <a href="{{ route('user.register') }}" class="btn btn-blue btn-lg btn-block register_btn" disabled>会員登録へ</a>
+                        <a href="{{ route('user.login') }}" class="btn btn-blue btn-lg btn-block">同意しない</a>
                     </div>
                 </div>
             </div>

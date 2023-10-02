@@ -11,8 +11,7 @@
                 <form method="post" action="{{ route('user.web.reservation.save') }}" role="form" id="form_register">
                     @csrf
 
-                    <input type="hidden" class="form-control" name="frm_comp_id" value="{{ $comp_id }}" required />
-                     <input type="hidden" class="form-control" name="frm_user_id" value="{{ $users->id }}" required />
+                    <input type="hidden" class="form-control" name="frm_user_id" value="{{ $users->id }}" required />
 
                     <div class="form-group">
                         <div class="input-group">

@@ -521,7 +521,7 @@ class HomeController extends Controller
         if (Auth::check()) {
             return redirect(route('user.web.reservation',['comp_id'=>$request->comp_id]));
         }
-        return view('user.terms',['comp_id'=>$request->comp_id]);
+        return view('user.terms');
     }
 
 }

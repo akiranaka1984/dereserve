@@ -20,7 +20,6 @@ class CreateWebReservationsTable extends Migration
 
             $table->id();
             $table->integer('user_id');
-            $table->integer('comp_id');
             $table->string('name');
             $table->string('mail');
             $table->string('tel');
