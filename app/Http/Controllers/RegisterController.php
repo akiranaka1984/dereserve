@@ -120,6 +120,9 @@ class RegisterController extends Controller
         ]);
 
         if (Auth::check()) {
+
+            dispatch(new WebReservationJob(['webReservation'=>$webReservation]));
+            
             // $user = User::where(['id'=>Auth::id()])->first();
             // $telegramCred = TelegramCred::where(['id'=>1])->first();
             // $blogPost = BlogPost::where(['id'=>5])->first();
@@ -142,21 +145,6 @@ class RegisterController extends Controller
             // $content = str_replace('%shop_finish%', "05:00", $content);
             // $content = str_replace('%shop_url%', "https://club-firenze.net", $content);
             // $content = strip_tags($content);
-            
-            // $curl = curl_init();
-            // curl_setopt_array($curl, array(
-            //     CURLOPT_URL => 'https://api.telegram.org/bot'.$telegramCred->token.'/sendmessage?chat_id='.$user->username.'&text='.urlencode($content),
-            //     CURLOPT_RETURNTRANSFER => true,
-            //     CURLOPT_ENCODING => '',
-            //     CURLOPT_MAXREDIRS => 10,
-            //     CURLOPT_TIMEOUT => 0,
-            //     CURLOPT_FOLLOWLOCATION => true,
-            //     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            //     CURLOPT_CUSTOMREQUEST => 'GET',
-            // ));
-            
-            // $response = curl_exec($curl);
-            // curl_close($curl);
 
             return redirect(route('user.reception.list'));
         }

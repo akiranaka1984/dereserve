@@ -14,7 +14,7 @@
         <link rel="apple-touch-icon" href="{{ url('/assets/images/dIcon.png') }}">
         <link rel="icon" href="{{ url('/assets/images/favicon.ico') }}">
 
-        <link rel="stylesheet" href="{{ url('/assets/css/style.css') }}">
+        <link rel="stylesheet" href="{{ url('/assets/css/style.css') }}?v=1.1">
         <link rel="stylesheet" href="{{ url('/assets/css/index.css') }}">
         <link rel="stylesheet" href="{{ url('/assets/css/detail.css') }}">
         <link rel="stylesheet" href="{{ url('/assets/css/ranking.css') }}">
