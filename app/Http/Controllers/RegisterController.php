@@ -41,7 +41,7 @@ class RegisterController extends Controller
             'role'=>'user'
         ]);
 
-        if (Auth::attempt(['username'=>$request->id, 'password'=>$password, 'status' => 1])) {
+        if (Auth::attempt(['email'=>$request->email, 'password'=>$password->password, 'status' => 1])) {
             return redirect()->route('user.web.reservation')->with('success', __('Save Changes'));
         }
 
