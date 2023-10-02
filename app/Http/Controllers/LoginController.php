@@ -28,10 +28,14 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $user = User::where(['username' => $request->id])->first();
-        $password = '9988776655';
-        if($user != null){
-            if (Auth::attempt(['username'=>$request->id, 'password'=>$password, 'status' => 1])) {
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            if (Auth::attempt(['email'=>$request->email, 'password'=>$password, 'status' => 1])) {
                 return redirect(route('user.dashbord'));
             }
         }
