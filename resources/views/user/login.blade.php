@@ -39,7 +39,9 @@
                         </button> 
                     </div>
                 </form>
-
+                <div class="login-bottom-links"> 
+                    <a href="{{ route('user.register') }}" class="link">{{__('Registration')}}</a>
+                </div>
             </div>
         </div>
     </div>

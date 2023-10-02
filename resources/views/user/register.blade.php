@@ -101,7 +101,9 @@
                     </div>
 
                 </form>
-
+                <div class="login-bottom-links"> 
+                    <a href="{{ route('user.login') }}" class="link">{{__('Sign In')}}</a>
+                </div>
             </div>
         </div>
     </div>

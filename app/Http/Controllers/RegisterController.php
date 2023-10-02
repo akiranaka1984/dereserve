@@ -27,19 +27,36 @@ class RegisterController extends Controller
 
     public function save(Request $request)
     {
-        User::updateOrCreate([
-            'username' => $request->id,
-        ],[
-            'name' => $request->lastname.' '.$request->firstname,
-            'email' => $request->email,
-            'email_verify_status' => 1,
-            'password' => bcrypt($request->password),
-            'profile_pics' => (!empty($request->photo_url) ? $request->photo_url : ""),
-            "tel" => $request->tel,
-            "lineid" => $request->lineid,
-            'city'=>'jp',
-            'role'=>'user'
-        ]);
+        $user = User::where(['username' => $request->id])->first();
+        if($user == null){
+            User::create([
+                'username' => $request->id,
+                'name' => $request->lastname.' '.$request->firstname,
+                'email' => $request->email,
+                'email_verify_status' => 1,
+                'password' => bcrypt($request->password),
+                'profile_pics' => (!empty($request->photo_url) ? $request->photo_url : ""),
+                "tel" => $request->tel,
+                "lineid" => $request->lineid,
+                'city'=>'jp',
+                'role'=>'user'
+            ]);
+
+        }else{
+            User::where([
+                'username' => $request->id
+            ])->update([
+                'name' => $request->lastname.' '.$request->firstname,
+                'email' => $request->email,
+                'email_verify_status' => 1,
+                'password' => bcrypt($request->password),
+                'profile_pics' => (!empty($request->photo_url) ? $request->photo_url : ""),
+                "tel" => $request->tel,
+                "lineid" => $request->lineid,
+                'city'=>'jp',
+                'role'=>'user'
+            ]);
+        }
 
         if (Auth::attempt(['email'=>$request->email, 'password'=>$request->password, 'status' => 1])) {
             return redirect()->route('user.web.reservation')->with('success', __('Save Changes'));
@@ -95,7 +112,12 @@ class RegisterController extends Controller
             'cmnt' => $request->reserve_cmnt
         ]);
 
-
+        User::where(['id' => $request->frm_user_id])->update([
+            'place' => $request->reserve_place,
+            'pay' => $request->reserve_pay,
+            'contact' => $request->reserve_contact,
+            'cmnt' => $request->reserve_cmnt
+        ]);
 
         if (Auth::check()) {
             // $user = User::where(['id'=>Auth::id()])->first();
