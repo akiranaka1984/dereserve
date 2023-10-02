@@ -136,7 +136,7 @@ class RegisterController extends Controller
             // $response = curl_exec($curl);
             // curl_close($curl);
 
-            return redirect(route('user.dashbord'));
+            return redirect(route('user.reception.list'));
         }
 
         return redirect()->back()->with('error', __('Web regervation are not valid!'));

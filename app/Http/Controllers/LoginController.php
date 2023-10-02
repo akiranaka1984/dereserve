@@ -20,7 +20,7 @@ class LoginController extends Controller
     public function index(Request $request)
     {
         if (Auth::check()) {
-            return redirect(route('user.dashbord'));
+            return redirect(route('user.reception.list'));
         }
 
         $wbr = !empty($request->wbr) ? 1 : 0;
@@ -41,7 +41,7 @@ class LoginController extends Controller
                 if($request->wbr == 1){
                     return redirect(route('user.web.reservation'));
                 }else{
-                    return redirect(route('user.dashbord'));
+                    return redirect(route('user.reception.list'));
                 }
             }
         }
