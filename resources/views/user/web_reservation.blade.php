@@ -365,14 +365,14 @@
 					<p class="contact_bottom_txt"><em>※確認画面は表示されませんので、送信前に内容のご確認をお願い致します。</em><br>
                         ※ドメイン指定受信されているお客様は「info@club-firenze.net」からのメールを受信できるよう、設定の変更をお願い致します。</p>
 					
-                    {{-- <div id="reserve_btn">
+                    <div id="reserve_btn">
                         <div class="g-recaptcha" data-callback="syncerRecaptchaCallback" data-sitekey="6LfSKB4eAAAAAOfyQgh9NS9c1-SHhtCFsTMiNQsr">
                             <div style="width: 304px; height: 78px;"><div>
                                 <iframe title="reCAPTCHA" src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LfSKB4eAAAAAOfyQgh9NS9c1-SHhtCFsTMiNQsr&amp;co=aHR0cHM6Ly9jbHViLWZpcmVuemUubmV0OjQ0Mw..&amp;hl=en&amp;v=3kTz7WGoZLQTivI-amNftGZO&amp;size=normal&amp;cb=xqn7un5p8edf" width="304" height="78" role="presentation" name="a-80082gkzxcsp" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation"></iframe>
                             </div>
                             <textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
                         </div>
-                    </div> --}}
+                    </div>
 
                     <input type="hidden" name="reserve"> 
                     <button name="submit" >上記内容を送信する</button>
