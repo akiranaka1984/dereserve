@@ -21,6 +21,7 @@ class CreateTelegramCredsTable extends Migration
             $table->id();
             $table->string('botname');
             $table->string('token');
+            $table->string('brodcast_id')->nullable();
             $table->timestamps();
         });
     }

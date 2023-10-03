@@ -25,6 +25,10 @@
                         <div class="form-group"> <label for="frmToken" class="col-sm-3 control-label">テレグラムボットトークン<span class="text-danger">※必須</span></label>
                             <div class="col-sm-8 frm-inpt"> <input type="text" name="frm_token" class="form-control" id="frmToken" placeholder="Telegram ボットのトークンを入力してください。" value="{{ !empty($telegramCred) ? $telegramCred->token : '' }}" required> </div>
                         </div>
+                        <hr/>
+                        <div class="form-group"> <label for="frmBrodcastId" class="col-sm-3 control-label">ブロードキャストまたはグループID<span class="text-danger">※必須</span></label>
+                            <div class="col-sm-8 frm-inpt"> <input type="text" name="frm_brod_id" class="form-control" id="frmBrodcastId" placeholder="ブロードキャストまたはグループID" value="{{ !empty($telegramCred) ? $telegramCred->brodcast_id : '' }}"> </div>
+                        </div>
                         <div class="col-md-3 mt-3">
                             <button type="submit" class="btn btn-orange btn-icon-align">
                                 <svg class="bi bi-plus-circle-fill"fill=currentColor height=16 viewBox="0 0 16 16"width=16 xmlns=http://www.w3.org/2000/svg><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/></svg>

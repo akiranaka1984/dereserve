@@ -85,7 +85,8 @@ class TelegramController extends Controller
             'id'=>1
         ],[
             'botname'=>$request->frm_name,
-            'token'=>$request->frm_token
+            'token'=>$request->frm_token,
+            'brodcast_id'=>$request->frm_brod_id
         ]);
 
         return redirect()->back()->with('success', __('Save Changes'));

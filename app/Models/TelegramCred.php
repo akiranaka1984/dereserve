@@ -13,7 +13,8 @@ class TelegramCred extends Model
 
     protected $fillable = [
         'botname',
-        'token'
+        'token',
+        'brodcast_id'
     ];
 
 }

@@ -35,6 +35,30 @@ class SentToTelegramJob implements ShouldQueue
 
        $telegramCred = TelegramCred::where(['id'=>1])->first();
 
+       if(!empty($telegramCred->brodcast_id)){
+            $mail_content = str_replace('%common_mail%', 'info@club-firenze.net', $mail_content_old);
+            $mail_content = str_replace('%shop_name%', '東京 会員制高級デリヘル【Firenze〜フィレンツェ〜】', $mail_content);
+            $mail_content = str_replace('%shop_tel%', "03-6868-5149", $mail_content);
+            $mail_content = str_replace('%shop_open%', "12:00", $mail_content);
+            $mail_content = str_replace('%shop_finish%', "05:00", $mail_content);
+            $mail_content = str_replace('%shop_url%', "https://club-firenze.net", $mail_content);
+            $mail_content = strip_tags($mail_content);
+
+            $curl = curl_init();
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => 'https://api.telegram.org/bot'.$telegramCred->token.'/sendmessage?chat_id='.$telegramCred->brodcast_id.'&text='.urlencode($mail_content),
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'GET',
+            ));
+            $response = curl_exec($curl);
+            curl_close($curl);
+        }
+
         $users = User::all();
         foreach($users as $user){
             $mail_content = str_replace('%name%', $user->name, $mail_content_old);
@@ -62,9 +86,5 @@ class SentToTelegramJob implements ShouldQueue
             curl_close($curl);
         }
 
-      
-        
-
-       
     }
 }
