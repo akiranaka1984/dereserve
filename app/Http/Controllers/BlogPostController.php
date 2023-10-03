@@ -70,17 +70,6 @@ class BlogPostController extends Controller
         return redirect()->back()->with('success', __('Save Changes'));
     }
 
-    public function telegram(Request $request)
-    {
-        TelegramCred::updateOrCreate([
-            'id'=>1
-        ],[
-            'botname'=>$request->frm_name,
-            'token'=>$request->frm_token
-        ]);
 
-        return redirect()->back()->with('success', __('Save Changes'));
-    }
-    
 
 }

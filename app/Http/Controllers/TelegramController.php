@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use App\Jobs\SentToTelegramJob;
 
 use App\Models\Telegram;
+use App\Models\TelegramCred;
 
 class TelegramController extends Controller
 {
@@ -67,7 +69,27 @@ class TelegramController extends Controller
 
     public function sent(Request $request)
     {
-
+        dispatch(new SentToTelegramJob(['telegram_id'=>$request->id]));
+        return redirect()->back()->with('success', __('Save Changes'));
     }
+
+    public function telegram_cred(Request $request)
+    {
+        $telegramCred = TelegramCred::where(['id'=>1])->first();
+        return view('admin.telegram_cred.list', compact('telegramCred'));
+    }
+
+    public function telegram_save(Request $request)
+    {
+        TelegramCred::updateOrCreate([
+            'id'=>1
+        ],[
+            'botname'=>$request->frm_name,
+            'token'=>$request->frm_token
+        ]);
+
+        return redirect()->back()->with('success', __('Save Changes'));
+    }
+    
 
 }
