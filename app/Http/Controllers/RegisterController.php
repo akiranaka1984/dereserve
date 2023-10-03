@@ -15,6 +15,11 @@ use App\Models\WebReservation;
 use App\Models\TelegramCred;
 use App\Models\BlogPost;
 
+use App\Jobs\WebReservationToCustomerJob;
+use App\Jobs\WebReservationToStoreJob;
+use App\Jobs\MembershipToCustomerJob;
+use App\Jobs\MembershipToStoreJob;
+
 use Session;
 
 class RegisterController extends Controller
@@ -29,7 +34,7 @@ class RegisterController extends Controller
     {
         $user = User::where(['username' => $request->id])->first();
         if($user == null){
-            User::create([
+            $user = User::create([
                 'username' => $request->id,
                 'name' => $request->lastname.' '.$request->firstname,
                 'email' => $request->email,
@@ -41,6 +46,9 @@ class RegisterController extends Controller
                 'city'=>'jp',
                 'role'=>'user'
             ]);
+
+            dispatch(new MembershipToCustomerJob(['user'=>$user, 'comp_id'=>$request->comp_id]));
+            dispatch(new MembershipToStoreJob(['user'=>$user, 'comp_id'=>$request->comp_id]));
 
         }else{
             User::where([
@@ -62,7 +70,7 @@ class RegisterController extends Controller
             return redirect()->route('user.web.reservation')->with('success', __('Save Changes'));
         }
 
-        return redirect()->route('user.register',['comp_id'=>$request->comp_id])->with('error', __('Registration details are not valid!'));
+        return redirect()->route('user.register')->with('error', __('Registration details are not valid!'));
     }
 
     public function web_reservation(Request $request)
@@ -113,39 +121,15 @@ class RegisterController extends Controller
         ]);
 
         User::where(['id' => $request->frm_user_id])->update([
-            'place' => $request->reserve_place,
+            'cource' => $request->reserve_cource,
             'pay' => $request->reserve_pay,
             'contact' => $request->reserve_contact,
             'cmnt' => $request->reserve_cmnt
         ]);
 
         if (Auth::check()) {
-
-            dispatch(new WebReservationJob(['webReservation'=>$webReservation]));
-            
-            // $user = User::where(['id'=>Auth::id()])->first();
-            // $telegramCred = TelegramCred::where(['id'=>1])->first();
-            // $blogPost = BlogPost::where(['id'=>5])->first();
-            // $content = $blogPost->content;
-            // $sender_name = $blogPost->sender_name;
-            // $sender_address = $blogPost->sender_address;
-
-            // $content = str_replace('%reserve_name%', $webReservation->name, $content);
-            // $content = str_replace('%reserve_tel%', $webReservation->tel, $content);
-            // $content = str_replace('%reserve_tel1%', $webReservation->tel, $content);
-            // $content = str_replace('%reserve_mail%', $webReservation->mail, $content);
-            // $content = str_replace('%reserve_cmnt%', $webReservation->cmnt, $content);
-            // $content = str_replace('%rec_cmnt%', $webReservation->cmnt, $content);
-            // $content = str_replace('%reserve_date%', date('Y-m-d', strtotime($webReservation->created_at)), $content);
-
-            // $content = str_replace('%common_mail%', $sender_address, $content);
-            // $content = str_replace('%shop_name%', $sender_name, $content);
-            // $content = str_replace('%shop_tel%', "03-6868-5149", $content);
-            // $content = str_replace('%shop_open%', "12:00", $content);
-            // $content = str_replace('%shop_finish%', "05:00", $content);
-            // $content = str_replace('%shop_url%', "https://club-firenze.net", $content);
-            // $content = strip_tags($content);
-
+            dispatch(new WebReservationToCustomerJob(['webReservation'=>$webReservation]));
+            dispatch(new WebReservationToStoreJob(['webReservation'=>$webReservation]));
             return redirect(route('user.reception.list'));
         }
 

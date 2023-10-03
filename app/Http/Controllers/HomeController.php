@@ -16,6 +16,9 @@ use App\Models\MailMagazine;
 use App\Models\WebReservation;
 use App\Models\Interview;
 
+use App\Jobs\RecruitmentToApplicantJob;
+use App\Jobs\RecruitmentToStoreJob;
+
 class HomeController extends Controller
 {
     public function index(Request $request)
@@ -490,7 +493,7 @@ class HomeController extends Controller
             Storage::disk('public')->put('images/'.$imageName, file_get_contents($image), 'public');
         }
 
-        Interview::updateOrCreate([
+        $interview = Interview::updateOrCreate([
             'mail' => $request->rec_mail,
         ],[
             'name' => $request->rec_name,
@@ -501,15 +504,19 @@ class HomeController extends Controller
             'height' => $request->rec_height,
             'weight' => $request->rec_weight,
             'bust' => $request->rec_bust,
-            'tattoo' => $request->biko,
+            'tattoo' => $request->rec_biko,
             'interview_date'=> date('Y').'-'.$request->rec_interview1_m.'-'.$request->rec_interview1_d.' '.$request->rec_interview1_h.':'.$request->rec_interview1_min,
             'experience' => $request->tattoo,
             'appealing_points' => '',
-            'other_message' => '',
+            'other_message' => $request->rec_cmnt,
             'photo' => $imageName,
             'compatible' => 0,
             'status' => 1
         ]);
+
+       dispatch(new RecruitmentToApplicantJob(['interview'=>$interview]));
+       dispatch(new RecruitmentToStoreJob(['interview'=>$interview]));
+
 
         return redirect()->back()->with('success', __('Save Changes'));
 
@@ -519,7 +526,7 @@ class HomeController extends Controller
     public function terms(Request $request)
     {
         if (Auth::check()) {
-            return redirect(route('user.web.reservation',['comp_id'=>$request->comp_id]));
+            return redirect(route('user.web.reservation'));
         }
         return view('user.terms');
     }

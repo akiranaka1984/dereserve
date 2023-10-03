@@ -107,7 +107,7 @@
                 <h2 class="ttl"><span>オンライン予約</span></h2>
                 <div class="prime_txt">
                     <p class="btn mincho">
-                        <a href="{{ route('user.terms', ['comp_id'=>$companion->id]) }}" target="_blank">オンライン予約はコチラから</a>
+                        <a href="#" onclick="openTermCondition({{ $companion->id }})">オンライン予約はコチラから</a>
                     </p>
                 </div>
             </article>
@@ -135,5 +135,11 @@
         </ul>
     </nav>
     
+    <script>
+        function openTermCondition(comp_id){
+            localStorage.setItem('comp_id', comp_id);
+            window.location.href = "{{ route('user.terms') }}";
+        }
+    </script>
 @endsection
 

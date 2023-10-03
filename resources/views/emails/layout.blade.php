@@ -54,9 +54,6 @@
         <div class="wl-mail-body">
             @yield('content')
         </div>
-        <div class="wl-mail-footer">
-            <p style="text-align:left;"><small>© {{ date('Y') }} worldbridge.com, {{__('All Rights Reserved')}}.</small></p>
-        </div>
     </div>
 </body>
 

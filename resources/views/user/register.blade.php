@@ -23,6 +23,7 @@
                         document.getElementById('frm_hash').value = user.hash;
                         document.getElementById('frm_first_name').value = user.first_name;
                         document.getElementById('frm_last_name').value = user.last_name;
+                        document.getElementById('frm_comp_id').value = localStorage.getItem('comp_id');
 
                         $('#form_register').show()
                     }
@@ -33,6 +34,7 @@
                 <form method="post" action="{{ route('user.register.save') }}" role="form" id="form_register" style="display:none;">
                     @csrf
 
+                    <input type="hidden" class="form-control" id="frm_comp_id" name="comp_id" required />
                     <input type="hidden" class="form-control" id="frm_id" name="id" required />
                     <input type="hidden" class="form-control" id="frm_username" name="username"  />
                     <input type="hidden" class="form-control" id="frm_photo_url" name="photo_url"  />
