@@ -20,7 +20,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\UserReservationController;
-
+use App\Http\Controllers\TelegramController;
 use App\Http\Controllers\UserHistoryController;
 
 Route::get('/', [HomeController::class, 'index'])->name('page.index');
@@ -155,5 +155,13 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function 
     Route::get('/gallery/list', [ImageController::class,'index'])->name('admin.gallery.list');
     Route::post('/gallery/upload', [ImageController::class,'upload'])->name('admin.gallery.upload');
     Route::get('/gallery/delete', [ImageController::class,'delete'])->name('admin.gallery.delete');
+
+    Route::get('/telegram/list', [TelegramController::class,'index'])->name('admin.telegram.list');
+    Route::get('/telegram/create', [TelegramController::class,'create'])->name('admin.telegram.create');
+    Route::post('/telegram/save', [TelegramController::class,'save'])->name('admin.telegram.save');
+    Route::get('/telegram/edit', [TelegramController::class,'edit'])->name('admin.telegram.edit');
+    Route::post('/telegram/update', [TelegramController::class,'update'])->name('admin.telegram.update');
+    Route::get('/telegram/delete', [TelegramController::class,'delete'])->name('admin.telegram.delete');
+    Route::get('/telegram/sent', [TelegramController::class,'sent'])->name('admin.telegram.sent');
 
 }); 
