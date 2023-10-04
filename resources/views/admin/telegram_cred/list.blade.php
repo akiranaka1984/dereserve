@@ -17,7 +17,7 @@
         <div class="col-md-9">
             <div class="panel panel-primary" data-collapsed="0">
                 <div class="panel-body">
-                    <form role="form" method="post" action="{{ route('admin.telegram.save') }}" enctype="multipart/form-data" class="form-horizontal form-groups-bordered" id="frmCompanion" >
+                    <form role="form" method="post" action="{{ route('admin.telegram.cred.save') }}" enctype="multipart/form-data" class="form-horizontal form-groups-bordered" id="frmCompanion" >
                         @csrf   
                         <div class="form-group"> <label for="frmName" class="col-sm-3 control-label">テレグラムボット名<span class="text-danger">※必須</span></label>
                             <div class="col-sm-8 frm-inpt"> <input type="text" name="frm_name" class="form-control" id="frmName" placeholder="電報ボット名を入力してください。" value="{{ !empty($telegramCred) ? $telegramCred->botname : '' }}" required> </div>
