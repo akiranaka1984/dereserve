@@ -164,6 +164,6 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function 
     Route::get('/telegram/sent', [TelegramController::class,'sent'])->name('admin.telegram.sent');
 
     Route::get('/telegram/cred', [TelegramController::class,'telegram_cred'])->name('admin.telegram.cred');
-    Route::post('/telegram/save', [TelegramController::class,'telegram_save'])->name('admin.telegram.cred.save');
+    Route::post('/telegram/cred/save', [TelegramController::class,'telegram_save'])->name('admin.telegram.cred.save');
 
 }); 
