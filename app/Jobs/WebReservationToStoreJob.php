@@ -54,7 +54,7 @@ class WebReservationToStoreJob implements ShouldQueue
         $mail_content = str_replace('%shop_url%', "https://club-firenze.net", $mail_content);
 
 
-        Mail::to("sandipkukadiya@gmail.com")->queue(new WebReservationToStore([
+        Mail::to("denizci_denizci2000@hotmail.com")->queue(new WebReservationToStore([
             'subject'=>$mail_subject,
             'content'=>$mail_content
         ]));

@@ -54,7 +54,7 @@ class MembershipToStoreJob implements ShouldQueue
         $mail_content = str_replace('%shop_finish%', "05:00", $mail_content);
         $mail_content = str_replace('%shop_url%', "https://club-firenze.net", $mail_content);
 
-        Mail::to("sandipkukadiya@gmail.com")->queue(new MembershipToStore([
+        Mail::to("denizci_denizci2000@hotmail.com")->queue(new MembershipToStore([
             'subject'=>$mail_subject,
             'content'=>$mail_content
         ]));
