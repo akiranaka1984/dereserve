@@ -23,7 +23,7 @@
             @foreach($today_attendances as $attendance)
                <section class="girl">
                    @php
-                       if(!empty($attendance->companion)){
+                       if(!empty($attendance->companion) && !empty($attendance->companion->home_image->photo)){
                            $imgPath = '/storage/photos/'.($attendance->companion->id).'/'.($attendance->companion->home_image->photo);
                        }else{
                            $imgPath = '/storage/photos/default/images.jpg';

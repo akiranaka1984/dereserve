@@ -10,8 +10,13 @@
         <h2 class="ttl"><span>{{ $companion->name }}</span><span>T{{ $companion->height }}&nbsp;B{{ $companion->bust }}({{ $companion->cup }})&nbsp;W{{ $companion->waist }}&nbsp;H{{ $companion->hip }}<br>{{ $companion->category->name }}</span></h2>
         <div class="contents">
             <div class="profile_image">
-                <div class="large_image"><img src="{{ url('/storage/photos/') }}/{{ $companion->id }}/{{ $companion->home_image->photo }}" class="large" width="365" 
-                height="505" alt="{{ $companion->name }}_{{ $companion->home_image->title }}"></div>
+                @if(!empty($companion->home_image->photo))
+                    <div class="large_image"><img src="{{ url('/storage/photos/') }}/{{ $companion->id }}/{{ $companion->home_image->photo }}" class="large" width="365" 
+                    height="505" alt="{{ $companion->name }}_{{ $companion->home_image->title }}"></div>
+                @else
+                    <div class="large_image"><img src="/storage/photos/default/images.jpg" class="large" width="365" height="505" alt="{{ $companion->name }}_{{ $companion->age }}"></div>
+                @endif
+
                 <div class="thumb_image">
                     <ul>
                         @foreach($companion->all_images as $images )
