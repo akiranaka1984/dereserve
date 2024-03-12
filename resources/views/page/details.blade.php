@@ -43,7 +43,7 @@
                                     @if(!empty($companion->home_image->photo))
                                         <img src="{{ url('/storage/photos/') }}/{{ $companion->id }}/{{ $companion->home_image->photo }}" alt="{{ $companion->name }}_{{ $companion->home_image->title }}">
                                     @else
-                                        <img src="/storage/photos/default/images.jpg" alt="{{ $companion->name }}_{{ $companion->age }}">
+                                        <img src="/storage/photos/default/not-to-be-published.jpg" alt="{{ $companion->name }}_{{ $companion->age }}">
                                     @endif
                                     <div class="prof_box">
                                         <div class="prof">
