@@ -1,150 +1,183 @@
-	@extends('page.layout')
+@extends('page.layout')
 
 @section('content')
-  
-    {!!  $header->text_data1 !!}
-    {!!  $header->text_data2 !!}
-    {!!  $header->text_data3 !!}
-     
-    <article id="profile" class="inner">
-        <h2 class="ttl"><span>{{ $companion->name }}</span><span>T{{ $companion->height }}&nbsp;B{{ $companion->bust }}({{ $companion->cup }})&nbsp;W{{ $companion->waist }}&nbsp;H{{ $companion->hip }}<br>{{ $companion->category->name }}</span></h2>
-        <div class="contents">
-            <div class="profile_image">
-                @if(!empty($companion->home_image->photo))
-                    <div class="large_image"><img src="{{ url('/storage/photos/') }}/{{ $companion->id }}/{{ $companion->home_image->photo }}" class="large" width="365" 
-                    height="505" alt="{{ $companion->name }}_{{ $companion->home_image->title }}"></div>
-                @else
-                    <div class="large_image"><img src="/storage/photos/default/images.jpg" class="large" width="365" height="505" alt="{{ $companion->name }}_{{ $companion->age }}"></div>
-                @endif
 
-                <div class="thumb_image">
-                    <ul>
-                        @foreach($companion->all_images as $images )
-                            <li><img src="{{ url('/storage/photos/') }}/{{ $companion->id }}/{{ $images->photo }}" class="thumb" width="365"
-                                height="505" alt="{{ $companion->name }}_{{ $images->title }}"></li>
-                        @endforeach
-                        <li><a href="#" target="_blank"><img
-                                    src="{{ url('/assets/images/prime.jpg') }}" width="365" height="505" alt="PRIME会員限定 マル秘写真公開"></a>
-                        </li>
-                    </ul>
+    <section class="model_info">
+        <div class="wrapper">
+            <div class="breadcrumbs color_bk">
+                <div class="breadcrumb_inner color_bk">
+                    <span property="itemListElement" typeof="ListItem">
+                        <a property="item" typeof="WebPage" title="クラブフィレンツェへ移動する" href="{{ route('page.index') }}" class="home">
+                            <span property="name">HOME</span>
+                        </a>
+                        <meta property="position" content="1">
+                    </span>
+                    <i class="fas fa-angle-right" aria-hidden="true"></i>
+                    <span property="itemListElement" typeof="ListItem">
+                        <a property="item" typeof="WebPage" title="モデルへ移動する" href="{{ route('page.enrollment_table') }}" class="archive post-model-archive">
+                            <span property="name">モデル</span>
+                        </a>
+                        <meta property="position" content="2">
+                    </span>
+                    <i class="fas fa-angle-right" aria-hidden="true"></i>
+                    <span property="itemListElement" typeof="ListItem">
+                        <span property="name">{{ $companion->category->name }}</span>
+                        <meta property="position" content="3">
+                    </span>
+                    <i class="fas fa-angle-right" aria-hidden="true"></i>
+                    <span property="itemListElement" typeof="ListItem">
+                        <span property="name" class="post post-model current-item">{{ $companion->name }}</span>
+                        <meta property="url" content="{{ route('page.details', ['id'=>$companion->id]) }}">
+                        <meta property="position" content="4">
+                    </span>
                 </div>
             </div>
-        </div>
-    </article>
 
-    <div class="profile_contents_bottom">
-        <div class="contents">
-            <div class="contents_left">
-                <article id="option" class="inner">
-                    <h2 class="ttl"><span>モデルプロフィール</span></h2>
-                    <h4 class="sale-point-text-details"><span>{{ $companion->sale_point }}</span></h4>
-                    <ul>
-                        <li><p>名前</p><p>{{ $companion->name }}</p></li>
-                        <li><p>年齢</p><p>{{ $companion->age }}歳</p></li>
-                        <li><p>スリーサイズ</p><p>H:{{ $companion->height }}cm B:{{ $companion->bust }}({{ $companion->cup }}) W:{{ $companion->waist }} H:{{ $companion->hip }}</p></li>
-                        <li><p>前(現)職</p><p>{{ $companion->previous_position }}</p></li>
-                        <li><p>似ている芸能人</p><p>{{ $companion->celebrities_who_look_alike }}</p></li>
-                        <li><p>趣味</p><p>{{ $companion->hobby }}</p></li>
-                    </ul>
-                </article>
-            </div>
-            <div class="contents_right">
-                <article id="option" class="inner">
-                    <h2 class="ttl"><span>料金システム</span></h2>
-                    <ul>
-                        @foreach($companion->category->prices as $price)
-                            <li><p>{{ $price->time_interval }}</p><p>{{ $price->start_price }} {{ !empty($price->end_price) ? " ~ ".($price->end_price) : '' }}</p></li>
-                        @endforeach
-                    </ul>
-                </article>
-            </div>
-        </div>
-    </div>
+            <div class="profiles">
+                <h2 class="main_ttl">PROFILE</h2>
+                <div class="prof_photo">
+                    <div id="detail-slider" class="splide">
+                        <div class="splide__track">
+                            <ul class="splide__list">
+                                <li class="splide__slide">
+                                    @if(!empty($companion->home_image->photo))
+                                        <img src="{{ url('/storage/photos/') }}/{{ $companion->id }}/{{ $companion->home_image->photo }}" alt="{{ $companion->name }}_{{ $companion->home_image->title }}">
+                                    @else
+                                        <img src="/storage/photos/default/images.jpg" alt="{{ $companion->name }}_{{ $companion->age }}">
+                                    @endif
+                                    <div class="prof_box">
+                                        <div class="prof">
+                                            <div class="name_wrap">
+                                                <p class="name">{{ $companion->name }}</p>
+                                                <span class="age">{{ $companion->age }}歳</span>
+                                            </div>
+                                            <div class="size">
+                                                <span class="tall">T:{{ $companion->height }}</span>
+                                                <span class="bast">B:{{ $companion->bust }}({{ $companion->cup }})</span>
+                                                <span class="west">W:{{ $companion->waist }}</span>
+                                                <span class="hip">H:{{ $companion->hip }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
 
-    <article id="comment" class="inner">
-        <h2 class="ttl"><span>コンシェルジュからのコメント</span></h2>
-        <div class="contents">
-            {!! $companion->message !!}
-        </div>
-    </article>
+                                @foreach($companion->all_images as $images )
+                                    <li class="splide__slide">
+                                        <img src="{{ url('/storage/photos/') }}/{{ $companion->id }}/{{ $images->photo }}" alt="{{ $companion->name }}_{{ $images->title }}">
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="prof_ex">
+                    <h4 class="prof_head">プロフィール詳細</h4>
+                    <div class="detail">
+                        <div class="row">
+                            <p class="ttl">名前</p>
+                            <p class="name">{{ $companion->name }}</p>
+                        </div>
+                        <div class="row">
+                            <p class="ttl">年齢</p>
+                            <p class="age">{{ $companion->age }}歳</p>
+                        </div>
+                        <div class="row">
+                            <p class="ttl">身長</p>
+                            <p class="tall">{{ $companion->height }}cm</p>
+                        </div>
+                        <div class="row">
+                            <p class="ttl">スリーサイズ</p>
+                            <p class="size">B:{{ $companion->bust }}({{ $companion->cup }}) W:{{ $companion->waist }} H:{{ $companion->hip }}</p>
+                        </div>
+                    </div>
+                    <h4 class="prof_head">前(現)職</h4>
+                    <p class="base">{{ $companion->previous_position }}</p>
+                    <h4 class="prof_head">似ている芸能人</h4>
+                    <p class="base">{{ $companion->celebrities_who_look_alike }}</p>
+                    <h4 class="prof_head">趣味</h4>
+                    <p class="base">{{ $companion->hobby }}</p>
 
-    <article id="schedule" class="inner">
-        <h2 class="ttl"><span>週間スケジュール</span></h2>
-        <div class="contents">
-            <div class="schedule">
-                <ul>
-                    @foreach($schedule_dates as $dkey => $schedule_date)
-                            <li>
-                                <p>{{ $schedule_date }}</p>
+                    <h4 class="prof_head">オススメポイント</h4>
+
+                    <h4 class="prof_head">コンシェルジュからのメッセージ</h4>
+                        {!! $companion->message !!}
+                    <hr>
+                    <div class="schedule_box">
+                        <h3 class="ttl">出勤スケジュール</h3>
+                        @foreach($schedule_dates as $dkey => $schedule_date)
+                            <div class="wrap">
+                                <div class="head">{{ $schedule_date }}</div>
                                 @if(count($companion->attendances) > 0)
                                     @foreach($companion->attendances as $attendance)
                                         @if($attendance->date == $dkey)
                                             @if(!empty($attendance->end_time))
-                                                <p>{{ $attendance->start_time }} ~ {{ $attendance->end_time }}</p>
+                                                <div class="cell">{{ $attendance->start_time }} ~ {{ $attendance->end_time }}</div>
                                             @else
-                                                <p>{{ $attendance->start_time }} ~ 終了時間未定</p>
+                                                <div class="cell">{{ $attendance->start_time }} ~ 終了時間未定</div>
                                             @endif
                                         @else
-                                            <p> ― </p>
+                                            <div class="cell"> - </div>
                                         @endif
                                     @endforeach
                                 @else
-                                    <p> ― </p>
+                                    <div class="cell"> - </div>
                                 @endif
-                            </li>
-                    @endforeach
-                </ul>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="ex_wrap opacity_flg">
+                        <div class="ex_wrap opacity_flg">
+                            @if($companion->category->name == "BLACK")
+                                <p class="price_info_ttl black_rank">BLACK</p>
+                            @elseif($companion->category->name == "PLATINUM")
+                                <p class="price_info_ttl platinum_rank">PLATINUM</p>
+                            @elseif($companion->category->name == "DIAMOND")
+                                <p class="price_info_ttl diamond"> DIAMOND </p>
+                            @elseif($companion->category->name == "RED DIAMOND")
+                                <p class="price_info_ttl red_diamond">RED DIAMOND</p>
+                            @endif
+                            <table class="price">
+                                <tbody>
+                                    @foreach($companion->category->prices as $price)
+                                        <tr>
+                                            <th>{{ $price->time_interval }}</th>
+                                            <td>{{ $price->start_price }} {{ !empty($price->end_price) ? " ~ ".($price->end_price) : '' }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        <h4 class="prof_head">オンライン予約</h4>
+                        <button class="detail_recruit" id="more_btn">
+                            <a href="#" onclick="openTermCondition({{ $companion->id }})">オンライン予約はコチラから</a>
+                        </button>
+                        <button class="_btn">
+                            <a href="{{ route('page.enrollment_table') }}">他の在籍モデルをみる</a>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
-    </article>
-    
-    <div class="profile_contents_top">
-        <div class="contents">
-            {{-- <article id="movie" class="inner">
-                <h2 class="ttl"><span>動画</span></h2>
-                <div class="prime_txt">
-                    <p class="btn mincho">
-                        <a href="{{ route('page.movie') }}" target="_blank">新規会員登録の方はこちらから</a>
-                    </p>
-                </div>
-            </article> --}}
-            <article id="gravure" class="inner">
-                <h2 class="ttl"><span>オンライン予約</span></h2>
-                <div class="prime_txt">
-                    <p class="btn mincho">
-                        <a href="#" onclick="openTermCondition({{ $companion->id }})">オンライン予約はコチラから</a>
-                    </p>
-                </div>
-            </article>
-        </div>
-    </div>
+    </section>
 
-    <nav id="breadcrumbs">
-        <ul class="contents" itemscope itemtype="http://schema.org/BreadcrumbList">
-            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item"
-                    href="{{ route('page.index') }}"><span itemprop="name">渋谷デリヘル</span></a>
-                <meta itemprop="position" content="1" />
-            </li>
-            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item"
-                    href="{{ route('page.main') }}"><span itemprop="name">トップ</span></a>
-                <meta itemprop="position" content="2" />
-            </li>
-            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item"
-                    href="{{ route('page.enrollment_table') }}"><span itemprop="name">在籍表</span></a>
-                <meta itemprop="position" content="3" />
-            </li>
-            <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><span
-                    itemprop="name">{{ $companion->name }}</span>
-                <meta itemprop="position" content="4" />
-            </li>
-        </ul>
-    </nav>
-    
+@endsection
+
+@section('javascript')
+
     <script>
+        $(window).on('DOMContentLoaded', function () {
+            new Splide('#detail-slider', {
+                type   : 'loop',
+                autoplay: true,
+                pagination: false,
+                speed: 2000,
+            }).mount();
+        });
+
         function openTermCondition(comp_id){
             localStorage.setItem('comp_id', comp_id);
             window.location.href = "{{ route('user.terms') }}";
         }
     </script>
-@endsection
 
+@endsection

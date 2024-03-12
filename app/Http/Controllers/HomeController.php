@@ -18,39 +18,39 @@ use App\Models\Interview;
 
 use App\Jobs\RecruitmentToApplicantJob;
 use App\Jobs\RecruitmentToStoreJob;
+use App\Models\News;
 
 class HomeController extends Controller
 {
-    public function index(Request $request)
-    {
-        $footer = Pages::where(['name'=>'footer'])->first();
-        return view('page.index', compact('footer'));
-    }
 
-    public function main(Request $request)
+    public function index(Request $request)
     {
         $header = Pages::where(['name'=>'header'])->first();
         $footer = Pages::where(['name'=>'footer'])->first();
         $main = Pages::where(['name'=>'main'])->first();
         $new_companions = Companion::with(['home_image', 'category'])->where(['status'=>1])->orderBy('id', 'DESC')->take(6)->get();
-
-
         $today_attendances = Attendance::with(['companion'])->where(['date'=>date('Y-m-d')])->where(function ($query) {
-            $query->where('end_time', '=', null)
-                  ->orWhere('end_time', '>', date('H:i'));
+            $query->where('end_time', '=', null)->orWhere('end_time', '>', date('H:i'));
         })->get();
-
         $tomorrow_attendances = Attendance::with(['companion'])->where(['date'=>date('Y-m-d', strtotime('+1 days'))])->get();
-        return view('page.main', compact('header','footer','main', 'new_companions', 'today_attendances', 'tomorrow_attendances'));
+        $recent_news = News::orderBy('id', 'DESC')->take(5)->get();
+        return view('page.index', compact('header','footer','main', 'new_companions', 'today_attendances', 'tomorrow_attendances', 'recent_news'));
+    }
+
+    public function concept(Request $request)
+    {
+        $header = Pages::where(['name'=>'header'])->first();
+        $footer = Pages::where(['name'=>'footer'])->first();
+        $main = Pages::where(['name'=>'main'])->first();
+        return view('page.concept', compact('header','footer','main'));
     }
 
     public function details(Request $request)
     {
-
         $schedule_dates = $this->weekly_dates();
         $header = Pages::where(['name'=>'header'])->first();
         $footer = Pages::where(['name'=>'footer'])->first();
-        $companion = Companion::with(['category','home_image', 'all_images', 'attendances'])->where([ 'id'=>$request->id ])->first();
+        $companion = Companion::with(['category','home_image', 'all_images', 'attendances'])->where(['id'=>$request->id ])->first();
         return view('page.details', compact('header','footer', 'schedule_dates', 'companion'));
     }
 
@@ -71,7 +71,7 @@ class HomeController extends Controller
         $header = Pages::where(['name'=>'header'])->first();
         $footer = Pages::where(['name'=>'footer'])->first();
         $enrollment_table = Pages::where(['name'=>'enrollment_table'])->first();
-        
+
         $all_records = array();
         $categories = Category::where(['status'=>1])->get();
         foreach($categories as $category){
@@ -85,7 +85,7 @@ class HomeController extends Controller
                     $query->orWhere(['option_newface_chk'=>1]);
                 }
             });
-            
+
             $sql->where(function ($query) use ($request){
                 if(!empty($request->search_age18)){
                     $query->orWhere(function ($query1){
@@ -109,7 +109,6 @@ class HomeController extends Controller
                     $query->orWhere('age', '>=', 30);
                 }
             });
-
 
             $sql->where(function ($query) use ($request){
                 if(!empty($request->search_height149)){
@@ -143,7 +142,7 @@ class HomeController extends Controller
                     $query->orWhere('height', '>=', 170);
                 }
             });
-            
+
             $sql->where(function ($query) use ($request){
                 if(!empty($request->search_bust_a)){
                     $query->orWhere('cup', '=', 'A');
@@ -178,8 +177,27 @@ class HomeController extends Controller
         }
 
         $search_param = (object) $request->all();
+
         return view('page.enrollment_table', compact('header','footer','search_param','enrollment_table','all_records'));
 
+    }
+
+    public function price(Request $request)
+    {
+        $header = Pages::where(['name'=>'header'])->first();
+        $footer = Pages::where(['name'=>'footer'])->first();
+
+        $categories = Category::with(['prices'])->where(['status'=>1])->orderBy('position', 'ASC')->orderBy('id', 'ASC')->get();
+        return view('page.price', compact('header','footer', 'categories'));
+    }
+
+    public function news(Request $request)
+    {
+        $header = Pages::where(['name'=>'header'])->first();
+        $footer = Pages::where(['name'=>'footer'])->first();
+        $event = Pages::where(['name'=>'event'])->first();
+        $all_news = News::paginate(10);
+        return view('page.news', compact('header','footer', 'event', 'all_news'));
     }
 
     function weekly_dates()
@@ -213,6 +231,131 @@ class HomeController extends Controller
         return $schedule_dates;
     }
 
+    public function privacy_policy(Request $request)
+    {
+        $header = Pages::where(['name'=>'header'])->first();
+        $footer = Pages::where(['name'=>'footer'])->first();
+        $privacy_policy = Pages::where(['name'=>'privacy_policy'])->first();
+        return view('page.privacy_policy', compact('header','footer', 'privacy_policy'));
+    }
+
+    public function magazine(Request $request)
+    {
+        $header = Pages::where(['name'=>'header'])->first();
+        $footer = Pages::where(['name'=>'footer'])->first();
+        return view('page.magazine', compact('header','footer'));
+    }
+
+    public function magazine_save(Request $request)
+    {
+        if(!empty($request->castsyukkinmail_add)){
+            MailMagazine::updateOrInsert(
+                [
+                    'email' => $request->email
+                ],
+                [
+                    'name'=>$request->name,
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s')
+                ]
+            );
+            return redirect()->back()->with('success', __('Save Changes'));
+        }else{
+            MailMagazine::where(['email' => $request->email])->delete();
+            return redirect()->back()->with('success', __('Successfully deleted'));
+        }
+    }
+
+    public function recruit(Request $request)
+    {
+        $header = Pages::where(['name'=>'header'])->first();
+        $footer = Pages::where(['name'=>'footer'])->first();
+        $recruit = Pages::where(['name'=>'entry'])->first();
+        $month=date('m');
+        $day = date('d');
+        return view('page.recruit', compact('header','footer', 'recruit', 'month', 'day'));
+    }
+
+    public function recruit_save(Request $request)
+    {
+        $imageName = "";
+        if($request->hasfile('attach')){
+            $request->validate(['attach' => 'required|image|max:10240']);
+            $image = $request->file('attach');
+            $ext = $image->getClientOriginalExtension();
+            $imageName = rand('1111','9999').time().'.'.$ext;
+            Storage::disk('public')->put('images/'.$imageName, file_get_contents($image), 'public');
+        }
+
+        $interview = Interview::updateOrCreate([
+            'mail' => $request->mail,
+        ],[
+            'name' => $request->name,
+            'tel'  => $request->tel,
+            'line_id' => $request->lineid,
+            'age' => $request->age,
+            'height' => $request->height,
+            'weight' => $request->weight,
+            'bust' => $request->bust,
+            'tattoo' => $request->tatto,
+            'photo' => $imageName,
+            'interview_date'=> date('Y').'-'.$request->interview_month.'-'.$request->interview_date.' '.$request->interview_hour.':'.$request->interview_minute,
+            'inquiry' => $request->require,
+            'other_message' => $request->inquiry,
+            'appealing_points' => '',
+        ]);
+
+        dispatch(new RecruitmentToApplicantJob(['interview'=>$interview]));
+        dispatch(new RecruitmentToStoreJob(['interview'=>$interview]));
+
+        return redirect()->back()->with('success', __('Save Changes'));
+
+    }
+
+    public function reservation(Request $request)
+    {
+        $header = Pages::where(['name'=>'header'])->first();
+        $footer = Pages::where(['name'=>'footer'])->first();
+        $month=date('m');
+        $day = date('d');
+        $prices = Price::join('categories','categories.id','=','prices.category_id')->selectRaw('*, prices.id')->get();
+        return view('page.reservation', compact('header','footer', 'month', 'day', 'prices'));
+    }
+
+    public function reservation_save(Request $request)
+    {
+        $request->validate([
+            'reserve_name' => 'required',
+            'reserve_mail' => 'required',
+            'reserve_tel' => 'required',
+            'reserve_lady1' => 'required','reserve_lady2' => 'required','reserve_lady3' => 'required',
+            'reserve_month1' => 'required','reserve_day1' => 'required','reserve_hour1' => 'required','reserve_minut1' => 'required',
+            'reserve_month2' => 'required','reserve_day2' => 'required','reserve_hour2' => 'required','reserve_minut2' => 'required',
+            'reserve_month3' => 'required','reserve_day3' => 'required','reserve_hour3' => 'required','reserve_minut3' => 'required',
+            'reserve_cource' => 'required'
+        ]);
+
+        WebReservation::create([
+            'user_id' => Auth::id(),
+            'name' => $request->reserve_name,
+            'mail' => $request->reserve_mail,
+            'tel' => $request->reserve_tel,
+            'lineid' => $request->reserve_lineid,
+            'lady1' => $request->reserve_lady1,'lady2' => $request->reserve_lady2,'lady3' => $request->reserve_lady3,
+            'month1' => $request->reserve_month1,'day1' => $request->reserve_day1,'hour1' => $request->reserve_hour1,'minut1' => $request->reserve_minut1,
+            'month2' => $request->reserve_month2,'day2' => $request->reserve_day2,'hour2' => $request->reserve_hour2,'minut2' => $request->reserve_minut2,
+            'month3' => $request->reserve_month3,'day3' => $request->reserve_day3,'hour3' => $request->reserve_hour3,'minut3' => $request->reserve_minut3,
+            'cource' => $request->reserve_cource,
+            'place' => $request->reserve_place,
+            'pay' => $request->reserve_pay,
+            'contact' => $request->reserve_contact,
+            'cmnt' => $request->reserve_cmnt
+        ]);
+
+        return redirect()->back()->with('success', __('Save Changes'));
+    }
+
+
     public function movie(Request $request)
     {
         $header = Pages::where(['name'=>'header'])->first();
@@ -237,196 +380,6 @@ class HomeController extends Controller
         return view('page.ranking', compact('header','footer','ranking','all_records'));
     }
 
-    public function av(Request $request)
-    {
-
-        $header = Pages::where(['name'=>'header'])->first();
-        $footer = Pages::where(['name'=>'footer'])->first();
-        $avs = Pages::where(['name'=>'av'])->first();
-        
-        $all_records = array();
-        $categories = Category::where(['status'=>1])->get();
-        foreach($categories as $category){
-            $sql = Companion::with(['category','home_image'])->where([ 'category_id'=>$category->id, 'option_av_chk'=>1 ]);
-
-            $sql->where(function ($query) use ($request){
-                if(!empty($request->search_newface)){
-                    $query->orWhere(['option_newface_chk'=>1]);
-                }
-            });
-            
-            $sql->where(function ($query) use ($request){
-                if(!empty($request->search_age18)){
-                    $query->orWhere(function ($query1){
-                        $query1->where('age', '>=', 18);
-                        $query1->where('age', '<=', 19);
-                    });
-                }
-                if(!empty($request->search_age20)){
-                    $query->orWhere(function ($query1){
-                        $query1->where('age', '>=', 20);
-                        $query1->where('age', '<=', 24);
-                    });
-                }
-                if(!empty($request->search_age25)){
-                    $query->orWhere(function ($query1){
-                        $query1->where('age', '>=', 25);
-                        $query1->where('age', '<=', 29);
-                    });
-                }
-                if(!empty($request->search_age30)){
-                    $query->orWhere('age', '>=', 30);
-                }
-            });
-
-
-            $sql->where(function ($query) use ($request){
-                if(!empty($request->search_height149)){
-                    $query->orWhere('height', '<=', 149);
-                }
-                if(!empty($request->search_height150)){
-                    $query->orWhere(function ($query1){
-                        $query1->where('height', '>=', 150);
-                        $query1->where('height', '<=', 154);
-                    });
-                }
-                if(!empty($request->search_height155)){
-                    $query->orWhere(function ($query1){
-                        $query1->where('height', '>=', 155);
-                        $query1->where('height', '<=', 159);
-                    });
-                }
-                if(!empty($request->search_height160)){
-                    $query->orWhere(function ($query1){
-                        $query1->where('height', '>=', 160);
-                        $query1->where('height', '<=', 164);
-                    });
-                }
-                if(!empty($request->search_height165)){
-                    $query->orWhere(function ($query1){
-                        $query1->where('height', '>=', 165);
-                        $query1->where('height', '<=', 169);
-                    });
-                }
-                if(!empty($request->search_height170)){
-                    $query->orWhere('height', '>=', 170);
-                }
-            });
-            
-            $sql->where(function ($query) use ($request){
-                if(!empty($request->search_bust_a)){
-                    $query->orWhere('cup', '=', 'A');
-                }
-                if(!empty($request->search_bust_b)){
-                    $query->orWhere('cup', '=', 'B');
-                }
-                if(!empty($request->search_bust_c)){
-                    $query->orWhere('cup', '=', 'C');
-                }
-                if(!empty($request->search_bust_d)){
-                    $query->orWhere('cup', '=', 'D');
-                }
-                if(!empty($request->search_bust_e)){
-                    $query->orWhere('cup', '=', 'E');
-                }
-                if(!empty($request->search_bust_f)){
-                    $query->orWhere('cup', '=', 'F');
-                }
-                if(!empty($request->search_bust_g)){
-                    $query->orWhere('cup', '=', 'G');
-                }
-                if(!empty($request->search_bust_h)){
-                    $query->orWhere('cup', '=', 'H');
-                }
-            });
-
-            if(!empty($request->girls_search_text)){
-                $sql->where('name', 'like', '%'.$request->girls_search_text.'%');
-            }
-            $all_records[$category->name] = $sql->get();
-        }
-
-        $search_param = (object) $request->all();
-        return view('page.av', compact('header','footer','search_param','avs','all_records'));
-
-    }
-
-    public function price(Request $request)
-    {
-        $header = Pages::where(['name'=>'header'])->first();
-        $footer = Pages::where(['name'=>'footer'])->first();
-
-        $categories = Category::with(['prices'])->where(['status'=>1])->orderBy('position', 'ASC')->orderBy('id', 'ASC')->get();
-        return view('page.price', compact('header','footer', 'categories'));
-    }
-    
-    public function privacy_policy(Request $request)
-    {
-        $header = Pages::where(['name'=>'header'])->first();
-        $footer = Pages::where(['name'=>'footer'])->first();
-        $privacy_policy = Pages::where(['name'=>'privacy_policy'])->first();
-        return view('page.privacy_policy', compact('header','footer', 'privacy_policy'));
-    }
-
-    public function event(Request $request)
-    {
-        $header = Pages::where(['name'=>'header'])->first();
-        $footer = Pages::where(['name'=>'footer'])->first();
-        $event = Pages::where(['name'=>'event'])->first();
-        return view('page.event', compact('header','footer', 'event'));
-    }
-
-    public function magazine(Request $request)
-    {
-        $header = Pages::where(['name'=>'header'])->first();
-        $footer = Pages::where(['name'=>'footer'])->first();
-        return view('page.magazine', compact('header','footer'));
-    }
-    
-    public function reservation(Request $request)
-    {   
-        $header = Pages::where(['name'=>'header'])->first();
-        $footer = Pages::where(['name'=>'footer'])->first();
-        $month=date('m');
-        $day = date('d');
-        $prices = Price::join('categories','categories.id','=','prices.category_id')->selectRaw('*, prices.id')->get();
-        return view('page.reservation', compact('header','footer', 'month', 'day', 'prices'));
-    }
-    
-    public function reservation_save(Request $request)
-    {
-
-        $request->validate([ 
-            'reserve_name' => 'required',
-            'reserve_mail' => 'required',
-            'reserve_tel' => 'required',
-            'reserve_lady1' => 'required','reserve_lady2' => 'required','reserve_lady3' => 'required',
-            'reserve_month1' => 'required','reserve_day1' => 'required','reserve_hour1' => 'required','reserve_minut1' => 'required',
-            'reserve_month2' => 'required','reserve_day2' => 'required','reserve_hour2' => 'required','reserve_minut2' => 'required',
-            'reserve_month3' => 'required','reserve_day3' => 'required','reserve_hour3' => 'required','reserve_minut3' => 'required',
-            'reserve_cource' => 'required'
-        ]);
-
-        WebReservation::create([
-            'name' => $request->reserve_name,
-            'mail' => $request->reserve_mail,
-            'tel' => $request->reserve_tel,
-            'lineid' => $request->reserve_lineid,
-            'lady1' => $request->reserve_lady1,'lady2' => $request->reserve_lady2,'lady3' => $request->reserve_lady3,
-            'month1' => $request->reserve_month1,'day1' => $request->reserve_day1,'hour1' => $request->reserve_hour1,'minut1' => $request->reserve_minut1,
-            'month2' => $request->reserve_month2,'day2' => $request->reserve_day2,'hour2' => $request->reserve_hour2,'minut2' => $request->reserve_minut2,
-            'month3' => $request->reserve_month3,'day3' => $request->reserve_day3,'hour3' => $request->reserve_hour3,'minut3' => $request->reserve_minut3,
-            'cource' => $request->reserve_cource,
-            'place' => $request->reserve_place,
-            'pay' => $request->reserve_pay,
-            'contact' => $request->reserve_contact,
-            'cmnt' => $request->reserve_cmnt
-        ]);
-
-        return redirect()->back()->with('success', __('Save Changes'));
-
-    }
-
     public function attendance_notices(Request $request)
     {
         if(!empty($request->castsyukkinmail_add)){
@@ -436,24 +389,6 @@ class HomeController extends Controller
             AttendanceNotice::where(['email' => $request->mail_addr])->delete();
             return redirect()->back()->with('success', __('Successfully deleted'));
         }
-    }
-
-    public function magazine_save(Request $request)
-    {
-        if(!empty($request->castsyukkinmail_add)){
-            MailMagazine::updateOrInsert(['email' => $request->mail_addr],['name'=>$request->name, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')]);
-            return redirect()->back()->with('success', __('Save Changes'));
-        }else{
-            MailMagazine::where(['email' => $request->mail_addr])->delete();
-            return redirect()->back()->with('success', __('Successfully deleted'));
-        }
-    }
-
-    public function recruit(Request $request)
-    {
-        $header = Pages::where(['name'=>'header'])->first();
-        $footer = Pages::where(['name'=>'footer'])->first();
-        return view('page.recruit', compact('header','footer'));
     }
 
     public function summary(Request $request)
@@ -476,7 +411,7 @@ class HomeController extends Controller
 
     public function entry_save(Request $request)
     {
-        $request->validate([ 
+        $request->validate([
             'rec_name' => 'required',
             'rec_mail' => 'required',
             'rec_tel' => 'required',
@@ -485,7 +420,7 @@ class HomeController extends Controller
         ]);
 
         $imageName = "";
-        if($request->hasfile('rec_photo')){ 
+        if($request->hasfile('rec_photo')){
             $request->validate(['rec_photo' => 'required|image|max:10240']);
             $image = $request->file('rec_photo');
             $ext = $image->getClientOriginalExtension();

@@ -16,17 +16,17 @@
                             <section class="girl">
                                 @php
                                     if(!empty($companion)){
-                                        $imgPath = '/storage/photos/'.($companion->id).'/'.($companion->home_image->photo);       
+                                        $imgPath = '/storage/photos/'.($companion->id).'/'.($companion->home_image->photo);
                                     }else{
-                                        $imgPath = '/storage/photos/default/images.jpg';       
+                                        $imgPath = '/storage/photos/default/images.jpg';
                                     }
-                                @endphp 
+                                @endphp
                                 <h4>
                                     <a href="{{ route('page.details', ['id'=>$companion->id]) }}">
                                         <img src="{{ $imgPath }}" loading="lazy" width="365" height="505" alt="{{ $companion->name }}" class="ranking_list_img">
                                     </a>
                                 </h4>
-                                
+
                                 @if($companion->category->name == "BLACK")
                                     <p class="tiger_736 mincho"><span><span>{{ $companion->category->name }}</span></span></p>
                                 @elseif($companion->category->name == "PLATINUM")
@@ -66,7 +66,7 @@
                 <meta itemprop="position" content="1" />
             </li>
             <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item"
-                    href="{{ route('page.main') }}"><span itemprop="name">トップ</span></a>
+                    href="{{ route('page.index') }}"><span itemprop="name">トップ</span></a>
                 <meta itemprop="position" content="2" />
             </li>
             <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><span

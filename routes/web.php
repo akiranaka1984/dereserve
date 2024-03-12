@@ -24,21 +24,27 @@ use App\Http\Controllers\TelegramController;
 use App\Http\Controllers\UserHistoryController;
 
 Route::get('/', [HomeController::class, 'index'])->name('page.index');
-Route::get('/main', [HomeController::class, 'main'])->name('page.main');
+Route::get('/concept', [HomeController::class, 'concept'])->name('page.concept');
 Route::get('/details', [HomeController::class, 'details'])->name('page.details');
 Route::get('/attendance_sheet', [HomeController::class, 'attendance_sheet'])->name('page.attendance_sheet');
-Route::get('/enrollment_table', [HomeController::class, 'enrollment_table'])->name('page.enrollment_table');
-Route::get('/movie', [HomeController::class, 'movie'])->name('page.movie');
-Route::get('/ranking', [HomeController::class, 'ranking'])->name('page.ranking');
-Route::get('/av', [HomeController::class, 'av'])->name('page.av');
 Route::get('/price', [HomeController::class, 'price'])->name('page.price');
-Route::get('/privacy_policy', [HomeController::class, 'privacy_policy'])->name('page.privacy_policy');
-Route::get('/event', [HomeController::class, 'event'])->name('page.event');
+Route::get('/news', [HomeController::class, 'news'])->name('page.news');
+Route::get('/recruit', [HomeController::class, 'recruit'])->name('page.recruit');
+Route::post('/recruit/save', [HomeController::class, 'recruit_save'])->name('page.recruit.save');
+Route::get('/enrollment_table', [HomeController::class, 'enrollment_table'])->name('page.enrollment_table');
 Route::get('/magazine', [HomeController::class, 'magazine'])->name('page.magazine');
 Route::post('/magazine/save', [HomeController::class, 'magazine_save'])->name('page.magazine.save');
+Route::get('/privacy_policy', [HomeController::class, 'privacy_policy'])->name('page.privacy_policy');
 Route::get('/reservation', [HomeController::class, 'reservation'])->name('page.reservation');
 Route::post('/reservation/save', [HomeController::class, 'reservation_save'])->name('page.reservation.save');
-Route::get('/recruit', [HomeController::class, 'recruit'])->name('page.recruit');
+
+Route::get('/web/reservation', [RegisterController::class, 'web_reservation'])->name('user.web.reservation');
+Route::post('/web/reservation/save', [RegisterController::class, 'web_reservation_save'])->name('user.web.reservation.save');
+
+
+
+Route::get('/movie', [HomeController::class, 'movie'])->name('page.movie');
+Route::get('/ranking', [HomeController::class, 'ranking'])->name('page.ranking');
 Route::get('/summary', [HomeController::class, 'summary'])->name('page.summary');
 Route::get('/entry', [HomeController::class, 'entry'])->name('page.entry');
 Route::post('/entry/save', [HomeController::class, 'entry_save'])->name('page.entry.save');
@@ -48,12 +54,10 @@ Route::post('/attendance_notices', [HomeController::class, 'attendance_notices']
 Route::get('/terms', [HomeController::class, 'terms'])->name('user.terms');
 Route::get('/register', [RegisterController::class, 'index'])->name('user.register');
 Route::post('/register/save', [RegisterController::class, 'save'])->name('user.register.save');
-Route::get('/web/reservation', [RegisterController::class, 'web_reservation'])->name('user.web.reservation');
-Route::post('/web/reservation/save', [RegisterController::class, 'web_reservation_save'])->name('user.web.reservation.save');
 
 Route::get('/login', [LoginController::class, 'index'])->name('user.login');
 Route::get('/user/login', [LoginController::class, 'index'])->name('user.login');
-Route::post('/user/login', [LoginController::class, 'login'])->name('user.login'); 
+Route::post('/user/login', [LoginController::class, 'login'])->name('user.login');
 
 Route::get('/user/signout', [LoginController::class, 'signout'])->name('user.signout');
 
@@ -68,7 +72,7 @@ Route::group(['middleware' => ['auth', 'user'], 'prefix' => 'user'], function ()
 
 Route::get('/admin/', [AuthController::class, 'index'])->name('admin.login');
 Route::get('/admin/login', [AuthController::class, 'index'])->name('admin.login');
-Route::post('/admin/login', [AuthController::class, 'login'])->name('admin.login'); 
+Route::post('/admin/login', [AuthController::class, 'login'])->name('admin.login');
 
 Route::get('/admin/forgotpassword', [AuthController::class, 'forgotpassword'])->name('forgot_password');
 Route::post('/admin/forgotpassword', [AuthController::class, 'forgotpasswordSave'])->name('forgot_password_save');
@@ -86,7 +90,7 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function 
     Route::get('/users/edit', [UsersController::class,'edit'])->name('admin.users.edit');
     Route::post('/users/update', [UsersController::class,'update'])->name('admin.users.update');
     Route::get('/users/delete', [UsersController::class,'delete'])->name('admin.users.delete');
-    
+
     Route::get('/companion/list', [CompanionController::class,'index'])->name('admin.companion.list');
     Route::get('/companion/add', [CompanionController::class,'add'])->name('admin.companion.add');
     Route::post('/companion/save', [CompanionController::class,'save'])->name('admin.companion.save');
@@ -146,7 +150,7 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function 
     Route::get('/blog_post/create', [BlogPostController::class,'create'])->name('admin.blog_post.create');
     Route::post('/blog_post/save', [BlogPostController::class,'save'])->name('admin.blog_post.save');
     Route::post('/mail/save', [BlogPostController::class,'mail'])->name('admin.mail.save');
-    
+
 
     Route::get('/page/list', [PageController::class,'index'])->name('admin.page.list');
     Route::post('/page/save', [PageController::class,'save'])->name('admin.page.save');
@@ -166,4 +170,4 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function 
     Route::get('/telegram/cred', [TelegramController::class,'telegram_cred'])->name('admin.telegram.cred');
     Route::post('/telegram/cred/save', [TelegramController::class,'telegram_save'])->name('admin.telegram.cred.save');
 
-}); 
+});

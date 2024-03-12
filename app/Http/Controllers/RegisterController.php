@@ -83,7 +83,7 @@ class RegisterController extends Controller
             $header = Pages::where(['name'=>'header'])->first();
             $footer = Pages::where(['name'=>'footer'])->first();
             $prices = Price::join('categories','categories.id','=','prices.category_id')->selectRaw('*, prices.id')->get();
-            
+
             $users = User::where(['id' =>Auth::id()])->first();
             return view('user.web_reservation', compact('header', 'footer', 'month', 'day', 'today', 'time', 'prices','users'));
         }
@@ -92,7 +92,7 @@ class RegisterController extends Controller
 
     public function web_reservation_save(Request $request)
     {
-        $request->validate([ 
+        $request->validate([
             'reserve_name' => 'required',
             'reserve_mail' => 'required',
             'reserve_tel' => 'required',
@@ -102,7 +102,7 @@ class RegisterController extends Controller
             'reserve_month3' => 'required','reserve_day3' => 'required','reserve_hour3' => 'required','reserve_minut3' => 'required',
             'reserve_cource' => 'required'
         ]);
-
+        
         $webReservation = WebReservation::create([
             'user_id' => $request->frm_user_id,
             'name' => $request->reserve_name,

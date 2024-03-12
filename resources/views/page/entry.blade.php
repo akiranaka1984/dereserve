@@ -57,7 +57,7 @@
                                 <option value="求人応募">求人応募</option>
                                 <option value="お問い合わせ">お問い合わせ</option>
                             </select>
-                            
+
                             <span class="linetxt">お問い合わせの場合は、お聞きになりたい内容をフォーム下部【自由記入欄】にご入力ください。</span>
                         </dd>
 
@@ -73,7 +73,7 @@
 
                         <dt>体重</dt>
                         <dd class="frm-inpt">
-                            <input type="text" name="rec_weight" value="" placeholder="" class="" data-prompt-position="topLeft"> kg
+                            <input type="text" name="rec_weight" value="" placeholder="" class="" data-prompt-position="topLeft">
                         </dd>
 
                         <dt>バストサイズ</dt>
@@ -204,7 +204,7 @@
                     </dl>
 					<p class="contact_bottom_txt"><em>※確認画面は表示されませんので、送信前に内容のご確認をお願い致します。</em><br>
                         ※ドメイン指定受信されているお客様は「info@club-firenze.net」からのメールを受信できるよう、設定の変更をお願い致します。</p>
-					
+
                     <div id="reserve_btn">
                         <div class="g-recaptcha" data-callback="syncerRecaptchaCallback" data-sitekey="6LfSKB4eAAAAAOfyQgh9NS9c1-SHhtCFsTMiNQsr">
                             <div style="width: 304px; height: 78px;"><div>
@@ -245,7 +245,7 @@
         </ul>
     </nav>
 
-    
+
     <script>
         $(document).ready(function(){
             $('#recruitForm').validate({

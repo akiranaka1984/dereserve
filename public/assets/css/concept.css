@@ -11194,6 +11194,7 @@
 }
 
 .am-cast-image a {
+    /*color: var(--color-am-header);*/
     text-decoration: none;
     color: inherit;
 }

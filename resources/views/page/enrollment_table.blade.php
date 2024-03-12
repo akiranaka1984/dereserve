@@ -2,287 +2,184 @@
 
 @section('content')
 
-    {!!  $header->text_data1 !!}
-    {!!  $header->text_data2 !!}
-    {!!  $header->text_data3 !!}
-
-    <article id="girls">
-        <h2 class="ttl"><span>GIRLS</span></h2>
-        {!! $enrollment_table->text_data1 !!}
-
-        
-            <div id="girls_contents" class="contents">
-                <div class="girls_nav">
-                    <ul>
-                        <li>
-                            <div class="inner">
-                                <p class="mincho">在籍女性検索</p>
-                                <p><span>&nbsp;</span><span>&nbsp;</span></p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="inner">
-                                <p class="mincho">出勤お知らせ</p>
-                                <p><span>&nbsp;</span><span>&nbsp;</span></p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                @if(!empty((array)$search_param))
-                    <div class="girls_search girls_slide" style="display:block;">
-                @else
-                    <div class="girls_search">
-                @endif
-                    <form action="#" name="main" method="get">
-                        <div class="inner">
-                            <div class="prime_txt">
-                                <p>こちらの機能は虎の穴PRIME会員ページにてご利用いただけます。</p>
-                                <p class="btn mincho"><a href="https://tora-group.com/benefits/"
-                                        target="_blank">新規会員登録の方はこちらから</a></p>
-                            </div>
-                            <ul>
-                                <li>
-                                    <p>AV女優</p>
-                                    <input type="checkbox" name="search_av" id="search_av" {{ !empty($search_param->search_av) ? 'checked' : '' }} >
-                                    <label for="search_av" class="girls_search_label"></label>
-                                </li>
-                                <li>
-                                    <p>新人割</p>
-                                    <input type="checkbox" name="search_newface" id="search_newface" {{ !empty($search_param->search_newface) ? 'checked' : '' }} >
-                                    <label for="search_newface" class="girls_search_label"></label>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    <p>動画</p>
-                                    <input type="checkbox" name="search_movie" id="search_movie" {{ !empty($search_param->search_movie) ? 'checked' : '' }} >
-                                    <label for="search_movie" class="girls_search_label"></label>
-                                </li>
-                                <!-- <li>
-                                    <p>グラビア</p>
-                                    <input type="checkbox" name="search_gravure" id="search_gravure">
-                                    <label for="search_gravure" class="girls_search_label"></label>
-                                </li> -->
-                                <!-- <li>
-                                    <p>目出し写真あり</p>
-                                    <input type="checkbox" name="search_pic_medashi" id="search_pic_medashi">
-                                    <label for="search_pic_medashi" class="girls_search_label"></label>
-                                </li> -->
-                                <li>
-                                    <p>顔出し写真あり</p>
-                                    <input type="checkbox" name="search_pic_kaodashi" id="search_pic_kaodashi" {{ !empty($search_param->search_pic_kaodashi) ? 'checked' : '' }}  >
-                                    <label for="search_pic_kaodashi" class="girls_search_label"></label>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    <p>18～19歳</p>
-                                    <input type="checkbox" name="search_age18" id="search_age18" {{ !empty($search_param->search_age18) ? 'checked' : '' }} >
-                                    <label for="search_age18" class="girls_search_label"></label>
-                                </li>
-                                <li>
-                                    <p>20～24歳</p>
-                                    <input type="checkbox" name="search_age20" id="search_age20" {{ !empty($search_param->search_age20) ? 'checked' : '' }} >
-                                    <label for="search_age20" class="girls_search_label"></label>
-                                </li>
-                                <li>
-                                    <p>25～29歳</p>
-                                    <input type="checkbox" name="search_age25" id="search_age25" {{ !empty($search_param->search_age25) ? 'checked' : '' }} >
-                                    <label for="search_age25" class="girls_search_label"></label>
-                                </li>
-                                <li>
-                                    <p>30歳以上</p>
-                                    <input type="checkbox" name="search_age30" id="search_age30" {{ !empty($search_param->search_age30) ? 'checked' : '' }} >
-                                    <label for="search_age30" class="girls_search_label"></label>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    <p>149cm以下</p>
-                                    <input type="checkbox" name="search_height149" id="search_height149" {{ !empty($search_param->search_height149) ? 'checked' : '' }} >
-                                    <label for="search_height149" class="girls_search_label"></label>
-                                </li>
-                                <li>
-                                    <p>150cm～154cm</p>
-                                    <input type="checkbox" name="search_height150" id="search_height150" {{ !empty($search_param->search_height150) ? 'checked' : '' }} >
-                                    <label for="search_height150" class="girls_search_label"></label>
-                                </li>
-                                <li>
-                                    <p>155cm～159cm</p>
-                                    <input type="checkbox" name="search_height155" id="search_height155" {{ !empty($search_param->search_height155) ? 'checked' : '' }} >
-                                    <label for="search_height155" class="girls_search_label"></label>
-                                </li>
-                                <li>
-                                    <p>160cm～164cm</p>
-                                    <input type="checkbox" name="search_height160" id="search_height160" {{ !empty($search_param->search_height160) ? 'checked' : '' }} >
-                                    <label for="search_height160" class="girls_search_label"></label>
-                                </li>
-                                <li>
-                                    <p>165cm～169cm</p>
-                                    <input type="checkbox" name="search_height165" id="search_height165" {{ !empty($search_param->search_height165) ? 'checked' : '' }} >
-                                    <label for="search_height165" class="girls_search_label"></label>
-                                </li>
-                                <li>
-                                    <p>170cm以上</p>
-                                    <input type="checkbox" name="search_height170" id="search_height170" {{ !empty($search_param->search_height170) ? 'checked' : '' }} >
-                                    <label for="search_height170" class="girls_search_label"></label>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    <p>Aカップ</p>
-                                    <input type="checkbox" name="search_bust_a" id="search_bust_a" {{ !empty($search_param->search_bust_a) ? 'checked' : '' }} >
-                                    <label for="search_bust_a" class="girls_search_label"></label>
-                                </li>
-                                <li>
-                                    <p>Bカップ</p>
-                                    <input type="checkbox" name="search_bust_b" id="search_bust_b" {{ !empty($search_param->search_bust_b) ? 'checked' : '' }} >
-                                    <label for="search_bust_b" class="girls_search_label"></label>
-                                </li>
-                                <li>
-                                    <p>Cカップ</p>
-                                    <input type="checkbox" name="search_bust_c" id="search_bust_c" {{ !empty($search_param->search_bust_c) ? 'checked' : '' }} >
-                                    <label for="search_bust_c" class="girls_search_label"></label>
-                                </li>
-                                <li>
-                                    <p>Dカップ</p>
-                                    <input type="checkbox" name="search_bust_d" id="search_bust_d" {{ !empty($search_param->search_bust_d) ? 'checked' : '' }} >
-                                    <label for="search_bust_d" class="girls_search_label"></label>
-                                </li>
-                                <li>
-                                    <p>Eカップ</p>
-                                    <input type="checkbox" name="search_bust_e" id="search_bust_e" {{ !empty($search_param->search_bust_e) ? 'checked' : '' }} >
-                                    <label for="search_bust_e" class="girls_search_label"></label>
-                                </li>
-                                <li>
-                                    <p>Fカップ</p>
-                                    <input type="checkbox" name="search_bust_f" id="search_bust_f" {{ !empty($search_param->search_bust_f) ? 'checked' : '' }} >
-                                    <label for="search_bust_f" class="girls_search_label"></label>
-                                </li>
-                                <li>
-                                    <p>Gカップ</p>
-                                    <input type="checkbox" name="search_bust_g" id="search_bust_g" {{ !empty($search_param->search_bust_g) ? 'checked' : '' }} >
-                                    <label for="search_bust_g" class="girls_search_label"></label>
-                                </li>
-                                <li>
-                                    <p>Hカップ以上</p>
-                                    <input type="checkbox" name="search_bust_h" id="search_bust_h" {{ !empty($search_param->search_bust_h) ? 'checked' : '' }} >
-                                    <label for="search_bust_h" class="girls_search_label"></label>
-                                </li>
-                            </ul>
-                            <p class="girls_search_text_input">
-                                <input type="text" name="girls_search_text" class="girls_search_text p-1" value="{{ !empty($search_param->girls_search_text) ? $search_param->girls_search_text : '' }}" placeholder="名前で検索"></p>
-
-                            <button type="submit" class="black_btn">検索</button>        
-                        </div>
-                    </form>
-                </div>
-                <div class="girls_schedule_mail">
-                    <div class="inner">
-                        <div class="txt">
-                            <p>出勤お知らせメールのご登録は簡単！！<br>気になる虎嬢の下にある<span>「出勤お知らせ」のチェックボックスにチェック</span>を入れて、お名前とメールアドレスを登録するだけ！！<br>女の子の出勤が確定したら、ご登録のメールアドレスへ出勤お知らせメールが配信されます！！
-                            </p>
-                            <p>※通常のメールマガジンとは異なり女性の出勤が確定時のみメールが配信されます。</p>
-                        </div>
-                        <div class="form">
-                            <form action="{{ route('page.attendance_notices.save') }}" method="post">
-                                @csrf
-                                <input type="text" name="name" class="form-control" value="" placeholder="お名前をご入力ください。" required>
-                                <input type="email" name="mail_addr" class="form-control" value="" placeholder="メールアドレスをご入力ください。" required>
-                                <input type="hidden" name="mail_actors" class="form-control mail_actors" value="">
-                                <div class="btn_area">
-                                    <p class="btn"> <input type="submit" name="castsyukkinmail_add" class="mincho" value="登録" > </p>
-                                    <p class="btn"> <input type="submit" name="castsyukkinmail_del" class="mincho" value="解除"> </p>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+    {!! $enrollment_table->text_data1 !!}
+    <section class="model" id="model">
+        <div class="wrapper">
+            <div class="breadcrumbs">
+                <div class="breadcrumb_inner">
+                    <span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage"
+                            title="クラブフィレンツェへ移動する" href="{{ route('page.index') }}"
+                            class="home"><span property="name">HOME</span></a>
+                        <meta property="position" content="1">
+                    </span><i class="fas fa-angle-right" aria-hidden="true"></i><span property="itemListElement"
+                        typeof="ListItem"><span property="name"
+                            class="archive post-model-archive current-item">モデル</span>
+                        <meta property="url" content="{{ route('page.enrollment_table') }}">
+                        <meta property="position" content="2">
+                    </span>
                 </div>
             </div>
-            <div id="girls_all">
-                @foreach($all_records as $key => $records)
-                    <section id="tiger_l" class="inner">
-                        <h3 class="ttl"><span>{{ $key }}</span></h3>
-                        <div class="girls_list contents">
-                            @foreach($records as $companion)
-                                <section class="girl">
-                                    @php
-                                        if(!empty($companion) && !empty($companion->home_image->photo)){
-                                            $imgPath = '/storage/photos/'.($companion->id).'/'.($companion->home_image->photo);       
-                                        }else{
-                                            $imgPath = '/storage/photos/default/images.jpg';       
-                                        }
-                                    @endphp 
-                                    <h4 class="image">
-                                        <a href="{{ route('page.details', ['id'=>$companion->id]) }}">
-                                            <img src="{{ $imgPath }}" loading="lazy" width="180" height="255" alt="{{ $companion->name }}" style="width: 160px;height: 200px;">
-                                        </a>
-                                    </h4>
-                                    
-                                    @if($companion->category->name == "BLACK")
-                                        <p class="tiger_736 mincho"><span><span>{{ $companion->category->name }}</span></span></p>
-                                    @elseif($companion->category->name == "PLATINUM")
-                                        <p class="tiger_201 mincho"><span><span>{{ $companion->category->name }}</span></span></p>
-                                    @elseif($companion->category->name == "DIAMOND")
-                                        <p class="tiger_200 mincho"><span><span>{{ $companion->category->name }}</span></span></p>
-                                    @elseif($companion->category->name == "RED DIAMOND")
-                                        <p class="tiger_202 mincho"><span><span>{{ $companion->category->name }}</span></span></p>
-                                    @endif
-
-                                    <p class="name"><a href="{{ route('page.details', ['id'=>$companion->id]) }}">{{ $companion->name }}（{{ $companion->age }}）</a></p>
-                                    <p class="size">T{{ $companion->height }}<br>B{{ $companion->bust }}({{ $companion->cup }})&nbsp;W{{ $companion->waist }}&nbsp;H{{ $companion->hip }}</p>
-                                    <p class="notice">
-                                        <input type="checkbox" name="cast_id_list" value="{{ $companion->id }}" class="cast_id_list" id="notice_checkbox{{ $companion->id }}">
-                                        <label for="notice_checkbox{{ $companion->id }}">出勤お知らせ</label>
-                                    </p>
-                                    <div class="option">
+            <div class="ex_wrap fadeUpTrigger smooth">
+                <h3 class="ex_headline">在籍モデル一覧 61名</h3>
+                <p class="ex_txt">
+                    当店では芸能プロダクションのみならず、あらゆる業界の圧倒的美人が多数在籍しております。他の高級店では体験できない、最高峰クウォリティの美女を厳選してご案内いたします。 </p>
+            </div>
+            <div class="accordion-area fadeUpTrigger2">
+                <section class="search">
+                    <h3 class="search_title">Keyword Search</h3>
+                    <div class="box">
+                        <ul class="sort-btn color_bk">
+                            <li>
+                                <dl>
+                                    <dt>All</dt>
+                                    <dd>
                                         <ul>
-                                            <li>
-                                                @if($companion->option_non_japanese_chk == 1)
-                                                    <img src="{{ url('/assets/images/option_non_japanese.svg') }}" width="51" height="51" alt="外国人対応可">
-                                                @else
-                                                    <img src="{{ url('/assets/images/option_non_japanese_no.svg') }}" width="51" height="51" alt="外国人対応可">
-                                                @endif
-                                            </li>
-                                            <li>
-                                                @if($companion->option_3p_chk == 1)
-                                                    <img src="{{ url('/assets/images/option_3p.svg') }}" width="51" height="51" alt="3Pコース">
-                                                @else
-                                                    <img src="{{ url('/assets/images/option_3p_no.svg') }}" width="51" height="51" alt="3Pコース">
-                                                @endif
-                                            </li>
-                                            <li>
-                                                @if($companion->option_av_chk == 1)
-                                                    <img src="{{ url('/assets/images/option_av.svg') }}" width="51" height="51" alt="AV女優">
-                                                @else
-                                                    <img src="{{ url('/assets/images/option_av_no.svg') }}" width="51" height="51" alt="AV女優">
-                                                @endif
-                                            </li>
-                                            <li>
-                                                @if($companion->option_newface_chk == 1)
-                                                    <img src="{{ url('/assets/images/option_newface.svg') }}" width="51" height="51" alt="新人割">
-                                                @else
-                                                    <img src="{{ url('/assets/images/option_newface_no.svg') }}" width="51" height="51" alt="新人割">
-                                                @endif
-                                            </li>
+                                            <li class="all active">全て</li>
                                         </ul>
-                                    </div>
-                                </section>
-                            @endforeach
-                        </div>
-                    </section>
-                @endforeach
+                                    </dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <dl>
+                                    <dt>CLASS</dt>
+                                    <dd>
+                                        <ul>
+                                            <li class="rank01">PLATINUM</li>
+                                            <li class="rank02">BLACK</li>
+                                            <li class="rank03">DIAMOND</li>
+                                            <li class="rank04">RED DIAMOND</li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <dl>
+                                    <dt>TYPE</dt>
+                                    <dd>
+                                        <ul>
+                                            <li class="cat01">新人</li>
+                                            <li class="cat02">経験者</li>
+                                            <li class="cat03">未経験</li>
+                                            <li class="cat04">清楚系</li>
+                                            <li class="cat05">スタイル抜群</li>
+                                            <li class="cat06">モデル系</li>
+                                            <li class="cat07">キレカワ系</li>
+                                            <li class="cat08">アイドル系</li>
+                                            <li class="cat09">素人系</li>
+                                            <li class="cat10">グラビア系</li>
+                                            <li class="cat11">お姉様系</li>
+                                            <li class="cat12">ギャル系</li>
+                                            <li class="cat13">現役モデル</li>
+                                            <li class="cat14">AV女優</li>
+                                            <li class="cat15">CA</li>
+                                            <li class="cat16">女子大生</li>
+                                            <li class="cat17">ロリ系</li>
+                                            <li class="cat18">おっとり系</li>
+                                            <li class="cat19">綺麗系</li>
+                                            <li class="cat20">可愛い系</li>
+                                            <li class="cat21">癒し系</li>
+                                            <li class="cat22">オススメ</li>
+                                            <li class="cat23">巨乳</li>
+                                            <li class="cat24">スレンダー</li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
             </div>
-    </article>
-    <script>
-        $(document).ready(function(){
-            $(document).on('click','.cast_id_list', function(){
-                let cast_id_list = []
-                $('.cast_id_list:checked').each(function(){
-                    cast_id_list.push($(this).val())
-                })
-                $('.mail_actors').val(cast_id_list.join('-'));
-            })
-        })
-    </script>
+            <div class="articlePanel mgt_30">
+                <ul id="" class="article-wrap slider grid fadeUpTrigger3 muuri" style="height: 238px;">
+                    @foreach($all_records as $key => $records)
+                        @foreach($records as $companion)
+                                @php
+                                    if(!empty($companion) && !empty($companion->home_image->photo)){
+                                        $imgPath = '/storage/photos/'.($companion->id).'/'.($companion->home_image->photo);
+                                    }else{
+                                        $imgPath = '/storage/photos/default/images.jpg';
+                                    }
+
+                                    $companion_categories = '';
+
+                                    $companion_categories = str_contains($companion->rookie, '新人') ? $companion_categories.' cat01' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, '経験者') ? $companion_categories.' cat02' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, '未経験') ? $companion_categories.' cat03' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, '清楚系') ? $companion_categories.' cat04' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, 'スタイル抜群') ? $companion_categories.' cat05' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, 'スタイル抜群') ? $companion_categories.' cat06' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, 'モデル系') ? $companion_categories.' cat07' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, 'キレカワ系') ? $companion_categories.' cat08' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, 'アイドル系') ? $companion_categories.' cat09' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, '素人系') ? $companion_categories.' cat10' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, 'お姉様系') ? $companion_categories.' cat11' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, 'ギャル系') ? $companion_categories.' cat12' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, '現役モデル') ? $companion_categories.' cat13' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, 'AV女優') ? $companion_categories.' cat114' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, 'CA') ? $companion_categories.' cat15' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, '女子大生') ? $companion_categories.' cat16' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, 'ロリ系') ? $companion_categories.' cat17' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, 'おっとり系') ? $companion_categories.' cat18' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, '綺麗系') ? $companion_categories.' cat19' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, '可愛い系') ? $companion_categories.' cat20' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, '癒し系') ? $companion_categories.' cat21' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, 'オススメ') ? $companion_categories.' cat22' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, '巨乳') ? $companion_categories.' cat23' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, 'スレンダー') ? $companion_categories.' cat24' : $companion_categories.'';
+
+                                    if ($companion->category_id == 1) {
+                                        $companion_rank = 'rank01';
+                                    } else if ($companion->category_id == 2) {
+                                        $companion_rank = 'rank02';
+                                    } else if ($companion->category_id == 3) {
+                                        $companion_rank = 'rank03';
+                                    } else if ($companion->category_id == 4) {
+                                        $companion_rank = 'rank04';
+                                    }
+
+
+                                @endphp
+                                <li class="article {{ $companion_categories }} {{ $companion_rank }} item muuri-item muuri-item-shown">
+                                    <a href="{{ route('page.details', ['id'=>$companion->id]) }}" class="model_link" style="opacity: 1; transform: scale(1);">
+                                        <div class="box fadeUpTrigger3">
+                                            <span class="rank_label">
+                                                @if($companion->category->name == "BLACK")
+                                                    <img src="{{ url('assets/images/black_label.png') }}" alt="{{ $companion->category->name }}">
+                                                @elseif($companion->category->name == "PLATINUM")
+                                                    <img src="{{ url('assets/images/platinum_label.png') }}" alt="{{ $companion->category->name }}">
+                                                @elseif($companion->category->name == "DIAMOND")
+                                                    <img src="{{ url('assets/images/diamond_label.png') }}" alt="{{ $companion->category->name }}">
+                                                @elseif($companion->category->name == "RED DIAMOND")
+                                                    <img src="{{ url('assets/images/reddiamond_label.png') }}" alt="{{ $companion->category->name }}">
+                                                @endif
+                                            </span>
+                                            <img src="{{ $imgPath }}" alt="{{ $companion->name }}" class="photo">
+                                            <div class="prof_box">
+                                                <p class="intro">☆まだあどけなさが残るキレカワ系の清楚美女☆</p>
+                                                <div class="prof">
+                                                    <div class="name_wrap">
+                                                        <p class="name">{{ $companion->name }}</p>
+                                                        <span class="age">{{ $companion->age }}</span>歳
+                                                    </div>
+                                                    <div class="size">
+                                                        T:<span class="tall">{{ $companion->height }}</span>
+                                                        <span class="bast">B:{{ $companion->bust }}({{ $companion->cup }})</span>
+                                                        <span class="west">W:{{ $companion->waist }}</span>
+                                                        <span class="hip">H:{{ $companion->hip }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="schedule">
+                                                    <p>出勤：</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                        @endforeach
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    </section>
+
 @endsection
