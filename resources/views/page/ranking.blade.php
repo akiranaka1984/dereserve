@@ -19,7 +19,7 @@
                                     if(!empty($companion) && !empty($companion->home_image->photo)){
                                         $imgPath = '/storage/photos/'.($companion->id).'/'.($companion->home_image->photo);
                                     }else{
-                                        $imgPath = '/storage/photos/default/images.jpg';
+                                        $imgPath = '/storage/photos/default/not-to-be-published.jpg';
                                     }
                                 @endphp
                                 <h4>

@@ -41,7 +41,7 @@
                                 if(!empty($attendance->companion) && !empty($attendance->companion->home_image->photo)){
                                     $imgPath = '/storage/photos/'.($attendance->companion->id).'/'.($attendance->companion->home_image->photo);
                                 }else{
-                                    $imgPath = '/storage/photos/default/images.jpg';
+                                    $imgPath = '/storage/photos/default/not-to-be-published.jpg';
                                 }
                             @endphp
                             <li class="article item muuri-item muuri-item-shown">
