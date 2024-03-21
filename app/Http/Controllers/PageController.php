@@ -22,7 +22,6 @@ class PageController extends Controller
                 $text_data3 = $pages->text_data3;
             }
         }   
-
         return view('admin.page.list', compact('page_name','text_data1', 'text_data2', 'text_data3'));
     }
 

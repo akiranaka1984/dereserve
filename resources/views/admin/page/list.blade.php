@@ -34,6 +34,8 @@
                                 <option value="privacy_policy" {{ $page_name == 'privacy_policy' ? 'selected' : '' }} >Privacy Policy</option>
                                 <option value="summary" {{ $page_name == 'summary' ? 'selected' : '' }} >Mens recruitment</option>
                                 <option value="entry" {{ $page_name == 'entry' ? 'selected' : '' }} >Model recruitment</option>
+                                <option value="concept" {{ $page_name == 'concept' ? 'selected' : '' }} >Concept</option>
+                                <option value="price" {{ $page_name == 'price' ? 'selected' : '' }} >Price</option>
                             </select> 
                         </div> 
                     </div>

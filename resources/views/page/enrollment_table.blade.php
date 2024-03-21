@@ -3,6 +3,7 @@
 @section('content')
 
     {!! $enrollment_table->text_data1 !!}
+    
     <section class="model" id="model">
         <div class="wrapper">
             <div class="breadcrumbs">
@@ -19,6 +20,7 @@
                     </span>
                 </div>
             </div>
+            
             <div class="ex_wrap fadeUpTrigger smooth">
                 <h3 class="ex_headline">在籍モデル一覧 61名</h3>
                 <p class="ex_txt">
@@ -179,6 +181,10 @@
                     @endforeach
                 </ul>
             </div>
+
+            {!! $enrollment_table->text_data2 !!}
+            {!! $enrollment_table->text_data3 !!}
+
         </div>
     </section>
 

@@ -41,8 +41,8 @@ class HomeController extends Controller
     {
         $header = Pages::where(['name'=>'header'])->first();
         $footer = Pages::where(['name'=>'footer'])->first();
-        $main = Pages::where(['name'=>'main'])->first();
-        return view('page.concept', compact('header','footer','main'));
+        $concept = Pages::where(['name'=>'concept'])->first();
+        return view('page.concept', compact('header','footer','concept'));
     }
 
     public function details(Request $request)
@@ -186,9 +186,10 @@ class HomeController extends Controller
     {
         $header = Pages::where(['name'=>'header'])->first();
         $footer = Pages::where(['name'=>'footer'])->first();
-
+        $priceData = Pages::where(['name'=>'price'])->first();
+        // dd($price->text_data2);
         $categories = Category::with(['prices'])->where(['status'=>1])->orderBy('position', 'ASC')->orderBy('id', 'ASC')->get();
-        return view('page.price', compact('header','footer', 'categories'));
+        return view('page.price', compact('header','footer', 'priceData', 'categories'));
     }
 
     public function news(Request $request)
