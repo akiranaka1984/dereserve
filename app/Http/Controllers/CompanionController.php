@@ -70,7 +70,6 @@ class CompanionController extends Controller
             'frm_rookie' => 'required',
             'frm_hobby' => 'required',
             'frm_sale_point' => 'required',
-            'frm_font_color' => 'required',
             'short_message' => 'required',
             'frm_entry_date' => 'required'
         ]);
@@ -130,7 +129,6 @@ class CompanionController extends Controller
             'frm_rookie' => 'required',
             'frm_hobby' => 'required',
             'frm_sale_point' => 'required',
-            'frm_font_color' => 'required',
             'short_message' => 'required',
             'frm_entry_date' => 'required'
         ]);
