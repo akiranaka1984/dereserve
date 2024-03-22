@@ -98,6 +98,8 @@
                     <p class="base">{{ $companion->hobby }}</p>
 
                     <h4 class="prof_head">オススメポイント</h4>
+                    <p class="base">{{ $companion->rookie }}</p>
+                         
 
                     <h4 class="prof_head">コンシェルジュからのメッセージ</h4>
                         {!! $companion->message !!}

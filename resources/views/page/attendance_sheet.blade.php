@@ -32,7 +32,11 @@
                 <div id="am-block-schedule" class="">
                     <ul class="am-header">
                         @foreach ($schedule_dates as $key => $dates)
-                            <li class="am-header-item"><a href="{{ route('page.attendance_sheet', ['date' => $key]) }}">{{ $dates }}</a></li>
+                            @if($key == $req_date)
+                                <li class="am-header-item active"><a href="{{ route('page.attendance_sheet', ['date' => $key]) }}">{{ $dates }}</a></li>
+                            @else
+                                <li class="am-header-item"><a href="{{ route('page.attendance_sheet', ['date' => $key]) }}">{{ $dates }}</a></li>
+                            @endif
                         @endforeach
                     </ul>
                     <ul class="article-wrap slider grid opc_open muuri">
@@ -50,18 +54,18 @@
                                         <span class="new_label">NEW</span>
                                         <span class="rank_label">
                                             @if($attendance->companion->category->name == "BLACK")
-                                                <img src="{{ ('assets/images/black_label.png') }}" alt="{{ $attendance->companion->category->name }}">
+                                                <img src="{{ url('assets/images/black_label.png') }}" alt="{{ $attendance->companion->category->name }}">
                                             @elseif($attendance->companion->category->name == "PLATINUM")
-                                                <img src="{{ ('assets/images/platinum_label.png') }}" alt="{{ $attendance->companion->category->name }}">
+                                                <img src="{{ url('assets/images/platinum_label.png') }}" alt="{{ $attendance->companion->category->name }}">
                                             @elseif($attendance->companion->category->name == "DIAMOND")
-                                                <img src="{{ ('assets/images/diamond_label.png') }}" alt="{{ $attendance->companion->category->name }}">
+                                                <img src="{{ url('assets/images/diamond_label.png') }}" alt="{{ $attendance->companion->category->name }}">
                                             @elseif($attendance->companion->category->name == "RED DIAMOND")
-                                                <img src="{{ ('assets/images/reddiamond_label.png') }}" alt="{{ $attendance->companion->category->name }}">
+                                                <img src="{{ url('assets/images/reddiamond_label.png') }}" alt="{{ $attendance->companion->category->name }}">
                                             @endif
                                         </span>
                                         <img src="{{ $imgPath }}" alt="{{ $attendance->companion->name }}" class="photo">
                                         <div class="prof_box">
-                                            <p class="intro">{{ $attendance->start_time }}～{{ $attendance->end_time }}</p>
+                                            <p class="intro">{{ $attendance->companion->sale_point }}</p>
                                             <div class="prof">
                                                 <div class="name_wrap">
                                                     <p class="name">{{ $attendance->companion->name }}</p>
@@ -75,7 +79,11 @@
                                                 </div>
                                             </div>
                                             <div class="schedule">
-                                                <p>出勤：デフォルト値</p>
+                                                @if(!empty($attendance->start_time))
+                                                    <p>出勤：{{ $attendance->start_time }}～{{ $attendance->end_time }}</p>
+                                                @else
+                                                    <p>出勤：00:00～</p>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>

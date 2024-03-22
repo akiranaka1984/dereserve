@@ -56,6 +56,7 @@ class CompanionController extends Controller
     public function save(Request $request)
     {
 
+
         $request->validate([ 
             'category_id' => 'required', 
             'frm_name' => 'required', 
@@ -85,7 +86,7 @@ class CompanionController extends Controller
             'cup' => $request->frm_cup,
             'waist' => $request->frm_waist,
             'hip' => $request->frm_hip,
-            'rookie' => $request->frm_rookie,
+            'rookie' => implode(', ', $request->frm_rookie),
             'hobby' => $request->frm_hobby,
             'sale_point' => $request->frm_sale_point,
             'font_color' => $request->frm_font_color,
@@ -146,7 +147,7 @@ class CompanionController extends Controller
             'cup' => $request->frm_cup,
             'waist' => $request->frm_waist,
             'hip' => $request->frm_hip,
-            'rookie' => $request->frm_rookie,
+            'rookie' => implode(', ', $request->frm_rookie),
             'hobby' => $request->frm_hobby,
             'sale_point' => $request->frm_sale_point,
             'font_color' => $request->frm_font_color,

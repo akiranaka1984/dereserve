@@ -73,32 +73,44 @@
                             <div class="col-sm-8 frm-inpt"> <input type="text" name="frm_hip"  class="form-control" id="frmHip" placeholder="ヒップ">cm</div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">新人属性</label>
+                            <label class="col-sm-3 control-label">おすすめポイント</label>
                             <div class="col-sm-8 frm-inpt">
-                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="新人" checked>新人</label> </div>
-                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="経験者">経験者</label></div>
-                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="未経験">未経験</label></div>
-                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="清楚系">清楚系</label></div>
-                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="スタイル抜群">スタイル抜群</label></div>
-                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="モデル系">モデル系</label></div>
-                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="キレカワ系">キレカワ系</label></div>
-                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="アイドル系">アイドル系</label></div>
-                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="素人系">素人系</label></div>
-                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="グラビア系">グラビア系</label></div>
-                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="お姉様系">お姉様系</label></div>
-                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="ギャル系">ギャル系</label></div>
-                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="現役モデル">現役モデル</label></div>
-                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="AV女優">AV女優</label></div>
-                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="CA">CA</label></div>
-                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="女子大生">女子大生</label></div>
-                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="ロリ系">ロリ系</label></div>
-                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="おっとり系">おっとり系</label></div>
-                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="綺麗系">綺麗系</label></div>
-                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="可愛い系">可愛い系</label></div>
-                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="癒し系">癒し系</label></div>
-                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="オススメ">オススメ</label></div>
-                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="巨乳">巨乳</label></div>
-                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="スレンダー">スレンダー</label></div>
+                                <div class="grid">
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="新人">&nbsp;新人 &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="経験者">&nbsp; 経験者 &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="未経験">&nbsp; 未経験 &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="清楚系" >&nbsp; 清楚系 &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="スタイル抜群">&nbsp; スタイル抜群 &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="モデル系" >&nbsp; モデル系 &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="キレカワ系" >&nbsp; キレカワ系 &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="アイドル系">&nbsp; アイドル系 &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="素人系">&nbsp; 素人系 &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="グラビア系">&nbsp; グラビア系 &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="お姉様系">&nbsp; お姉様系 &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="ギャル系">&nbsp; ギャル系 &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="現役モデル">&nbsp; 現役モデル &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="AV女優">&nbsp; AV女優 &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="CA">&nbsp; CA &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="女子大生">&nbsp; 女子大生 &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="ロリ系">&nbsp; ロリ系 &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="おっとり系">&nbsp; おっとり系 &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="綺麗系">&nbsp; 綺麗系 &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="可愛い系">&nbsp; 可愛い系 &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="癒し系">&nbsp; 癒し系 &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="オススメ">&nbsp; オススメ &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="巨乳">&nbsp; 巨乳 &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="スレンダー">&nbsp; スレンダー &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="女子アナ系">&nbsp; 女子アナ系 &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="小柄">&nbsp; 小柄 &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="高身長">&nbsp; 高身長 &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="愛嬌抜群">&nbsp; 愛嬌抜群 &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="パイパン">&nbsp; パイパン &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="美脚">&nbsp; 美脚 &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="美乳">&nbsp; 美乳 &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="美尻" >&nbsp; 美尻 &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="黒髪" >&nbsp; 黒髪 &nbsp;&nbsp;
+                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="ハーフ" >&nbsp; ハーフ &nbsp;&nbsp;
+                                </div>
                             </div>
                         </div>
                         <div class="form-group"> <label for="frmHobby" class="col-sm-3 control-label">趣味</label>
@@ -190,8 +202,8 @@
                     frm_cup: { required: true },
                     frm_waist: { required: true },
                     frm_hip: { required: true },
-                    frm_rookie: { required: true },
-                    frm_sale_point: { required: true },
+                    'frm_rookie[]': { required: true, maxlength:4 },
+                    frm_sale_point: { required: true, maxlength:10 },
                     short_message: { 
                         required: function(){
                             CKEDITOR.instances.frmShortMessage.updateElement();
@@ -209,8 +221,8 @@
                     frm_cup: { required: "{{ __('This field is required') }}" },
                     frm_waist: { required: "{{ __('This field is required') }}" },
                     frm_hip: { required: "{{ __('This field is required') }}" },
-                    frm_rookie: { required: "{{ __('This field is required') }}" },
-                    frm_sale_point: { required: "{{ __('This field is required') }}" },
+                    'frm_rookie[]': { required: "{{ __('This field is required') }}", maxlength: "{{ __('Max 4 checkbox allowed') }}" },
+                    frm_sale_point: { required: "{{ __('This field is required') }}", maxlength: "{{ __('Max 10 characters allowed') }}" },
                     short_message: { required: "{{ __('This field is required') }}" },
                     frm_entry_date: { required: "{{ __('This field is required') }}" }
                 },

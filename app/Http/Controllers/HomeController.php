@@ -28,7 +28,7 @@ class HomeController extends Controller
         $header = Pages::where(['name'=>'header'])->first();
         $footer = Pages::where(['name'=>'footer'])->first();
         $main = Pages::where(['name'=>'main'])->first();
-        $new_companions = Companion::with(['home_image', 'category'])->where(['status'=>1])->orderBy('id', 'DESC')->take(6)->get();
+        $new_companions = Companion::with(['today_attendances','home_image', 'category'])->where(['status'=>1])->orderBy('id', 'DESC')->take(6)->get();
         $today_attendances = Attendance::with(['companion'])->where(['date'=>date('Y-m-d')])->where(function ($query) {
             $query->where('end_time', '=', null)->orWhere('end_time', '>', date('H:i'));
         })->get();
@@ -62,7 +62,7 @@ class HomeController extends Controller
         $footer = Pages::where(['name'=>'footer'])->first();
         $attendance_sheet = Pages::where(['name'=>'attendance_sheet'])->first();
         $today_attendances = Attendance::with(['companion'])->where(['date'=> $req_date])->get();
-        return view('page.attendance_sheet', compact('header','footer','attendance_sheet','schedule_dates','today_attendances'));
+        return view('page.attendance_sheet', compact('header','footer','req_date','attendance_sheet','schedule_dates','today_attendances'));
     }
 
     public function enrollment_table(Request $request)
@@ -75,7 +75,7 @@ class HomeController extends Controller
         $all_records = array();
         $categories = Category::where(['status'=>1])->get();
         foreach($categories as $category){
-            $sql = Companion::with(['category','home_image'])->where([ 'category_id'=>$category->id ]);
+            $sql = Companion::with(['today_attendances','category','home_image'])->where([ 'category_id'=>$category->id ]);
 
             $sql->where(function ($query) use ($request){
                 if(!empty($request->search_av)){

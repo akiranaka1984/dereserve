@@ -24,7 +24,7 @@ class Attendance extends Model
     ];
 
     public function companion(){
-    	return $this->hasOne('App\Models\Companion','id','companion_id')->with('home_image');
+    	return $this->hasOne('App\Models\Companion','id','companion_id')->with(['category', 'home_image']);
     }
 
 }

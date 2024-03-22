@@ -49,6 +49,11 @@ class Companion extends Model
     	return $this->hasMany('App\Models\CompanionPhoto','companion_id','id');
     }
 
+    public function today_attendances(){
+        $today = date('Y-m-d');
+        return $this->hasOne('App\Models\Attendance','companion_id','id')->where('date','=',$today);
+    } 
+
     public function attendances(){
         $today = date('Y-m-d');
         $endDate = date('Y-m-d', strtotime($today. ' + 7 days'));

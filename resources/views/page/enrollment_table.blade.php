@@ -83,6 +83,17 @@
                                             <li class="cat22">オススメ</li>
                                             <li class="cat23">巨乳</li>
                                             <li class="cat24">スレンダー</li>
+
+                                            <li class="cat25">女子アナ系</li>
+                                            <li class="cat26">小柄</li>
+                                            <li class="cat27">高身長</li>
+                                            <li class="cat28">愛嬌抜群</li>
+                                            <li class="cat29">パイパン</li>
+                                            <li class="cat30">美脚</li>
+                                            <li class="cat31">美乳</li>
+                                            <li class="cat32">美尻</li>
+                                            <li class="cat33">黒髪</li>
+                                            <li class="cat34">ハーフ</li>
                                         </ul>
                                     </dd>
                                 </dl>
@@ -128,6 +139,16 @@
                                     $companion_categories = str_contains($companion->rookie, 'オススメ') ? $companion_categories.' cat22' : $companion_categories.'';
                                     $companion_categories = str_contains($companion->rookie, '巨乳') ? $companion_categories.' cat23' : $companion_categories.'';
                                     $companion_categories = str_contains($companion->rookie, 'スレンダー') ? $companion_categories.' cat24' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, '女子アナ系') ? $companion_categories.' cat25' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, '小柄') ? $companion_categories.' cat26' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, '高身長') ? $companion_categories.' cat27' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, '愛嬌抜群') ? $companion_categories.' cat28' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, 'パイパン') ? $companion_categories.' cat29' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, '美脚') ? $companion_categories.' cat30' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, '美乳') ? $companion_categories.' cat31' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, '美尻') ? $companion_categories.' cat32' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, '黒髪') ? $companion_categories.' cat33' : $companion_categories.'';
+                                    $companion_categories = str_contains($companion->rookie, 'ハーフ') ? $companion_categories.' cat34' : $companion_categories.'';
 
                                     if ($companion->category_id == 1) {
                                         $companion_rank = 'rank01';
@@ -157,7 +178,7 @@
                                             </span>
                                             <img src="{{ $imgPath }}" alt="{{ $companion->name }}" class="photo">
                                             <div class="prof_box">
-                                                <p class="intro">☆まだあどけなさが残るキレカワ系の清楚美女☆</p>
+                                                <p class="intro">{{ $companion->sale_point }}</p>
                                                 <div class="prof">
                                                     <div class="name_wrap">
                                                         <p class="name">{{ $companion->name }}</p>
@@ -171,7 +192,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="schedule">
-                                                    <p>出勤：</p>
+                                                    @if(!empty($companion->today_attendances))
+                                                        <p>出勤：{{ $companion->today_attendances->start_time }}～{{ $companion->today_attendances->end_time }}</p>
+                                                    @else
+                                                        <p>出勤：00:00～</p>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>

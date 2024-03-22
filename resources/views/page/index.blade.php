@@ -29,18 +29,19 @@
                                             <span class="new_label">NEW</span>
                                             <span class="rank_label">
                                                 @if($new_companion->category->name == "BLACK")
-                                                    <img src="{{ ('assets/images/black_label.png') }}" alt="{{ $new_companion->category->name }}">
+                                                    <img src="{{ url('assets/images/black_label.png') }}" alt="{{ $new_companion->category->name }}">
                                                 @elseif($new_companion->category->name == "PLATINUM")
-                                                    <img src="{{ ('assets/images/platinum_label.png') }}" alt="{{ $new_companion->category->name }}">
+                                                    <img src="{{ url('assets/images/platinum_label.png') }}" alt="{{ $new_companion->category->name }}">
                                                 @elseif($new_companion->category->name == "DIAMOND")
-                                                    <img src="{{ ('assets/images/diamond_label.png') }}" alt="{{ $new_companion->category->name }}">
+                                                    <img src="{{ url('assets/images/diamond_label.png') }}" alt="{{ $new_companion->category->name }}">
                                                 @elseif($new_companion->category->name == "RED DIAMOND")
-                                                    <img src="{{ ('assets/images/reddiamond_label.png') }}" alt="{{ $new_companion->category->name }}">
+                                                    <img src="{{ url('assets/images/reddiamond_label.png') }}" alt="{{ $new_companion->category->name }}">
                                                 @endif
                                             </span>
                                             <img src="{{ $imgPath }}" alt="{{ $new_companion->name }}({{ $new_companion->age }})" class="photo">
                                             <div class="prof_box">
                                                 <div class="prof">
+                                                    <p class="intro">{{ $new_companion->sale_point }}</p>
                                                     <div class="name_wrap">
                                                         <p class="name">{{ $new_companion->name }}</p>
                                                         <span class="age">{{ $new_companion->age }}</span>歳
@@ -51,7 +52,11 @@
                                                             class="hip">H:{{ $new_companion->hip }}</span> </div>
                                                 </div>
                                                 <div class="schedule">
-                                                    <p>出勤：</p>
+                                                    @if(!empty($new_companion->today_attendances))
+                                                        <p>出勤：{{ $new_companion->today_attendances->start_time }}～{{ $new_companion->today_attendances->end_time }}</p>
+                                                    @else
+                                                        <p>出勤：00:00～</p>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -96,12 +101,11 @@
                                         @elseif($attendance->companion->category->name == "RED DIAMOND")
                                             <img src="{{ url('assets/images/reddiamond_label.png') }}" alt="{{ $attendance->companion->category->name }}">
                                         @endif
-
                                     </span>
                                     <img src="{{ $imgPath }}" alt="{{ $attendance->companion->name }}" class="photo">
                                     <div class="prof_box">
                                         <div class="prof">
-                                            <p class="intro">{{ $attendance->start_time }}～{{ $attendance->end_time }}</p>
+                                            <p class="intro">{{ $attendance->companion->sale_point }}</p>
                                             <div class="name_wrap">
                                                 <p class="name"></p>{{ $attendance->companion->name }}</p>
                                                 <span class="age">{{ $attendance->companion->age }}</span>歳
@@ -112,7 +116,11 @@
                                             </div>
                                         </div>
                                         <div class="schedule">
-                                            <p>出勤：</p>
+                                            @if(!empty($attendance->start_time))
+                                                <p>出勤：{{ $attendance->start_time }}～{{ $attendance->end_time }}</p>
+                                            @else
+                                                <p>出勤：00:00～</p>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

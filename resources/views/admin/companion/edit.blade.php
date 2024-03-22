@@ -106,32 +106,45 @@
                                             <div class="col-sm-8 frm-inpt"> <input type="text" name="frm_hip"  class="form-control" id="frmHip" value="{{ $companion->hip }}" placeholder="ヒップ">cm</div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label">新人属性</label>
+                                            <label class="col-sm-3 control-label">おすすめポイント</label>
                                             <div class="col-sm-8 frm-inpt">
-                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="新人" {{ $companion->rookie == '新人' ? 'checked' : '' }} >新人</label> </div>
-                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="経験者" {{ $companion->rookie == '経験者' ? 'checked' : '' }} >経験者</label></div>
-                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="未経験" {{ $companion->rookie == '未経験' ? 'checked' : '' }} >未経験</label></div>
-                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="清楚系" {{ $companion->rookie == '清楚系' ? 'checked' : '' }} >清楚系</label></div>
-                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="スタイル抜群" {{ $companion->rookie == 'スタイル抜群' ? 'checked' : '' }} >スタイル抜群</label></div>
-                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="モデル系" {{ $companion->rookie == 'モデル系' ? 'checked' : '' }} >モデル系</label></div>
-                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="キレカワ系" {{ $companion->rookie == 'キレカワ系' ? 'checked' : '' }} >キレカワ系</label></div>
-                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="アイドル系" {{ $companion->rookie == 'アイドル系' ? 'checked' : '' }} >アイドル系</label></div>
-                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="素人系" {{ $companion->rookie == '素人系' ? 'checked' : '' }} >素人系</label></div>
-                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="グラビア系" {{ $companion->rookie == 'グラビア系' ? 'checked' : '' }} >グラビア系</label></div>
-                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="お姉様系" {{ $companion->rookie == 'お姉様系' ? 'checked' : '' }} >お姉様系</label></div>
-                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="ギャル系" {{ $companion->rookie == 'ギャル系' ? 'checked' : '' }} >ギャル系</label></div>
-                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="現役モデル" {{ $companion->rookie == '現役モデル' ? 'checked' : '' }} >現役モデル</label></div>
-                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="AV女優" {{ $companion->rookie == 'AV女優' ? 'checked' : '' }} >AV女優</label></div>
-                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="CA" {{ $companion->rookie == 'CA' ? 'checked' : '' }} >CA</label></div>
-                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="女子大生" {{ $companion->rookie == '女子大生' ? 'checked' : '' }} >女子大生</label></div>
-                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="ロリ系" {{ $companion->rookie == 'ロリ系' ? 'checked' : '' }} >ロリ系</label></div>
-                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="おっとり系" {{ $companion->rookie == 'おっとり系' ? 'checked' : '' }} >おっとり系</label></div>
-                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="綺麗系" {{ $companion->rookie == '綺麗系' ? 'checked' : '' }} >綺麗系</label></div>
-                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="可愛い系" {{ $companion->rookie == '可愛い系' ? 'checked' : '' }} >可愛い系</label></div>
-                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="癒し系" {{ $companion->rookie == '癒し系' ? 'checked' : '' }} >癒し系</label></div>
-                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="オススメ" {{ $companion->rookie == 'オススメ' ? 'checked' : '' }} >オススメ</label></div>
-                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="巨乳" {{ $companion->rookie == '巨乳' ? 'checked' : '' }} >巨乳</label></div>
-                                                <div class="radio-inline"> <label> <input type="radio" name="frm_rookie" value="スレンダー" {{ $companion->rookie == 'スレンダー' ? 'checked' : '' }} >スレンダー</label></div>
+                                                    
+                                                <div class="grid">
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="新人" {{ (strpos($companion->rookie, '新人') !== false) ? 'checked': '' }} >&nbsp;新人 &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="経験者" {{ (strpos($companion->rookie, '経験者') !== false) ? 'checked': '' }} >&nbsp; 経験者 &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="未経験" {{ (strpos($companion->rookie, '未経験') !== false) ? 'checked': '' }} >&nbsp; 未経験 &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="清楚系" {{ (strpos($companion->rookie, '清楚系') !== false) ? 'checked': '' }} >&nbsp; 清楚系 &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="スタイル抜群" {{ (strpos($companion->rookie, 'スタイル抜群') !== false) ? 'checked': '' }} >&nbsp; スタイル抜群 &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="モデル系" {{ (strpos($companion->rookie, 'モデル系') !== false) ? 'checked': '' }} >&nbsp; モデル系 &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="キレカワ系" {{ (strpos($companion->rookie, 'キレカワ系') !== false) ? 'checked': '' }} >&nbsp; キレカワ系 &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="アイドル系" {{ (strpos($companion->rookie, 'アイドル系') !== false) ? 'checked': '' }} >&nbsp; アイドル系 &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="素人系" {{ (strpos($companion->rookie, '素人系') !== false) ? 'checked': '' }} >&nbsp; 素人系 &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="グラビア系" {{ (strpos($companion->rookie, 'グラビア系') !== false) ? 'checked': '' }} >&nbsp; グラビア系 &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="お姉様系" {{ (strpos($companion->rookie, 'お姉様系') !== false) ? 'checked': '' }} >&nbsp; お姉様系 &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="ギャル系" {{ (strpos($companion->rookie, 'ギャル系') !== false) ? 'checked': '' }} >&nbsp; ギャル系 &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="現役モデル" {{ (strpos($companion->rookie, '現役モデル') !== false) ? 'checked': '' }} >&nbsp; 現役モデル &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="AV女優" {{ (strpos($companion->rookie, 'AV女優') !== false) ? 'checked': '' }} >&nbsp; AV女優 &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="CA" {{ (strpos($companion->rookie, 'CA') !== false) ? 'checked': '' }} >&nbsp; CA &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="女子大生" {{ (strpos($companion->rookie, '女子大生') !== false) ? 'checked': '' }} >&nbsp; 女子大生 &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="ロリ系" {{ (strpos($companion->rookie, 'ロリ系') !== false) ? 'checked': '' }} >&nbsp; ロリ系 &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="おっとり系" {{ (strpos($companion->rookie, 'おっとり系') !== false) ? 'checked': '' }} >&nbsp; おっとり系 &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="綺麗系" {{ (strpos($companion->rookie, '綺麗系') !== false) ? 'checked': '' }} >&nbsp; 綺麗系 &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="可愛い系" {{ (strpos($companion->rookie, '可愛い系') !== false) ? 'checked': '' }} >&nbsp; 可愛い系 &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="癒し系" {{ (strpos($companion->rookie, '癒し系') !== false) ? 'checked': '' }} >&nbsp; 癒し系 &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="オススメ" {{ (strpos($companion->rookie, 'オススメ') !== false) ? 'checked': '' }} >&nbsp; オススメ &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="巨乳" {{ (strpos($companion->rookie, '巨乳') !== false) ? 'checked': '' }} >&nbsp; 巨乳 &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="スレンダー" {{ (strpos($companion->rookie, 'スレンダー') !== false) ? 'checked': '' }} >&nbsp; スレンダー &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="女子アナ系" {{ (strpos($companion->rookie, '女子アナ系') !== false) ? 'checked': '' }} >&nbsp; 女子アナ系 &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="小柄" {{ (strpos($companion->rookie, '小柄') !== false) ? 'checked': '' }} >&nbsp; 小柄 &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="高身長" {{ (strpos($companion->rookie, '高身長') !== false) ? 'checked': '' }} >&nbsp; 高身長 &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="愛嬌抜群" {{ (strpos($companion->rookie, '愛嬌抜群') !== false) ? 'checked': '' }} >&nbsp; 愛嬌抜群 &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="パイパン" {{ (strpos($companion->rookie, 'パイパン') !== false) ? 'checked': '' }} >&nbsp; パイパン &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="美脚" {{ (strpos($companion->rookie, '美脚') !== false) ? 'checked': '' }} >&nbsp; 美脚 &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="美乳" {{ (strpos($companion->rookie, '美乳') !== false) ? 'checked': '' }} >&nbsp; 美乳 &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="美尻" {{ (strpos($companion->rookie, '美尻') !== false) ? 'checked': '' }} >&nbsp; 美尻 &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="黒髪" {{ (strpos($companion->rookie, '黒髪') !== false) ? 'checked': '' }} >&nbsp; 黒髪 &nbsp;&nbsp;
+                                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="ハーフ" {{ (strpos($companion->rookie, 'ハーフ') !== false) ? 'checked': '' }} >&nbsp; ハーフ &nbsp;&nbsp;
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="form-group"> <label for="frmHobby" class="col-sm-3 control-label">趣味</label>
@@ -414,8 +427,8 @@
                     frm_cup: { required: true },
                     frm_waist: { required: true },
                     frm_hip: { required: true },
-                    frm_rookie: { required: true },
-                    frm_sale_point: { required: true },
+                    'frm_rookie[]': { required: true, maxlength:4 },
+                    frm_sale_point: { required: true, maxlength:10 },
                     short_message: { 
                         required: function(){
                             CKEDITOR.instances.frmShortMessage.updateElement();
@@ -433,8 +446,8 @@
                     frm_cup: { required: "{{ __('This field is required') }}" },
                     frm_waist: { required: "{{ __('This field is required') }}" },
                     frm_hip: { required: "{{ __('This field is required') }}" },
-                    frm_rookie: { required: "{{ __('This field is required') }}" },
-                    frm_sale_point: { required: "{{ __('This field is required') }}" },
+                    'frm_rookie[]': { required: "{{ __('This field is required') }}", maxlength: "{{ __('Max 4 checkbox allowed') }}" },
+                    frm_sale_point: { required: "{{ __('This field is required') }}", maxlength: "{{ __('Max 10 characters allowed') }}" },
                     short_message: { required: "{{ __('This field is required') }}" },
                     frm_entry_date: { required: "{{ __('This field is required') }}" }
                 },
