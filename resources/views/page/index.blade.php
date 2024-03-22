@@ -53,7 +53,11 @@
                                                 </div>
                                                 <div class="schedule">
                                                     @if(!empty($new_companion->today_attendances))
-                                                        <p>出勤：{{ $new_companion->today_attendances->start_time }}～{{ $new_companion->today_attendances->end_time }}</p>
+                                                        @if(!empty($new_companion->today_attendances->end_time))
+                                                            <p>出勤：{{ $new_companion->today_attendances->start_time }}～{{ $new_companion->today_attendances->end_time }}</p>
+                                                        @else
+                                                            <p>出勤：{{ $new_companion->today_attendances->start_time }}～終了時間未定</p>
+                                                        @endif    
                                                     @else
                                                         <p>出勤：00:00～</p>
                                                     @endif
@@ -117,7 +121,11 @@
                                         </div>
                                         <div class="schedule">
                                             @if(!empty($attendance->start_time))
-                                                <p>出勤：{{ $attendance->start_time }}～{{ $attendance->end_time }}</p>
+                                                @if(!empty($attendance->end_time))
+                                                    <p>出勤：{{ $attendance->start_time }}～{{ $attendance->end_time }}</p>
+                                                @else
+                                                    <p>出勤：{{ $attendance->start_time }}～終了時間未定</p>
+                                                @endif    
                                             @else
                                                 <p>出勤：00:00～</p>
                                             @endif

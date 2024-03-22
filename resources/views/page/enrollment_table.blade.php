@@ -193,7 +193,11 @@
                                                 </div>
                                                 <div class="schedule">
                                                     @if(!empty($companion->today_attendances))
-                                                        <p>出勤：{{ $companion->today_attendances->start_time }}～{{ $companion->today_attendances->end_time }}</p>
+                                                        @if(!empty($companion->today_attendances->end_time))
+                                                            <p>出勤：{{ $companion->today_attendances->start_time }}～{{ $companion->today_attendances->end_time }}</p>
+                                                        @else
+                                                            <p>出勤：{{ $companion->today_attendances->start_time }}～終了時間未定</p>
+                                                        @endif    
                                                     @else
                                                         <p>出勤：00:00～</p>
                                                     @endif
