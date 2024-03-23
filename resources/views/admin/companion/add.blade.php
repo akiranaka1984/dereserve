@@ -9,7 +9,7 @@
     </ol> -->
     <h2><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path fill="currentColor" d="M5.673 0a.7.7 0 0 1 .7.7v1.309h7.517v-1.3a.7.7 0 0 1 1.4 0v1.3H18a2 2 0 0 1 2 1.999v13.993A2 2 0 0 1 18 20H2a2 2 0 0 1-2-1.999V4.008a2 2 0 0 1 2-1.999h2.973V.699a.7.7 0 0 1 .7-.699ZM1.4 7.742v10.259a.6.6 0 0 0 .6.6h16a.6.6 0 0 0 .6-.6V7.756L1.4 7.742Zm5.267 6.877v1.666H5v-1.666h1.667Zm4.166 0v1.666H9.167v-1.666h1.666Zm4.167 0v1.666h-1.667v-1.666H15Zm-8.333-3.977v1.666H5v-1.666h1.667Zm4.166 0v1.666H9.167v-1.666h1.666Zm4.167 0v1.666h-1.667v-1.666H15ZM4.973 3.408H2a.6.6 0 0 0-.6.6v2.335l17.2.014V4.008a.6.6 0 0 0-.6-.6h-2.71v.929a.7.7 0 0 1-1.4 0v-.929H6.373v.92a.7.7 0 0 1-1.4 0v-.92Z"></path></svg>
         コンパニオン登録</h2> <br />
-    
+
     <div class="tile-stats tile-primary frm-head"> コンパニオン情報入力</div>
 
     <div class="row">
@@ -19,10 +19,10 @@
             <div class="panel panel-primary" data-collapsed="0">
                 <div class="panel-body">
                     <form role="form" method="post" action="{{ route('admin.companion.save') }}" enctype="multipart/form-data" class="form-horizontal form-groups-bordered" id="frmCompanion" >
-                        @csrf   
-                        <div class="form-group"> 
+                        @csrf
+                        <div class="form-group">
                             <label class="col-sm-3 control-label">ヘルスコース</label>
-                            <div class="col-sm-5 frm-inpt"> 
+                            <div class="col-sm-5 frm-inpt">
                                 <select name="category_id" class="form-control">
                                     @foreach($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -52,7 +52,7 @@
                             <div class="col-sm-8 frm-inpt"> <input type="text" name="frm_bust" class="form-control" id="frmBust" placeholder="バスト">cm</div>
                         </div>
                         <div class="form-group"> <label for="frmCup" class="col-sm-3 control-label">カップ<span class="text-danger">半角数字</span></label>
-                            <div class="col-sm-8 frm-inpt"> 
+                            <div class="col-sm-8 frm-inpt">
                                 <select name="frm_cup" id="frmCup" class="form-control">
                                     <option value="A">A</option>
                                     <option value="B">B</option>
@@ -117,7 +117,7 @@
                             <div class="col-sm-8"> <input type="text" name="frm_hobby" class="form-control" id="frmHobby" placeholder="趣味を簡潔に記入してください"> </div>
                         </div>
                         <div class="form-group"> <label for="frmSalePoint" class="col-sm-3 control-label">セールスポイント</label>
-                            <div class="col-sm-8 frm-inpt"> 
+                            <div class="col-sm-8 frm-inpt">
                                 <input type="text" name="frm_sale_point" class="form-control" id="frmSalePoint" placeholder="セールスポイント/10文字目安">
                                 <label class="col-sm-4 control-label">フォントカラー選択 :</label>
                                 <div class="col-sm-8">
@@ -128,7 +128,7 @@
                             </div>
                         </div>
                         <div class="form-group"> <label for="frmShortMessage" class="col-sm-3 control-label">店舖 メッセージ</label>
-                            <div class="col-sm-8 frm-inpt"> 
+                            <div class="col-sm-8 frm-inpt">
                                 <div class="row">
                                     <label class="col-sm-8 control-label" style="color:hotpink; text-align:left;">女性紹介のメッセージを記入してください</label>
                                 </div>
@@ -138,17 +138,17 @@
                             </div>
                         </div>
                         <div class="form-group"> <label for="frmEntryDate" class="col-sm-3 control-label">入店目<span class="text-danger">※必須</span></label>
-                            <div class="col-sm-8 frm-inpt"> 
-                                <div class="input-group"> 
+                            <div class="col-sm-8 frm-inpt">
+                                <div class="input-group">
                                     <input type="text" name="frm_entry_date" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="入店日　カレンダーから選択" id="frmEntryDate" >
-                                    <div class="input-group-addon"> 
-                                        <a href="#"><i class="entypo-calendar"></i></a> 
+                                    <div class="input-group-addon">
+                                        <a href="#"><i class="entypo-calendar"></i></a>
                                     </div>
                                 </div>
-                            </div>  
+                            </div>
                         </div>
 
-                        <div class="row mt-3">
+                        <div class="form-group row">
                             <div class="col-lg-3">
                                 <div class="grid text-center">
                                     <input name="option_non_japanese_chk" class="form-check-input" type="checkbox" value="option_non_japanese_chk" />
@@ -174,6 +174,42 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group pt-0" style="display: flex; flex-direction: column; gap: 5px">
+                            <div style="display: flex; justify-content: center;">
+                                <h4 style="font-weight: 700">追加設定項目</h4>
+                            </div>
+                            <div>
+                                <label for="frmPosition" class="col-sm-3 control-label">前(現)職   </label>
+                                <div class="col-sm-8 frm-inpt">
+                                    <input type="text" name="frm_position" class="form-control" id="frmPosition" value="" placeholder="">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="frmLookALive" class="col-sm-3 control-label">似ている芸能人</label>
+                                <div class="col-sm-8 frm-inpt">
+                                    <input type="text" name="frm_celebrities_who_look_alike" class="form-control" id="frmLookALive" value="" placeholder="似ている芸能人">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group pt-0" style="display: flex; flex-direction: column; gap: 5px">
+                            <div style="display: flex; justify-content: center;">
+                                <h4 style="font-weight: 700">写真管理</h4>
+                            </div>
+                            <div>
+                                <label for="frmPhoto" class="col-sm-3 control-label">ファイル指定</label>
+                                <div class="col-sm-8 frm-inpt">
+                                    <input type="file" name="frm_photo" class="form-control" id="frmPhoto" placeholder="選択されていません">
+                                    ※推奨画像サイズ：300px ⅹ 400px(サイドビックアップは207px ⅹ 356px)<br>※上記以外の比率で画像をアップロードした場合、画像の表示が崩れる場合があります
+                                </div>
+                            </div>
+                            <div>
+                                <label for="frmTitle" class="col-sm-3 control-label">タイトル</label>
+                                <div class="col-sm-8 frm-inpt">
+                                    <input type="text" name="frm_title" class="form-control" id="frmTitle" placeholder="写真タイトルを入力してください">
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="col-md-3 mt-3">
                             <button type="submit" class="btn btn-orange btn-icon-align">
@@ -193,7 +229,7 @@
                 ignore: [],
                 debug: false,
                 rules: {
-                    category_id: { required: true },    
+                    category_id: { required: true },
                     frm_name: { required: true },
                     frm_kana: { required: true },
                     frm_age: { required: true },
@@ -204,7 +240,7 @@
                     frm_hip: { required: true },
                     'frm_rookie[]': { required: true, maxlength:4 },
                     frm_sale_point: { required: true, maxlength:10 },
-                    short_message: { 
+                    short_message: {
                         required: function(){
                             CKEDITOR.instances.frmShortMessage.updateElement();
                         }

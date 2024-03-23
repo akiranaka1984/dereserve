@@ -38,6 +38,9 @@ Route::get('/privacy_policy', [HomeController::class, 'privacy_policy'])->name('
 Route::get('/reservation', [HomeController::class, 'reservation'])->name('page.reservation');
 Route::post('/reservation/save', [HomeController::class, 'reservation_save'])->name('page.reservation.save');
 
+Route::get('/contact-us', [HomeController::class, 'contact'])->name('page.contact');
+Route::post('/contact-us/save', [HomeController::class, 'contact_save'])->name('page.contact.save');
+
 Route::get('/web/reservation', [RegisterController::class, 'web_reservation'])->name('user.web.reservation');
 Route::post('/web/reservation/save', [RegisterController::class, 'web_reservation_save'])->name('user.web.reservation.save');
 
@@ -100,6 +103,7 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function 
     Route::post('/companion/photo/save', [CompanionController::class,'photo_save'])->name('admin.companion.photo.save');
     Route::post('/companion/position/save', [CompanionController::class,'position'])->name('admin.companion.position.save');
     Route::post('/companion/status/save', [CompanionController::class,'status'])->name('admin.companion.status.save');
+    Route::post('/companion/bulk/add', [CompanionController::class,'bulk_add'])->name('admin.companion.bulk.add');
 
     Route::get('/attendance/list', [AttendanceController::class,'index'])->name('admin.attendance.list');
     Route::post('/attendance/list/api', [AttendanceController::class,'api'])->name('admin.attendance.list.api');
@@ -170,4 +174,6 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function 
     Route::get('/telegram/cred', [TelegramController::class,'telegram_cred'])->name('admin.telegram.cred');
     Route::post('/telegram/cred/save', [TelegramController::class,'telegram_save'])->name('admin.telegram.cred.save');
 
+    Route::get('/contact/list', [AdminController::class,'contact'])->name('admin.contact.list');
+    Route::get('/contact/delete', [AdminController::class,'contact_delete'])->name('admin.contact.delete');
 });

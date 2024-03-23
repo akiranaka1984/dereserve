@@ -46,11 +46,11 @@
         <script src="{{ url('/assets/js/moment.min.js') }}"></script>
         <script src="{{ url('/assets/js/toastr.js') }}"></script>
 
-        <script src="{{ url('/assets/js/select2.min.js') }}"></script>
+        <script src="{{ url('/assets/js/select2.min.js') }}" defer></script>
         <script src="{{ url('/assets/js/dragula.min.js') }}"></script>
         <script src="{{ url('/assets/js/datatables.js') }}"></script>
         <script src="{{ url('/assets/js/fullcalendar.min.js') }}"></script>
-        <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+        <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js" defer></script>
         <script src="{{ url('/assets/js/bootstrap.js') }}"></script>
         <script src="{{ url('/assets/js/jquery.validate.min.js') }}"></script>
         <script src="{{ url('/assets/js/additional-methods.min.js') }}"></script>
@@ -209,6 +209,12 @@
                             <a href="{{ route('admin.page.list') }}" class="sidemenu-href">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M14.5 18q-1.05 0-1.775-.725T12 15.5q0-1.05.725-1.775T14.5 13q1.05 0 1.775.725T17 15.5q0 1.05-.725 1.775T14.5 18ZM5 22q-.825 0-1.413-.588T3 20V6q0-.825.588-1.413T5 4h1V2h2v2h8V2h2v2h1q.825 0 1.413.588T21 6v14q0 .825-.588 1.413T19 22H5Zm0-2h14V10H5v10ZM5 8h14V6H5v2Zm0 0V6v2Z"/></svg>
                                 <span class="title  ml-1">ページ</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.contact.list') }}" class="sidemenu-href">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M1 2h21v16h-8l-8 4v-4H1zm5 8h1v1H6zm5 0h1v1h-1zm5 0h1v1h-1z"/></svg>
+                                <span class="title  ml-1">ユーザー連絡先</span>
                             </a>
                         </li>
                          <li class="has-sub">

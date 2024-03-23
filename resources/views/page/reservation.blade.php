@@ -3,7 +3,7 @@
 @section('content')
     <section class="kv_main">
         <div class="kv_wrap">
-            <img src="{{ route('storage/gallery/66061710153484.jpg') }}" alt="">
+            <img src="{{ url('storage/gallery/66061710153484.jpg') }}" alt="">
             <h2 class="kv_title">Web Reservation</h2>
         </div>
     </section>
@@ -36,6 +36,18 @@
             <div class="reservation">
                 <form id="reserveForm" action="{{ route('page.reservation.save') }}" method="POST" class="form">
                     @csrf
+
+                    @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
                     <div id="mw_wp_form_mw-wp-form-59" class="mw_wp_form mw_wp_form_input  ">
                         </dl>
                         <dl>

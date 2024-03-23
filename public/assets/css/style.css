@@ -4904,3 +4904,28 @@ NEWS PAGE
     font-size: 1.8rem;
     color: #fff;
 }
+
+
+.alert-success {
+    position: relative;
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    color: #0a3622;
+    background-color: #d1e7dd;
+    border: 1px solid #a3cfbb;
+    border-radius: 0.375rem;
+    margin: 10px 0px;
+    font-size: 16px;
+}
+
+.alert-danger {
+    position: relative;
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    color: #58151c;
+    background-color: #f8d7da;
+    border: 1px solid #f1aeb5;
+    border-radius: 0.375rem;
+    margin: 10px 0px;
+    font-size: 16px;
+}

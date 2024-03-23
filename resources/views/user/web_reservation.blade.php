@@ -36,6 +36,16 @@
             <div class="reservation">
                 <form action="{{ route('user.web.reservation.save') }}" class="form" method="POST">
                     @csrf
+                    @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
                     <input type="hidden" class="form-control" name="frm_user_id" value="{{ $users->id }}" required/>
                     <div id="mw_wp_form_mw-wp-form-59" class="mw_wp_form mw_wp_form_input  ">
                         <dl>

@@ -18,6 +18,7 @@ use App\Models\Interview;
 
 use App\Jobs\RecruitmentToApplicantJob;
 use App\Jobs\RecruitmentToStoreJob;
+use App\Models\Contact;
 use App\Models\News;
 
 class HomeController extends Controller
@@ -28,13 +29,14 @@ class HomeController extends Controller
         $header = Pages::where(['name'=>'header'])->first();
         $footer = Pages::where(['name'=>'footer'])->first();
         $main = Pages::where(['name'=>'main'])->first();
+        $campaign = Pages::where(['name'=>'campaign'])->first();
         $new_companions = Companion::with(['today_attendances','home_image', 'category'])->where(['status'=>1])->orderBy('id', 'DESC')->take(6)->get();
         $today_attendances = Attendance::with(['companion'])->where(['date'=>date('Y-m-d')])->where(function ($query) {
             $query->where('end_time', '=', null)->orWhere('end_time', '>', date('H:i'));
         })->get();
         $tomorrow_attendances = Attendance::with(['companion'])->where(['date'=>date('Y-m-d', strtotime('+1 days'))])->get();
         $recent_news = News::orderBy('id', 'DESC')->take(5)->get();
-        return view('page.index', compact('header','footer','main', 'new_companions', 'today_attendances', 'tomorrow_attendances', 'recent_news'));
+        return view('page.index', compact('header','footer','main', 'new_companions', 'today_attendances', 'tomorrow_attendances', 'recent_news', 'campaign'));
     }
 
     public function concept(Request $request)
@@ -265,6 +267,22 @@ class HomeController extends Controller
             MailMagazine::where(['email' => $request->email])->delete();
             return redirect()->back()->with('success', __('Successfully deleted'));
         }
+    }
+
+    public function contact(Request $request)
+    {
+        $header = Pages::where(['name'=>'header'])->first();
+        $footer = Pages::where(['name'=>'footer'])->first();
+        return view('page.contact', compact('header','footer'));
+    }
+
+    public function contact_save(Request $request)
+    {
+        Contact::create([
+            'title'=>$request->title,
+            'text'=>$request->text
+        ]);
+        return redirect()->back()->with('success', __('Save Changes'));
     }
 
     public function recruit(Request $request)

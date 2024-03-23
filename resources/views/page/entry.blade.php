@@ -26,6 +26,11 @@
                         {{session('success')}}
                     </div>
                 @endif
+                @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
                 <form id="recruitForm" action="{{ route('page.entry.save') }}" method="post"  enctype="multipart/form-data" >
                     @csrf
                     <dl class="clearfix">

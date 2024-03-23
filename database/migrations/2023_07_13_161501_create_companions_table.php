@@ -45,6 +45,13 @@ class CreateCompanionsTable extends Migration
             $table->integer('position')->default(0);
             $table->integer('status')->default(1);
             $table->timestamps();
+            $table->string('nickname1')->nullable();
+            $table->string('nickname2')->nullable();
+            $table->string('birthday')->nullable();
+            $table->string('hiragana')->nullable();
+            $table->string('surnames')->nullable();
+            $table->string('styles')->nullable();
+            $table->string('type')->nullable();
         });
     }
 

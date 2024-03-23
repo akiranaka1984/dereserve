@@ -9,10 +9,10 @@
     </ol> -->
     <h2><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M16.786 3.725a1.75 1.75 0 0 0-2.846.548L12.347 7.99A4.745 4.745 0 0 0 8.07 9.291l-1.71 1.71a.75.75 0 0 0 0 1.06l2.495 2.496l-5.385 5.386a.75.75 0 1 0 1.06 1.06l5.386-5.385l2.495 2.495a.75.75 0 0 0 1.061 0l1.71-1.71a4.745 4.745 0 0 0 1.302-4.277l3.716-1.592a1.75 1.75 0 0 0 .548-2.846l-3.962-3.963Zm-1.468 1.139a.25.25 0 0 1 .407-.078l3.963 3.962a.25.25 0 0 1-.079.407l-4.315 1.85a.75.75 0 0 0-.41.941a3.25 3.25 0 0 1-.763 3.396l-1.18 1.18l-4.99-4.99l1.18-1.18a3.25 3.25 0 0 1 3.396-.762a.75.75 0 0 0 .942-.41l1.85-4.316Z" clip-rule="evenodd"/></svg>
     ニュース編集</h2> <br />
-    
+
     <!-- <div class="col-md-12">
         <div class="alert alert-success p-5px sidemenu-href">
-            <strong><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M.41 13.41L6 19l1.41-1.42L1.83 12m20.41-6.42L11.66 16.17L7.5 12l-1.43 1.41L11.66 19l12-12M18 7l-1.41-1.42l-6.35 6.35l1.42 1.41L18 7Z"/></svg></strong> 
+            <strong><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M.41 13.41L6 19l1.41-1.42L1.83 12m20.41-6.42L11.66 16.17L7.5 12l-1.43 1.41L11.66 19l12-12M18 7l-1.41-1.42l-6.35 6.35l1.42 1.41L18 7Z"/></svg></strong>
             <span class="title ml-1">ニュースを削除しました。</span>
         </div>
     </div> -->
@@ -27,17 +27,17 @@
     </div>
 
     <div class="tile-stats tile-primary frm-head"> ニュース一覧</div>
-        
-    
+
+
     <div class="panel panel-primary" >
         <div class="panel-body p-0 pl-15px">
             <form role="form" class="form-horizontal form-groups-bordered">
                 <div class="row mt-1">
                     <div class="col-md-3 btn-icon-align-inline">
-                        <div class="form-group"> 
-                            <div class="col-sm-12"> 
-                                <div class="checkbox"> <label> <input type="checkbox" class="show_hidden_checkbox" {{ ($is_hidden == 1) ? 'checked': '' }} >非表示ニュースを含めて表示する</label> </div> 
-                            </div> 
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <div class="checkbox"> <label> <input type="checkbox" class="show_hidden_checkbox" {{ ($is_hidden == 1) ? 'checked': '' }} >非表示ニュースを含めて表示する</label> </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-1">
@@ -52,29 +52,32 @@
     </div>
 
 
-<div class="col-md-12"> 
-    <table class="table table-bordered"> 
-        <thead> 
-            <tr> 
-                <th>削除</th> 
-                <th>文章</th> 
-                <th>登録日</th> 
-            </tr> 
-        </thead> 
-        <tbody id="left-events" class="dragula"> 
+<div class="col-md-12">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>文章</th>
+                <th>登録日</th>
+            </tr>
+        </thead>
+        <tbody id="left-events" class="dragula">
             @foreach($newsLists as $news)
-                <tr class="item_div" data-id="{{ $news->id }}"> 
-                    <td>
+                <tr class="item_div" data-id="{{ $news->id }}">
+                    <td style="display: flex; justify-content: center; gap: 2px;">
                         <button type="button" class="btn btn-danger btn-sm sidemenu-href delete_btn" data-id="{{ $news->id }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M7 21q-.825 0-1.413-.588T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.588 1.413T17 21H7ZM17 6H7v13h10V6ZM9 17h2V8H9v9Zm4 0h2V8h-2v9ZM7 6v13V6Z"/></svg>
                         </button>
-                    </td> 
+                        <button type="button" class="btn btn-orange btn-icon-align" data-id="{{ $news->id }}" onclick="openEditModal({{ $news }})">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="m14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83l3.75 3.75l1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z"></path></svg>
+                        </button>
+                    </td>
                     <td>{!! $news->title !!}</td>
-                    <td>{{ $news->created_at }}</td> 
-                </tr> 
+                    <td>{{ $news->created_at }}</td>
+                </tr>
             @endforeach
-        </tbody> 
-    </table> 
+        </tbody>
+    </table>
 </div>
 
 <div class="col-md-2">
@@ -87,49 +90,51 @@
 <div class="modal fade" id="modal-1">
     <div class="modal-dialog" style="width: 60%;">
         <div class="modal-content">
-            <div class="modal-header"> 
+            <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title">ニュースを追加する</h4>
             </div>
             <div class="modal-body">
+                <div class="panel panel-primary" >
+                    <div class="panel-body">
+                        <form role="form" method="post" action="{{ route('admin.news.save') }}" class="form-horizontal form-groups-bordered" id="frmNews" >
+                            @csrf
+                            <input type="hidden" name="id" value="" id="news_id">
+                            <div class="form-group">
+                                <label for="frmTitle" class="col-sm-3 control-label">タイトル</label>
+                                <div class="col-sm-9 frm-inpt">
+                                    <input type="text" name="frm_title" class="form-control" id="frmTitle" placeholder="タイトルを入力してください。">
+                                </div>
+                            </div>
 
-                    <div class="panel panel-primary" >
-                        <div class="panel-body">
-                            <form role="form" method="post" action="{{ route('admin.news.save') }}" class="form-horizontal form-groups-bordered" id="frmNews" >
-                                @csrf
-                         
-                                <div class="form-group"> <label for="frmTitle" class="col-sm-3 control-label">タイトル</label>
-                                    <div class="col-sm-9 frm-inpt"> <input type="text" name="frm_title" class="form-control" id="frmTitle" placeholder="タイトルを入力してください。"> </div>
+                            <div class="form-group">
+                                <label for="frmText" class="col-sm-3 control-label">本文</label>
+                                <div class="col-sm-9 frm-inpt">
+                                    <textarea  name="frm_text" class="form-control" id="frmText"></textarea>
                                 </div>
-                  
-                                <div class="form-group"> <label for="frmText" class="col-sm-3 control-label">本文</label>
-                                    <div class="col-sm-9 frm-inpt"> 
-                                        <textarea  name="frm_text" class="ckeditor form-control" id="frmText"></textarea>
-                                    </div>
-                                </div>
+                            </div>
 
-                                <div class="form-group"> 
-                                    <label for="frmCompanionId" class="col-sm-3 control-label">添付写真コンパニオン</label>
-                                    <div class="col-sm-8 frm-inpt"> 
-                                        <select name="companion_id" class="select2" data-allow-clear="true" data-placeholder="" id="frmCompanionId" >
-                                            <option></option>
-                                            @foreach($companionLists as $companionList)
-                                                <option value="{{ $companionList->id }}">{{ $companionList->name }}({{ $companionList->age }})</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                            <div class="form-group">
+                                <label for="frmCompanionId" class="col-sm-3 control-label">添付写真コンパニオン</label>
+                                <div class="col-sm-8 frm-inpt">
+                                    <select name="companion_id" id="frmCompanionId" >
+                                        <option value=""></option>
+                                        @foreach($companionLists as $companionList)
+                                            <option value="{{ $companionList->id }}">{{ $companionList->name }}({{ $companionList->age }})</option>
+                                        @endforeach
+                                    </select>
                                 </div>
-                                
-                                <div class="col-md-3 mt-3">
-                                    <button type="submit" class="btn btn-orange btn-icon-align">
-                                        <span class="title ml-1">新規ニュース登録</span>
-                                    </button>
-                                </div>
-                            </form>
-                            
-                        </div>
+                            </div>
+
+                            <div class="col-md-3 mt-3">
+                                <button type="submit" class="btn btn-orange btn-icon-align">
+                                    <span class="title ml-1">新規ニュース登録</span>
+                                </button>
+                            </div>
+                        </form>
+
                     </div>
-
+                </div>
             </div>
         </div>
     </div>
@@ -138,7 +143,20 @@
 <script>
     let nPsitionObj = {}
     $(document).ready(function(){
+
+        $('#frmCompanionId').select2({
+            placeholder: "",
+            allowClear: true
+        });
+        CKEDITOR.replace('frmText');
+
+
         $(document).on('click','.showSendEmailModal', function(){
+            $('#news_id').val()
+            $('#frmTitle').val()
+            CKEDITOR.instances.frmText.setData();
+            $('#frmCompanionId').val()
+            $('#frmCompanionId').trigger('change.select2')
             $('#modal-1').modal('show');
         })
 
@@ -163,14 +181,14 @@
             .on('cancel', function (el) {
                 el.className = el.className.replace('el-drag-ex-2', '');
             });
-            
+
         $('#frmNews').validate({
             ignore: [],
             debug: false,
             rules: {
-                frm_title: { required: true },    
+                frm_title: { required: true },
                 companion_id: { required: true },
-                frm_text: { 
+                frm_text: {
                     required: function(){
                         CKEDITOR.instances.frmText.updateElement();
                     }
@@ -213,7 +231,7 @@
             let id = $(this).attr('data-id')
             window.location.href = `{{ route('admin.news.delete') }}?id=`+id;
         })
-        
+
         $(document).on('click','.search_btn', function(){
             let show_hidden_checkbox = $('.show_hidden_checkbox').prop('checked')
             if(show_hidden_checkbox === true){
@@ -226,6 +244,14 @@
         resetPosition()
 
     })
+    function openEditModal(data) {
+        $('#news_id').val(data['id'])
+        $('#frmTitle').val(data['title'])
+        CKEDITOR.instances.frmText.setData(data['text']);
+        $('#frmCompanionId').val(data['companion_id'])
+        $('#frmCompanionId').trigger('change.select2')
+        $('#modal-1').modal('show');
+    }
 
     function resetPosition()
     {
@@ -236,7 +262,7 @@
         })
     }
 
- </script>       
+ </script>
 
 
 @endsection

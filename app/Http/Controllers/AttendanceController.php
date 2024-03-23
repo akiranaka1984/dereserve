@@ -15,7 +15,7 @@ class AttendanceController extends Controller
         $companionLists = Companion::select('id','name','age')->where(['status'=>1])->orderBy('position', 'ASC')->orderBy('id', 'ASC')->get();
         return view('admin.attendance.list', compact('companionLists'));
     }
-    
+
     public function api(Request $request)
     {
         $startDate = $request->startDate;
@@ -37,7 +37,7 @@ class AttendanceController extends Controller
         ->orderBy('position', 'ASC')
         ->orderBy('id', 'ASC')
         ->get();
-        
+
         return response()->json($attendance);
     }
 
@@ -71,7 +71,7 @@ class AttendanceController extends Controller
         Attendance::where(['id' => $request->id])->delete();
         return response()->json(['status'=>1,'message'=>__('Save Changes')]);
     }
-    
+
     public function position(Request $request)
     {
         Attendance::where('date','=', $request->date)->update(['position'=>0]);
@@ -85,7 +85,7 @@ class AttendanceController extends Controller
     public function bulk(Request $request)
     {
 
-        $jadays = array('日','月','火','水','木','金','土');
+        $jadays = array('月','火','水','木','金','土','日');
 
         $xdates['today'] = date('Y-m-d');
         $xdates['next1'] = date('Y-m-d', strtotime($xdates['today']. ' + 1 days'));
@@ -146,7 +146,7 @@ class AttendanceController extends Controller
             $attendance->position = ((Attendance::where(['date' => $request->date])->max('position'))+1);
             $attendance->save();
         }
-        
+
         return response()->json(['status' => 1, 'message' => __('Save Changes')]);
     }
 

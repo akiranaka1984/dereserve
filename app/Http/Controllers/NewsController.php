@@ -12,7 +12,7 @@ class NewsController extends Controller
     public function index(Request $request)
     {
         $companionLists = Companion::select('id','name','age')->where(['status'=>1])->orderBy('position', 'ASC')->orderBy('id', 'ASC')->get();
-        
+
         if(!empty($request->is_hidden) && $request->is_hidden == 1){
             $is_hidden = 1;
             $newsLists = News::orderBy('position', 'ASC')->orderBy('id', 'ASC')->get();
@@ -27,14 +27,21 @@ class NewsController extends Controller
     public function save(Request $request)
     {
         $count = News::max('position');
-        News::create([
-            'companion_id' => $request->companion_id,
-            'title' => $request->frm_title,
-            'text' => $request->frm_text,
-            'position' => ($count + 1),
-            'status' => 1
-        ]);
-
+        if ($request->id) {
+            News::where('id', $request->id)->update([
+                'companion_id' => $request->companion_id,
+                'title' => $request->frm_title,
+                'text' => $request->frm_text,
+            ]);
+        } else {
+            News::create([
+                'companion_id' => $request->companion_id,
+                'title' => $request->frm_title,
+                'text' => $request->frm_text,
+                'position' => ($count + 1),
+                'status' => 1
+            ]);
+        }
         return redirect()->back()->with('success', __('Save Changes'));
     }
 

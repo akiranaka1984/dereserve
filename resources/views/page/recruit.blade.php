@@ -36,8 +36,21 @@
                     {!! $recruit->text_data2 !!}
                     <h3 class="head mgb_30 mgt_30 ttl_rev">応募フォーム</h3>
                     <div class="recruitment">
+                       
                         <form action="{{ route('page.recruit.save') }}" class="form" method="POST">
                             @csrf
+                            
+                            @if(session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+                            @if(session('error'))
+                                <div class="alert alert-danger">
+                                    {{ session('error') }}
+                                </div>
+                            @endif
+
                             <div id="mw_wp_form_mw-wp-form-59" class="mw_wp_form mw_wp_form_input  ">
                                 <dl>
                                     <dt>お名前<span>必須</span></dt>

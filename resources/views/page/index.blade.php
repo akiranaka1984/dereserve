@@ -3,6 +3,19 @@
 @section('content')
 
     {!! $main->text_data1 !!}
+
+    <section class="campaign" id="campaign">
+        <div class="headline color_white fadeUpTrigger2 opacity_flg">
+            <h3 class="">CAMPAIGN</h3>
+            <span class="sub">キャンペーン</span>
+            <p class="">クラブフィレンツェではお得なキャンペーンを実施中。詳細は下記よりご確認ください。</p>
+        </div>
+        {!! $campaign->text_data1 !!}
+        {!! $campaign->text_data2 !!}
+        {!! $campaign->text_data3 !!}
+    </section>
+
+    
     <section id="newface" class="newface">
         <div class="wrapper">
             <div class="headline color_white fadeUpTrigger2 opacity_flg smooth">
@@ -57,7 +70,7 @@
                                                             <p>出勤：{{ $new_companion->today_attendances->start_time }}～{{ $new_companion->today_attendances->end_time }}</p>
                                                         @else
                                                             <p>出勤：{{ $new_companion->today_attendances->start_time }}～終了時間未定</p>
-                                                        @endif    
+                                                        @endif
                                                     @else
                                                         <p>出勤：00:00～</p>
                                                     @endif
@@ -85,7 +98,7 @@
 
                     @foreach($today_attendances as $attendance)
                         @php
-                            if(!empty($attendance->companion) && !empty($attendance->companion->home_image)){ 
+                            if(!empty($attendance->companion) && !empty($attendance->companion->home_image)){
                                 $imgPath = '/storage/photos/'.($attendance->companion->id).'/'.($attendance->companion->home_image->photo);
                             }else{
                                 $imgPath = '/storage/photos/default/not-to-be-published.jpg';
@@ -125,7 +138,7 @@
                                                     <p>出勤：{{ $attendance->start_time }}～{{ $attendance->end_time }}</p>
                                                 @else
                                                     <p>出勤：{{ $attendance->start_time }}～終了時間未定</p>
-                                                @endif    
+                                                @endif
                                             @else
                                                 <p>出勤：00:00～</p>
                                             @endif
@@ -181,7 +194,7 @@
                     お気軽にお問い合わせフォームよりお願いいたします。</p>
             </div>
             <button class="btn_contact">
-                <a href="">CONTACT FORM</a>
+                <a href="{{ route('page.contact') }}">CONTACT FORM</a>
             </button>
         </div>
     </section>
@@ -197,11 +210,20 @@
             <div class="mailForm">
                 <form action="{{ route('page.magazine.save') }}" method="POST">
                     @csrf
+                    
+                    @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
                     <input type="text" name="name" placeholder="abcde" class="mail" required>
                     <input type="email" name="email" placeholder="abcde@gmail.com" class="mail" required>
-                    @error('email')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
                     <div class="div">
                         <input type="submit" class="button" name="castsyukkinmail_add" value="登録"/>
                         <input type="submit" class="button" name="castsyukkinmail_del" value="解除"/>
