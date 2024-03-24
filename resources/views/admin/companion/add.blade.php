@@ -245,7 +245,9 @@
                             CKEDITOR.instances.frmShortMessage.updateElement();
                         }
                     },
-                    frm_entry_date: { required: true }
+                    frm_entry_date: { required: true },
+                    frm_position: { required: true },    
+                    frm_celebrities_who_look_alike: { required: true }
                 },
                 messages: {
                     category_id: { required: "{{ __('This field is required') }}" },
@@ -260,7 +262,9 @@
                     'frm_rookie[]': { required: "{{ __('This field is required') }}", maxlength: "{{ __('Max 4 checkbox allowed') }}" },
                     frm_sale_point: { required: "{{ __('This field is required') }}", maxlength: "{{ __('Max 10 characters allowed') }}" },
                     short_message: { required: "{{ __('This field is required') }}" },
-                    frm_entry_date: { required: "{{ __('This field is required') }}" }
+                    frm_entry_date: { required: "{{ __('This field is required') }}" },
+                    frm_position: { required: "{{ __('This field is required') }}" },
+                    frm_celebrities_who_look_alike: { required: "{{ __('This field is required') }}" }
                 },
                 errorElement: 'span',
                 errorPlacement: function (error, element) {

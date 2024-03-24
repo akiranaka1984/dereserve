@@ -100,8 +100,8 @@ class CompanionController extends Controller
             'celebrities_who_look_alike' => $request->frm_celebrities_who_look_alike
         ]);
 
-        $photoSizeSetting = PhotoSizeSetting::with(['photo_category'])->where(['id'=>1])->first();
-        if($request->hasfile('frm_photo')){
+        if($request->hasFile('frm_photo')){
+            $photoSizeSetting = PhotoSizeSetting::with(['photo_category'])->where(['id'=>1])->first();
             $request->validate(['frm_photo' => 'required|image|max:10240']);
             $image = $request->file('frm_photo');
             $ext = $image->getClientOriginalExtension();
