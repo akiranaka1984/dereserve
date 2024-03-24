@@ -279,8 +279,9 @@ class HomeController extends Controller
     public function contact_save(Request $request)
     {
         Contact::create([
-            'title'=>$request->title,
-            'text'=>$request->text
+            'email'=>$request->email,
+            'subject'=>$request->subject,
+            'message'=>$request->message
         ]);
         return redirect()->back()->with('success', __('Save Changes'));
     }

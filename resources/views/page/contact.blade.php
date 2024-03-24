@@ -31,9 +31,9 @@
                 <h3 class="">CONTACT</h3>
                 <span style="font-size: 22px">ご質問はいつでもお受けいたします</span>
             </div>
-       
-            <div class="mailForm">
-                <form action="{{ route('page.contact.save') }}" method="POST">
+
+            <div class="reservation">
+                <form action="{{ route('page.contact.save') }}" class="form" method="POST">
                     @csrf
                     @if(session('success'))
                         <div class="alert alert-success">
@@ -45,15 +45,30 @@
                             {{ session('error') }}
                         </div>
                     @endif
-                    <input type="text" name="title" placeholder="タイトル" class="mail" required>
-                    <textarea name="text" placeholder="あなたの連絡先の問い合わせ" class="mail" rows="5" required></textarea>
-                    <div class="div">
-                        <button type="submit" class="button">送信</button>
+                    <div id="mw_wp_form_mw-wp-form-59" class="mw_wp_form mw_wp_form_input  ">
+                        <dl>
+                            <dt>メールアドレス<span>必須</span></dt>
+                            <dd>
+                                <input type="email" name="email" placeholder="例)　xxx-xxx@xxxxx.ne.jp" class="wide" id="reserveMail" data-prompt-position="topLeft" required>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>主題<span>必須</span></dt>
+                            <dd>
+                                <input type="text" name="subject" placeholder="例)　～に関するお問い合わせ" class="wide" id="reserveTitle" data-prompt-position="topLeft" required>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>メッセージ<span>必須</span></dt>
+                            <dd>
+                                <textarea type="text" name="message" placeholder="あなたの連絡先の問い合わせ" rows="10"></textarea>
+                            </dd>
+                        </dl>
+                        <button type="submit" class="recruit_btn">送信する</button>
                     </div>
-               
                 </form>
-                
             </div>
+
         </div>
     </section>
 @endsection
