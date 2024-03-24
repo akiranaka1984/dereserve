@@ -120,7 +120,7 @@ class CompanionController extends Controller
                 'photo_setting_id' => 1
             ],[
                 'title' =>  $request->frm_title,
-                'photo' => $imageName,
+                'photo' => $imageName.'?v='.time(),
                 'status' => 1
             ]);
         }
@@ -241,7 +241,7 @@ class CompanionController extends Controller
                 'photo_setting_id' => $request->photo_setting_id
             ],[
                 'title' =>  $request->frm_title,
-                'photo' => $imageName,
+                'photo' => $imageName.'?v='.time(),
                 'status' => 1
             ]);
         }
