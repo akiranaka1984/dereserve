@@ -13,10 +13,10 @@
         <link rel="stylesheet" href="{{ url('/assets/css/entypo.css') }}">
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic">
         <link rel="stylesheet" href="{{ url('/assets/css/bootstrap.css') }}" >
-        <link rel="stylesheet" href="{{ url('/assets/css/neon-core.css') }}?v=1.4" >
-        <link rel="stylesheet" href="{{ url('/assets/css/neon-theme.css') }}?v=1.4" >
-        <link rel="stylesheet" href="{{ url('/assets/css/neon-forms.css') }}?v=1.4" >
-        <link rel="stylesheet" href="{{ url('/assets/css/custom.css') }}?v=1.4" >
+        <link rel="stylesheet" href="{{ url('/assets/css/neon-core.css') }}?v=1.5" >
+        <link rel="stylesheet" href="{{ url('/assets/css/neon-theme.css') }}?v=1.5" >
+        <link rel="stylesheet" href="{{ url('/assets/css/neon-forms.css') }}?v=1.5" >
+        <link rel="stylesheet" href="{{ url('/assets/css/custom.css') }}?v=1.5" >
         <link rel="stylesheet" href="{{ url('/assets/css/fullcalendar.min.css') }}" >
         <link rel="stylesheet" href="{{ url('/assets/css/sweetalert2.min.css') }}" >
         <link rel="stylesheet" href="{{ url('/assets/css/select2-bootstrap.css') }}" >
