@@ -14,8 +14,7 @@ $(window).on('DOMContentLoaded', function () {
             640: {
                 perPage: 1,
                 perMove: 1,
-                flickMaxPages: 1,
-                speed: 1000,
+                flickMaxPages: 1                
             }
         },
     }).mount();
