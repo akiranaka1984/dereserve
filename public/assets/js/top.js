@@ -15,7 +15,7 @@ $(window).on('DOMContentLoaded', function () {
                 perPage: 1,
                 perMove: 1,
                 flickMaxPages: 1,
-                speed: 300,
+                speed: 1000,
             }
         },
     }).mount();
