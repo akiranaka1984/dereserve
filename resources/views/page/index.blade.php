@@ -238,5 +238,5 @@
 @endsection
 
 @section('javascript')
-    <script type="text/javascript" src="{{ url('/assets/js/top.js') }}"></script>
+    <script type="text/javascript" src="{{ url('/assets/js/top.js') }}?v=1.5"></script>
 @endsection
