@@ -12,11 +12,11 @@ class News extends Model
     protected $table = 'news';
 
     protected $fillable = [
-        'companion_id',
         'title',
         'text',
         'position',
-        'status'
+        'status',
+        'slug'
     ];
 
 }

@@ -29,15 +29,15 @@ class NewsController extends Controller
         $count = News::max('position');
         if ($request->id) {
             News::where('id', $request->id)->update([
-                'companion_id' => $request->companion_id,
                 'title' => $request->frm_title,
                 'text' => $request->frm_text,
+                'slug' => str_replace(" ", "-", $request->frm_title)
             ]);
         } else {
             News::create([
-                'companion_id' => $request->companion_id,
                 'title' => $request->frm_title,
                 'text' => $request->frm_text,
+                'slug' => str_replace(" ", "-", $request->frm_title),
                 'position' => ($count + 1),
                 'status' => 1
             ]);

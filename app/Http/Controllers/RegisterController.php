@@ -83,9 +83,9 @@ class RegisterController extends Controller
             $header = Pages::where(['name'=>'header'])->first();
             $footer = Pages::where(['name'=>'footer'])->first();
             $prices = Price::join('categories','categories.id','=','prices.category_id')->selectRaw('*, prices.id')->get();
-
+            $companions = Companion::where('status', 1)->get();
             $users = User::where(['id' =>Auth::id()])->first();
-            return view('user.web_reservation', compact('header', 'footer', 'month', 'day', 'today', 'time', 'prices','users'));
+            return view('user.web_reservation', compact('header', 'footer', 'month', 'day', 'today', 'time', 'prices','users', 'companions'));
         }
         return redirect()->route('user.login',['wbr'=>1]);
     }
@@ -97,12 +97,9 @@ class RegisterController extends Controller
             'reserve_mail' => 'required',
             'reserve_tel' => 'required',
             'reserve_lady1' => 'required','reserve_lady2' => 'required','reserve_lady3' => 'required',
-            'reserve_month1' => 'required','reserve_day1' => 'required','reserve_hour1' => 'required','reserve_minut1' => 'required',
-            'reserve_month2' => 'required','reserve_day2' => 'required','reserve_hour2' => 'required','reserve_minut2' => 'required',
-            'reserve_month3' => 'required','reserve_day3' => 'required','reserve_hour3' => 'required','reserve_minut3' => 'required',
-            'reserve_cource' => 'required'
+            'reserve_date1' => 'required','reserve_date2' => 'required','reserve_date3' => 'required',
         ]);
-        
+
         $webReservation = WebReservation::create([
             'user_id' => $request->frm_user_id,
             'name' => $request->reserve_name,
@@ -110,9 +107,7 @@ class RegisterController extends Controller
             'tel' => $request->reserve_tel,
             'lineid' => $request->reserve_lineid,
             'lady1' => $request->reserve_lady1,'lady2' => $request->reserve_lady2,'lady3' => $request->reserve_lady3,
-            'month1' => $request->reserve_month1,'day1' => $request->reserve_day1,'hour1' => $request->reserve_hour1,'minut1' => $request->reserve_minut1,
-            'month2' => $request->reserve_month2,'day2' => $request->reserve_day2,'hour2' => $request->reserve_hour2,'minut2' => $request->reserve_minut2,
-            'month3' => $request->reserve_month3,'day3' => $request->reserve_day3,'hour3' => $request->reserve_hour3,'minut3' => $request->reserve_minut3,
+            'date1' => $request->reserve_date1,'date2' => $request->reserve_date2,'date3' => $request->reserve_date3,
             'cource' => $request->reserve_cource,
             'place' => $request->reserve_place,
             'pay' => $request->reserve_pay,

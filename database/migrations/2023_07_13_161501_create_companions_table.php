@@ -34,11 +34,6 @@ class CreateCompanionsTable extends Migration
             $table->text('message')->nullable();
             $table->string('entry_date')->nullable();
 
-            $table->integer('option_non_japanese_chk')->default(0);
-            $table->integer('option_3p_chk')->default(0);
-            $table->integer('option_av_chk')->default(0);
-            $table->integer('option_newface_chk')->default(0);
-
             $table->string('category_id')->nullable();
             $table->string('previous_position')->nullable();
             $table->string('celebrities_who_look_alike')->nullable();

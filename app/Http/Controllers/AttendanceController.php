@@ -13,6 +13,9 @@ class AttendanceController extends Controller
     public function index(Request $request)
     {
         $companionLists = Companion::select('id','name','age')->where(['status'=>1])->orderBy('position', 'ASC')->orderBy('id', 'ASC')->get();
+        // echo "<pre>";
+        // print_r($companionLists);
+        // exit;
         return view('admin.attendance.list', compact('companionLists'));
     }
 

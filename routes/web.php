@@ -29,6 +29,7 @@ Route::get('/details', [HomeController::class, 'details'])->name('page.details')
 Route::get('/attendance_sheet', [HomeController::class, 'attendance_sheet'])->name('page.attendance_sheet');
 Route::get('/price', [HomeController::class, 'price'])->name('page.price');
 Route::get('/news', [HomeController::class, 'news'])->name('page.news');
+Route::get('/news/{slug}', [HomeController::class, 'news_details'])->name('page.news.details');
 Route::get('/recruit', [HomeController::class, 'recruit'])->name('page.recruit');
 Route::post('/recruit/save', [HomeController::class, 'recruit_save'])->name('page.recruit.save');
 Route::get('/enrollment_table', [HomeController::class, 'enrollment_table'])->name('page.enrollment_table');

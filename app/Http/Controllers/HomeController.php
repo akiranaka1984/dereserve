@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 use App\Models\Pages;
 use App\Models\Companion;
@@ -31,9 +32,7 @@ class HomeController extends Controller
         $main = Pages::where(['name'=>'main'])->first();
         $campaign = Pages::where(['name'=>'campaign'])->first();
         $new_companions = Companion::with(['today_attendances','home_image', 'category'])->where(['status'=>1])->orderBy('id', 'DESC')->take(6)->get();
-        $today_attendances = Attendance::with(['companion'])->where(['date'=>date('Y-m-d')])->where(function ($query) {
-            $query->where('end_time', '=', null)->orWhere('end_time', '>', date('H:i'));
-        })->get();
+        $today_attendances = Attendance::with(['companion'])->where(['date'=>date('Y-m-d')])->get();
         $tomorrow_attendances = Attendance::with(['companion'])->where(['date'=>date('Y-m-d', strtotime('+1 days'))])->get();
         $recent_news = News::orderBy('id', 'DESC')->take(5)->get();
         return view('page.index', compact('header','footer','main', 'new_companions', 'today_attendances', 'tomorrow_attendances', 'recent_news', 'campaign'));
@@ -77,16 +76,7 @@ class HomeController extends Controller
         $all_records = array();
         $categories = Category::where(['status'=>1])->get();
         foreach($categories as $category){
-            $sql = Companion::with(['today_attendances','category','home_image'])->where([ 'category_id'=>$category->id ]);
-
-            $sql->where(function ($query) use ($request){
-                if(!empty($request->search_av)){
-                    $query->orWhere(['option_av_chk'=>1]);
-                }
-                if(!empty($request->search_newface)){
-                    $query->orWhere(['option_newface_chk'=>1]);
-                }
-            });
+            $sql = Companion::with(['today_attendances','category','home_image'])->where([ 'category_id'=>$category->id ])->where(['status' => 1]);
 
             $sql->where(function ($query) use ($request){
                 if(!empty($request->search_age18)){
@@ -199,8 +189,22 @@ class HomeController extends Controller
         $header = Pages::where(['name'=>'header'])->first();
         $footer = Pages::where(['name'=>'footer'])->first();
         $event = Pages::where(['name'=>'event'])->first();
-        $all_news = News::paginate(10);
-        return view('page.news', compact('header','footer', 'event', 'all_news'));
+        if ($request->year) {
+            $news_data = News::whereYear('created_at', $request->year)->orderBy('created_at', 'desc')->paginate(10);
+        } else {
+            $news_data = News::orderBy('created_at', 'desc')->paginate(10);
+        }
+        $years = News::selectRaw('YEAR(created_at) as year')->groupBy('year')->orderBy('year', 'desc')->get();
+        return view('page.news', compact('header','footer', 'event', 'news_data', 'years'));
+    }
+
+    public function news_details(Request $request, $slug)
+    {
+        $header = Pages::where(['name'=>'header'])->first();
+        $footer = Pages::where(['name'=>'footer'])->first();
+        $event = Pages::where(['name'=>'event'])->first();
+        $news_detail = News::where('slug', $slug)->first();
+        return view('page.news-details', compact('header','footer', 'event', 'news_detail'));
     }
 
     function weekly_dates()
@@ -225,7 +229,7 @@ class HomeController extends Controller
                 $dayname = "土";
             }
             if($i == 0){
-                $schedule_dates[date('Y-m-d', strtotime('+'.$i.' days'))] = "本(".$dayname.")";
+                $schedule_dates[date('Y-m-d', strtotime('+'.$i.' days'))] = "本日 ".date('m月d日', strtotime('+'.$i.' days'))."(".$dayname.")";
             }else{
                 $schedule_dates[date('Y-m-d', strtotime('+'.$i.' days'))] = date('m月d日', strtotime('+'.$i.' days'))."(".$dayname.")";
             }
@@ -339,7 +343,8 @@ class HomeController extends Controller
         $month=date('m');
         $day = date('d');
         $prices = Price::join('categories','categories.id','=','prices.category_id')->selectRaw('*, prices.id')->get();
-        return view('page.reservation', compact('header','footer', 'month', 'day', 'prices'));
+        $companions = Companion::where('status', 1)->get();
+        return view('page.reservation', compact('header','footer', 'month', 'day', 'prices', 'companions'));
     }
 
     public function reservation_save(Request $request)
@@ -349,10 +354,7 @@ class HomeController extends Controller
             'reserve_mail' => 'required',
             'reserve_tel' => 'required',
             'reserve_lady1' => 'required','reserve_lady2' => 'required','reserve_lady3' => 'required',
-            'reserve_month1' => 'required','reserve_day1' => 'required','reserve_hour1' => 'required','reserve_minut1' => 'required',
-            'reserve_month2' => 'required','reserve_day2' => 'required','reserve_hour2' => 'required','reserve_minut2' => 'required',
-            'reserve_month3' => 'required','reserve_day3' => 'required','reserve_hour3' => 'required','reserve_minut3' => 'required',
-            'reserve_cource' => 'required'
+            'reserve_date1' => 'required','reserve_date2' => 'required','reserve_date3' => 'required',
         ]);
 
         WebReservation::create([
@@ -362,9 +364,7 @@ class HomeController extends Controller
             'tel' => $request->reserve_tel,
             'lineid' => $request->reserve_lineid,
             'lady1' => $request->reserve_lady1,'lady2' => $request->reserve_lady2,'lady3' => $request->reserve_lady3,
-            'month1' => $request->reserve_month1,'day1' => $request->reserve_day1,'hour1' => $request->reserve_hour1,'minut1' => $request->reserve_minut1,
-            'month2' => $request->reserve_month2,'day2' => $request->reserve_day2,'hour2' => $request->reserve_hour2,'minut2' => $request->reserve_minut2,
-            'month3' => $request->reserve_month3,'day3' => $request->reserve_day3,'hour3' => $request->reserve_hour3,'minut3' => $request->reserve_minut3,
+            'date1' => $request->reserve_date1,'date2' => $request->reserve_date2,'date3' => $request->reserve_date3,
             'cource' => $request->reserve_cource,
             'place' => $request->reserve_place,
             'pay' => $request->reserve_pay,
@@ -394,7 +394,7 @@ class HomeController extends Controller
         $all_records = array();
         $categories = Category::where(['status'=>1])->get();;
         foreach($categories as $category){
-            $all_records[$category->name] = Companion::with(['category','home_image'])->where([ 'category_id'=>$category->id ])->orderBy('position')->take(6)->get();
+            $all_records[$category->name] = Companion::with(['category','home_image'])->where([ 'category_id'=>$category->id ])->where(['status' => 1])->orderBy('position')->take(6)->get();
         }
 
         return view('page.ranking', compact('header','footer','ranking','all_records'));

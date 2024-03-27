@@ -40,23 +40,38 @@
                 <button type="button" class="btn btn-green" id="bulkAddingButton" onclick="openModal()">一括追加</button>
             </div>
             <div id="bulkAddingModal" class="modal">
-                <div class="modal-content">
-                    <form action="{{ route('admin.companion.bulk.add') }}" method="post" enctype="multipart/form-data">
-                        @csrf
-                        <div class="modal-header">
-                            <span class="close" id="bulkAddingClose" onclick="closeModal()">&times;</span>
-                            <h4>コンパニオンの一括追加</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div>
-                                <label for="uploadCSV">CSVファイルをアップロードする</label>
-                                <input  type="file" name="csv" class="form-control" id="uploadCSV" accept=".xls,.xlsx,.csv" required/>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form action="{{ route('admin.companion.bulk.add') }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="modal-header">
+                                <span class="close" id="bulkAddingClose" onclick="closeModal()">&times;</span>
+                                <h4>コンパニオンの一括追加</h4>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">コンパニオンの追加</button>
-                        </div>
-                    </form>
+                            <div class="modal-body">
+                                <div>
+                                    <label for="uploadCSV">zip ファイルをアップロードする</label>
+                                    <input  type="file" name="zip" class="form-control" id="uploadZip" required/>
+                                </div>
+                            </div>
+
+                            {{-- <div class="modal-body">
+                                <div>
+                                    <label for="uploadCSV">Excelファイルをアップロードする</label>
+                                    <input  type="file" name="csv" class="form-control" id="uploadCSV" accept=".xls,.xlsx" required/>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <div>
+                                    <label for="uploadCSV">すべての画像をアップロードする</label>
+                                    <input type="file" name="images[]" class="form-control" id="uploadImages" multiple required/>
+                                </div>
+                            </div> --}}
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">コンパニオンの追加</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -84,7 +99,7 @@
                         <h3 class="text-center">
                             <a href="{{ route('admin.companion.edit', ['id'=>$companion['id'], 'stab' => 1]) }}" class="text-info">{{ $companion['name'] }}</a>
                         </h3>
-                        <h4 class="text-center">{{ $companion['celebrities_who_look_alike'] }}</h4>
+                        <h4 class="text-center look-like">{{ $companion['celebrities_who_look_alike'] }}</h4>
 
                         <form role="form" method="post" action="{{ route('admin.companion.status.save') }}" >
                             @csrf

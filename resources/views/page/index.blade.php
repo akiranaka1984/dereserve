@@ -15,7 +15,7 @@
         {!! $campaign->text_data3 !!}
     </section>
 
-    
+
     <section id="newface" class="newface">
         <div class="wrapper">
             <div class="headline color_white fadeUpTrigger2 opacity_flg smooth">
@@ -97,56 +97,58 @@
                 <ul id="" class="article-wrap slider grid fadeUpTrigger3 muuri fadeUp" style="height: 4249px;">
 
                     @foreach($today_attendances as $attendance)
-                        @php
-                            if(!empty($attendance->companion) && !empty($attendance->companion->home_image)){
-                                $imgPath = '/storage/photos/'.($attendance->companion->id).'/'.($attendance->companion->home_image->photo);
-                            }else{
-                                $imgPath = '/storage/photos/default/not-to-be-published.jpg';
-                            }
-                        @endphp
-                        <li class="article item muuri-item muuri-item-shown">
-                            <a href="{{ route('page.details', ['id'=>$attendance->id]) }}" class="model_link" style="opacity: 1; transform: scale(1);">
-                                <div class="box fadeUpTrigger3 fadeUp">
-                                    <span class="new_label">NEW</span>
-                                    <span class="rank_label">
-                                        @if($attendance->companion->category->name == "BLACK")
-                                            <img src="{{ url('assets/images/black_label.png') }}" alt="{{ $attendance->companion->category->name }}">
-                                        @elseif($attendance->companion->category->name == "PLATINUM")
-                                            <img src="{{ url('assets/images/platinum_label.png') }}" alt="{{ $attendance->companion->category->name }}">
-                                        @elseif($attendance->companion->category->name == "DIAMOND")
-                                            <img src="{{ url('assets/images/diamond_label.png') }}" alt="{{ $attendance->companion->category->name }}">
-                                        @elseif($attendance->companion->category->name == "RED DIAMOND")
-                                            <img src="{{ url('assets/images/reddiamond_label.png') }}" alt="{{ $attendance->companion->category->name }}">
-                                        @endif
-                                    </span>
-                                    <img src="{{ $imgPath }}" alt="{{ $attendance->companion->name }}" class="photo">
-                                    <div class="prof_box">
-                                        <div class="prof">
-                                            <p class="intro">{{ $attendance->companion->sale_point }}</p>
-                                            <div class="name_wrap">
-                                                <p class="name"></p>{{ $attendance->companion->name }}</p>
-                                                <span class="age">{{ $attendance->companion->age }}</span>歳
-                                            </div>
-                                            <div class="size"> T:<span class="tall">{{ $attendance->companion->height }}</span> <span
-                                                    class="bast">B:{{ $attendance->companion->bust }}({{ $attendance->companion->cup }})</span> <span class="west">W:{{ $attendance->companion->waist }}</span>
-                                                <span class="hip">H:{{ $attendance->companion->hip }}</span>
-                                            </div>
-                                        </div>
-                                        <div class="schedule">
-                                            @if(!empty($attendance->start_time))
-                                                @if(!empty($attendance->end_time))
-                                                    <p>出勤：{{ $attendance->start_time }}～{{ $attendance->end_time }}</p>
-                                                @else
-                                                    <p>出勤：{{ $attendance->start_time }}～終了時間未定</p>
-                                                @endif
-                                            @else
-                                                <p>出勤：00:00～</p>
+                        @if ($attendance->companion->status == 1)
+                            @php
+                                if(!empty($attendance->companion) && !empty($attendance->companion->home_image)){
+                                    $imgPath = '/storage/photos/'.($attendance->companion->id).'/'.($attendance->companion->home_image->photo);
+                                }else{
+                                    $imgPath = '/storage/photos/default/not-to-be-published.jpg';
+                                }
+                            @endphp
+                            <li class="article item muuri-item muuri-item-shown">
+                                <a href="{{ route('page.details', ['id'=>$attendance->companion_id]) }}" class="model_link" style="opacity: 1; transform: scale(1);">
+                                    <div class="box fadeUpTrigger3 fadeUp">
+                                        <span class="new_label">NEW</span>
+                                        <span class="rank_label">
+                                            @if($attendance->companion->category->name == "BLACK")
+                                                <img src="{{ url('assets/images/black_label.png') }}" alt="{{ $attendance->companion->category->name }}">
+                                            @elseif($attendance->companion->category->name == "PLATINUM")
+                                                <img src="{{ url('assets/images/platinum_label.png') }}" alt="{{ $attendance->companion->category->name }}">
+                                            @elseif($attendance->companion->category->name == "DIAMOND")
+                                                <img src="{{ url('assets/images/diamond_label.png') }}" alt="{{ $attendance->companion->category->name }}">
+                                            @elseif($attendance->companion->category->name == "RED DIAMOND")
+                                                <img src="{{ url('assets/images/reddiamond_label.png') }}" alt="{{ $attendance->companion->category->name }}">
                                             @endif
+                                        </span>
+                                        <img src="{{ $imgPath }}" alt="{{ $attendance->companion->name }}" class="photo">
+                                        <div class="prof_box">
+                                            <div class="prof">
+                                                <p class="intro">{{ $attendance->companion->sale_point }}</p>
+                                                <div class="name_wrap">
+                                                    <p class="name"></p>{{ $attendance->companion->name }}</p>
+                                                    <span class="age">{{ $attendance->companion->age }}</span>歳
+                                                </div>
+                                                <div class="size"> T:<span class="tall">{{ $attendance->companion->height }}</span> <span
+                                                        class="bast">B:{{ $attendance->companion->bust }}({{ $attendance->companion->cup }})</span> <span class="west">W:{{ $attendance->companion->waist }}</span>
+                                                    <span class="hip">H:{{ $attendance->companion->hip }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="schedule">
+                                                @if(!empty($attendance->start_time))
+                                                    @if(!empty($attendance->end_time))
+                                                        <p>出勤：{{ $attendance->start_time }}～{{ $attendance->end_time }}</p>
+                                                    @else
+                                                        <p>出勤：{{ $attendance->start_time }}～終了時間未定</p>
+                                                    @endif
+                                                @else
+                                                    <p>出勤：00:00～</p>
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </a>
-                        </li>
+                                </a>
+                            </li>
+                        @endif
                     @endforeach
                 </ul>
             </div>
@@ -173,7 +175,7 @@
                                         <li><a href="" rel="category tag">NEWS</a></li>
                                     </ul>
                                 </div>
-                                <p><a class="news-link" href="">{{ $news->title }}</a></p>
+                                <p><a class="news-link" href="{{ route('page.news.details', [$news->slug]) }}">{{ $news->title }}</a></p>
                             </li>
                         @endforeach
                     </ul>
@@ -210,7 +212,7 @@
             <div class="mailForm">
                 <form action="{{ route('page.magazine.save') }}" method="POST">
                     @csrf
-                    
+
                     @if(session('success'))
                         <div class="alert alert-success">
                             {{ session('success') }}

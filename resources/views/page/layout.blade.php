@@ -433,13 +433,11 @@
     <link rel="stylesheet" href="{{ url('/assets/css/slick.css') }}" type="text/css" media="all">
     <link rel="stylesheet" href="{{ url('assets/css/jquery.datetimepicker.css') }}" type="text/css" media="all">
     <link rel="stylesheet" href="{{ url('/assets/css/splide-default.min.css') }}" type="text/css" media="all">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css" type="text/css"
-        media="all">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/v4-shims.css" type="text/css"
-        media="all">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Black+Ops+One&amp;family=Noto+Sans+JP:wght@400;600;900&amp;display=swap"
-        type="text/css" media="all">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css" type="text/css" media="all">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/v4-shims.css" type="text/css" media="all">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Black+Ops+One&amp;family=Noto+Sans+JP:wght@400;600;900&amp;display=swap" type="text/css" media="all">
+    <link rel="stylesheet" href="{{ url('/assets/css/select2-bootstrap.css') }}" >
+    <link rel="stylesheet" href="{{ url('/assets/css/select2.css') }}" >
 
 </head>
 
@@ -464,6 +462,7 @@
 <script type="text/javascript" src="{{ url('assets/js/custom-datetimepicker.js') }}"></script>
 <script type="text/javascript" src="{{ url('assets/js/script.js') }}"></script>
 <script type="text/javascript" src="{{ url('/assets/js/slick.min.js') }}"></script>
+<script src="{{ url('/assets/js/select2.min.js') }}" defer></script>
 <script src="{{ url('/assets/js/jquery.validate.min.js') }}"></script>
 <script>
     @if(session('error'))

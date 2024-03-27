@@ -3,7 +3,7 @@
 @section('content')
 
     {!! $enrollment_table->text_data1 !!}
-    
+
     <section class="model" id="model">
         <div class="wrapper">
             <div class="breadcrumbs">
@@ -20,9 +20,9 @@
                     </span>
                 </div>
             </div>
-            
+
             <div class="ex_wrap fadeUpTrigger smooth">
-                <h3 class="ex_headline">在籍モデル一覧 61名</h3>
+                <h3 class="ex_headline">在籍モデル一覧</h3>
                 <p class="ex_txt">
                     当店では芸能プロダクションのみならず、あらゆる業界の圧倒的美人が多数在籍しております。他の高級店では体験できない、最高峰クウォリティの美女を厳選してご案内いたします。 </p>
             </div>
@@ -197,7 +197,7 @@
                                                             <p>出勤：{{ $companion->today_attendances->start_time }}～{{ $companion->today_attendances->end_time }}</p>
                                                         @else
                                                             <p>出勤：{{ $companion->today_attendances->start_time }}～終了時間未定</p>
-                                                        @endif    
+                                                        @endif
                                                     @else
                                                         <p>出勤：00:00～</p>
                                                     @endif

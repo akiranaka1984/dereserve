@@ -98,8 +98,13 @@
                     <p class="base">{{ $companion->hobby }}</p>
 
                     <h4 class="prof_head">オススメポイント</h4>
-                    <p class="base">{{ $companion->rookie }}</p>
-                         
+                    <div class="feature">
+                        @if (!empty($companion->rookie))
+                            @foreach (explode(",", $companion->rookie) as $item)
+                                <span>{{ $item }}</span>
+                            @endforeach
+                        @endif
+                    </div>
 
                     <h4 class="prof_head">コンシェルジュからのメッセージ</h4>
                         {!! $companion->message !!}
@@ -172,7 +177,7 @@
                 type   : 'loop',
                 autoplay: true,
                 pagination: false,
-                speed: 2000,
+                speed: 2000
             }).mount();
         });
 

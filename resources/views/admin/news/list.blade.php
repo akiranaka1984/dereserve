@@ -101,28 +101,16 @@
                             @csrf
                             <input type="hidden" name="id" value="" id="news_id">
                             <div class="form-group">
-                                <label for="frmTitle" class="col-sm-3 control-label">タイトル</label>
-                                <div class="col-sm-9 frm-inpt">
+                                <label for="frmTitle" class="col-sm-2 control-label">タイトル</label>
+                                <div class="col-sm-10 frm-inpt">
                                     <input type="text" name="frm_title" class="form-control" id="frmTitle" placeholder="タイトルを入力してください。">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="frmText" class="col-sm-3 control-label">本文</label>
-                                <div class="col-sm-9 frm-inpt">
-                                    <textarea  name="frm_text" class="form-control" id="frmText"></textarea>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="frmCompanionId" class="col-sm-3 control-label">添付写真コンパニオン</label>
-                                <div class="col-sm-8 frm-inpt">
-                                    <select name="companion_id" id="frmCompanionId" >
-                                        <option value=""></option>
-                                        @foreach($companionLists as $companionList)
-                                            <option value="{{ $companionList->id }}">{{ $companionList->name }}({{ $companionList->age }})</option>
-                                        @endforeach
-                                    </select>
+                                <label for="frmText" class="col-sm-2 control-label">本文</label>
+                                <div class="col-sm-10 frm-inpt">
+                                    <textarea name="frm_text" class="form-control" id="frmText" rows="20"></textarea>
                                 </div>
                             </div>
 
@@ -144,19 +132,12 @@
     let nPsitionObj = {}
     $(document).ready(function(){
 
-        $('#frmCompanionId').select2({
-            placeholder: "",
-            allowClear: true
-        });
         CKEDITOR.replace('frmText');
-
 
         $(document).on('click','.showSendEmailModal', function(){
             $('#news_id').val()
             $('#frmTitle').val()
             CKEDITOR.instances.frmText.setData();
-            $('#frmCompanionId').val()
-            $('#frmCompanionId').trigger('change.select2')
             $('#modal-1').modal('show');
         })
 
@@ -248,8 +229,6 @@
         $('#news_id').val(data['id'])
         $('#frmTitle').val(data['title'])
         CKEDITOR.instances.frmText.setData(data['text']);
-        $('#frmCompanionId').val(data['companion_id'])
-        $('#frmCompanionId').trigger('change.select2')
         $('#modal-1').modal('show');
     }
 

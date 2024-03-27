@@ -2275,6 +2275,11 @@ CONTACT US
     appearance: none;
 }
 
+.concept_box {
+    width: 90%;
+    margin: 0 auto;
+}
+
 /************************************
 FOOTER
 *************************************/
@@ -2569,6 +2574,65 @@ headline
     -moz-osx-font-smoothing: grayscale;
 }
 
+.bk_txt {
+    color: #444 !important;
+    margin-bottom: 1rem;
+}
+
+.channels {
+    width: 95%;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    font-size: 1.6rem;
+}
+
+.channels .phone {
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.channels .phone h4 {
+    font-size: 2rem;
+    padding: .3rem 1rem;
+    background: #333;
+    color: #fff;
+    margin-bottom: .5em;
+}
+
+.channels .phone .phone-num {
+    font-family: "Arial Black", Gadget, "sans-serif";
+    font-size: 3.2rem;
+    position: relative;
+    color: #333;
+    padding-left: 1em;
+}
+
+.channels .lineapp {
+    position: relative;
+    width: 100%;
+    border-radius: 3rem;
+    background: #06C755;
+    color: #fff !important;
+    padding: 1.5rem;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.channels .lineapp a, .channels .telegram-app a {
+    font-weight: bold;
+    color: #fff;
+}
+
+.channels .telegram-app {
+    position: relative;
+    width: 100%;
+    border-radius: 3rem;
+    background: #48CAE4;
+    color: #fff !important;
+    padding: 1.5rem;
+    font-size: 1.8rem;
+}
 /**********************************
 料金テーブル
 ***********************************/
@@ -3931,6 +3995,11 @@ input::placeholder {
 
 /*ディスプレイ幅が768px(タブレット)より大きい端末のみへの記述*/
 @media only screen and (min-width: 767px) {
+    .concept_box {
+        max-width: 76rem;
+        margin: 0 auto;
+    }
+
     #top_reserved_btn {
         width: 40%;
     }
@@ -4734,6 +4803,10 @@ NEWS PAGE
     .my_trigger {
         padding: 2% 2% 2% 5%;
     }
+
+    .channels {
+        width: 76rem;
+    }
 }
 
 #main-slider .splide__arrow {
@@ -4929,3 +5002,5 @@ NEWS PAGE
     margin: 10px 0px;
     font-size: 16px;
 }
+
+

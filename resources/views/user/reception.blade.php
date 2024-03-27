@@ -147,28 +147,20 @@
                         <p>---------------------------------</p>
                         <i class="entypo-right-bold"></i>ご希望の女性(第3候補)<br>` + response.lady3 + `
                         <p>---------------------------------</p>
-                        <i class="entypo-right-bold"></i> 希望ご予約日(第1 候補)<br>
-                        ` + response.month1 + `月` + response.day1 + ` 日` + response.hour1 + `時` + response.minut1 + `分
+                        <i class="entypo-right-bold"></i> 希望ご予約日(第1 候補)<br>` + response.date1 + `
                         <p>---------------------------------</p>
-                        <i class="entypo-right-bold"></i> 希望ご予約日(第2候補)<br>
-                        ` + response.month2 + `月` + response.day2 + ` 日` + response.hour2 + `時` + response.minut2 + `分
+                        <i class="entypo-right-bold"></i> 希望ご予約日(第2候補)<br>` + response.date2 + `
                         <p>---------------------------------</p>
-                        <i class="entypo-right-bold"></i>希望ご予約日(第3候補)<br>
-                        ` + response.month3 + `月` + response.day3 + ` 日` + response.hour3 + `時` + response.minut3 + `分
+                        <i class="entypo-right-bold"></i>希望ご予約日(第3候補)<br>` + response.date3 + `
                         <p>---------------------------------</p>
-                        <i class="entypo-right-bold"></i>ご希望コース<br>
-                        ` + response.cource + `
+                        <i class="entypo-right-bold"></i>ご希望コース<br>` + response.cource + `
                         <p>---------------------------------</p>
-                        <i class="entypo-right-bold"></i>ご利用場所<br>
-                        ` + response.place + `
+                        <i class="entypo-right-bold"></i>ご利用場所<br>` + response.place + `
                         <p>---------------------------------</p>
-                        <i class="entypo-right-bold"></i>お支払い方法&gt;<br>
-                        ` + response.pay + `
+                        <i class="entypo-right-bold"></i>お支払い方法&gt;<br>` + response.pay + `
                         <p>---------------------------------</p>
-                        <i class="entypo-right-bold"></i> ご希望連絡方法<br>
-                        ` + response.contact + `
-                        <p>---------------------------------</p>
-                        その他<br>` + response.cmnt + ``
+                        <i class="entypo-right-bold"></i> ご希望連絡方法<br>` + response.contact + `
+                        <p>---------------------------------</p>その他<br>` + response.cmnt + ``
 
                         $('.modal_content').html(content)
 

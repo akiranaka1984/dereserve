@@ -19,8 +19,8 @@ class CreateNewsTable extends Migration
             $table->collation = 'utf8mb4_unicode_ci';
 
             $table->id();
-            $table->integer('companion_id');
             $table->text('title');
+            $table->text('slug');
             $table->text('text')->nullable();
             $table->integer('position')->default(0);
             $table->integer('status')->default(1);

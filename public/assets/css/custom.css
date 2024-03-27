@@ -11,8 +11,7 @@
 
 .modal-content {
     background-color: #fff;
-    border-radius: 5px;
-    max-width: 400px;
+    border-radius: 5px;    
     margin: 300px auto;
     padding: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
@@ -25,4 +24,8 @@
 
 .modal-header h4{
     font-weight: 700;
+}
+
+.look-like {
+    min-height: 16.5px;
 }

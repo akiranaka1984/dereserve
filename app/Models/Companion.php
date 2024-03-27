@@ -26,10 +26,6 @@ class Companion extends Model
         'font_color',
         'message',
         'entry_date',
-        'option_non_japanese_chk',
-        'option_3p_chk',
-        'option_av_chk',
-        'option_newface_chk',
         'category_id',
         'previous_position',
         'celebrities_who_look_alike',
@@ -52,11 +48,11 @@ class Companion extends Model
     public function today_attendances(){
         $today = date('Y-m-d');
         return $this->hasOne('App\Models\Attendance','companion_id','id')->where('date','=',$today);
-    } 
+    }
 
     public function attendances(){
         $today = date('Y-m-d');
         $endDate = date('Y-m-d', strtotime($today. ' + 7 days'));
         return $this->hasMany('App\Models\Attendance','companion_id','id')->where('date','>=',$today)->where('date','<=',$endDate);
-    }   
+    }
 }

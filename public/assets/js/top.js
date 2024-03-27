@@ -7,13 +7,15 @@ $(window).on('DOMContentLoaded', function () {
         focus: 'center',
         autoplay: true,
         flickMaxPages: 3,
-        updateOnMove: true,
+        updateOnMove: false,
         pagination: false,
-        speed: 2000,
+        speed: 1000,
         breakpoints: {
             640: {
                 perPage: 1,
-                padding: '10%'
+                perMove: 1,
+                flickMaxPages: 1,
+                speed: 200,
             }
         },
     }).mount();

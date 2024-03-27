@@ -9,7 +9,7 @@
     </ol> -->
     <h2><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path fill="currentColor" d="M5.673 0a.7.7 0 0 1 .7.7v1.309h7.517v-1.3a.7.7 0 0 1 1.4 0v1.3H18a2 2 0 0 1 2 1.999v13.993A2 2 0 0 1 18 20H2a2 2 0 0 1-2-1.999V4.008a2 2 0 0 1 2-1.999h2.973V.699a.7.7 0 0 1 .7-.699ZM1.4 7.742v10.259a.6.6 0 0 0 .6.6h16a.6.6 0 0 0 .6-.6V7.756L1.4 7.742Zm5.267 6.877v1.666H5v-1.666h1.667Zm4.166 0v1.666H9.167v-1.666h1.666Zm4.167 0v1.666h-1.667v-1.666H15Zm-8.333-3.977v1.666H5v-1.666h1.667Zm4.166 0v1.666H9.167v-1.666h1.666Zm4.167 0v1.666h-1.667v-1.666H15ZM4.973 3.408H2a.6.6 0 0 0-.6.6v2.335l17.2.014V4.008a.6.6 0 0 0-.6-.6h-2.71v.929a.7.7 0 0 1-1.4 0v-.929H6.373v.92a.7.7 0 0 1-1.4 0v-.92Z"></path></svg>
     出勤登録</h2> <br />
-    
+
     <div class="tile-stats tile-primary frm-head"> 出勤コンパニオン登録</div>
 
     <div class="row">
@@ -29,7 +29,7 @@
                     <form role="form" method="post" action="{{ route('admin.attendance.save') }}" class="form-horizontal form-groups-bordered" id="frmAttendance" >
                         @csrf
 
-                        <div class="form-group"> 
+                        <div class="form-group">
                             <label for="field-3" class="col-sm-7 control-label"></label>
                             <div class="col-sm-4">
                                 <button type="button" class="btn btn-orange btn-icon-align save_all_position">
@@ -39,15 +39,15 @@
                             </div>
                         </div>
 
-                        <div class="form-group"> 
+                        <div class="form-group">
                             <input type="hidden" name="selected_date" class="selected_date" />
                             <h3 class="text-danger m-0 ml-3 selected_date_text"></h3>
                         </div>
 
-                        <div class="form-group"> 
+                        <div class="form-group">
                             <label for="frmCompanionId" class="col-sm-3 control-label">コンパニオン名</label>
-                            <div class="col-sm-8 frm-inpt"> 
-                                <select name="companion_id" class="select2" data-allow-clear="true" data-placeholder="" id="frmCompanionId" >
+                            <div class="col-sm-8 frm-inpt">
+                                <select name="companion_id" data-allow-clear="true" data-placeholder="" id="frmCompanionId" >
                                     <option></option>
                                     @foreach($companionLists as $companionList)
                                         <option value="{{ $companionList->id }}">{{ $companionList->name }}({{ $companionList->age }})</option>
@@ -56,10 +56,10 @@
                             </div>
                         </div>
 
-                        <div class="form-group"> 
+                        <div class="form-group">
                             <label for="frmWorkingTime" class="col-sm-3 control-label">出勤時間</label>
-                            <div class="col-sm-8 frm-inpt"> 
-                                
+                            <div class="col-sm-8 frm-inpt">
+
                                 <div class="input-group">
                                     <select name="start_time" class="form-control start_time">
                                         <option></option>
@@ -165,19 +165,19 @@
                                         <option value="23:30">23:30</option>
                                     </select>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <div class="col-sm-12 text-left">
-                                        <div class="checkbox"> <label> <input type="checkbox" class="undetermined_hours" name="undetermined_hours">時間を未定で勤務登録を行う</label> </div> 
-                                        <div class="checkbox"> <label> <input type="checkbox" class="hidden_hours" name="hidden_hours">時間非表示で勤務登録を行う </label> </div> 
-                                        <div class="checkbox"> <label> <input type="checkbox" class="without_end_time_display" name="without_end_time_display">終了時間非表示で勤務登録を </label> </div> 
-                                    </div> 
+                                        <div class="checkbox"> <label> <input type="checkbox" class="undetermined_hours" name="undetermined_hours">時間を未定で勤務登録を行う</label> </div>
+                                        <div class="checkbox"> <label> <input type="checkbox" class="hidden_hours" name="hidden_hours">時間非表示で勤務登録を行う </label> </div>
+                                        <div class="checkbox"> <label> <input type="checkbox" class="without_end_time_display" name="without_end_time_display">終了時間非表示で勤務登録を </label> </div>
+                                    </div>
                                 </div>
-                                
+
                             </div>
                         </div>
 
-                        <div class="form-group"> 
+                        <div class="form-group">
                             <label for="frmMsg" class="col-sm-3 control-label">出勤メッセージ</label>
                             <div class="col-sm-8 frm-inpt"> <input type="text" name="message"  class="form-control" id="frmMsg" placeholder="プロフィール用/10文字目安"> </div>
                         </div>
@@ -209,6 +209,12 @@
         let $events_data = [];
         let attendance_list = []
         $(document).ready(function(){
+
+            $('#frmCompanionId').select2({
+                placeholder: "",
+                allowClear: true
+            });
+
             var calendar = $('#calendar');
             calendar.fullCalendar({
                 header: {
@@ -248,7 +254,7 @@
                 events: function(start, end, timezone, callback) {
                     let startDate = moment(start).format('YYYY-MM-DD');
                     let endDate = moment(end).format('YYYY-MM-DD');
-                    
+
                     $.ajax({
                         type: 'post',
                         dataType: 'json',
@@ -278,10 +284,10 @@
                                     $('tbody td', row).eq(k).data('count', count);
                                     $('tbody td', row).eq(k).html(count+'名出勤');
                                 }
-                            }   
+                            }
                         });
                     });
-                
+
                 }
             });
 
@@ -289,7 +295,7 @@
                 ignore: [],
                 debug: false,
                 rules: {
-                    companion_id: { required: true },    
+                    companion_id: { required: true },
                     start_time: { required: true }
                 },
                 messages: {
@@ -359,7 +365,7 @@
                 $('.without_end_time_display').prop('checked', (attendance.without_end_time_display==1 ? true : false));
 
                 $('#frmMsg').val(attendance.message);
-                
+
             })
 
             $(document).on('click','.delete_btn', function(){
@@ -380,7 +386,7 @@
                         $('#calendar').fullCalendar('refetchEvents');
                     }
                 })
-                
+
             })
 
             $(document).on('click', '.save_all_position', function(){
@@ -390,7 +396,7 @@
                     headers: {"Content-Type": "application/json"},
                     data: JSON.stringify({
                         "_token": "{{ csrf_token() }}",
-                        date: $('.selected_date').val(),    
+                        date: $('.selected_date').val(),
                         data: nPsitionObj
                     }),
                     success: function (response) {
@@ -423,7 +429,7 @@
                 success:function(data){
                     attendance_list = data;
                     data.forEach((item)=>{
-                        
+
                         let photoURL = "";
                         if(item.companion.home_image){
                             photoURL = `{{ url('/storage/photos') }}/`+item.companion_id +"/"+item.companion.home_image.photo
@@ -434,10 +440,10 @@
                         let html = `<div class="col-md-2 item_div" data-id="`+ item.id +`" >
                             <div class="panel panel-primary" >
                                 <div class="panel-body text-center">
-                                    <a href="{{ route('admin.companion.edit') }}?stab=1&id=`+item.companion_id+`"> 
-                                        <img src="`+photoURL+`" class="thmb_class" /> 
-                                    </a> 
-                                    <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}?stab=1&id=`+item.companion_id+`" class="text-info">名前1</a></h3>
+                                    <a href="{{ route('admin.companion.edit') }}?stab=1&id=`+item.companion_id+`">
+                                        <img src="`+photoURL+`" class="thmb_class" />
+                                    </a>
+                                    <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}?stab=1&id=`+item.companion_id+`" class="text-info">`+item.companion.name+`</a></h3>
                                     <h4 class="text-center">`+ item.start_time +` ~ `+ (item.end_time ? item.end_time : '未設定' ) +`</h4>
 
                                     <div class="text-center mt-1">

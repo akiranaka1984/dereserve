@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Attendance;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Filesystem\Filesystem;
 
 use App\Models\Category;
 use App\Models\Companion;
@@ -12,12 +14,14 @@ use App\Models\PhotoSizeSetting;
 use App\Models\CompanionPhoto;
 use Intervention\Image\ImageManagerStatic as Image;
 use PhpOffice\PhpSpreadsheet\IOFactory;
+use ZipArchive;
+
 
 class CompanionController extends Controller
 {
     public function index(Request $request)
     {
-        $sql = Companion::with(['home_image', 'category']);
+        $sql = Companion::with(['home_image', 'category'])->where('status', '!=', 3);
         if(!empty($request->q)){
             $search_q =  $request->q;
 
@@ -91,10 +95,6 @@ class CompanionController extends Controller
             'font_color' => $request->frm_font_color,
             'message' => $request->short_message,
             'entry_date' => $request->frm_entry_date,
-            'option_non_japanese_chk' => (!empty($request->option_non_japanese_chk) ? 1 : 0),
-            'option_3p_chk' => (!empty($request->option_3p_chk) ? 1 : 0),
-            'option_av_chk' => (!empty($request->option_av_chk) ? 1 : 0),
-            'option_newface_chk' => (!empty($request->option_newface_chk) ? 1 : 0),
             'position' => ($count + 1),
             'previous_position' => $request->frm_position,
             'celebrities_who_look_alike' => $request->frm_celebrities_who_look_alike
@@ -178,10 +178,6 @@ class CompanionController extends Controller
             'font_color' => $request->frm_font_color,
             'message' => $request->short_message,
             'entry_date' => $request->frm_entry_date,
-            'option_non_japanese_chk' => (!empty($request->option_non_japanese_chk) ? 1 : 0),
-            'option_3p_chk' => (!empty($request->option_3p_chk) ? 1 : 0),
-            'option_av_chk' => (!empty($request->option_av_chk) ? 1 : 0),
-            'option_newface_chk' => (!empty($request->option_newface_chk) ? 1 : 0)
         ]);
 
         return redirect()->route('admin.companion.edit', [ 'id' => $request->id, 'stab' => 1 ]);
@@ -268,15 +264,26 @@ class CompanionController extends Controller
 
     public function bulk_add(Request $request)
     {
-        if($request->hasfile('csv')){
-            $csv = $request->file('csv');
-            $ext = $csv->getClientOriginalExtension();
-            $fileName = 'bulk_companions'.time().'.'.$ext;
+        if($request->hasfile('zip')){
+            // upload zip and extract it
+            $zipPath = $request->file("zip")->getRealPath();
             $filePath = storage_path('/app/public/bulk/');
-            $csv->move($filePath, $fileName);
+            $dir = new Filesystem;
+            $dir->cleanDirectory($filePath);
+            $zip = new ZipArchive();
+            if ($zip->open($zipPath) === true) {
+                for($i = 0; $i < $zip->numFiles; $i++) {
+                    $filename = $zip->getNameIndex($i);
+                    $fileinfo = pathinfo($filename);
+                    copy("zip://".$zipPath."#".$filename, $filePath.$fileinfo['basename']);
+                }
+                $zip->close();
+            }
 
-            $spreadsheet = IOFactory::load(storage_path('/app/public/bulk/'.$fileName));
 
+            // start read excel
+            $excelPath = $this->find_excel_from_folder($filePath);
+            $spreadsheet = IOFactory::load($excelPath);
             // Select the first worksheet (index 0)
             $worksheet = $spreadsheet->getSheet(0);
 
@@ -284,7 +291,7 @@ class CompanionController extends Controller
             $highestRow = $worksheet->getHighestRow();
             $highestColumn = $worksheet->getHighestColumn();
 
-            $columns = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','AA','AB','AC','AD','AE','AF','AG','AH','AI','AJ','AK','AL','AM','AN'];
+            $columns = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','AA','AB','AC','AD','AE','AF','AG','AH','AI','AJ','AK','AL','AM','AN','AO','AP','AQ','AR','AS','AT','AU'];
 
             $finalData =array();
             for ($row = 1; $row <= $highestRow; $row++) {
@@ -302,34 +309,99 @@ class CompanionController extends Controller
                 $category_id = 1;
                 $position = $key + 1;
                 $birthday = !empty($value['G']) ? date('Y-m-d', strtotime($value['G'])) : "";
-                if(strtolower($value['H']) != 'age'){
-                    Companion::create([
-                        'name' => $value['A'],
-                        'kana' => $value['B'],
-                        'age' => $value['H'],
-                        'height' => $value['J'],
-                        'bust' => $value['K'],
-                        'cup' => $value['L'],
-                        'waist' => $value['M'],
-                        'hip' => $value['N'],
-                        'hobby' => $value['O'],
-                        'message' => $value['T'],
-                        'option_newface_chk' => $new_face,
-                        'category_id' => $category_id,
-                        'position' => $position,
-                        'nickname1' => $value['E'],
-                        'nickname2' => $value['F'],
-                        'birthday' => $birthday,
-                        'hiragana' => $value['C'],
-                        'surnames' => $value['D'],
-                        'styles' => $value['P'],
-                        'type' => $value['Q']
-                    ]);
+                if((strtolower($value['H']) != 'age') && (strtolower($value['H']) != '年齢')){
+                    if(!empty($value['A'])){
+                        $companion = Companion::create([
+                            'name' => $value['A'],
+                            'kana' => $value['B'],
+                            'age' => $value['H'],
+                            'height' => $value['J'],
+                            'bust' => $value['K'],
+                            'cup' => $value['L'],
+                            'waist' => $value['M'],
+                            'hip' => $value['N'],
+                            'hobby' => $value['O'],
+                            'message' => $value['T'],
+                            'option_newface_chk' => $new_face,
+                            'category_id' => $category_id,
+                            'position' => $position,
+                            'nickname1' => $value['E'],
+                            'nickname2' => $value['F'],
+                            'birthday' => $birthday,
+                            'hiragana' => $value['C'],
+                            'surnames' => $value['D'],
+                            'styles' => $value['P'],
+                            'type' => $value['Q']
+                        ]);
+
+                        if(!empty($value['Z']) && File::exists($filePath.$value['Z'])){
+                            $image1 = $value['Z'];
+                            $photoSizeSetting = PhotoSizeSetting::with(['photo_category'])->where(['id'=>1])->first();
+
+                            $image = File::get($filePath.$image1);
+                            $ext = pathinfo($filePath.$image1, PATHINFO_EXTENSION);
+                            $imageName = $photoSizeSetting->prefix.'_'.$companion->id.'.'.$ext;
+                            if(empty($photoSizeSetting->hpx) || empty($photoSizeSetting->vpx)){
+                                Storage::disk('public')->put('photos/'.$companion->id.'/'.$imageName, $image, 'public');
+                            }else{
+                                $img = Image::make($filePath.$image1);
+                                $img->resize($photoSizeSetting->hpx, $photoSizeSetting->vpx, function ($constraint) { $constraint->aspectRatio(); });
+                                $img->stream();
+                                Storage::disk('public')->put('photos/'.$companion->id.'/'.$imageName, $img, 'public');
+                            }
+
+                            CompanionPhoto::updateOrInsert([
+                                'companion_id' => $companion->id,
+                                'photo_setting_id' => 1
+                            ],[
+                                'title' =>  $request->frm_title,
+                                'photo' => $imageName.'?v='.time(),
+                                'status' => 1
+                            ]);
+                        }
+
+                        if (!empty($value['AO'])) {
+                            $dates = array();
+                            $currentDate = strtotime($value['AO']);
+                            empty($value['AP']) ? $endDate = strtotime($value['AO']) : $endDate = strtotime($value['AP']);
+
+                            while ($currentDate <= $endDate) {
+                                $dates[] = date('Y-m-d', $currentDate);
+                                $currentDate = strtotime('+1 day', $currentDate);
+                            }
+
+                            foreach ($dates as $i => $val) {
+                                Attendance::create([
+                                    'companion_id' => $companion->id,
+                                    'date' => $val,
+                                    'start_time' => $value['AQ'],
+                                    'end_time' => $value['AR'],
+                                    'undetermined_hours' => $value['AS'],
+                                    'hidden_hours' => $value['AT'],
+                                    'without_end_time_display' => $value['AU']
+                                ]);
+                            }
+                        }
+                    }
                 }
             }
-            return redirect()->back()->with('success', 'コンパニオンが正常に追加されました!');
         }
-        return redirect()->back()->with('error', '何か問題が発生しました!');
+        return redirect()->back()->with('success', '成功!');
     }
+
+    public function find_excel_from_folder($directoryPath){
+        if (File::isDirectory($directoryPath)) {
+            $files = File::files($directoryPath);
+            foreach ($files as $file) {
+                $extension = pathinfo($file, PATHINFO_EXTENSION);
+                if ($extension === 'xlsx' || $extension === 'xls') {
+                    return $file->getRealPath();
+                }
+            }
+        } else {
+            return null;
+        }
+    }
+
 
 }

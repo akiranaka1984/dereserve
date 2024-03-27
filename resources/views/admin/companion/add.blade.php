@@ -147,33 +147,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <div class="col-lg-3">
-                                <div class="grid text-center">
-                                    <input name="option_non_japanese_chk" class="form-check-input" type="checkbox" value="option_non_japanese_chk" />
-                                    <img src="{{ url('/assets/images/option_non_japanese.svg') }}" width="51" height="51" alt="外国人対応可">
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="grid text-center">
-                                    <input name="option_3p_chk" class="form-check-input" type="checkbox" value="option_3p_chk" />
-                                    <img src="{{ url('/assets/images/option_3p.svg') }}" width="51" height="51" alt="外国人対応可">
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="grid text-center">
-                                    <input name="option_av_chk" class="form-check-input" type="checkbox" value="option_av_chk" />
-                                    <img src="{{ url('/assets/images/option_av.svg') }}" width="51" height="51" alt="外国人対応可">
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="grid text-center">
-                                    <input name="option_newface_chk" class="form-check-input" type="checkbox" value="option_newface_chk" />
-                                    <img src="{{ url('/assets/images/option_newface.svg') }}" width="51" height="51" alt="外国人対応可">
-                                </div>
-                            </div>
-                        </div>
                         <div class="form-group pt-0" style="display: flex; flex-direction: column; gap: 5px">
                             <div style="display: flex; justify-content: center;">
                                 <h4 style="font-weight: 700">追加設定項目</h4>
@@ -246,7 +219,7 @@
                         }
                     },
                     frm_entry_date: { required: true },
-                    frm_position: { required: true },    
+                    frm_position: { required: true },
                     frm_celebrities_who_look_alike: { required: true }
                 },
                 messages: {
