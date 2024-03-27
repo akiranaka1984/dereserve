@@ -3,19 +3,19 @@ $(window).on('DOMContentLoaded', function () {
         type: 'loop',
         perPage: 3,
         perMove: 3,
-        interval: 3000,
+        interval: 5000,
         focus: 'center',
         autoplay: true,
         flickMaxPages: 3,
-        updateOnMove: false,
+        updateOnMove: true,
         pagination: false,
-        speed: 1000,
+        speed: 2000,
         breakpoints: {
             640: {
                 perPage: 1,
                 perMove: 1,
                 flickMaxPages: 1,
-                speed: 200,
+                speed: 300,
             }
         },
     }).mount();

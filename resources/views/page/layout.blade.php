@@ -432,7 +432,7 @@
     <link rel="stylesheet" href="{{ url('assets/css/style.min.css') }}" type="text/css" media="all">
     <link rel="stylesheet" href="{{ url('/assets/css/slick.css') }}" type="text/css" media="all">
     <link rel="stylesheet" href="{{ url('assets/css/jquery.datetimepicker.css') }}" type="text/css" media="all">
-    <link rel="stylesheet" href="{{ url('/assets/css/splide-default.min.css') }}" type="text/css" media="all">
+    <link rel="stylesheet" href="{{ url('/assets/css/splide-default.min.css') }}?v=1.5" type="text/css" media="all">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css" type="text/css" media="all">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/v4-shims.css" type="text/css" media="all">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Black+Ops+One&amp;family=Noto+Sans+JP:wght@400;600;900&amp;display=swap" type="text/css" media="all">
