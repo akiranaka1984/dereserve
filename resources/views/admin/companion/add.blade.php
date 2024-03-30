@@ -8,20 +8,18 @@
         <li class="active"> <strong>Buttons</strong> </li>
     </ol> -->
     <h2><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path fill="currentColor" d="M5.673 0a.7.7 0 0 1 .7.7v1.309h7.517v-1.3a.7.7 0 0 1 1.4 0v1.3H18a2 2 0 0 1 2 1.999v13.993A2 2 0 0 1 18 20H2a2 2 0 0 1-2-1.999V4.008a2 2 0 0 1 2-1.999h2.973V.699a.7.7 0 0 1 .7-.699ZM1.4 7.742v10.259a.6.6 0 0 0 .6.6h16a.6.6 0 0 0 .6-.6V7.756L1.4 7.742Zm5.267 6.877v1.666H5v-1.666h1.667Zm4.166 0v1.666H9.167v-1.666h1.666Zm4.167 0v1.666h-1.667v-1.666H15Zm-8.333-3.977v1.666H5v-1.666h1.667Zm4.166 0v1.666H9.167v-1.666h1.666Zm4.167 0v1.666h-1.667v-1.666H15ZM4.973 3.408H2a.6.6 0 0 0-.6.6v2.335l17.2.014V4.008a.6.6 0 0 0-.6-.6h-2.71v.929a.7.7 0 0 1-1.4 0v-.929H6.373v.92a.7.7 0 0 1-1.4 0v-.92Z"></path></svg>
-        コンパニオン登録</h2> <br />
+        モデル登録</h2> <br />
 
-    <div class="tile-stats tile-primary frm-head"> コンパニオン情報入力</div>
+    <div class="tile-stats tile-primary frm-head"> モデル情報入力</div>
 
     <div class="row">
-        <div class="col-md-1">
-        </div>
         <div class="col-md-9">
             <div class="panel panel-primary" data-collapsed="0">
                 <div class="panel-body">
                     <form role="form" method="post" action="{{ route('admin.companion.save') }}" enctype="multipart/form-data" class="form-horizontal form-groups-bordered" id="frmCompanion" >
                         @csrf
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">ヘルスコース</label>
+                            <label class="col-sm-3 control-label">ランク/コース</label>
                             <div class="col-sm-5 frm-inpt">
                                 <select name="category_id" class="form-control">
                                     @foreach($categories as $category)
@@ -118,7 +116,7 @@
                         </div>
                         <div class="form-group"> <label for="frmSalePoint" class="col-sm-3 control-label">セールスポイント</label>
                             <div class="col-sm-8 frm-inpt">
-                                <input type="text" name="frm_sale_point" class="form-control" id="frmSalePoint" placeholder="セールスポイント/10文字目安">
+                                <input type="text" name="frm_sale_point" class="form-control" id="frmSalePoint" placeholder="セールスポイント">
                                 <label class="col-sm-4 control-label">フォントカラー選択 :</label>
                                 <div class="col-sm-8">
                                     <div class="radio-inline"> <label> <input type="radio" name="frm_font_color" value="黒" checked>黒</label> </div>
@@ -164,7 +162,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="form-group pt-0" style="display: flex; flex-direction: column; gap: 5px">
                             <div style="display: flex; justify-content: center;">
                                 <h4 style="font-weight: 700">写真管理</h4>
@@ -187,7 +184,7 @@
                         <div class="col-md-3 mt-3">
                             <button type="submit" class="btn btn-orange btn-icon-align">
                                 <svg class="bi bi-plus-circle-fill"fill=currentColor height=16 viewBox="0 0 16 16"width=16 xmlns=http://www.w3.org/2000/svg><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/></svg>
-                                <span class="title ml-1">コンパニオン登録</span>
+                                <span class="title ml-1">モデル登録</span>
                             </button>
                         </div>
                     </form>
@@ -212,7 +209,7 @@
                     frm_waist: { required: true },
                     frm_hip: { required: true },
                     'frm_rookie[]': { required: true, maxlength:4 },
-                    frm_sale_point: { required: true, maxlength:10 },
+                    frm_sale_point: { required: true, maxlength:100 },
                     short_message: {
                         required: function(){
                             CKEDITOR.instances.frmShortMessage.updateElement();
@@ -233,7 +230,7 @@
                     frm_waist: { required: "{{ __('This field is required') }}" },
                     frm_hip: { required: "{{ __('This field is required') }}" },
                     'frm_rookie[]': { required: "{{ __('This field is required') }}", maxlength: "{{ __('Max 4 checkbox allowed') }}" },
-                    frm_sale_point: { required: "{{ __('This field is required') }}", maxlength: "{{ __('Max 10 characters allowed') }}" },
+                    frm_sale_point: { required: "{{ __('This field is required') }}", maxlength: "{{ __('Max 100 characters allowed') }}" },
                     short_message: { required: "{{ __('This field is required') }}" },
                     frm_entry_date: { required: "{{ __('This field is required') }}" },
                     frm_position: { required: "{{ __('This field is required') }}" },

@@ -54,7 +54,6 @@
                         @endif
                     </div>
                 @endforeach
-                
             </div>
 
             {!! $priceData->text_data2 !!}

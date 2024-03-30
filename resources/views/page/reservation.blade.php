@@ -3,7 +3,7 @@
 @section('content')
     <section class="kv_main">
         <div class="kv_wrap">
-            <img src="{{ url('storage/gallery/66061710153484.jpg') }}" alt="">
+            <img src="https://dereserve.gearup.dev/storage/gallery/32961710825576.png" alt="">
             <h2 class="kv_title">Web Reservation</h2>
         </div>
     </section>
@@ -53,9 +53,9 @@
                 <div class="lineapp">
                     <a href="" class="line-link">LINEでのご予約</a>
                 </div>
-                <div class="telegram-app">
+                {{-- <div class="telegram-app">
                     <a href="" class="tele-link">Telegramでのご予約</a>
-                </div>
+                </div> --}}
             </div>
             <div class="concept_box">
                 <form id="reserveForm" action="{{ route('page.reservation.save') }}" method="POST" class="form">

@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="wrapper">
-            <div class="wrapper">
+            <div class="wrapper pd_adj">
                 <h3 class="content_title">NEWS</h3>
                 <div class="content">
                     <div class="content_aside js-aside-top">
@@ -48,7 +48,7 @@
                 </div>
                 <div class="postLinks">
                     <button class="more_btn_news">
-                        <a href="{{ route('page.news') }}">すべて見る</a>
+                        <a href="{{ route('page.news') }}">VIEW ALL</a>
                     </button>
                 </div>
             </div>

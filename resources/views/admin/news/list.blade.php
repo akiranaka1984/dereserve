@@ -56,8 +56,8 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>#</th>
-                <th>文章</th>
+                <th>編集/削除機能</th>
+                <th>コンテンツ</th>
                 <th>登録日</th>
             </tr>
         </thead>

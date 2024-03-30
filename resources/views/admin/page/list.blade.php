@@ -54,7 +54,7 @@
                     <div class="form-group">
                         <label for="frmShortMessage" class="col-sm-12 control-label" style="text-align:left;">{{ __('Text Data1') }}</label>
                         <div class="col-sm-12 frm-inpt">
-                            <div class="row mt-1">
+                            <div class="row mt-1 pd-adj1">
                                 <textarea  name="text_data1" class="form-control" id="frmShortMessage" rows="15" >{{ $text_data1 }}</textarea>
                             </div>
                         </div>
@@ -67,7 +67,7 @@
                     <div class="form-group">
                         <label for="frmShortMessage" class="col-sm-12 control-label"  style="text-align:left;">{{ __('Text Data2') }}</label>
                         <div class="col-sm-12 frm-inpt">
-                            <div class="row mt-1">
+                            <div class="row mt-1 pd-adj1">
                                 <textarea  name="text_data2" class="form-control" id="frmShortMessage" rows="15">{{ $text_data2 }}</textarea>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                     <div class="form-group">
                         <label for="frmShortMessage" class="col-sm-12 control-label"  style="text-align:left;">{{ __('Text Data3') }}</label>
                         <div class="col-sm-12 frm-inpt">
-                            <div class="row mt-1">
+                            <div class="row mt-1 pd-adj1">
                                 <textarea  name="text_data3" class="form-control" id="frmShortMessage" rows="15">{{ $text_data3 }}</textarea>
                             </div>
                         </div>

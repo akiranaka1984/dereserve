@@ -85,7 +85,12 @@ Route::post('/admin/resetpassword', [AuthController::class, 'resetpasswordSave']
 
 Route::get('/admin/signout', [AuthController::class, 'signout'])->name('admin.signout');
 
-Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function () {
+//追加ルート
+//Route::get('/enrollment-table', [HomeController::class, 'enrollmentTable'])->name('page.enrollment_table');
+
+
+//コメントアウト 後で戻す
+Route::group([/*'middleware' => ['auth', 'admin'],*/ 'prefix' => 'admin'], function () {
     Route::get('/dashboard', [AdminController::class,'dashboard'])->name('admin.dashbord');
 
     Route::get('/users/list', [UsersController::class,'index'])->name('admin.users.list');

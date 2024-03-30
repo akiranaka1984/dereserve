@@ -51,7 +51,7 @@
                                                     <img src="{{ url('assets/images/reddiamond_label.png') }}" alt="{{ $new_companion->category->name }}">
                                                 @endif
                                             </span>
-                                            <img src="{{ $imgPath }}" alt="{{ $new_companion->name }}({{ $new_companion->age }})" class="photo">
+                                            <img src="{{ asset($imgPath) }}" alt="{{ $new_companion->name }}({{ $new_companion->age }})" class="photo">
                                             <div class="prof_box">
                                                 <div class="prof">
                                                     <p class="intro">{{ $new_companion->sale_point }}</p>
@@ -120,7 +120,7 @@
                                                 <img src="{{ url('assets/images/reddiamond_label.png') }}" alt="{{ $attendance->companion->category->name }}">
                                             @endif
                                         </span>
-                                        <img src="{{ $imgPath }}" alt="{{ $attendance->companion->name }}" class="photo">
+                                        <img src="{{ asset($imgPath) }}" alt="{{ $attendance->companion->name }}" class="photo">
                                         <div class="prof_box">
                                             <div class="prof">
                                                 <p class="intro">{{ $attendance->companion->sale_point }}</p>

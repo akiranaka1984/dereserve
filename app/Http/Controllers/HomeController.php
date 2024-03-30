@@ -66,6 +66,12 @@ class HomeController extends Controller
         return view('page.attendance_sheet', compact('header','footer','req_date','attendance_sheet','schedule_dates','today_attendances'));
     }
 
+    public function enrollmentTable()
+{
+    return view('enrollment_table');
+}
+
+
     public function enrollment_table(Request $request)
     {
 

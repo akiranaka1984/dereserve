@@ -18,7 +18,7 @@
         <li class="active"> <strong>Buttons</strong> </li>
     </ol> -->
     <h2><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path fill="currentColor" d="M5.673 0a.7.7 0 0 1 .7.7v1.309h7.517v-1.3a.7.7 0 0 1 1.4 0v1.3H18a2 2 0 0 1 2 1.999v13.993A2 2 0 0 1 18 20H2a2 2 0 0 1-2-1.999V4.008a2 2 0 0 1 2-1.999h2.973V.699a.7.7 0 0 1 .7-.699ZM1.4 7.742v10.259a.6.6 0 0 0 .6.6h16a.6.6 0 0 0 .6-.6V7.756L1.4 7.742Zm5.267 6.877v1.666H5v-1.666h1.667Zm4.166 0v1.666H9.167v-1.666h1.666Zm4.167 0v1.666h-1.667v-1.666H15Zm-8.333-3.977v1.666H5v-1.666h1.667Zm4.166 0v1.666H9.167v-1.666h1.666Zm4.167 0v1.666h-1.667v-1.666H15ZM4.973 3.408H2a.6.6 0 0 0-.6.6v2.335l17.2.014V4.008a.6.6 0 0 0-.6-.6h-2.71v.929a.7.7 0 0 1-1.4 0v-.929H6.373v.92a.7.7 0 0 1-1.4 0v-.92Z"></path></svg>
-        コンパニオン一覧</h2> <br />
+        モデル一覧</h2> <br />
 
     <div class="tile-stats tile-primary frm-head"> 検索</div>
 
@@ -32,12 +32,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-5"></div>
             <div class="col-md-2">
                 <button type="button" class="btn btn-orange save_all_position">並び順を確定する</button>
             </div>
             <div class="col-md-1">
-                <button type="button" class="btn btn-green" id="bulkAddingButton" onclick="openModal()">一括追加</button>
+                <button type="button" class="btn btn-green" id="bulkAddingButton" onclick="openModal()">Excelファイル一括登録</button>
             </div>
             <div id="bulkAddingModal" class="modal">
                 <div class="modal-dialog">
@@ -46,7 +45,7 @@
                             @csrf
                             <div class="modal-header">
                                 <span class="close" id="bulkAddingClose" onclick="closeModal()">&times;</span>
-                                <h4>コンパニオンの一括追加</h4>
+                                <h4>モデルの一括追加</h4>
                             </div>
                             <div class="modal-body">
                                 <div>
@@ -68,7 +67,7 @@
                                 </div>
                             </div> --}}
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">コンパニオンの追加</button>
+                                <button type="submit" class="btn btn-primary">モデルの追加</button>
                             </div>
                         </form>
                     </div>
@@ -77,7 +76,7 @@
         </div>
     </div>
 
-    <div class="tile-stats tile-primary frm-head"> コンパニオン一覧</div>
+    <div class="tile-stats tile-primary frm-head"> モデル一覧</div>
 
     <div class="row dragula" id="left-events">
         @foreach($companions as $companion)
@@ -94,12 +93,13 @@
                             @endphp
                             <img src="{{ url($imgPath) }}" class="topi_class" />
                         </a>
-                        <h2 class="text-center">{{ $companion['category']['name'] }}</h2>
+                        <h2 class="text-center rank-list">{{ $companion['category']['name'] }}</h2>
 
                         <h3 class="text-center">
                             <a href="{{ route('admin.companion.edit', ['id'=>$companion['id'], 'stab' => 1]) }}" class="text-info">{{ $companion['name'] }}</a>
                         </h3>
-                        <h4 class="text-center look-like">{{ $companion['celebrities_who_look_alike'] }}</h4>
+                        {{-- <h4 class="text-center look-like">{{ $companion['celebrities_who_look_alike'] }}</h4> --}}
+                        <h4 class="text-center look-like">表示設定</h4>
 
                         <form role="form" method="post" action="{{ route('admin.companion.status.save') }}" >
                             @csrf
@@ -113,7 +113,7 @@
                                 </select>
                             </div>
                             <div class="text-center mt-1">
-                                <button type="submit" class="btn btn-primary ">修正</button>
+                                <button type="submit" class="btn btn-primary ">確定</button>
                             </div>
                         </form>
 

@@ -53,7 +53,7 @@
                             </dd>
                         </dl>
                         <dl>
-                            <dt>主題<span>必須</span></dt>
+                            <dt>ご用件<span>必須</span></dt>
                             <dd>
                                 <input type="text" name="subject" placeholder="例)　～に関するお問い合わせ" class="wide" id="reserveTitle" data-prompt-position="topLeft" required>
                             </dd>

@@ -243,7 +243,6 @@ class CompanionController extends Controller
         }
 
         return redirect()->route('admin.companion.edit', [ 'id' => $request->companion_id, 'stab' => 3 ]);
-
     }
 
     public function position(Request $request)

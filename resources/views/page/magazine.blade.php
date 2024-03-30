@@ -47,7 +47,7 @@
                         </div>
                     @endif
                     
-                    <input type="text" name="name" placeholder="abcde" class="mail" required>
+                    <input type="text" name="name" placeholder="六本木太郎" class="mail" required>
                     <input type="email" name="email" placeholder="abcde@gmail.com" class="mail" required>
                     <div class="div">
                         <input type="submit" class="button" name="castsyukkinmail_add" value="登録"/>

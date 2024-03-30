@@ -176,7 +176,7 @@
                                                     <img src="{{ url('assets/images/reddiamond_label.png') }}" alt="{{ $companion->category->name }}">
                                                 @endif
                                             </span>
-                                            <img src="{{ $imgPath }}" alt="{{ $companion->name }}" class="photo">
+                                            <img src="{{ asset($imgPath) }}" alt="{{ $companion->name }}" class="photo">
                                             <div class="prof_box">
                                                 <p class="intro">{{ $companion->sale_point }}</p>
                                                 <div class="prof">
