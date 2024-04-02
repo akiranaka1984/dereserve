@@ -3,7 +3,7 @@
 @section('content')
     <section class="kv_main">
         <div class="kv_wrap">
-            <img src="{{ url('storage/gallery/86851710153484.jpg') }}" alt="">
+            <img src="{{ url('assets/images/kv-model8.jpg') }}" alt="">
             <h2 class="kv_title">MAIL MAGAZINE</h2>
         </div>
     </section>
@@ -26,10 +26,14 @@
             </div>
         </div>
         <div class="wrapper">
-            <div class="headline">
-                <h3 class="">MAIL MAGAZINE</h3>
-                <span class="sub">メルマガ登録</span>
-                <p>メルマガ会員の皆様には、お得なキャンペーン情報、新人モデル登録情報等をリアルタイムでお届け致します。<br>
+            <div class="headline opacity_clear">
+                <div class="headline mrgbtm0 opacity_clear">
+                    <p class="ttl_en">MAIL MAGAZINE</p>
+                    <h2 class="headline_ttl">
+                        MAIL MAGAZINE </h2>
+                    <p class="back_txt">MAIL MAGAZINE</p>
+                </div>
+                <p class="txt-left">メルマガ会員の皆様には、お得なキャンペーン情報、新人モデル登録情報等をリアルタイムでお届け致します。<br>
                     お客様の大切なメールアドレスが他に漏洩する事は一切ございませんので、ご安心下さい。</p>
             </div>
             <div class="mailForm">

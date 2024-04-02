@@ -133,7 +133,7 @@
                         @endforeach
                     </div>
                     <div class="ex_wrap opacity_flg">
-                        <div class="ex_wrap opacity_flg">
+                        <div class="ex_wrap opacity_flg mgb_30">
                             @if($companion->category->name == "BLACK")
                                 <p class="price_info_ttl black_rank">BLACK</p>
                             @elseif($companion->category->name == "PLATINUM")

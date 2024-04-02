@@ -159,7 +159,7 @@
     </section>
     <section id="news" class="news">
         <div class="wrapper">
-            <div class="headline">
+            <div class="headline fadeUpTrigger2 opacity_flg">
                 <h3 class="">INFORMATION</h3>
                 <span class="sub">お知らせ</span>
                 <p>当店からのお知らせはこちらからご確認ください。</p>
@@ -189,7 +189,7 @@
     {!! $main->text_data2 !!}
     <section id="contact" class="contact">
         <div class="wrapper">
-            <div class="headline color_white txt_shadow">
+            <div class="headline color_white txt_shadow fadeUpTrigger2 opacity_flg">
                 <h3 class="">CONTACT US</h3>
                 <span class="sub">お問い合わせ</span>
                 <p>当店サービスに関するご質問・ご相談は<br>
@@ -203,7 +203,7 @@
     {!! $main->text_data3 !!}
     <section id="mailmagazine" class="mailmagazine">
         <div class="wrapper">
-            <div class="headline">
+            <div class="headline fadeUpTrigger2 opacity_flg">
                 <h3 class="">MAIL MAGAZINE</h3>
                 <span class="sub">メルマガ登録</span>
                 <p>メルマガ会員の皆様には、お得なキャンペーン情報、新人モデル登録情報等をリアルタイムでお届け致します。<br>
@@ -224,11 +224,11 @@
                         </div>
                     @endif
 
-                    <input type="text" name="name" placeholder="abcde" class="mail" required>
+                    <input type="text" name="name" placeholder="六本木 太郎" class="mail" required>
                     <input type="email" name="email" placeholder="abcde@gmail.com" class="mail" required>
                     <div class="div">
-                        <input type="submit" class="button" name="castsyukkinmail_add" value="登録"/>
-                        <input type="submit" class="button" name="castsyukkinmail_del" value="解除"/>
+                        <input type="submit" class="button" name="castsyukkinmail_add" value="登録する"/>
+                        <input type="submit" class="button" name="castsyukkinmail_del" value="解除する"/>
                     </div>
                 </form>
             </div>

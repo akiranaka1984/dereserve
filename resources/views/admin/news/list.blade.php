@@ -19,11 +19,14 @@
 
     <div class="tile-stats tile-primary frm-head"> 新規ニュース追加</div>
 
-    <div class="col-md-12 mb-1">
+    <div class="col-md-12 mb-1 flex-items">
         <button type="button" class="btn btn-orange btn-icon-align showSendEmailModal">
             <svg class="bi bi-plus-circle-fill" fill="currentColor" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"></path></svg>
             <span class="title ml-1">ニュースを追加する</span>
         </button>
+        <div class="col-md-2 img-resister mgb_0">
+            <a href="{{ route('admin.gallery.list') }}" class="btn btn-orange">画像をギャラリーに登録する</a>
+        </div>
     </div>
 
     <div class="tile-stats tile-primary frm-head"> ニュース一覧</div>

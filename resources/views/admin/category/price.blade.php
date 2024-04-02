@@ -24,9 +24,9 @@
                         <table class="table table-bordered"> 
                             <thead> 
                                 <tr> 
-                                    <th class="w-33">時間間隔</th> 
-                                    <th>時間間隔</th> 
-                                    <th>終了価格</th> 
+                                    <th class="w-33">時間</th> 
+                                    <th>金額</th> 
+                                    <th>備考</th> 
                                     <th></th> 
                                 </tr> 
                             </thead> 
@@ -62,9 +62,9 @@
         <table class="table table-bordered"> 
             <thead> 
                 <tr> 
-                    <th class="w-50">時間間隔</th> 
-                    <th>時間間隔</th> 
-                    <th>終了価格</th> 
+                    <th class="w-50">時間</th> 
+                    <th>金額</th> 
+                    <th>備考</th> 
                     <th></th> 
                 </tr> 
             </thead> 

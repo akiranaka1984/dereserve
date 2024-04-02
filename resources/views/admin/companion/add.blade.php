@@ -30,7 +30,7 @@
                             <div class="col-sm-3">
                                 <a href="{{ route('admin.category.list') }}" class="btn btn-success btn-icon-align">
                                     <svg class="bi bi-pencil"fill=currentColor height=16 viewBox="0 0 16 16"width=16 xmlns=http://www.w3.org/2000/svg><path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/></svg>
-                                    <span class="title ml-1">カテゴリー編集</span>
+                                    <span class="title ml-1">ランク・コース内容編集</span>
                                 </a>
                             </div>
                         </div>
@@ -74,41 +74,41 @@
                             <label class="col-sm-3 control-label">おすすめポイント</label>
                             <div class="col-sm-8 frm-inpt">
                                 <div class="grid">
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="新人">&nbsp;新人 &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="経験者">&nbsp; 経験者 &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="未経験">&nbsp; 未経験 &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="清楚系" >&nbsp; 清楚系 &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="スタイル抜群">&nbsp; スタイル抜群 &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="モデル系" >&nbsp; モデル系 &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="キレカワ系" >&nbsp; キレカワ系 &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="アイドル系">&nbsp; アイドル系 &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="素人系">&nbsp; 素人系 &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="グラビア系">&nbsp; グラビア系 &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="お姉様系">&nbsp; お姉様系 &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="ギャル系">&nbsp; ギャル系 &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="現役モデル">&nbsp; 現役モデル &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="AV女優">&nbsp; AV女優 &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="CA">&nbsp; CA &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="女子大生">&nbsp; 女子大生 &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="ロリ系">&nbsp; ロリ系 &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="おっとり系">&nbsp; おっとり系 &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="綺麗系">&nbsp; 綺麗系 &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="可愛い系">&nbsp; 可愛い系 &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="癒し系">&nbsp; 癒し系 &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="オススメ">&nbsp; オススメ &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="巨乳">&nbsp; 巨乳 &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="スレンダー">&nbsp; スレンダー &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="女子アナ系">&nbsp; 女子アナ系 &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="小柄">&nbsp; 小柄 &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="高身長">&nbsp; 高身長 &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="愛嬌抜群">&nbsp; 愛嬌抜群 &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="パイパン">&nbsp; パイパン &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="美脚">&nbsp; 美脚 &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="美乳">&nbsp; 美乳 &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="美尻" >&nbsp; 美尻 &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="黒髪" >&nbsp; 黒髪 &nbsp;&nbsp;
-                                    <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="ハーフ" >&nbsp; ハーフ &nbsp;&nbsp;
-                                </div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="新人">新人</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="経験者">経験者</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="未経験">未経験</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="清楚系">清楚系</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="スタイル抜群">スタイル抜群</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="モデル系">モデル系</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="キレカワ系">キレカワ系</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="アイドル系">アイドル系</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="素人系">素人系</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="グラビア系">グラビア系</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="お姉様系">お姉様系</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="ギャル系">ギャル系</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="現役モデル">現役モデル</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="AV女優">AV女優</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="CA">CA</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="女子大生">女子大生</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="ロリ系">ロリ系</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="おっとり系">おっとり系</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="綺麗系">綺麗系</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="可愛い系">可愛い系</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="癒し系">癒し系</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="オススメ">オススメ</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="巨乳">巨乳</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="スレンダー">スレンダー</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="女子アナ系">女子アナ系</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="小柄">小柄</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="高身長">高身長</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="愛嬌抜群">愛嬌抜群</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="パイパン">パイパン</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="美脚">美脚</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="美乳">美乳</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="美尻">美尻</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="黒髪">黒髪</div>
+                                    <div class="form-check-input-group"><input name="frm_rookie[]" class="form-check-input" type="checkbox" value="ハーフ">ハーフ</div>
+                                </div>                                
                             </div>
                         </div>
                         <div class="form-group"> <label for="frmHobby" class="col-sm-3 control-label">趣味</label>

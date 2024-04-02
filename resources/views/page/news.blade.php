@@ -23,11 +23,11 @@
         <div class="wrapper">
             <div class="container" id="news-all-container">
                 <div class="archive">
-                    <div class="headline mrgbtm0">
+                    <div class="headline mrgbtm0 opacity_clear">
                         <p class="ttl_en">ARCHIVE</p>
                         <h2 class="headline_ttl">
                             NEWS </h2>
-                        <p class="back_txt">ARCHIVE</p>
+                        <p class="back_txt">NEWS</p>
                     </div>
                     <div class="archive_category">
                         <h2 class="archive_title">カテゴリー</h2>

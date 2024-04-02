@@ -15,7 +15,7 @@
             <ul class="nav nav-tabs bordered">
                 <li class="{{ ($stab == 1) ? 'active' : '' }}">
                     <a href="#tab1-companion_basic_information" data-toggle="tab">
-                        <span class="visible-xs"><i class="entypo-home"></i></span> <span class="hidden-xs">コンパニオン基本情報</span>
+                        <span class="visible-xs"><i class="entypo-home"></i></span> <span class="hidden-xs">モデル基本情報</span>
                     </a>
                 </li>
                 <li class="{{ ($stab == 2) ? 'active' : '' }}" >
@@ -34,9 +34,9 @@
 
                 <div class="{{ ($stab == 1) ? 'tab-pane active' : 'tab-pane' }}" id="tab1-companion_basic_information">
 
-                    <a href="{{ route('admin.companion.list') }}" class="btn btn-blue mt-3">コンパニオン一覧に戻る</a>
+                    <a href="{{ route('admin.companion.list') }}" class="btn btn-blue mt-3">モデル一覧に戻る</a>
 
-                    <div class="tile-stats tile-primary frm-head mt-1"> コンパニオン情報入力</div>
+                    <div class="tile-stats tile-primary frm-head mt-1"> モデル情報入力</div>
 
                     <div class="row">
                         <div class="col-md-1">
@@ -50,7 +50,7 @@
                                         <input type="hidden" name="id" class="form-control" value="{{ $companion->id }}" required />
 
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label">ヘルスコース</label>
+                                            <label class="col-sm-3 control-label">ランク・コース</label>
                                             <div class="col-sm-5 frm-inpt">
                                                 <select name="category_id" class="form-control">
                                                     @foreach($categories as $category)
@@ -65,7 +65,7 @@
                                             <div class="col-sm-3">
                                                 <a href="{{ route('admin.category.list') }}" class="btn btn-success btn-icon-align">
                                                     <svg class="bi bi-pencil"fill=currentColor height=16 viewBox="0 0 16 16"width=16 xmlns=http://www.w3.org/2000/svg><path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/></svg>
-                                                    <span class="title ml-1">カテゴリー編集</span>
+                                                    <span class="title ml-1">ランク・コース内容編集</span>
                                                 </a>
                                             </div>
                                         </div>
@@ -108,7 +108,6 @@
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">おすすめポイント</label>
                                             <div class="col-sm-8 frm-inpt">
-
                                                 <div class="grid">
                                                     <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="新人" {{ (strpos($companion->rookie, '新人') !== false) ? 'checked': '' }} >&nbsp;新人 &nbsp;&nbsp;
                                                     <input name="frm_rookie[]" class="form-check-input" type="checkbox" value="経験者" {{ (strpos($companion->rookie, '経験者') !== false) ? 'checked': '' }} >&nbsp; 経験者 &nbsp;&nbsp;
@@ -152,7 +151,7 @@
                                         </div>
                                         <div class="form-group"> <label for="frmSalePoint" class="col-sm-3 control-label">セールスポイント</label>
                                             <div class="col-sm-8 frm-inpt">
-                                                <input type="text" name="frm_sale_point" class="form-control" id="frmSalePoint" value="{{ $companion->sale_point }}" placeholder="セールスポイント/10文字目安">
+                                                <input type="text" name="frm_sale_point" class="form-control" id="frmSalePoint" value="{{ $companion->sale_point }}" placeholder="セールスポイント">
                                                 <label class="col-sm-4 control-label">フォントカラー選択 :</label>
                                                 <div class="col-sm-8">
                                                     <div class="radio-inline"> <label> <input type="radio" name="frm_font_color" value="黒" {{ $companion->font_color == '黒' ? 'checked' : '' }} >黒</label> </div>
@@ -401,7 +400,7 @@
                     frm_waist: { required: true },
                     frm_hip: { required: true },
                     'frm_rookie[]': { required: true, maxlength:4 },
-                    frm_sale_point: { required: true, maxlength:10 },
+                    frm_sale_point: { required: true, maxlength:100 },
                     short_message: {
                         required: function(){
                             CKEDITOR.instances.frmShortMessage.updateElement();
@@ -420,7 +419,7 @@
                     frm_waist: { required: "{{ __('This field is required') }}" },
                     frm_hip: { required: "{{ __('This field is required') }}" },
                     'frm_rookie[]': { required: "{{ __('This field is required') }}", maxlength: "{{ __('Max 4 checkbox allowed') }}" },
-                    frm_sale_point: { required: "{{ __('This field is required') }}", maxlength: "{{ __('Max 10 characters allowed') }}" },
+                    frm_sale_point: { required: "{{ __('This field is required') }}", maxlength: "{{ __('Max 100 characters allowed') }}" },
                     short_message: { required: "{{ __('This field is required') }}" },
                     frm_entry_date: { required: "{{ __('This field is required') }}" }
                 },

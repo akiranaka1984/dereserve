@@ -3,7 +3,7 @@
 @section('content')
     <section class="kv_main">
         <div class="kv_wrap">
-            <img src="https://dereserve.gearup.dev/storage/gallery/32961710825576.png" alt="">
+            <img src="http://localhost/assets/images/kv-model1.jpg" alt="">
             <h2 class="kv_title">Web Reservation</h2>
         </div>
     </section>
@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="wrapper">
-            <div class="headline">
+            {{-- <div class="headline">
                 <h2 class="headline_ttl">
                     <font style="vertical-align: inherit;">
                         <font style="vertical-align: inherit;">RESERVATION</font>
@@ -37,7 +37,7 @@
                         <font style="vertical-align: inherit;">RESERVATION</font>
                     </font>
                 </p>
-            </div>
+            </div> --}}
             <div class="ex_wrap">
                 <h3 class="ex_headline bk_txt">WEB予約</h3>
                 <p class="ex_txt bk_txt">お電話、LINE、Telegram、またはフォーム入力の中から、ご希望の予約方法をお選びください。</p>
@@ -46,7 +46,7 @@
             </div>
             <div class="channels">
                 <div class="phone">
-                    <h4>お電話のご予約はこちら</h4>
+                    <h4>お電話でのご予約はこちら</h4>
                     <p class="ex_txt bk_txt">新規の方は先ずはお電話にてお願いいたします。</p>
                     <a href="tel:0368685149" class="phone-num">03-6868-5149</a>
                 </div>

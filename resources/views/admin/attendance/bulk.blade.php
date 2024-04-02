@@ -52,7 +52,7 @@
     <table class="table table-bordered table-striped mt-1" id="table-2">
         <thead>
             <tr>
-                <th>女性名</th>
+                <th>モデル名</th>
                 @foreach($jadates as $jadate)
                     <th>{{ $jadate }}</th>
                 @endforeach
@@ -64,7 +64,7 @@
                     <td>
                         <div class="panel panel-primary" >
                             <div class="panel-body text-center">
-                                <h3 class="text-center"><a href="{{ route('admin.companion.edit') }}" class="text-info">{{ $companion->name }}({{ $companion->age }})</a></h3>
+                                <h3 class="text-center"><a href="{{ route('admin.companion.edit',['id'=>$companion['id'], 'stab' => 1]) }}" class="text-info">{{ $companion->name }}({{ $companion->age }})</a></h3>
                                 <h4 class="text-center">{!! $companion->kana !!} </h4>
                                 <a href="{{ route('admin.companion.edit') }}?stab=1&id={{ $companion->id }}"> 
                                     @php
@@ -99,7 +99,7 @@
                                             
                                                 <div class="form-group m-0">
                                                     <div class="col-sm-12 text-left">
-                                                        <div class="checkbox"> <label> <input type="checkbox" name="undetermined_hours" class="undetermined_hours"  {{ $attendance->undetermined_hours == 1 ? 'checked' : '' }} >時間を未定</label> </div> 
+                                                        <div class="checkbox"> <label> <input type="checkbox" name="undetermined_hours" class="undetermined_hours"  {{ $attendance->undetermined_hours == 1 ? 'checked' : '' }} >時間未定</label> </div> 
                                                         <div class="checkbox"> <label> <input type="checkbox" name="hidden_hours" class="hidden_hours"  {{ $attendance->hidden_hours == 1 ? 'checked' : '' }} >時間非表示 </label> </div> 
                                                         <div class="checkbox"> <label> <input type="checkbox" name="without_end_time_display" class="without_end_time_display"  {{ $attendance->without_end_time_display == 1 ? 'checked' : '' }}>終了時間非表示</label> </div> 
                                                     </div> 
@@ -118,19 +118,6 @@
                                                     <option value="04:00" {{ $attendance->start_time == '04:00' ? 'selected' : '' }} >04:00</option>
                                                     <option value="04:30" {{ $attendance->start_time == '04:30' ? 'selected' : '' }} >04:30</option>
                                                     <option value="05:00" {{ $attendance->start_time == '05:00' ? 'selected' : '' }} >05:00</option>
-                                                    <option value="05:30" {{ $attendance->start_time == '05:30' ? 'selected' : '' }} >05:30</option>
-                                                    <option value="06:00" {{ $attendance->start_time == '06:00' ? 'selected' : '' }} >06:00</option>
-                                                    <option value="06:30" {{ $attendance->start_time == '06:30' ? 'selected' : '' }} >06:30</option>
-                                                    <option value="07:00" {{ $attendance->start_time == '07:00' ? 'selected' : '' }} >07:00</option>
-                                                    <option value="07:30" {{ $attendance->start_time == '07:30' ? 'selected' : '' }} >07:30</option>
-                                                    <option value="08:00" {{ $attendance->start_time == '08:00' ? 'selected' : '' }} >08:00</option>
-                                                    <option value="08:30" {{ $attendance->start_time == '08:30' ? 'selected' : '' }} >08:30</option>
-                                                    <option value="09:00" {{ $attendance->start_time == '09:00' ? 'selected' : '' }} >09:00</option>
-                                                    <option value="09:30" {{ $attendance->start_time == '09:30' ? 'selected' : '' }} >09:30</option>
-                                                    <option value="10:00" {{ $attendance->start_time == '10:00' ? 'selected' : '' }} >10:00</option>
-                                                    <option value="10:30" {{ $attendance->start_time == '10:30' ? 'selected' : '' }} >10:30</option>
-                                                    <option value="11:00" {{ $attendance->start_time == '11:00' ? 'selected' : '' }} >11:00</option>
-                                                    <option value="11:30" {{ $attendance->start_time == '11:30' ? 'selected' : '' }} >11:30</option>
                                                     <option value="12:00" {{ $attendance->start_time == '12:00' ? 'selected' : '' }} >12:00</option>
                                                     <option value="12:30" {{ $attendance->start_time == '12:30' ? 'selected' : '' }} >12:30</option>
                                                     <option value="13:00" {{ $attendance->start_time == '13:00' ? 'selected' : '' }} >13:00</option>
@@ -170,19 +157,6 @@
                                                     <option value="04:00" {{ $attendance->end_time == '04:00' ? 'selected' : '' }} >04:00</option>
                                                     <option value="04:30" {{ $attendance->end_time == '04:30' ? 'selected' : '' }} >04:30</option>
                                                     <option value="05:00" {{ $attendance->end_time == '05:00' ? 'selected' : '' }} >05:00</option>
-                                                    <option value="05:30" {{ $attendance->end_time == '05:30' ? 'selected' : '' }} >05:30</option>
-                                                    <option value="06:00" {{ $attendance->end_time == '06:00' ? 'selected' : '' }} >06:00</option>
-                                                    <option value="06:30" {{ $attendance->end_time == '06:30' ? 'selected' : '' }} >06:30</option>
-                                                    <option value="07:00" {{ $attendance->end_time == '07:00' ? 'selected' : '' }} >07:00</option>
-                                                    <option value="07:30" {{ $attendance->end_time == '07:30' ? 'selected' : '' }} >07:30</option>
-                                                    <option value="08:00" {{ $attendance->end_time == '08:00' ? 'selected' : '' }} >08:00</option>
-                                                    <option value="08:30" {{ $attendance->end_time == '08:30' ? 'selected' : '' }} >08:30</option>
-                                                    <option value="09:00" {{ $attendance->end_time == '09:00' ? 'selected' : '' }} >09:00</option>
-                                                    <option value="09:30" {{ $attendance->end_time == '09:30' ? 'selected' : '' }} >09:30</option>
-                                                    <option value="10:00" {{ $attendance->end_time == '10:00' ? 'selected' : '' }} >10:00</option>
-                                                    <option value="10:30" {{ $attendance->end_time == '10:30' ? 'selected' : '' }} >10:30</option>
-                                                    <option value="11:00" {{ $attendance->end_time == '11:00' ? 'selected' : '' }} >11:00</option>
-                                                    <option value="11:30" {{ $attendance->end_time == '11:30' ? 'selected' : '' }} >11:30</option>
                                                     <option value="12:00" {{ $attendance->end_time == '12:00' ? 'selected' : '' }} >12:00</option>
                                                     <option value="12:30" {{ $attendance->end_time == '12:30' ? 'selected' : '' }} >12:30</option>
                                                     <option value="13:00" {{ $attendance->end_time == '13:00' ? 'selected' : '' }} >13:00</option>
@@ -232,7 +206,7 @@
 
                                         <div class="form-group m-0">
                                             <div class="col-sm-12 text-left">
-                                                <div class="checkbox"> <label> <input type="checkbox" name="undetermined_hours" class="undetermined_hours"  >時間を未定</label> </div> 
+                                                <div class="checkbox"> <label> <input type="checkbox" name="undetermined_hours" class="undetermined_hours"  >時間未定</label> </div> 
                                                 <div class="checkbox"> <label> <input type="checkbox" name="hidden_hours" class="hidden_hours"  >時間非表示 </label> </div> 
                                                 <div class="checkbox"> <label> <input type="checkbox" name="without_end_time_display" class="without_end_time_display"  >終了時間非表示</label> </div> 
                                             </div> 
@@ -251,7 +225,7 @@
                                             <option value="04:00">04:00</option>
                                             <option value="04:30">04:30</option>
                                             <option value="05:00">05:00</option>
-                                            <option value="05:30">05:30</option>
+                                            {{-- <option value="05:30">05:30</option>
                                             <option value="06:00">06:00</option>
                                             <option value="06:30">06:30</option>
                                             <option value="07:00">07:00</option>
@@ -263,7 +237,7 @@
                                             <option value="10:00">10:00</option>
                                             <option value="10:30">10:30</option>
                                             <option value="11:00">11:00</option>
-                                            <option value="11:30">11:30</option>
+                                            <option value="11:30">11:30</option> --}}
                                             <option value="12:00">12:00</option>
                                             <option value="12:30">12:30</option>
                                             <option value="13:00">13:00</option>
@@ -303,7 +277,7 @@
                                             <option value="04:00">04:00</option>
                                             <option value="04:30">04:30</option>
                                             <option value="05:00">05:00</option>
-                                            <option value="05:30">05:30</option>
+                                            {{-- <option value="05:30">05:30</option>
                                             <option value="06:00">06:00</option>
                                             <option value="06:30">06:30</option>
                                             <option value="07:00">07:00</option>
@@ -315,7 +289,7 @@
                                             <option value="10:00">10:00</option>
                                             <option value="10:30">10:30</option>
                                             <option value="11:00">11:00</option>
-                                            <option value="11:30">11:30</option>
+                                            <option value="11:30">11:30</option> --}}
                                             <option value="12:00">12:00</option>
                                             <option value="12:30">12:30</option>
                                             <option value="13:00">13:00</option>

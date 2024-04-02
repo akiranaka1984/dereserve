@@ -28,7 +28,7 @@
                 </p>
 
                 @foreach($categories as $category)
-                    <div class="price">
+                    <div class="price mgb_30">
 
                         @if($category->name == "BLACK")
                             <p class="price_info_ttl black_rank">BLACK</p>

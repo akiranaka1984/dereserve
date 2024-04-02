@@ -8,17 +8,20 @@
         <li class="active"> <strong>Buttons</strong> </li>
     </ol> -->
     <h2><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M14.5 18q-1.05 0-1.775-.725T12 15.5q0-1.05.725-1.775T14.5 13q1.05 0 1.775.725T17 15.5q0 1.05-.725 1.775T14.5 18ZM5 22q-.825 0-1.413-.588T3 20V6q0-.825.588-1.413T5 4h1V2h2v2h8V2h2v2h1q.825 0 1.413.588T21 6v14q0 .825-.588 1.413T19 22H5Zm0-2h14V10H5v10ZM5 8h14V6H5v2Zm0 0V6v2Z"/></svg>
-        イベント</h2> <br />
+        コンテンツ管理</h2> <br />
 
-    <div class="tile-stats tile-primary frm-head"> イベント</div>
+    <div class="tile-stats tile-primary frm-head"> コンテンツ管理</div>
 
-    <div class="panel panel-primary" data-collapsed="0">
+    <div class="panel panel-primary contents-adj" data-collapsed="0">
         <form role="form" method="post" action="{{ route('admin.page.save') }}" class="form-horizontal form-groups-bordered" id="frmCompanion" >
             @csrf
+            <div class="col-md-2 img-resister">
+                <a href="{{ route('admin.gallery.list') }}" class="btn btn-orange">画像をギャラリーに登録する</a>
+            </div>
             <div class="row p-1">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">{{ __('Page') }}</label>
+                        <label class="col-sm-3 control-label content-label">{{ __('Page') }}</label>
                         <div class="col-sm-9">
                             <select name="page" class="form-control frm_page_name" >
                                 <option></option>
@@ -42,9 +45,6 @@
                     </div>
                 </div>
                 <div class="col-md-6"></div>
-                <div class="col-md-2">
-                    <a href="{{ route('admin.gallery.list') }}" class="btn btn-orange">イメージギャラリー</a>
-                </div>
             </div>
 
             <hr/>

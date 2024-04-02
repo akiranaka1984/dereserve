@@ -235,7 +235,7 @@ class HomeController extends Controller
                 $dayname = "土";
             }
             if($i == 0){
-                $schedule_dates[date('Y-m-d', strtotime('+'.$i.' days'))] = "本日 ".date('m月d日', strtotime('+'.$i.' days'))."(".$dayname.")";
+                $schedule_dates[date('Y-m-d', strtotime('+'.$i.' days'))] = "".date('m月d日', strtotime('+'.$i.' days'))."(".$dayname.")";
             }else{
                 $schedule_dates[date('Y-m-d', strtotime('+'.$i.' days'))] = date('m月d日', strtotime('+'.$i.' days'))."(".$dayname.")";
             }

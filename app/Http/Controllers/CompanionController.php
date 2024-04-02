@@ -15,6 +15,8 @@ use App\Models\CompanionPhoto;
 use Intervention\Image\ImageManagerStatic as Image;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use ZipArchive;
+use PhpOffice\PhpSpreadsheet\Shared\Date;
+use Illuminate\Support\Str;
 
 
 class CompanionController extends Controller
@@ -263,54 +265,115 @@ class CompanionController extends Controller
 
     public function bulk_add(Request $request)
     {
+        //zipファイルの有無をチェック,$requestにzipという名前のファイルが含まれているかどうか
         if($request->hasfile('zip')){
             // upload zip and extract it
+            // アップロードされたZIPファイルの実際のパス(サーバー上の一時的な保存場所)を取得する。
             $zipPath = $request->file("zip")->getRealPath();
+            //ZIPファイルの展開先となるディレクトリのパスを指定する。
+            //storage_path関数は、storageディレクトリに対する絶対パスを生成する。
             $filePath = storage_path('/app/public/bulk/');
+            //このファイルパスにディレクトリが存在するかを確認
+            if (!file_exists($filePath)) {
+                mkdir($filePath, 0775, true); // ディレクトリが存在しない場合、作成する。0775のパーミッションも設定
+            }
+            //Laravelのファイルシステムクラスのインスタンスを作成
             $dir = new Filesystem;
+            //指定された、ディレクトリ内のファイルとサブディレクトリを全て削除する。
             $dir->cleanDirectory($filePath);
+            //PHPのZipArchiveクラスのインスタンスを作成する。
             $zip = new ZipArchive();
+            //$zip->open($zipPath)でZIPファイルを開く。成功すればtrueを戻す。
             if ($zip->open($zipPath) === true) {
+                //成功した場合、forループを使ってZipファイル内の各ファイルの処理を行う。
                 for($i = 0; $i < $zip->numFiles; $i++) {
-                    $filename = $zip->getNameIndex($i);
-                    $fileinfo = pathinfo($filename);
-                    copy("zip://".$zipPath."#".$filename, $filePath.$fileinfo['basename']);
+                    $filename = $zip->getNameIndex($i);//ZIPファイル内のi番目のファイル名を取得する
+                    $fileinfo = pathinfo($filename);//ファイル名からパス情報(ディレクトリ名、ベース名、拡張子など)を取得する。
+                    copy("zip://".$zipPath."#".$filename, $filePath.$fileinfo['basename']);//Zipファイル内のファイルを指定したディレクトリにコピーする。
                 }
-                $zip->close();
+                $zip->close();//zipファイルを閉じる。
             }
 
 
             // start read excel
+            // 引数に指定したディレクトリ($filePath)内から、Excelファイルのパスを検索するカスタム関数
             $excelPath = $this->find_excel_from_folder($filePath);
+            //PhpSpreadsheetのIOFactory::loadメソッドを使用して、見つかったExcelファイルを読み込み、Spreadsheetオブジェクトを生成している。
             $spreadsheet = IOFactory::load($excelPath);
             // Select the first worksheet (index 0)
+            // 読み込んだスプレッドシートの最初のワークシート(インデックスは0から始まる)を選択している。
             $worksheet = $spreadsheet->getSheet(0);
 
             // Get the highest row and column indices
+            // 行と列のインデックスを取得
+            // ワークシートの最も高い行番号と列のインデックスを取得して、どこまでの範囲にデータが存在するかを把握します。
             $highestRow = $worksheet->getHighestRow();
             $highestColumn = $worksheet->getHighestColumn();
 
+            //対象とする列のリストを定義。ここではA列からAU列までを指定。
             $columns = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','AA','AB','AC','AD','AE','AF','AG','AH','AI','AJ','AK','AL','AM','AN','AO','AP','AQ','AR','AS','AT','AU'];
 
             $finalData =array();
+            //各行と列のセルから値を読み取る。外側のforループは各行を走査して、内側のループは定義した列リストに従って各列の値を読み取る。
             for ($row = 1; $row <= $highestRow; $row++) {
                 $cindex=0;
                 while(!empty($columns[$cindex])){
                     $col = $columns[$cindex];
+                    //特定の行$rowと$colにあるセルの値を取得している。
                     $cellValue = $worksheet->getCell($col . $row)->getValue();
+                    //最終的に読み取った値は$finalData[$row][$col]を使って、二次元配列として保存される。
                     $finalData[$row][$col] = $cellValue;
                     $cindex++;
                 }
             }
+            //$finalData配列に格納されたExcelデータを使って、データベースに新しいレコードを作成する一連のプロセスを実行している。
+            //foreachループを使って、$finalData配列を一行ずつ処理をしている。
+            //各行は$valueに格納され、$keyに行番号が格納される。
 
             foreach ($finalData as $key => $value) {
+                // 必要なデータの取得
+                $name = $value['A']; // A列のデータ
+                $kana = $value['B']; // B列のデータ
+                //列Rの値が「◯」の場合に、新規フラグ($new_face)を1に、そうでなければ0に設定している。
                 $new_face = ($value['R'] == '〇') ? 1 : 0;
-                $category_id = 1;
+                $category_id = !empty($value['AJ']) ? $value['AJ'] : null; // AJ列が空でなければその値を使用、空ならnullを設定
                 $position = $key + 1;
                 $birthday = !empty($value['G']) ? date('Y-m-d', strtotime($value['G'])) : "";
+                //列Hの値がリテラル文字列「age」または、「年齢」でない場合にのみ、後続の処理を実行する。1行目と2行目がデータではないため、ヘッダー行を除外する。
                 if((strtolower($value['H']) != 'age') && (strtolower($value['H']) != '年齢')){
+                    //各行の「A」列の項目が空でなければ以下の処理を実行
                     if(!empty($value['A'])){
-                        $companion = Companion::create([
+                        // ここから新しいコードを挿入
+
+                        // I列の値がExcelの日付形式であることを前提に、DateTimeオブジェクトに変換し、
+                        // 必要なフォーマットで$entry_dateに格納します。
+                        if (!empty($value['I'])) {
+                            try {
+                                $dateValue = Date::excelToDateTimeObject($value['I']);
+                                $entry_date = $dateValue->format('Y-m-d');
+                            } catch (\Exception $e) {
+                                // 日付変換に失敗した場合、$entry_dateをnullに設定またはログに記録
+                                $entry_date = null;
+                                // Log::warning('Date conversion failed for value: '.$value['I']);
+                            }
+                        } else {
+                            $entry_date = null;
+                        }
+                        // ここまで新しいコード
+                        // 各行ごとに$rookieValuesをリセット
+                        $rookieValues = []; // この行を追加
+                        foreach (['AK', 'AL', 'AM', 'AN'] as $column) {
+                            if (!empty($value[$column])) {
+                                $rookieValues[] = $value[$column];
+                            }
+                        }
+                        $rookie = implode(',', $rookieValues);
+            
+                        // ③ T列の値をsale_pointに格納
+                        $sale_point = $value['S'] ?? null;
+                        // ここまで新しいコード
+                        //Companionモデルを使用して新しいレコードをデータベースに作成している。
+                       /*  $companion = Companion::create([
                             'name' => $value['A'],
                             'kana' => $value['B'],
                             'age' => $value['H'],
@@ -318,11 +381,11 @@ class CompanionController extends Controller
                             'bust' => $value['K'],
                             'cup' => $value['L'],
                             'waist' => $value['M'],
+                            'category_id' => $category_id, // ここでAJ列の値をcategory_idに割り当て
                             'hip' => $value['N'],
                             'hobby' => $value['O'],
-                            'message' => $value['T'],
+                            'message' => $value['T'], // ③の要件を既に満たしています
                             'option_newface_chk' => $new_face,
-                            'category_id' => $category_id,
                             'position' => $position,
                             'nickname1' => $value['E'],
                             'nickname2' => $value['F'],
@@ -330,17 +393,65 @@ class CompanionController extends Controller
                             'hiragana' => $value['C'],
                             'surnames' => $value['D'],
                             'styles' => $value['P'],
-                            'type' => $value['Q']
-                        ]);
+                            'type' => $value['Q'],
+                            'rookie' => $rookie, 
+                            'entry_date' => $entry_date, 
+                            'sale_point' => $sale_point, 
+                        ]); */
 
+                        // ユニークな識別子であるnameフィールドを基にレコードを探す
+                        $companion = Companion::where('name', $value['A'])->first();
+
+                        $attributes = [
+                            'name' => $value['A'],
+                            'kana' => $value['B'],
+                            'age' => $value['H'],
+                            'height' => $value['J'],
+                            'bust' => $value['K'],
+                            'cup' => $value['L'],
+                            'waist' => $value['M'],
+                            'category_id' => $category_id, // AJ列のデータをcategory_idに設定
+                            'hip' => $value['N'],
+                            'hobby' => $value['O'],
+                            'message' => $value['T'], // T列のデータ
+                            'option_newface_chk' => $new_face,
+                            'position' => $position,
+                            'nickname1' => $value['E'],
+                            'nickname2' => $value['F'],
+                            'birthday' => $birthday,
+                            'hiragana' => $value['C'],
+                            'surnames' => $value['D'],
+                            'styles' => $value['P'],
+                            'type' => $value['Q'],
+                            'rookie' => $rookie,
+                            'entry_date' => $entry_date,
+                            'sale_point' => $sale_point,
+                        ];
+
+                        if ($companion) {
+                            // 既存のレコードが見つかった場合、ファイルが関連している場合は古いファイルを削除
+                            if ($companion->photo && Storage::exists('public/photos/' . $companion->photo)) {
+                                Storage::delete('public/photos/' . $companion->photo);
+                            }
+                            // レコードを更新
+                            $companion->update($attributes);
+                        } else {
+                            // 新しいレコードを作成
+                            $companion = Companion::create($attributes);
+                        }
                         if(!empty($value['Z']) && File::exists($filePath.$value['Z'])){
+                            //Z列に記載してあるファイル名を$image1に格納する。
                             $image1 = $value['Z'];
+                            //データベースから特定の画像サイズ設定を取得する。idが1の設定を取得する。
                             $photoSizeSetting = PhotoSizeSetting::with(['photo_category'])->where(['id'=>1])->first();
-
+                            //画像ファイルの内容を取得する。
                             $image = File::get($filePath.$image1);
-                            $ext = pathinfo($filePath.$image1, PATHINFO_EXTENSION);
+                            $ext = pathinfo($filePath.$image1, PATHINFO_EXTENSION);//拡張子を取得
+                            //保存する新しい画像のファイル名を生成する。moto_id.jpgになる。
                             $imageName = $photoSizeSetting->prefix.'_'.$companion->id.'.'.$ext;
+                            //画像サイズ設定に基づいて、画像リサイズするか決定。
                             if(empty($photoSizeSetting->hpx) || empty($photoSizeSetting->vpx)){
+                                //リサイズした画像もしくはオリジナル画像を公開ディスクに保存する。
                                 Storage::disk('public')->put('photos/'.$companion->id.'/'.$imageName, $image, 'public');
                             }else{
                                 $img = Image::make($filePath.$image1);
@@ -348,7 +459,7 @@ class CompanionController extends Controller
                                 $img->stream();
                                 Storage::disk('public')->put('photos/'.$companion->id.'/'.$imageName, $img, 'public');
                             }
-
+                            //CompanionPhotoテーブルに画像に関するデータを更新する。
                             CompanionPhoto::updateOrInsert([
                                 'companion_id' => $companion->id,
                                 'photo_setting_id' => 1

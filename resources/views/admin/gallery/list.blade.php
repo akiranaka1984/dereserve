@@ -15,7 +15,7 @@
     <div class="gallery-env">
         <div class="row">
             <div class="col-sm-12">
-                <h3>Album Title</h3>
+                <h3>イメージ一覧</h3>
                 <hr />
             </div>    
             <form role="form" method="post" action="{{ route('admin.gallery.upload') }}" enctype="multipart/form-data" >
@@ -30,7 +30,7 @@
                 </div>
             </form>
         </div>
-        <div class="row mt-3">
+        <div class="row mt-3 flex-img">
             @foreach($galleries as $gallery)
                 <div class="col-sm-2 col-xs-4" data-tag="1d">
                     <article class="image-thumb"> 

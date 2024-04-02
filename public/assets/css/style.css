@@ -896,7 +896,7 @@ SP用ナビゲーション
     position: absolute;
     right: 0;
     bottom: 0;
-    padding: 2rem;
+    padding: 1.2rem 2rem;
     background: #CA245B;
     text-align: center;
     color: #fff;
@@ -1004,8 +1004,8 @@ SP用ナビゲーション
 }
 
 #fixedBtnMenu ul li a .menu-icon {
-    width: 2.4rem;
-    min-height: auto;
+    width: auto;
+    height: 2.5rem;
     margin-bottom: .5rem;
 }
 
@@ -1117,9 +1117,11 @@ SP用ナビゲーション
     font-size: 1.6rem;
     line-height: 1.7;
     margin-bottom: 0;
-    padding: 0 2rem;
+    padding: 0;
 }
-
+.txt-left{
+    text-align: left!important;
+}
 .opacity_flg {
     opacity: 1 !important;
 }
@@ -1969,7 +1971,7 @@ NEWS
     position: relative;
 }
 .pd_adj{
-    padding: 5rem 0!important;
+    padding: 3rem 0!important;
 }
 
 .news_wrap .news_box .news_list>li::after {
@@ -2102,9 +2104,7 @@ RECRUIT
 
 .recruitment .form {
     width: fit-content;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    padding: 40px;
+    padding: 2rem 0rem;
 }
 
 /***********************************
@@ -2241,7 +2241,7 @@ CONTACT US
     color: #fff;
 }
 
-.mailmagazine .wrapper p {
+.mailmagazine .wrapper .left_txt {
     text-align: left !important;
 }
 
@@ -2423,6 +2423,7 @@ headline
     -webkit-box-align: center;
     align-items: center;
     margin-bottom: 3rem;
+    opacity: 0;
 }
 
 .headline .back_txt {
@@ -2436,6 +2437,7 @@ headline
     color: #f1f1f1;
     text-align: center;
     z-index: -1;
+    line-height: .8;
     margin-top: 0;
 }
 
@@ -2452,7 +2454,7 @@ headline
 .headline .headline_ttl {
     font-family: Montserrat;
     font-weight: 800;
-    font-size: 2.4rem;
+    font-size: 3.1rem;
     line-height: 1.33;
     color: rgb(17, 17, 17);
     text-align: center;
@@ -2536,6 +2538,9 @@ headline
     position: relative;
     color: #fff !important;
 }
+.opacity_clear{
+    opacity: 1!important;
+}
 
 .concept .wrapper {
     width: 100%;
@@ -2556,7 +2561,7 @@ headline
 }
 
 .concept_box {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -2924,12 +2929,12 @@ headline
 NEWS PAGE
 **********************************/
 .article-container {
-    padding: 4rem 0;
+    padding: 3rem 1.7rem;
 }
 
 .article-container .wrapper {
-    width: calc(100% - 40px);
-    padding: 4rem 2rem;
+    width: 100%;
+    padding: 3rem 1.7rem;
     background: #fff;
     margin-right: auto;
     margin-bottom: 2.5em;
@@ -3194,7 +3199,7 @@ RECRUIT PAGE
     position: relative;
     background: #000;
     background-size: cover;
-    padding: 2rem 1.4rem 1rem;
+    padding: 3rem 1.7rem 1rem;
 }
 
 /**********************************
@@ -3710,7 +3715,7 @@ input::placeholder {
     position: relative;
     background: #000;
     background-size: cover;
-    padding: 2rem 1.4rem 1rem;
+    padding: 3rem 1.7rem 1rem;
 }
 
 .model .wrapper .articlePanel .article-wrap {
@@ -3731,9 +3736,11 @@ input::placeholder {
     position: relative;
     background: #000;
     background-size: cover;
-    padding: 2rem 1.4rem 1rem;
+    padding: 3rem 1.7rem 1rem;
 }
-
+.width_100{
+    width: 100%!important;
+}
 .schedule .wrapper .articlePanel .article-wrap {
     width: 95%;
 }
@@ -4056,7 +4063,23 @@ input::placeholder {
         max-width: 76rem;
         margin: 0 auto;
     }
-
+    .recruit_page .wrapper {
+        width: 100%;
+        position: relative;
+        background: #000;
+        background-size: cover;
+        padding: 6rem 10% 1rem;
+    }
+    .model .wrapper {
+        width: 100%;
+        position: relative;
+        background: #000;
+        background-size: cover;
+        padding: 6rem 10% 1rem;
+    }
+    .schedule .wrapper {
+        padding: 6rem 10% 1rem;
+    }
     #top_reserved_btn {
         width: 40%;
     }
@@ -4457,9 +4480,9 @@ input::placeholder {
     }
 
     .mailmagazine .wrapper p {
-        text-align: left !important;
-        width: 60%;
-        margin: 3rem auto 0;
+        text-align: center;
+        width: 100%;
+        margin: 3rem auto 3rem;
     }
 
     .mailmagazine .mailForm .mail {
@@ -4626,16 +4649,16 @@ input::placeholder {
         margin: 5rem auto;
         display: block;
     }
-
+    
     /*********************************
 NEWS PAGE
 **********************************/
     .article-container {
-        padding: 8rem 2.4rem;
+        padding: 6rem 10%;
     }
 
     .article-container .wrapper {
-        width: 80%;
+        width: 100%;
         padding-right: 4rem;
         padding-left: 4rem;
         padding-top: 8rem;
@@ -4764,7 +4787,7 @@ NEWS PAGE
     CONCEPT
   *********************************/
     .concept .wrapper {
-        padding: 10rem 4rem;
+        padding: 10rem 10%;
         background: url(../images/concept_bg_pc.jpg)no-repeat top center;
         background-attachment: fixed;
         position: relative;
@@ -4882,30 +4905,38 @@ NEWS PAGE
 
 .privacy {
     text-align: center;
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans", "Hiragino Kaku Gothic ProN", Arial, "Yu Gothic", Meiryo, sans-serif;
 }
 
 .privacy .ttl {
     margin: 20px 0;
-    padding-top: 20px;
     font-size: 2em;
     font-weight: 700;
 }
 
 .privacy .inner {
-    display: flex;
-    justify-content: center;
+    display: block;
 }
-
 .privacy .inner .policy {
-    max-width: 75%;
+    max-width: 100%;
 }
-
 .privacy .inner .policy p {
-    font-size: large;
+    font-size: 1.6rem;
+    text-align:left;
 }
-
+.content .info{
+    text-align: left;
+    font-size: 1.6rem;
+}
+.privacy .inner .policy ul{
+    padding-left: 0;
+}
 .privacy .inner .policy li {
-    font-size: small;
+    font-size: 1.4rem;
+    text-align: left;
+    line-height: 2;
+    padding-left: 1em;
+    text-indent: -.6em;
 }
 
 /* Reception page */
@@ -5026,12 +5057,12 @@ NEWS PAGE
     position: relative;
     text-align: center;
     border: none;
-    margin-bottom: 30px;
+    margin: 0 auto 30px;
 }
 
 .detail_recruit a {
     display: block;
-    padding: 3% 3%;
+    padding: 1.5% 3%;
     width: 100%;
     margin: 0 auto;
     font-size: 1.8rem;

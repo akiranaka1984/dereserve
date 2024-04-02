@@ -27,9 +27,9 @@
             </div>
         </div>
         <div class="wrapper">
-            <div class="headline">
-                <h3 class="">CONTACT</h3>
-                <span style="font-size: 22px">ご質問はいつでもお受けいたします</span>
+            <div class="ex_wrap fadeUpTrigger smooth opacity_clear">
+                <h3 class="ex_headline opacity_clear color_bk">CONTACT</h3>
+                <p class="ex_txt color_bk">当店に関するご質問や、在籍モデルのことなどご質問がございましたらこちらからお願いいたします。</p>
             </div>
 
             <div class="reservation">

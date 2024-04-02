@@ -22,7 +22,7 @@
                     </span>
                 </div>
             </div>
-            <div class="headline">
+            <div class="headline opacity_clear">
                 <h2 class="headline_ttl color_white"> CONCEPT </h2>
                 <p class="back_txt color_wh05">CONCEPT</p>
             </div>

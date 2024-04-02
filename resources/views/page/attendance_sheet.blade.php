@@ -26,7 +26,7 @@
                 <h3 class="ex_headline">出勤情報</h3>
                 <p class="ex_txt">当店在籍モデルの出勤状況は以下よりご確認ください。 </p>
             </div>
-            <div class="articlePanel mgt_30">
+            <div class="articlePanel mgt_30 width_100">
                 <style>
                 </style>
                 <div id="am-block-schedule" class="">
