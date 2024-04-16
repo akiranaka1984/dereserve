@@ -31,13 +31,15 @@ class NewsController extends Controller
             News::where('id', $request->id)->update([
                 'title' => $request->frm_title,
                 'text' => $request->frm_text,
-                'slug' => str_replace(" ", "-", $request->frm_title)
+                'slug' => str_replace(" ", "-", $request->frm_title),
+                'companion_id' => $request->companion_id  // companion_idを更新
             ]);
         } else {
             News::create([
                 'title' => $request->frm_title,
                 'text' => $request->frm_text,
                 'slug' => str_replace(" ", "-", $request->frm_title),
+                'companion_id' => $request->companion_id,  // 新規作成時にcompanion_idを設定
                 'position' => ($count + 1),
                 'status' => 1
             ]);

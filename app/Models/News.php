@@ -16,7 +16,12 @@ class News extends Model
         'text',
         'position',
         'status',
-        'slug'
+        'slug',
+        'companion_id'  // この行を追加
     ];
+    public function companion(){
+        return $this->hasOne('App\Models\Companion','id','companion_id')->with(['category', 'home_image']);
+    }
 
 }
+

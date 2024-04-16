@@ -90,7 +90,7 @@ Route::get('/admin/signout', [AuthController::class, 'signout'])->name('admin.si
 
 
 //コメントアウト 後で戻す
-Route::group([/*'middleware' => ['auth', 'admin'],*/ 'prefix' => 'admin'], function () {
+Route::group([/* 'middleware' => ['auth', 'admin'] ,*/'prefix' => 'admin'], function () {
     Route::get('/dashboard', [AdminController::class,'dashboard'])->name('admin.dashbord');
 
     Route::get('/users/list', [UsersController::class,'index'])->name('admin.users.list');

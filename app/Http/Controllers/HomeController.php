@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-
+use Carbon\Carbon;  // Carbonライブラリをインポート
 use App\Models\Pages;
 use App\Models\Companion;
 use App\Models\Attendance;
@@ -35,7 +35,15 @@ class HomeController extends Controller
         $today_attendances = Attendance::with(['companion'])->where(['date'=>date('Y-m-d')])->get();
         $tomorrow_attendances = Attendance::with(['companion'])->where(['date'=>date('Y-m-d', strtotime('+1 days'))])->get();
         $recent_news = News::orderBy('id', 'DESC')->take(5)->get();
-        return view('page.index', compact('header','footer','main', 'new_companions', 'today_attendances', 'tomorrow_attendances', 'recent_news', 'campaign'));
+        $oneMonthAgo = Carbon::today()->subMonth();  // 今日から1ヶ月前の日付
+        $new_companions2 = Companion::with(['home_image', 'category'])
+                                ->where('entry_date', '>=', $oneMonthAgo)
+                                ->where('status', 1)
+                                ->orderBy('id', 'DESC')
+                                ->take(20)
+                                ->get();
+
+                                return view('page.index', compact('header', 'footer', 'main', 'campaign', 'new_companions2', 'today_attendances', 'tomorrow_attendances', 'recent_news'));
     }
 
     public function concept(Request $request)
@@ -72,113 +80,112 @@ class HomeController extends Controller
 }
 
 
-    public function enrollment_table(Request $request)
-    {
+public function enrollment_table(Request $request)
+{
+    $header = Pages::where(['name'=>'header'])->first();
+    $footer = Pages::where(['name'=>'footer'])->first();
+    $enrollment_table = Pages::where(['name'=>'enrollment_table'])->first();
 
-        $header = Pages::where(['name'=>'header'])->first();
-        $footer = Pages::where(['name'=>'footer'])->first();
-        $enrollment_table = Pages::where(['name'=>'enrollment_table'])->first();
+    $all_records = [];
+    $categories = Category::where(['status'=>1])->get();
 
-        $all_records = array();
-        $categories = Category::where(['status'=>1])->get();
-        foreach($categories as $category){
-            $sql = Companion::with(['today_attendances','category','home_image'])->where([ 'category_id'=>$category->id ])->where(['status' => 1]);
+    foreach($categories as $category){
+        $companions = Companion::with(['today_attendances', 'category', 'home_image'])
+            ->where('category_id', $category->id)
+            ->where('status', 1);
 
-            $sql->where(function ($query) use ($request){
-                if(!empty($request->search_age18)){
-                    $query->orWhere(function ($query1){
-                        $query1->where('age', '>=', 18);
-                        $query1->where('age', '<=', 19);
-                    });
-                }
-                if(!empty($request->search_age20)){
-                    $query->orWhere(function ($query1){
-                        $query1->where('age', '>=', 20);
-                        $query1->where('age', '<=', 24);
-                    });
-                }
-                if(!empty($request->search_age25)){
-                    $query->orWhere(function ($query1){
-                        $query1->where('age', '>=', 25);
-                        $query1->where('age', '<=', 29);
-                    });
-                }
-                if(!empty($request->search_age30)){
-                    $query->orWhere('age', '>=', 30);
-                }
-            });
-
-            $sql->where(function ($query) use ($request){
-                if(!empty($request->search_height149)){
-                    $query->orWhere('height', '<=', 149);
-                }
-                if(!empty($request->search_height150)){
-                    $query->orWhere(function ($query1){
-                        $query1->where('height', '>=', 150);
-                        $query1->where('height', '<=', 154);
-                    });
-                }
-                if(!empty($request->search_height155)){
-                    $query->orWhere(function ($query1){
-                        $query1->where('height', '>=', 155);
-                        $query1->where('height', '<=', 159);
-                    });
-                }
-                if(!empty($request->search_height160)){
-                    $query->orWhere(function ($query1){
-                        $query1->where('height', '>=', 160);
-                        $query1->where('height', '<=', 164);
-                    });
-                }
-                if(!empty($request->search_height165)){
-                    $query->orWhere(function ($query1){
-                        $query1->where('height', '>=', 165);
-                        $query1->where('height', '<=', 169);
-                    });
-                }
-                if(!empty($request->search_height170)){
-                    $query->orWhere('height', '>=', 170);
-                }
-            });
-
-            $sql->where(function ($query) use ($request){
-                if(!empty($request->search_bust_a)){
-                    $query->orWhere('cup', '=', 'A');
-                }
-                if(!empty($request->search_bust_b)){
-                    $query->orWhere('cup', '=', 'B');
-                }
-                if(!empty($request->search_bust_c)){
-                    $query->orWhere('cup', '=', 'C');
-                }
-                if(!empty($request->search_bust_d)){
-                    $query->orWhere('cup', '=', 'D');
-                }
-                if(!empty($request->search_bust_e)){
-                    $query->orWhere('cup', '=', 'E');
-                }
-                if(!empty($request->search_bust_f)){
-                    $query->orWhere('cup', '=', 'F');
-                }
-                if(!empty($request->search_bust_g)){
-                    $query->orWhere('cup', '=', 'G');
-                }
-                if(!empty($request->search_bust_h)){
-                    $query->orWhere('cup', '=', 'H');
-                }
-            });
-
-            if(!empty($request->girls_search_text)){
-                $sql->where('name', 'like', '%'.$request->girls_search_text.'%');
+        // Apply filters based on age
+        $companions->where(function ($query) use ($request){
+            if(!empty($request->search_age18)){
+                $query->orWhere(function ($query1){
+                    $query1->where('age', '>=', 18)->where('age', '<=', 19);
+                });
             }
-            $all_records[$category->name] = $sql->get();
+            if(!empty($request->search_age20)){
+                $query->orWhere(function ($query1){
+                    $query1->where('age', '>=', 20)->where('age', '<=', 24);
+                });
+            }
+            if(!empty($request->search_age25)){
+                $query->orWhere(function ($query1){
+                    $query1->where('age', '>=', 25)->where('age', '<=', 29);
+                });
+            }
+            if(!empty($request->search_age30)){
+                $query->orWhere('age', '>=', 30);
+            }
+        });
+
+        // Apply filters based on height
+        $companions->where(function ($query) use ($request){
+            if(!empty($request->search_height149)){
+                $query->orWhere('height', '<=', 149);
+            }
+            if(!empty($request->search_height150)){
+                $query->orWhere(function ($query1){
+                    $query1->where('height', '>=', 150)->where('height', '<=', 154);
+                });
+            }
+            if(!empty($request->search_height155)){
+                $query->orWhere(function ($query1){
+                    $query1->where('height', '>=', 155)->where('height', '<=', 159);
+                });
+            }
+            if(!empty($request->search_height160)){
+                $query->orWhere(function ($query1){
+                    $query1->where('height', '>=', 160)->where('height', '<=', 164);
+                });
+            }
+            if(!empty($request->search_height165)){
+                $query->orWhere(function ($query1){
+                    $query1->where('height', '>=', 165)->where('height', '<=', 169);
+                });
+            }
+            if(!empty($request->search_height170)){
+                $query->orWhere('height', '>=', 170);
+            }
+        });
+
+        // Apply filters based on bust size
+        $companions->where(function ($query) use ($request){
+            if(!empty($request->search_bust_a)){
+                $query->orWhere('cup', '=', 'A');
+            }
+            if(!empty($request->search_bust_b)){
+                $query->orWhere('cup', '=', 'B');
+            }
+            if(!empty($request->search_bust_c)){
+                $query->orWhere('cup', '=', 'C');
+            }
+            if(!empty($request->search_bust_d)){
+                $query->orWhere('cup', '=', 'D');
+            }
+            if(!empty($request->search_bust_e)){
+                $query->orWhere('cup', '=', 'E');
+            }
+            if(!empty($request->search_bust_f)){
+                $query->orWhere('cup', '=', 'F');
+            }
+            if(!empty($request->search_bust_g)){
+                $query->orWhere('cup', '=', 'G');
+            }
+            if(!empty($request->search_bust_h)){
+                $query->orWhere('cup', '=', 'H');
+            }
+        });
+
+        if(!empty($request->girls_search_text)){
+            $companions->where('name', 'like', '%'.$request->girls_search_text.'%');
         }
-
-        $search_param = (object) $request->all();
-
-        return view('page.enrollment_table', compact('header','footer','search_param','enrollment_table','all_records'));
-
+        
+        $all_records[$category->name] =  $companions->orderBy('position')->get();
     }
+
+    $search_param = (object) $request->all();
+
+    return view('page.enrollment_table', compact('header', 'footer', 'search_param', 'enrollment_table', 'all_records'));
+}
+
 
     public function price(Request $request)
     {

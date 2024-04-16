@@ -208,3 +208,11 @@
   gap: 5px; /* チェックボックスとテキストの間隔 */
   margin-right: 10px; /* 隣の要素との間隔 */
 }
+.btn_fixed{
+  position: fixed!important;
+  z-index: 999;
+}
+.news-comp-photo{
+  visibility: visible!important;
+  padding: .2em 1em!important;
+}

@@ -51,7 +51,7 @@
                                 @foreach ($news_data as $news)
                                     <li id="{{ $news->id }}" class="news type-post status-publish format-standard hentry category-news">
                                         <div class="date-area">
-                                            <time datetime="{{ date('Y/m/d', strtotime($news->created_at)) }}">{{ date('Y/m/d', strtotime($news->created_at)) }}</time>
+                                            <time datetime="{{ date('Y/m/d', strtotime($news->updated_at)) }}">{{ date('Y/m/d', strtotime($news->created_at)) }}</time>
                                             <ul class="post-categories">
                                                 <li><a href="" rel="category tag">NEWS</a></li>
                                             </ul>

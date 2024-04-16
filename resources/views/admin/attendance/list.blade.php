@@ -62,7 +62,7 @@
 
                                 <div class="input-group">
                                     <select name="start_time" class="form-control start_time">
-                                        <option></option>
+                                        {{-- <option></option> --}}
                                         <option value="00:00">00:00</option>
                                         <option value="00:30">00:30</option>
                                         <option value="01:00">01:00</option>
@@ -114,7 +114,7 @@
                                     </select>
                                     <span class="input-group-addon"> ~ </span>
                                     <select name="end_time" class="form-control end_time">
-                                        <option></option>
+                                        {{-- <option></option> --}}
                                         <option value="00:00">00:00</option>
                                         <option value="00:30">00:30</option>
                                         <option value="01:00">01:00</option>

@@ -29,7 +29,7 @@
         <div class="wrapper">
             <div class="ex_wrap fadeUpTrigger smooth opacity_clear">
                 <h3 class="ex_headline opacity_clear color_bk">CONTACT</h3>
-                <p class="ex_txt color_bk">当店に関するご質問や、在籍モデルのことなどご質問がございましたらこちらからお願いいたします。</p>
+                <p class="ex_txt color_bk">当店に関するご質問がございましたら、以下フォームにご入力の上でお問合せください。</p>
             </div>
 
             <div class="reservation">
@@ -61,7 +61,7 @@
                         <dl>
                             <dt>メッセージ<span>必須</span></dt>
                             <dd>
-                                <textarea type="text" name="message" placeholder="あなたの連絡先の問い合わせ" rows="10"></textarea>
+                                <textarea type="text" name="message" placeholder="問い合わせ内容について記載ください" rows="10"></textarea>
                             </dd>
                         </dl>
                         <button type="submit" class="recruit_btn">送信する</button>

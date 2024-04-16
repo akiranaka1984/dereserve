@@ -27,7 +27,11 @@ class WebReservation extends Model
         'contact',
         'cmnt',
         'compatible',
-        'status'
+        'status',
+        'reservation_month',
+        'reservation_date',
+        'reservation_hour',
+        'reservation_minute'
     ];
 
 }

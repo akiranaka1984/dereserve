@@ -19,14 +19,11 @@
 
     <div class="tile-stats tile-primary frm-head"> 新規ニュース追加</div>
 
-    <div class="col-md-12 mb-1 flex-items">
+    <div class="col-md-12 mb-1">
         <button type="button" class="btn btn-orange btn-icon-align showSendEmailModal">
             <svg class="bi bi-plus-circle-fill" fill="currentColor" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"></path></svg>
             <span class="title ml-1">ニュースを追加する</span>
         </button>
-        <div class="col-md-2 img-resister mgb_0">
-            <a href="{{ route('admin.gallery.list') }}" class="btn btn-orange">画像をギャラリーに登録する</a>
-        </div>
     </div>
 
     <div class="tile-stats tile-primary frm-head"> ニュース一覧</div>
@@ -59,8 +56,8 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>編集/削除機能</th>
-                <th>コンテンツ</th>
+                <th>#</th>
+                <th>文章</th>
                 <th>登録日</th>
             </tr>
         </thead>
@@ -91,7 +88,7 @@
 </div>
 
 <div class="modal fade" id="modal-1">
-    <div class="modal-dialog" style="width: 60%;">
+    <div class="modal-dialog" style="width: 70%;">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -114,6 +111,17 @@
                                 <label for="frmText" class="col-sm-2 control-label">本文</label>
                                 <div class="col-sm-10 frm-inpt">
                                     <textarea name="frm_text" class="form-control" id="frmText" rows="20"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="frmCompanionId" class="col-sm-3 control-label">添付写真コンパニオン</label>
+                                <div class="col-sm-8 frm-inpt">
+                                    <select name="companion_id" id="frmCompanionId" >
+                                        <option value=""></option>
+                                        @foreach($companionLists as $companionList)
+                                            <option value="{{ $companionList->id }}">{{ $companionList->name }}({{ $companionList->age }})</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
 

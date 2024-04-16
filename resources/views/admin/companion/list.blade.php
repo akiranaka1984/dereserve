@@ -33,11 +33,11 @@
                 </div>
             </div>
             <div class="col-md-2">
-                <button type="button" class="btn btn-orange save_all_position">並び順を確定する</button>
+                <button type="button" class="btn btn-orange save_all_position  btn_fixed">並び順を確定する</button>
             </div>
             <div class="col-md-1">
                 <button type="button" class="btn btn-green" id="bulkAddingButton" onclick="openModal()">Excelファイル一括登録</button>
-            </div>
+            </div>  
             <div id="bulkAddingModal" class="modal">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -79,7 +79,7 @@
     <div class="tile-stats tile-primary frm-head"> モデル一覧</div>
 
     <div class="row dragula" id="left-events">
-        @foreach($companions as $companion)
+        @foreach($companions->sortBy('position') as $companion)
             <div class="col-md-3 trow" data-id="{{ $companion->id }}">
                 <div class="panel panel-primary" >
                     <div class="panel-body text-center">

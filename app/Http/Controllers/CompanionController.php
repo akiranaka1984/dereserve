@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Filesystem\Filesystem;
-
+use Carbon\Carbon;  // Carbonライブラリをインポート
 use App\Models\Category;
 use App\Models\Companion;
 use App\Models\PhotoSizeSetting;
@@ -53,11 +53,51 @@ class CompanionController extends Controller
             return view('admin.companion.list', compact('companions', 'search_q'));
         }
     }
+    public function showCompanions() {
+        $oneMonthAgo = Carbon::today()->subMonth();  // 今日から1ヶ月前の日付
+    
+        $new_companions2 = Companion::with(['home_image', 'category'])
+                                   ->where('entry_date', '>=', $oneMonthAgo)
+                                   ->where('status', 1)
+                                   ->orderBy('id', 'DESC')
+                                   ->take(20)
+                                   ->get();
+        return view('page.index', compact('new_companions2'));  // 正しい変数名
+    }
 
     public function add(Request $request)
     {
         $categories = Category::where(['status'=>1])->orderBy('position', 'ASC')->orderBy('id', 'ASC')->get();
         return view('admin.companion.add', compact('categories'));
+    }
+    private function savePhoto($request, $companionId) {
+        if($request->hasFile('frm_photo')){
+            $photoSizeSetting = PhotoSizeSetting::with(['photo_category'])->where(['id'=>1])->first();
+            $image = $request->file('frm_photo');
+            $ext = $image->getClientOriginalExtension();
+            $imageName = $photoSizeSetting->prefix . '_' . $companionId . '.' . $ext;
+            $folderPath = 'photos/' . $companionId . '/';
+    
+            if(empty($photoSizeSetting->hpx) || empty($photoSizeSetting->vpx)){
+                Storage::disk('public')->put($folderPath . $imageName, file_get_contents($image), 'public');
+            } else {
+                $img = Image::make($image->getRealPath());
+                $img->resize($photoSizeSetting->hpx, $photoSizeSetting->vpx, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+                $img->stream();
+                Storage::disk('public')->put($folderPath . $imageName, $img, 'public');
+            }
+    
+            CompanionPhoto::updateOrInsert([
+                'companion_id' => $companionId,
+                'photo_setting_id' => 1
+            ], [
+                'title' => $request->frm_title,
+                'photo' => $imageName . '?v=' . time(),
+                'status' => 1
+            ]);
+        }
     }
 
     public function save(Request $request)
@@ -101,8 +141,8 @@ class CompanionController extends Controller
             'previous_position' => $request->frm_position,
             'celebrities_who_look_alike' => $request->frm_celebrities_who_look_alike
         ]);
-
-        if($request->hasFile('frm_photo')){
+        $this->savePhoto($request, $companion->id);
+        /* if($request->hasFile('frm_photo')){
             $photoSizeSetting = PhotoSizeSetting::with(['photo_category'])->where(['id'=>1])->first();
             $request->validate(['frm_photo' => 'required|image|max:10240']);
             $image = $request->file('frm_photo');
@@ -125,7 +165,7 @@ class CompanionController extends Controller
                 'photo' => $imageName.'?v='.time(),
                 'status' => 1
             ]);
-        }
+        } */
 
         return redirect()->route('admin.companion.edit', [ 'id' => $companion->id, 'stab' => 1 ]);
 
@@ -337,6 +377,10 @@ class CompanionController extends Controller
                 //列Rの値が「◯」の場合に、新規フラグ($new_face)を1に、そうでなければ0に設定している。
                 $new_face = ($value['R'] == '〇') ? 1 : 0;
                 $category_id = !empty($value['AJ']) ? $value['AJ'] : null; // AJ列が空でなければその値を使用、空ならnullを設定
+                // AH列からの情報をcelebrities_who_look_alike属性に挿入
+                $celebrities_who_look_alike = !empty($value['AH']) ? $value['AH'] : null;
+                // AI列からの情報をprevious_position属性に挿入
+                $previous_position = !empty($value['AI']) ? $value['AI'] : null;
                 $position = $key + 1;
                 $birthday = !empty($value['G']) ? date('Y-m-d', strtotime($value['G'])) : "";
                 //列Hの値がリテラル文字列「age」または、「年齢」でない場合にのみ、後続の処理を実行する。1行目と2行目がデータではないため、ヘッダー行を除外する。
@@ -410,6 +454,8 @@ class CompanionController extends Controller
                             'bust' => $value['K'],
                             'cup' => $value['L'],
                             'waist' => $value['M'],
+                            'celebrities_who_look_alike' => $celebrities_who_look_alike,
+                            'previous_position' => $previous_position,
                             'category_id' => $category_id, // AJ列のデータをcategory_idに設定
                             'hip' => $value['N'],
                             'hobby' => $value['O'],

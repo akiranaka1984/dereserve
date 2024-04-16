@@ -1,20 +1,17 @@
 @extends('page.layout')
 
 @section('content')
-
     {!! $enrollment_table->text_data1 !!}
 
     <section class="model" id="model">
         <div class="wrapper">
             <div class="breadcrumbs">
                 <div class="breadcrumb_inner">
-                    <span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage"
-                            title="クラブフィレンツェへ移動する" href="{{ route('page.index') }}"
-                            class="home"><span property="name">HOME</span></a>
+                    <span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" title="クラブフィレンツェへ移動する"
+                            href="{{ route('page.index') }}" class="home"><span property="name">HOME</span></a>
                         <meta property="position" content="1">
                     </span><i class="fas fa-angle-right" aria-hidden="true"></i><span property="itemListElement"
-                        typeof="ListItem"><span property="name"
-                            class="archive post-model-archive current-item">モデル</span>
+                        typeof="ListItem"><span property="name" class="archive post-model-archive current-item">モデル</span>
                         <meta property="url" content="{{ route('page.enrollment_table') }}">
                         <meta property="position" content="2">
                     </span>
@@ -104,96 +101,170 @@
             </div>
             <div class="articlePanel mgt_30">
                 <ul id="" class="article-wrap slider grid fadeUpTrigger3 muuri" style="height: 238px;">
-                    @foreach($all_records as $key => $records)
-                        @foreach($records as $companion)
-                                @php
-                                    if(!empty($companion) && !empty($companion->home_image->photo)){
-                                        $imgPath = '/storage/photos/'.($companion->id).'/'.($companion->home_image->photo);
-                                    }else{
-                                        $imgPath = '/storage/photos/default/not-to-be-published.jpg';
-                                    }
+                    @foreach ($all_records as $key => $records)
+                    @foreach ($records->sortBy('position') as $companion)
+                            @php
+                                if (!empty($companion) && !empty($companion->home_image->photo)) {
+                                    $imgPath =
+                                        '/storage/photos/' . $companion->id . '/' . $companion->home_image->photo;
+                                } else {
+                                    $imgPath = '/storage/photos/default/not-to-be-published.jpg';
+                                }
+                                $companion_categories = '';
 
-                                    $companion_categories = '';
+                                $companion_categories = str_contains($companion->rookie, '新人')
+                                    ? $companion_categories . ' cat01'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, '経験者')
+                                    ? $companion_categories . ' cat02'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, '未経験')
+                                    ? $companion_categories . ' cat03'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, '清楚系')
+                                    ? $companion_categories . ' cat04'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, 'スタイル抜群')
+                                    ? $companion_categories . ' cat05'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, 'スタイル抜群')
+                                    ? $companion_categories . ' cat06'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, 'モデル系')
+                                    ? $companion_categories . ' cat07'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, 'キレカワ系')
+                                    ? $companion_categories . ' cat08'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, 'アイドル系')
+                                    ? $companion_categories . ' cat09'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, '素人系')
+                                    ? $companion_categories . ' cat10'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, 'お姉様系')
+                                    ? $companion_categories . ' cat11'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, 'ギャル系')
+                                    ? $companion_categories . ' cat12'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, '現役モデル')
+                                    ? $companion_categories . ' cat13'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, 'AV女優')
+                                    ? $companion_categories . ' cat114'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, 'CA')
+                                    ? $companion_categories . ' cat15'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, '女子大生')
+                                    ? $companion_categories . ' cat16'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, 'ロリ系')
+                                    ? $companion_categories . ' cat17'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, 'おっとり系')
+                                    ? $companion_categories . ' cat18'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, '綺麗系')
+                                    ? $companion_categories . ' cat19'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, '可愛い系')
+                                    ? $companion_categories . ' cat20'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, '癒し系')
+                                    ? $companion_categories . ' cat21'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, 'オススメ')
+                                    ? $companion_categories . ' cat22'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, '巨乳')
+                                    ? $companion_categories . ' cat23'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, 'スレンダー')
+                                    ? $companion_categories . ' cat24'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, '女子アナ系')
+                                    ? $companion_categories . ' cat25'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, '小柄')
+                                    ? $companion_categories . ' cat26'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, '高身長')
+                                    ? $companion_categories . ' cat27'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, '愛嬌抜群')
+                                    ? $companion_categories . ' cat28'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, 'パイパン')
+                                    ? $companion_categories . ' cat29'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, '美脚')
+                                    ? $companion_categories . ' cat30'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, '美乳')
+                                    ? $companion_categories . ' cat31'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, '美尻')
+                                    ? $companion_categories . ' cat32'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, '黒髪')
+                                    ? $companion_categories . ' cat33'
+                                    : $companion_categories . '';
+                                $companion_categories = str_contains($companion->rookie, 'ハーフ')
+                                    ? $companion_categories . ' cat34'
+                                    : $companion_categories . '';
 
-                                    $companion_categories = str_contains($companion->rookie, '新人') ? $companion_categories.' cat01' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, '経験者') ? $companion_categories.' cat02' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, '未経験') ? $companion_categories.' cat03' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, '清楚系') ? $companion_categories.' cat04' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, 'スタイル抜群') ? $companion_categories.' cat05' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, 'スタイル抜群') ? $companion_categories.' cat06' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, 'モデル系') ? $companion_categories.' cat07' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, 'キレカワ系') ? $companion_categories.' cat08' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, 'アイドル系') ? $companion_categories.' cat09' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, '素人系') ? $companion_categories.' cat10' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, 'お姉様系') ? $companion_categories.' cat11' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, 'ギャル系') ? $companion_categories.' cat12' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, '現役モデル') ? $companion_categories.' cat13' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, 'AV女優') ? $companion_categories.' cat114' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, 'CA') ? $companion_categories.' cat15' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, '女子大生') ? $companion_categories.' cat16' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, 'ロリ系') ? $companion_categories.' cat17' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, 'おっとり系') ? $companion_categories.' cat18' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, '綺麗系') ? $companion_categories.' cat19' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, '可愛い系') ? $companion_categories.' cat20' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, '癒し系') ? $companion_categories.' cat21' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, 'オススメ') ? $companion_categories.' cat22' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, '巨乳') ? $companion_categories.' cat23' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, 'スレンダー') ? $companion_categories.' cat24' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, '女子アナ系') ? $companion_categories.' cat25' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, '小柄') ? $companion_categories.' cat26' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, '高身長') ? $companion_categories.' cat27' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, '愛嬌抜群') ? $companion_categories.' cat28' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, 'パイパン') ? $companion_categories.' cat29' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, '美脚') ? $companion_categories.' cat30' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, '美乳') ? $companion_categories.' cat31' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, '美尻') ? $companion_categories.' cat32' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, '黒髪') ? $companion_categories.' cat33' : $companion_categories.'';
-                                    $companion_categories = str_contains($companion->rookie, 'ハーフ') ? $companion_categories.' cat34' : $companion_categories.'';
+                                if ($companion->category_id == 1) {
+                                    $companion_rank = 'rank01';
+                                } elseif ($companion->category_id == 2) {
+                                    $companion_rank = 'rank02';
+                                } elseif ($companion->category_id == 3) {
+                                    $companion_rank = 'rank03';
+                                } elseif ($companion->category_id == 4) {
+                                    $companion_rank = 'rank04';
+                                }
 
-                                    if ($companion->category_id == 1) {
-                                        $companion_rank = 'rank01';
-                                    } else if ($companion->category_id == 2) {
-                                        $companion_rank = 'rank02';
-                                    } else if ($companion->category_id == 3) {
-                                        $companion_rank = 'rank03';
-                                    } else if ($companion->category_id == 4) {
-                                        $companion_rank = 'rank04';
-                                    }
-
-
-                                @endphp
-                                <li class="article {{ $companion_categories }} {{ $companion_rank }} item muuri-item muuri-item-shown">
-                                    <a href="{{ route('page.details', ['id'=>$companion->id]) }}" class="model_link" style="opacity: 1; transform: scale(1);">
-                                        <div class="box fadeUpTrigger3">
-                                            <span class="rank_label">
-                                                @if($companion->category->name == "BLACK")
-                                                    <img src="{{ url('assets/images/black_label.png') }}" alt="{{ $companion->category->name }}">
-                                                @elseif($companion->category->name == "PLATINUM")
-                                                    <img src="{{ url('assets/images/platinum_label.png') }}" alt="{{ $companion->category->name }}">
-                                                @elseif($companion->category->name == "DIAMOND")
-                                                    <img src="{{ url('assets/images/diamond_label.png') }}" alt="{{ $companion->category->name }}">
-                                                @elseif($companion->category->name == "RED DIAMOND")
-                                                    <img src="{{ url('assets/images/reddiamond_label.png') }}" alt="{{ $companion->category->name }}">
-                                                @endif
-                                            </span>
-                                            <img src="{{ asset($imgPath) }}" alt="{{ $companion->name }}" class="photo">
-                                            <div class="prof_box">
-                                                <p class="intro">{{ $companion->sale_point }}</p>
-                                                <div class="prof">
-                                                    <div class="name_wrap">
-                                                        <p class="name">{{ $companion->name }}</p>
-                                                        <span class="age">{{ $companion->age }}</span>歳
-                                                    </div>
-                                                    <div class="size">
-                                                        T:<span class="tall">{{ $companion->height }}</span>
-                                                        <span class="bast">B:{{ $companion->bust }}({{ $companion->cup }})</span>
-                                                        <span class="west">W:{{ $companion->waist }}</span>
-                                                        <span class="hip">H:{{ $companion->hip }}</span>
-                                                    </div>
+                            @endphp
+                            <li
+                                class="article {{ $companion_categories }} {{ $companion_rank }} item muuri-item muuri-item-shown">
+                                <a href="{{ route('page.details', ['id' => $companion->id]) }}" class="model_link"
+                                    style="opacity: 1; transform: scale(1);">
+                                    <div class="box fadeUpTrigger3">
+                                        <span class="rank_label">
+                                            @if ($companion->category->name == 'BLACK')
+                                                <img src="{{ url('assets/images/black_label.png') }}"
+                                                    alt="{{ $companion->category->name }}">
+                                            @elseif($companion->category->name == 'PLATINUM')
+                                                <img src="{{ url('assets/images/platinum_label.png') }}"
+                                                    alt="{{ $companion->category->name }}">
+                                            @elseif($companion->category->name == 'DIAMOND')
+                                                <img src="{{ url('assets/images/diamond_label.png') }}"
+                                                    alt="{{ $companion->category->name }}">
+                                            @elseif($companion->category->name == 'RED DIAMOND')
+                                                <img src="{{ url('assets/images/reddiamond_label.png') }}"
+                                                    alt="{{ $companion->category->name }}">
+                                            @endif
+                                        </span>
+                                        <img src="{{ asset($imgPath) }}" alt="{{ $companion->name }}" class="photo">
+                                        <div class="prof_box">
+                                            <p class="intro">{{ $companion->sale_point }}</p>
+                                            <div class="prof">
+                                                <div class="name_wrap">
+                                                    <p class="name">{{ $companion->name }}</p>
+                                                    <span class="age">{{ $companion->age }}</span>歳
                                                 </div>
-                                                <div class="schedule">
-                                                    @if(!empty($companion->today_attendances))
-                                                        @if(!empty($companion->today_attendances->end_time))
+                                                <div class="size">
+                                                    T:<span class="tall">{{ $companion->height }}</span>
+                                                    <span
+                                                        class="bast">B:{{ $companion->bust }}({{ $companion->cup }})</span>
+                                                    <span class="west">W:{{ $companion->waist }}</span>
+                                                    <span class="hip">H:{{ $companion->hip }}</span>
+                                                </div>
+                                            </div>
+                                            {{-- <div class="schedule">
+                                                    @if (!empty($companion->today_attendances))
+                                                        @if (!empty($companion->today_attendances->end_time))
                                                             <p>出勤：{{ $companion->today_attendances->start_time }}～{{ $companion->today_attendances->end_time }}</p>
                                                         @else
                                                             <p>出勤：{{ $companion->today_attendances->start_time }}～終了時間未定</p>
@@ -201,11 +272,11 @@
                                                     @else
                                                         <p>出勤：00:00～</p>
                                                     @endif
-                                                </div>
-                                            </div>
+                                                </div> --}}
                                         </div>
-                                    </a>
-                                </li>
+                                    </div>
+                                </a>
+                            </li>
                         @endforeach
                     @endforeach
                 </ul>
@@ -216,5 +287,4 @@
 
         </div>
     </section>
-
 @endsection

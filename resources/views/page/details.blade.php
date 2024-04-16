@@ -183,7 +183,7 @@
 
         function openTermCondition(comp_id){
             localStorage.setItem('comp_id', comp_id);
-            window.location.href = "{{ route('user.terms') }}";
+            window.location.href = "{{ route('page.reservation') }}";
         }
     </script>
 
